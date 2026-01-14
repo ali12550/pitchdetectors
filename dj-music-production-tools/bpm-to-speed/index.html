@@ -10,13 +10,13 @@
   <meta name="description"
     content="Easily convert BPM (Beats Per Minute) to playback speed or tempo ratio. Great for DJs, producers, and music editors syncing tracks or adjusting tempo precisely.">
   <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/bpm-to-speed/" />
-  
+
   <meta name="keywords"
     content="bpm to speed converter, tempo speed calculator, bpm converter, dj bpm calculator, bpm to playback speed">
-  
-    <meta property="og:title" content="BPM to Speed Converter – Convert Beats Per Minute to Playback Speed">
-  
-    <meta property="og:description"
+
+  <meta property="og:title" content="BPM to Speed Converter – Convert Beats Per Minute to Playback Speed">
+
+  <meta property="og:description"
     content="Convert BPM to playback speed in seconds. Built for DJs, remixers, and producers adjusting track tempo.">
 
 
@@ -1163,38 +1163,6 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
                   </p>
                 </div>
 
-                <!-- JSON-LD FAQ SCHEMA -->
-                <script defer type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {"@type":"Question","name":"How fast is 120 BPM in mph?","acceptedAnswer":{"@type":"Answer","text":"About 3.8–4 mph with an average stride of 0.8 meters."}},
-      {"@type":"Question","name":"Is 135 BPM fast or slow?","acceptedAnswer":{"@type":"Answer","text":"Moderately fast tempo, often used in upbeat music and light running."}},
-      {"@type":"Question","name":"What speed is 100 BPM?","acceptedAnswer":{"@type":"Answer","text":"Around 3.2 mph, typical of an easy walk."}},
-      {"@type":"Question","name":"Is 170 BPM fast?","acceptedAnswer":{"@type":"Answer","text":"Yes, 170 BPM equals about 7.5–8 mph, matching high-energy tempo."}},
-      {"@type":"Question","name":"Is 128 BPM a fast tempo?","acceptedAnswer":{"@type":"Answer","text":"128 BPM is considered fast, ideal for EDM and club music."}},
-      {"@type":"Question","name":"What tempo is 180 BPM?","acceptedAnswer":{"@type":"Answer","text":"Very fast, aligning with 8 mph runs or intense dance beats."}},
-      {"@type":"Question","name":"What BPM is best for running?","acceptedAnswer":{"@type":"Answer","text":"160–180 BPM fits most efficient running cadences."}},
-      {"@type":"Question","name":"How many BPM is 3 mph?","acceptedAnswer":{"@type":"Answer","text":"About 110–115 BPM for average stride."}},
-      {"@type":"Question","name":"What is 140 BPM in tempo?","acceptedAnswer":{"@type":"Answer","text":"Moderate-fast, used in trap, dubstep, and high-intensity workouts."}},
-      {"@type":"Question","name":"What is the fastest BPM?","acceptedAnswer":{"@type":"Answer","text":"Some genres exceed 300 BPM, though rare in most music."}},
-      {"@type":"Question","name":"Is 92 BPM a fast tempo?","acceptedAnswer":{"@type":"Answer","text":"No, it’s a moderate tempo typical of lo-fi and hip-hop tracks."}},
-      {"@type":"Question","name":"What tempo is 200 BPM?","acceptedAnswer":{"@type":"Answer","text":"Extremely fast — often used in hardcore or metal."}},
-      {"@type":"Question","name":"Is 150 BPM fast or slow?","acceptedAnswer":{"@type":"Answer","text":"Moderately fast — suitable for energetic runs or uptempo tracks."}},
-      {"@type":"Question","name":"Is 120 BPM fast?","acceptedAnswer":{"@type":"Answer","text":"120 BPM is mid-tempo, standard in pop and house music."}},
-      {"@type":"Question","name":"How many BPM for ADHD music?","acceptedAnswer":{"@type":"Answer","text":"Studies suggest 60–90 BPM improves focus; upbeat tracks may vary."}},
-      {"@type":"Question","name":"What BPM is best for sleeping?","acceptedAnswer":{"@type":"Answer","text":"50–70 BPM promotes calm breathing and relaxation."}},
-      {"@type":"Question","name":"What pace is 170 BPM?","acceptedAnswer":{"@type":"Answer","text":"Roughly 7.5 mph or fast running cadence."}},
-      {"@type":"Question","name":"What is 120 tempo in BPM?","acceptedAnswer":{"@type":"Answer","text":"120 tempo equals 120 beats per minute — standard pop rate."}},
-      {"@type":"Question","name":"What tempo is 70 BPM?","acceptedAnswer":{"@type":"Answer","text":"Slow tempo — used in ambient or R&B music."}},
-      {"@type":"Question","name":"Is 160 BPM fast tempo?","acceptedAnswer":{"@type":"Answer","text":"Yes, suitable for advanced runners and energetic electronic genres."}},
-      {"@type":"Question","name":"What speed is 110 BPM?","acceptedAnswer":{"@type":"Answer","text":"About 3.5–3.6 mph average walking pace."}},
-      {"@type":"Question","name":"What tempo is 40 BPM?","acceptedAnswer":{"@type":"Answer","text":"Very slow tempo, used in ambient or cinematic scores."}},
-      {"@type":"Question","name":"What is 140 BPM?","acceptedAnswer":{"@type":"Answer","text":"Common EDM tempo, representing strong rhythmic energy."}}
-    ]
-  }
-  </script>
 
 
 
@@ -1202,13 +1170,59 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
 
               <!-- content area end -->
 
+              <!-- ===== Script tool ===== -->
+              <script defer>
+                function setBPM(original, target) {
+                  document.getElementById('originalBPM').value = original;
+                  document.getElementById('newBPM').value = target;
+                }
+
+                function calculateSpeed() {
+                  const originalBPM = parseFloat(document.getElementById('originalBPM').value);
+                  const newBPM = parseFloat(document.getElementById('newBPM').value);
+
+                  if (!originalBPM || !newBPM || originalBPM <= 0) {
+                    alert("Please enter valid BPM values.");
+                    return;
+                  }
+
+                  const speed = (newBPM / originalBPM).toFixed(2);
+                  document.getElementById('result').classList.remove('d-none');
+                  document.getElementById('speedResult').innerText = `${speed}×`;
+
+                  let interpretation = "";
+                  if (speed > 1) {
+                    interpretation = `This will play ${((speed - 1) * 100).toFixed(0)}% faster than the original.`;
+                  } else if (speed < 1) {
+                    interpretation = `This will play ${((1 - speed) * 100).toFixed(0)}% slower than the original.`;
+                  } else {
+                    interpretation = "No change — same speed as the original BPM.";
+                  }
+                  document.getElementById('interpretation').innerText = interpretation;
+                }
+              </script>
+
+              <div id="footer"></div>
+
+              <script src="/assets/tools.js" defer></script>
+              <script defer src="/assets/bootstrap5.js"></script>
 
 
 
-
-
-
-
+              <!-- incluce js -->
+              <script defer>
+                window.addEventListener("load", () => {
+                  Promise.all([
+                    fetch("../../header.html").then(res => res.text()),
+                    fetch("../../footer.html").then(res => res.text())
+                  ])
+                    .then(([header, footer]) => {
+                      document.getElementById("header").innerHTML = header;
+                      document.getElementById("footer").innerHTML = footer;
+                    })
+                    .catch(err => console.error("Include load failed:", err));
+                });
+              </script>
               <!-- JSON-LD FAQ SCHEMA -->
               <script defer type="application/ld+json">
  {
@@ -1647,71 +1661,38 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
   ]
 }
     </script>
-
-
-
-
-              <!-- ===== Script tool ===== -->
-              <script defer>
-                function setBPM(original, target) {
-                  document.getElementById('originalBPM').value = original;
-                  document.getElementById('newBPM').value = target;
-                }
-
-                function calculateSpeed() {
-                  const originalBPM = parseFloat(document.getElementById('originalBPM').value);
-                  const newBPM = parseFloat(document.getElementById('newBPM').value);
-
-                  if (!originalBPM || !newBPM || originalBPM <= 0) {
-                    alert("Please enter valid BPM values.");
-                    return;
-                  }
-
-                  const speed = (newBPM / originalBPM).toFixed(2);
-                  document.getElementById('result').classList.remove('d-none');
-                  document.getElementById('speedResult').innerText = `${speed}×`;
-
-                  let interpretation = "";
-                  if (speed > 1) {
-                    interpretation = `This will play ${((speed - 1) * 100).toFixed(0)}% faster than the original.`;
-                  } else if (speed < 1) {
-                    interpretation = `This will play ${((1 - speed) * 100).toFixed(0)}% slower than the original.`;
-                  } else {
-                    interpretation = "No change — same speed as the original BPM.";
-                  }
-                  document.getElementById('interpretation').innerText = interpretation;
-                }
-              </script>
-
-              <div id="footer"></div>
-              <script src="/assets/bootstrap5.js" defer></script>
-              <script src="/assets/tools.js" defer></script>
-
-
-              <div id="footer"></div>
-              <script defer src="/assets/bootstrap5.js"></script>
-              <script src="/assets/tools.js" defer></script>
-
-              <div id="footer"></div>
-              <script src="/assets/bootstrap5.js" defer></script>
-              <script src="/assets/tools.js" defer></script>
-
-
-
-              <!-- incluce js -->
-              <script defer>
-                window.addEventListener("load", () => {
-                  Promise.all([
-                    fetch("../../header.html").then(res => res.text()),
-                    fetch("../../footer.html").then(res => res.text())
-                  ])
-                    .then(([header, footer]) => {
-                      document.getElementById("header").innerHTML = header;
-                      document.getElementById("footer").innerHTML = footer;
-                    })
-                    .catch(err => console.error("Include load failed:", err));
-                });
-              </script>
+              <!-- JSON-LD FAQ SCHEMA -->
+              <script defer type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How fast is 120 BPM in mph?","acceptedAnswer":{"@type":"Answer","text":"About 3.8–4 mph with an average stride of 0.8 meters."}},
+      {"@type":"Question","name":"Is 135 BPM fast or slow?","acceptedAnswer":{"@type":"Answer","text":"Moderately fast tempo, often used in upbeat music and light running."}},
+      {"@type":"Question","name":"What speed is 100 BPM?","acceptedAnswer":{"@type":"Answer","text":"Around 3.2 mph, typical of an easy walk."}},
+      {"@type":"Question","name":"Is 170 BPM fast?","acceptedAnswer":{"@type":"Answer","text":"Yes, 170 BPM equals about 7.5–8 mph, matching high-energy tempo."}},
+      {"@type":"Question","name":"Is 128 BPM a fast tempo?","acceptedAnswer":{"@type":"Answer","text":"128 BPM is considered fast, ideal for EDM and club music."}},
+      {"@type":"Question","name":"What tempo is 180 BPM?","acceptedAnswer":{"@type":"Answer","text":"Very fast, aligning with 8 mph runs or intense dance beats."}},
+      {"@type":"Question","name":"What BPM is best for running?","acceptedAnswer":{"@type":"Answer","text":"160–180 BPM fits most efficient running cadences."}},
+      {"@type":"Question","name":"How many BPM is 3 mph?","acceptedAnswer":{"@type":"Answer","text":"About 110–115 BPM for average stride."}},
+      {"@type":"Question","name":"What is 140 BPM in tempo?","acceptedAnswer":{"@type":"Answer","text":"Moderate-fast, used in trap, dubstep, and high-intensity workouts."}},
+      {"@type":"Question","name":"What is the fastest BPM?","acceptedAnswer":{"@type":"Answer","text":"Some genres exceed 300 BPM, though rare in most music."}},
+      {"@type":"Question","name":"Is 92 BPM a fast tempo?","acceptedAnswer":{"@type":"Answer","text":"No, it’s a moderate tempo typical of lo-fi and hip-hop tracks."}},
+      {"@type":"Question","name":"What tempo is 200 BPM?","acceptedAnswer":{"@type":"Answer","text":"Extremely fast — often used in hardcore or metal."}},
+      {"@type":"Question","name":"Is 150 BPM fast or slow?","acceptedAnswer":{"@type":"Answer","text":"Moderately fast — suitable for energetic runs or uptempo tracks."}},
+      {"@type":"Question","name":"Is 120 BPM fast?","acceptedAnswer":{"@type":"Answer","text":"120 BPM is mid-tempo, standard in pop and house music."}},
+      {"@type":"Question","name":"How many BPM for ADHD music?","acceptedAnswer":{"@type":"Answer","text":"Studies suggest 60–90 BPM improves focus; upbeat tracks may vary."}},
+      {"@type":"Question","name":"What BPM is best for sleeping?","acceptedAnswer":{"@type":"Answer","text":"50–70 BPM promotes calm breathing and relaxation."}},
+      {"@type":"Question","name":"What pace is 170 BPM?","acceptedAnswer":{"@type":"Answer","text":"Roughly 7.5 mph or fast running cadence."}},
+      {"@type":"Question","name":"What is 120 tempo in BPM?","acceptedAnswer":{"@type":"Answer","text":"120 tempo equals 120 beats per minute — standard pop rate."}},
+      {"@type":"Question","name":"What tempo is 70 BPM?","acceptedAnswer":{"@type":"Answer","text":"Slow tempo — used in ambient or R&B music."}},
+      {"@type":"Question","name":"Is 160 BPM fast tempo?","acceptedAnswer":{"@type":"Answer","text":"Yes, suitable for advanced runners and energetic electronic genres."}},
+      {"@type":"Question","name":"What speed is 110 BPM?","acceptedAnswer":{"@type":"Answer","text":"About 3.5–3.6 mph average walking pace."}},
+      {"@type":"Question","name":"What tempo is 40 BPM?","acceptedAnswer":{"@type":"Answer","text":"Very slow tempo, used in ambient or cinematic scores."}},
+      {"@type":"Question","name":"What is 140 BPM?","acceptedAnswer":{"@type":"Answer","text":"Common EDM tempo, representing strong rhythmic energy."}}
+    ]
+  }
+  </script>
 
 </body>
 
