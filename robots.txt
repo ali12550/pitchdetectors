@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+ 
+ 
+ 
+ 
+Sitemap: https://pitchdetectors.com/site_map.xml
+ 
+ 
+Sitemap: https://pitchdetectors.com/site_map.xml
+ 
+Sitemap: https://pitchdetectors.com/site_map.xml
+ 
+ 

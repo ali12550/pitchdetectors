@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note to Frequency Calculator | Musical Note to Hz | pitchdetectors</title>
+    <meta name="description"
+        content="Free online note to frequency calculator. Convert any musical note to its exact frequency in Hz. Supports different tuning standards including A4=432Hz and A4=440Hz.">
+    <meta name="keywords"
+        content="note to frequency, note to Hz, frequency calculator, pitch calculator, A4 tuning, music frequency calculator">
+    <link rel="canonical" href="https://pitchdetectors.com/pitch-detector-tools/note-to-frequency-online/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .note-selector {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 5px;
+            margin: 20px 0;
+        }
+
+        .note-btn {
+            padding: 15px 5px;
+            border: 2px solid #e0e0e0;
+            background: #fff;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .note-btn:hover {
+            border-color: var(--teal);
+            background: #f0f9f9;
+        }
+
+        .note-btn.active {
+            background: var(--teal);
+            color: #fff;
+            border-color: var(--teal);
+        }
+
+        .note-btn.sharp {
+            background: #333;
+            color: #fff;
+            border-color: #333;
+        }
+
+        .note-btn.sharp:hover {
+            background: var(--mid-blue);
+        }
+
+        .note-btn.sharp.active {
+            background: var(--teal);
+        }
+
+        .octave-selector {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .octave-btn {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #e0e0e0;
+            background: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .octave-btn:hover {
+            border-color: var(--teal);
+            background: #f0f9f9;
+        }
+
+        .octave-btn.active {
+            background: var(--mid-blue);
+            color: #fff;
+            border-color: var(--mid-blue);
+        }
+
+        .play-btn {
+            background: var(--accent);
+            color: var(--dark-blue);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .note-selector {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .note-selector {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+<div class="container py-4">
+    <div class="row">
+<!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <!-- Search Box -->
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/pitch-detector-tools/guitar-tuner-online/" class=""><i
+                                            class="bi bi-music-note-beamed"></i> Guitar Tuner</a></li>
+                                <li><a href="/pitch-detector-tools/vocal-range-finder-online/"><i class="bi bi-mic"></i> Vocal
+                                        Range Finder</a></li>
+                                <li><a href="/pitch-detector-tools/frequency-to-note-online/"><i
+                                            class="bi bi-arrow-left-right"></i> Frequency to Note</a></li>
+                                <li><a href="/pitch-detector-tools/note-to-frequency-online/" class="active"><i class="bi bi-calculator"></i>
+                                        Note to Frequency</a></li>
+                                <li><a href="/pitch-detector-tools/cents-calculator-online/"><i class="bi bi-rulers"></i> Cents
+                                        Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/transpose-calculator-online/"><i
+                                            class="bi bi-arrows-expand"></i> Transpose Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/harmonic-series-calculator-online/"><i
+                                            class="bi bi-bar-chart-steps"></i> Harmonic Series</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-category">
+                            <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
+                                            class="bi bi-speedometer2"></i> BPM Calculator</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-tap-tempo/"><i class="bi bi-hand-index"></i>
+                                        BPM Tap Tempo</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-to-ms/"><i class="bi bi-clock"></i> BPM to
+                                        Milliseconds</a></li>
+                                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
+                                        Key Finder</a></li>
+                                <li><a href="https://pitchdetectors.com/BPM-Pitch-Calculator.html"><i class="bi bi-sliders"></i>
+                                        Pitch Shifter</a></li>
+                                <li><a href="/dj-music-production-tools/tempo-changer/"><i
+                                            class="bi bi-fast-forward"></i> Tempo Changer</a></li>
+                            </ul>
+                        </div>
+
+
+
+                        
+                    </div>
+                </div>
+            </div>
+    
+    <div class="col-lg-9 col-md-8">
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/pitch-detector-tools/">Pitch Detector Tools</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Note to Frequency Calculator</li>
+            </ol>
+        </nav>
+
+        <div class="tool-container">
+            <div class="tool-title">
+                <h1><i class="bi bi-calculator me-2"></i>Note to Frequency Calculator</h1>
+                <p>Calculate the exact frequency in Hz for any musical note. Select a note and octave to find its
+                    frequency. Supports different tuning standards.</p>
+            </div>
+
+            <!-- Note Selection -->
+            <div class="mb-4">
+                <label class="form-label fw-bold">Select Note:</label>
+                <div class="note-selector" id="noteSelector">
+                    <button class="note-btn active" data-note="C">C</button>
+                    <button class="note-btn sharp" data-note="C#">C#</button>
+                    <button class="note-btn" data-note="D">D</button>
+                    <button class="note-btn sharp" data-note="D#">D#</button>
+                    <button class="note-btn" data-note="E">E</button>
+                    <button class="note-btn" data-note="F">F</button>
+                    <button class="note-btn sharp" data-note="F#">F#</button>
+                    <button class="note-btn" data-note="G">G</button>
+                    <button class="note-btn sharp" data-note="G#">G#</button>
+                    <button class="note-btn" data-note="A">A</button>
+                    <button class="note-btn sharp" data-note="A#">A#</button>
+                    <button class="note-btn" data-note="B">B</button>
+                </div>
+            </div>
+
+            <!-- Octave Selection -->
+            <div class="mb-4">
+                <label class="form-label fw-bold">Select Octave:</label>
+                <div class="octave-selector" id="octaveSelector">
+                    <button class="octave-btn" data-octave="0">0</button>
+                    <button class="octave-btn" data-octave="1">1</button>
+                    <button class="octave-btn" data-octave="2">2</button>
+                    <button class="octave-btn" data-octave="3">3</button>
+                    <button class="octave-btn active" data-octave="4">4</button>
+                    <button class="octave-btn" data-octave="5">5</button>
+                    <button class="octave-btn" data-octave="6">6</button>
+                    <button class="octave-btn" data-octave="7">7</button>
+                    <button class="octave-btn" data-octave="8">8</button>
+                </div>
+            </div>
+
+            <!-- A4 Reference -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label">A4 Reference Frequency (Hz):</label>
+                    <input type="number" class="form-control" id="a4Reference" value="440" min="400" max="480">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Quick Tuning Standards:</label>
+                    <div class="quick-buttons">
+                        <button class="quick-btn" onclick="setA4(432)">432 Hz</button>
+                        <button class="quick-btn" onclick="setA4(440)">440 Hz</button>
+                        <button class="quick-btn" onclick="setA4(442)">442 Hz</button>
+                        <button class="quick-btn" onclick="setA4(444)">444 Hz</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result Box -->
+            <div class="result-box">
+                <h3 id="resultNote">C4</h3>
+                <p style="font-size: 48px; font-weight: 700; margin: 20px 0;" id="resultFreq">261.63 Hz</p>
+                <button class="play-btn" onclick="playNote()">
+                    <i class="bi bi-play-fill"></i> Play This Note
+                </button>
+                <div class="row text-start mt-4">
+                    <div class="col-6 col-md-3 mb-3">
+                        <strong>MIDI Note:</strong><br>
+                        <span id="midiNote">60</span>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <strong>Wavelength:</strong><br>
+                        <span id="wavelength">1.31 m</span>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <strong>Period:</strong><br>
+                        <span id="period">3.82 ms</span>
+                    </div>
+                    <div class="col-6 col-md-3 mb-3">
+                        <strong>Octave Below:</strong><br>
+                        <span id="octaveBelow">130.81 Hz</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- All Octaves Table -->
+            <div class="mt-4">
+                <h4 class="text-mid mb-3">Same Note Across All Octaves</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped" id="octavesTable">
+                        <thead>
+                            <tr>
+                                <th>Note</th>
+                                <th>Frequency (Hz)</th>
+                                <th>MIDI</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Generated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formula Section -->
+        <div class="tool-container mt-4">
+            <div class="tool-section">
+                <h2 class="text-mid mb-3"><i class="bi bi-calculator me-2"></i>The Formula</h2>
+
+                <div class="bg-light p-4 rounded mb-4">
+                    <h5>Frequency Calculation:</h5>
+                    <code style="font-size: 18px;">f = 440 × 2^((n-69)/12)</code>
+                    <p class="mt-2 mb-0">Where <em>f</em> is the frequency in Hz and <em>n</em> is the MIDI note number
+                        (A4 = 69).</p>
+                </div>
+
+                <div class="bg-light p-4 rounded mb-4">
+                    <h5>Alternative Formula:</h5>
+                    <code style="font-size: 18px;">f = 440 × 2^((semitones from A4)/12)</code>
+                    <p class="mt-2 mb-0">Calculate semitones from A4, then apply the power of 2 relationship.</p>
+                </div>
+
+                <h4 class="text-teal mt-4">Key Relationships</h4>
+                <ul>
+                    <li><strong>Octave:</strong> Doubling the frequency raises pitch by one octave</li>
+                    <li><strong>Semitone:</strong> Multiply by 2^(1/12) ≈ 1.0595 for one semitone up</li>
+                    <li><strong>Fifth:</strong> Multiply by 2^(7/12) ≈ 1.498 for a perfect fifth</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="tool-container mt-4">
+            <div class="tool-section">
+                <h2 class="text-mid mb-4"><i class="bi bi-question-circle me-2"></i>Frequently Asked Questions</h2>
+
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                What is the difference between 432 Hz and 440 Hz tuning?
+                            </button>
+                        </h3>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                440 Hz is the international standard tuning for A4. Some musicians prefer 432 Hz,
+                                claiming it sounds warmer or more natural. The difference is about 32 cents (less than a
+                                quarter tone). Most modern music uses 440 Hz, but you can use our calculator to find
+                                frequencies for any reference pitch.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                What is a MIDI note number?
+                            </button>
+                        </h3>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                MIDI note numbers are a standard way to represent musical notes as integers from 0 to
+                                127. Middle C (C4) is MIDI note 60, and A4 (440 Hz) is MIDI note 69. Each number
+                                represents one semitone, making it easy for electronic instruments and software to
+                                communicate.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                Why do orchestras sometimes tune to 442 Hz?
+                            </button>
+                        </h3>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Some orchestras, particularly in Europe, tune to 442 Hz or even higher (443-444 Hz) for
+                                a brighter sound that projects better in large concert halls. This is a preference that
+                                varies by orchestra, conductor, and repertoire being performed.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <div id="footer"></div>
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/include.js"></script>
+<!-- tool js -->
+    <script defer>
+        const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        let selectedNote = 'C';
+        let selectedOctave = 4;
+        let audioContext = null;
+        let oscillator = null;
+
+        function init() {
+            document.querySelectorAll('.note-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.note-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedNote = btn.dataset.note;
+                    calculate();
+                });
+            });
+
+            document.querySelectorAll('.octave-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.octave-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    selectedOctave = parseInt(btn.dataset.octave);
+                    calculate();
+                });
+            });
+
+            document.getElementById('a4Reference').addEventListener('input', calculate);
+            calculate();
+        }
+
+        function setA4(freq) {
+            document.getElementById('a4Reference').value = freq;
+            calculate();
+        }
+
+        function calculate() {
+            const a4 = parseFloat(document.getElementById('a4Reference').value) || 440;
+            const noteIndex = NOTE_NAMES.indexOf(selectedNote);
+            const semitonesFromA4 = (selectedOctave - 4) * 12 + (noteIndex - 9);
+            const frequency = a4 * Math.pow(2, semitonesFromA4 / 12);
+            const midiNote = 69 + semitonesFromA4;
+            const speedOfSound = 343;
+            const wavelength = speedOfSound / frequency;
+            const period = 1000 / frequency;
+
+            document.getElementById('resultNote').textContent = selectedNote + selectedOctave;
+            document.getElementById('resultFreq').textContent = frequency.toFixed(2) + ' Hz';
+            document.getElementById('midiNote').textContent = midiNote;
+            document.getElementById('wavelength').textContent = wavelength.toFixed(2) + ' m';
+            document.getElementById('period').textContent = period.toFixed(2) + ' ms';
+            document.getElementById('octaveBelow').textContent = (frequency / 2).toFixed(2) + ' Hz';
+
+            updateOctavesTable(noteIndex, a4);
+        }
+
+        function updateOctavesTable(noteIndex, a4) {
+            const tbody = document.querySelector('#octavesTable tbody');
+            let html = '';
+            
+            for (let oct = 0; oct <= 8; oct++) {
+                const semitonesFromA4 = (oct - 4) * 12 + (noteIndex - 9);
+                const freq = a4 * Math.pow(2, semitonesFromA4 / 12);
+                const midi = 69 + semitonesFromA4;
+                
+                let desc = '';
+                if (oct === 4 && noteIndex === 0) desc = 'Middle C';
+                else if (oct === 4 && noteIndex === 9) desc = 'Concert A';
+                else if (oct < 2) desc = 'Sub-bass';
+                else if (oct < 4) desc = 'Bass';
+                else if (oct < 6) desc = 'Mid range';
+                else desc = 'High range';
+
+                const isActive = oct === selectedOctave ? 'table-primary' : '';
+                
+                html += `<tr class="${isActive}">
+                    <td><strong>${selectedNote}${oct}</strong></td>
+                    <td>${freq.toFixed(2)} Hz</td>
+                    <td>${midi}</td>
+                    <td>${desc}</td>
+                </tr>`;
+            }
+            
+            tbody.innerHTML = html;
+        }
+
+        function playNote() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            if (oscillator) {
+                oscillator.stop();
+            }
+
+            const a4 = parseFloat(document.getElementById('a4Reference').value) || 440;
+            const noteIndex = NOTE_NAMES.indexOf(selectedNote);
+            const semitonesFromA4 = (selectedOctave - 4) * 12 + (noteIndex - 9);
+            const frequency = a4 * Math.pow(2, semitonesFromA4 / 12);
+
+            oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = frequency;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 2);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 2);
+        }
+
+        init();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+</body>
+
+</html>

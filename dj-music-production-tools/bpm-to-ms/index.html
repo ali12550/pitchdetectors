@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <title>BPM to Milliseconds Converter | Delay Time Calculator | pitchdetectors</title>
+ 
+ 
+    <title>BPM to Milliseconds Converter | Delay Time Calculator | pitch detectors</title>
+ 
+    <title>BPM to Milliseconds Converter | Delay Time Calculator | pitchdetectors</title>
+ 
+ 
+    <meta name="description"
+        content="Convert BPM to milliseconds for delay times, reverb settings, and sync calculations. Essential tool for music producers and sound engineers.">
+    <meta name="keywords"
+        content="BPM to ms, milliseconds calculator, delay time, reverb time, sync calculator, music production">   <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/bpm-to-ms/">
+ 
+ 
+    <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/bpm-to-ms/">
+ 
+    <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/bpm-to-ms/">
+ 
+ 
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
+                                            class="bi bi-speedometer2"></i>
+                                        BPM Calculator</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-tap-tempo/"><i class="bi bi-hand-index"></i>
+                                        BPM Tap Tempo</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-to-ms/" class="active"><i
+                                            class="bi bi-clock"></i> BPM to Milliseconds</a></li>
+                                 
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-7 col-md-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/dj-music-production-tools/">DJ & Production Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">BPM to Milliseconds</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-clock me-2"></i>BPM ↔ Milliseconds Converter</h1>
+                        <p>Convert BPM to milliseconds and vice versa for delay times, reverb decay, and LFO sync.</p>
+                    </div>
+
+                    <!-- Swap Tabs -->
+                    <!-- <div class="mb-4 text-center">
+                        <button class="btn btn-outline-teal me-2 bg-info" id="bpmTab" onclick="switchMode('bpm')">BPM →
+                            ms</button>
+                        <button class="btn btn-outline-teal bg-info" id="msTab" onclick="switchMode('ms')">ms →
+                            BPM</button>
+                    </div> -->
+
+                    <!-- Inputs -->
+                    <div class="row mb-4">
+                        <div class="col-md-6 mx-auto" id="bpmInputDiv">
+                            <label class="form-label fw-bold">Enter BPM:</label>
+                            <input type="number" class="form-control form-control-lg text-center" id="bpmInput"
+                                placeholder="e.g., 120" value="120" min="20" max="300" oninput="calculate()">
+                        </div>
+                        <div class="col-md-6 mx-auto d-none" id="msInputDiv">
+                            <label class="form-label fw-bold">Enter Milliseconds:</label>
+                            <input type="number" class="form-control form-control-lg text-center" id="msInput"
+                                placeholder="e.g., 500" min="10" oninput="calculate()">
+
+                        </div>
+                    </div>
+
+                    <!-- Quick BPM Presets (only for BPM mode) -->
+                    <div class="mb-4" id="quickBPMDiv">
+                        <label class="form-label">Quick BPM:</label>
+                        <div class="quick-buttons justify-content-center">
+                            <button class="quick-btn" onclick="setBPM(80)">80</button>
+                            <button class="quick-btn" onclick="setBPM(100)">100</button>
+                            <button class="quick-btn" onclick="setBPM(120)">120</button>
+                            <button class="quick-btn" onclick="setBPM(128)">128</button>
+                            <button class="quick-btn" onclick="setBPM(140)">140</button>
+                            <button class="quick-btn" onclick="setBPM(150)">150</button>
+                            <button class="quick-btn" onclick="setBPM(174)">174</button>
+                        </div>
+
+                        <!-- Results Table -->
+                        <div class="result-box">
+                            <h3>Delay Times at <span id="resultBPM">120</span> BPM</h3>
+                            <div class="table-responsive mt-4">
+                                <table class="table table-bordered">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th>Note Value</th>
+                                            <th>Normal (ms)</th>
+                                            <th>Dotted (ms)</th>
+                                            <th>Triplet (ms)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="resultsTable">
+                                        <!-- Generated by JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Frequency Results -->
+                        <div class="mt-4 p-4 bg-light rounded">
+                            <h5 class="text-mid mb-3">Frequency (Hz) for LFO Sync</h5>
+                            <div class="row text-center">
+                                <div class="col-md-3 col-6 mb-3">
+                                    <strong>1 Bar</strong><br>
+                                    <span id="freq1bar" class="fs-5">0.50 Hz</span>
+                                </div>
+                                <div class="col-md-3 col-6 mb-3">
+                                    <strong>1/2 Note</strong><br>
+                                    <span id="freqHalf" class="fs-5">1.00 Hz</span>
+                                </div>
+                                <div class="col-md-3 col-6 mb-3">
+                                    <strong>1/4 Note</strong><br>
+                                    <span id="freqQuarter" class="fs-5">2.00 Hz</span>
+                                </div>
+                                <div class="col-md-3 col-6 mb-3">
+                                    <strong>1/8 Note</strong><br>
+                                    <span id="freqEighth" class="fs-5">4.00 Hz</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- content area -->
+                <div class="content_area container py-5">
+
+                    <!-- QUICK SUMMARY -->
+                    <div
+                        style="background: rgba(0,11,88,0.04); box-shadow: 0 2px 10px rgba(0,0,0,0.08); border-radius: 10px; padding: 20px; margin-bottom: 40px;">
+                        <h2 class="h5 fw-bold text-uppercase mb-3" style="color:#003161;">Quick Summary</h2>
+                        <p>
+                            The <strong>BPM to Milliseconds Calculator</strong> and <strong>Milliseconds to BPM
+                                Calculator</strong> help DJs, music producers, and musicians convert <strong>beats per
+                                minute</strong> into precise <strong>beat durations in milliseconds</strong> and vice
+                            versa.
+                            It’s essential for <strong>accurate beat timing</strong>, sequencing, and tempo mapping in
+                            music production.
+                        </p>
+                    </div>
+
+                    <!-- INTRO -->
+                    <h1 class="fw-bold mb-3" style="color:#000b58;">BPM to Milliseconds & Milliseconds to BPM Calculator
+                        – Accurate Beat Timing Tool</h1>
+                    <p>
+                        This tool allows you to quickly convert <strong>BPM</strong> (beats per minute) into
+                        <strong>milliseconds per beat</strong> and calculate <strong>BPM</strong> from milliseconds.
+                        It's perfect for DJs, producers, and audio engineers to <strong>map beats, plan tempo, and align
+                            tracks</strong> accurately.
+                    </p>
+
+                    <!-- WHAT IS BPM TO MILLISECONDS -->
+                    <h2 style="color:#003161;" class="fw-semibold mt-4 mb-3">What Is BPM to Milliseconds?</h2>
+                    <p>
+                        BPM to milliseconds conversion calculates how long each beat lasts in milliseconds based on a
+                        track's tempo.
+                        <strong>Formula:</strong> <code>Milliseconds per Beat = 60,000 ÷ BPM</code>.
+                        For example, at 120 BPM, each beat lasts 500 milliseconds. This is vital for drum programming,
+                        MIDI sequencing, and live DJing.
+                    </p>
+
+                    <!-- WHAT IS MILLISECONDS TO BPM -->
+                    <h2 style="color:#003161;" class="fw-semibold mt-4 mb-3">What Is Milliseconds to BPM?</h2>
+                    <p>
+                        The inverse calculation converts the duration of a beat in milliseconds into BPM.
+                        <strong>Formula:</strong> <code>BPM = 60,000 ÷ Milliseconds per Beat</code>.
+                        For example, if a beat lasts 400 ms, the BPM is 150. This helps producers sync tracks or samples
+                        accurately.
+                    </p>
+
+                    <!-- FORMULAS -->
+                    <div class="tool-section mt-4">
+                        <h2 class="text-mid mb-3"><i class="bi bi-calculator me-2"></i>Formulas</h2>
+                        <div class="bg-light p-3 rounded mb-4">
+                            <h5>BPM to Milliseconds:</h5>
+                            <code style="font-size: 18px;">Milliseconds per Beat = 60,000 ÷ BPM</code>
+                        </div>
+                        <div class="bg-light p-3 rounded mb-4">
+                            <h5>Milliseconds to BPM:</h5>
+                            <code style="font-size: 18px;">BPM = 60,000 ÷ Milliseconds per Beat</code>
+                        </div>
+                        <div class="bg-light p-3 rounded mb-4">
+                            <h5>Examples:</h5>
+                            <code style="font-size: 18px;">
+60 BPM → 1000 ms per beat
+120 BPM → 500 ms per beat
+150 BPM → 400 ms per beat
+90 BPM → 666.67 ms per beat
+128 BPM → 468.75 ms per beat
+            </code>
+                        </div>
+                    </div>
+
+                    <!-- EXAMPLES TABLE -->
+                    <h2 style="color:#003161;" class="fw-semibold mt-4 mb-3">Examples & Quick Conversions</h2>
+                    <table class="table table-bordered text-center">
+                        <thead class="table-light">
+                            <tr>
+                                <th>BPM</th>
+                                <th>Milliseconds per Beat</th>
+                                <th>Seconds per Beat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>60</td>
+                                <td>1000</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>90</td>
+                                <td>666.67</td>
+                                <td>0.667</td>
+                            </tr>
+                            <tr>
+                                <td>120</td>
+                                <td>500</td>
+                                <td>0.5</td>
+                            </tr>
+                            <tr>
+                                <td>128</td>
+                                <td>468.75</td>
+                                <td>0.469</td>
+                            </tr>
+                            <tr>
+                                <td>140</td>
+                                <td>428.57</td>
+                                <td>0.429</td>
+                            </tr>
+                            <tr>
+                                <td>150</td>
+                                <td>400</td>
+                                <td>0.4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- USE CASES -->
+                    <div
+                        style="background: rgba(0,11,88,0.04); box-shadow: 0 2px 10px rgba(0,0,0,0.08); border-radius: 10px; padding: 20px; margin-bottom: 40px;">
+                        <h2 class="h5 fw-bold text-uppercase mb-3" style="color:#003161;">Use Cases</h2>
+                        <ul>
+                            <li><strong>Music Production:</strong> Align drum loops, samples, and MIDI sequences with
+                                exact beat timing.</li>
+                            <li><strong>Live DJing:</strong> Plan transitions and mix tracks with precise tempo control.
+                            </li>
+                            <li><strong>DAW Integration:</strong> Input beat duration to sync instruments, effects, and
+                                loops accurately.</li>
+                            <li><strong>Electronic Music:</strong> Calculate timing for EDM, house, trance, techno, and
+                                hip-hop tracks.</li>
+                            <li><strong>Audio Analysis:</strong> Determine beat intervals for remixes, mashups, and
+                                sample timing.</li>
+                            <li><strong>Tempo Mapping:</strong> Measure and convert variable BPM tracks for consistent
+                                sequencing.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Semantic FAQ & Pro Tips Expansion -->
+                    <div class="tool-container mt-5">
+                        <div class="tool-section">
+                            <h2 class="text-mid mb-4"><i class="bi bi-lightning-charge me-2"></i>Pro Tips, FAQs &
+                                Long-Tail Queries</h2>
+                            <div class="accordion" id="faqSemanticAccordion">
+
+                                <!-- Hidden/Expanded Semantic FAQ 1 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#faqS1">
+                                            How do I calculate milliseconds per beat for any BPM?
+                                        </button>
+                                    </h3>
+                                    <div id="faqS1" class="accordion-collapse collapse"
+                                        data-bs-parent="#faqSemanticAccordion">
+                                        <div class="accordion-body">
+                                            To calculate milliseconds per beat for any BPM: <strong>Milliseconds per
+                                                Beat = 60,000 ÷ BPM</strong>.
+                                            This works for electronic music, hip-hop, house, trance, drum & bass, lo-fi,
+                                            and pop music.
+                                            It’s essential for <strong>beat timing, sequencing, and tempo
+                                                mapping</strong> in DAWs, Ableton Live, FL Studio, Logic Pro, and
+                                            Reason.
+                                            Keywords/LSI: bpm to ms calculator, bpm to milliseconds converter, beat
+                                            duration calculator, tempo in milliseconds, bpm timing tool, music
+                                            production timing, daws tempo conversion.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden/Expanded Semantic FAQ 2 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#faqS2">
+                                            How can I convert milliseconds back to BPM accurately?
+                                        </button>
+                                    </h3>
+                                    <div id="faqS2" class="accordion-collapse collapse"
+                                        data-bs-parent="#faqSemanticAccordion">
+                                        <div class="accordion-body">
+                                            Use <strong>BPM = 60,000 ÷ Milliseconds per Beat</strong> to convert beat
+                                            duration into BPM.
+                                            This is useful for syncing samples, loops, drum patterns, or live DJ
+                                            performances.
+                                            Keywords/LSI: milliseconds to bpm calculator, ms to bpm converter, beat
+                                            interval to bpm, bpm measurement from milliseconds, tempo conversion ms to
+                                            bpm, beat mapping.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden/Expanded Semantic FAQ 3 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#faqS3">
+                                            What is the best way to measure beat duration for live DJ sets?
+                                        </button>
+                                    </h3>
+                                    <div id="faqS3" class="accordion-collapse collapse"
+                                        data-bs-parent="#faqSemanticAccordion">
+                                        <div class="accordion-body">
+                                            Tap along with at least 8–32 beats, preferably the kick drum or main pulse.
+                                            Then use the BPM ↔ milliseconds formula.
+                                            This ensures precise <strong>beatmatching, sync, and tempo control</strong>.
+                                            Keywords/LSI: bpm tap tempo, bpm tap calculator, live dj bpm measurement,
+                                            beat duration in ms, bpm accuracy, dj beatmatching, live tempo calculation,
+                                            dj set preparation.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden/Expanded Semantic FAQ 4 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#faqS4">
+                                            Can I use BPM ↔ milliseconds for drum programming?
+                                        </button>
+                                    </h3>
+                                    <div id="faqS4" class="accordion-collapse collapse"
+                                        data-bs-parent="#faqSemanticAccordion">
+                                        <div class="accordion-body">
+                                            Yes! Calculating exact milliseconds per beat allows you to program drums,
+                                            triggers, and MIDI sequences perfectly in DAWs.
+                                            It’s key for <strong>sequencing, timing, groove quantization, and drum loop
+                                                alignment</strong>.
+                                            Keywords/LSI: drum timing calculator, midi beat duration, bpm to ms for
+                                            drums, drum loop timing, beat spacing, drum programming tool, sequencer bpm
+                                            converter.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden/Expanded Semantic FAQ 5 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#faqS5">
+                                            How do I handle dotted notes, triplets, or syncopation in BPM ↔ ms
+                                            conversion?
+                                        </button>
+                                    </h3>
+                                    <div id="faqS5" class="accordion-collapse collapse"
+                                        data-bs-parent="#faqSemanticAccordion">
+                                        <div class="accordion-body">
+                                            For dotted notes, multiply milliseconds per beat by 1.5. For triplets,
+                                            divide by 3. This allows precise timing for complex rhythms.
+                                            Keywords/LSI: triplet beat calculator, dotted note bpm, syncopation timing,
+                                            advanced beat duration, fractional beat conversion, rhythm mapping tool.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden/Expanded Semantic FAQ 6 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#faqS6">
+                                            Which genres benefit most from BPM ↔ milliseconds conversion?
+                                        </button>
+                                    </h3>
+                                    <div id="faqS6" class="accordion-collapse collapse"
+                                        data-bs-parent="#faqSemanticAccordion">
+                                        <div class="accordion-body">
+                                            All genres benefit: EDM, house, trance, techno, hip-hop, lo-fi, pop, drum &
+                                            bass, dubstep, trap, and experimental electronic music.
+                                            It helps producers maintain consistent tempo, align loops, and plan
+                                            arrangements.
+                                            Keywords/LSI: bpm by genre, music tempo mapping, edm tempo calculator,
+                                            trance bpm calculator, dubstep ms conversion, hip hop beat duration.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Hidden/Expanded Semantic FAQ 7 -->
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#faqS7">
+                                            Can I integrate BPM ↔ milliseconds calculation in DAWs or software?
+                                        </button>
+                                    </h3>
+                                    <div id="faqS7" class="accordion-collapse collapse"
+                                        data-bs-parent="#faqSemanticAccordion">
+                                        <div class="accordion-body">
+                                            Yes, you can export BPM or milliseconds data to Ableton Live, FL Studio,
+                                            Logic Pro, Cubase, Pro Tools, or Excel for precise sequencing and
+                                            automation.
+                                            Keywords/LSI: daws bpm integration, bpm export to software, tempo mapping in
+                                            daws, beat duration in sequencer, ms to bpm in fl studio, ableton bpm
+                                            converter.
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- CTA -->
+                    <p class="mt-3">
+                        Try the <strong>BPM to Milliseconds & Milliseconds to BPM Calculator</strong> now to measure
+                        beat duration, plan your tracks, and synchronize your music with absolute precision.
+                    </p>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>   <script src="/assets/bootstrap5.js" defer></script>
+ 
+ 
+    <script defer src="/assets/bootstrap5.js"></script>
+ 
+    <script src="/assets/bootstrap5.js" defer></script>
+ 
+ 
+    <script src="/assets/tools.js" defer></script>
+
+
+    <!-- tool js -->
+    <script defer>
+        let mode = 'bpm'; // default mode
+
+        function switchMode(newMode) {
+            mode = newMode;
+            if (mode === 'bpm') {
+                document.getElementById('bpmInputDiv').classList.remove('d-none');
+                document.getElementById('msInputDiv').classList.add('d-none');
+                document.getElementById('quickBPMDiv').classList.remove('d-none');
+                document.getElementById('bpmTab').classList.add('btn-teal');
+                document.getElementById('bpmTab').classList.remove('btn-outline-teal');
+                document.getElementById('msTab').classList.add('btn-outline-teal');
+                document.getElementById('msTab').classList.remove('btn-teal');
+            } else {
+                document.getElementById('bpmInputDiv').classList.add('d-none');
+                document.getElementById('msInputDiv').classList.remove('d-none');
+                document.getElementById('quickBPMDiv').classList.add('d-none');
+                document.getElementById('msTab').classList.add('btn-teal');
+                document.getElementById('msTab').classList.remove('btn-outline-teal');
+                document.getElementById('bpmTab').classList.add('btn-outline-teal');
+                document.getElementById('bpmTab').classList.remove('btn-teal');
+            }
+            calculate();
+        }
+
+        function calculate() {
+    let bpm, quarterMs;
+
+    if (mode === 'bpm') {
+        bpm = parseFloat(document.getElementById('bpmInput').value) || 120;
+        quarterMs = 60000 / bpm;
+        document.getElementById('resultBPM').textContent = bpm.toFixed(2);
+    } else { // ms → BPM
+        quarterMs = parseFloat(document.getElementById('msInput').value) || 500;
+        if (quarterMs === 0) quarterMs = 1; // prevent division by zero
+        bpm = 60000 / quarterMs;
+        document.getElementById('resultBPM').textContent = bpm.toFixed(2);
+
+        // Optional: update BPM input if you want the value to reflect instantly
+        document.getElementById('bpmInput').value = bpm.toFixed(2);
+    }
+
+    const noteValues = [
+        { name: '1 Bar (4/4)', beats: 4 },
+        { name: '1/2 Note', beats: 2 },
+        { name: '1/4 Note', beats: 1 },
+        { name: '1/8 Note', beats: 0.5 },
+        { name: '1/16 Note', beats: 0.25 },
+        { name: '1/32 Note', beats: 0.125 },
+        { name: '1/64 Note', beats: 0.0625 }
+    ];
+
+    let html = '';
+    noteValues.forEach(note => {
+        const normal = quarterMs * note.beats;
+        const dotted = normal * 1.5;
+        const triplet = normal * (2 / 3);
+
+        html += `<tr>
+            <td><strong>${note.name}</strong></td>
+            <td>${normal.toFixed(2)}</td>
+            <td>${dotted.toFixed(2)}</td>
+            <td>${triplet.toFixed(2)}</td>
+        </tr>`;
+    });
+
+    document.getElementById('resultsTable').innerHTML = html;
+
+    // Frequencies for LFO sync
+    document.getElementById('freq1bar').textContent = (1000 / (quarterMs * 4)).toFixed(3) + ' Hz';
+    document.getElementById('freqHalf').textContent = (1000 / (quarterMs * 2)).toFixed(3) + ' Hz';
+    document.getElementById('freqQuarter').textContent = (1000 / quarterMs).toFixed(3) + ' Hz';
+    document.getElementById('freqEighth').textContent = (1000 / (quarterMs * 0.5)).toFixed(3) + ' Hz';
+}
+
+        function setBPM(bpm) {
+            if (mode === 'bpm') {
+                document.getElementById('bpmInput').value = bpm;
+                calculate();
+            }
+        }
+
+        calculate();
+    </script>
+
+
+    <!-- incluce js -->
+    <script defer>
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <title>Key Transposition Calculator | Transpose Music Keys | pitchdetectors</title>
+ 
+ 
+    <title>Key Transposition Calculator | Transpose Music Keys | pitch detectors</title>
+ 
+    <title>Key Transposition Calculator | Transpose Music Keys | pitchdetectors</title>
+ 
+ 
+    <meta name="description"
+        content="Free key transposition calculator. Transpose musical keys up or down by semitones. Essential for changing keys, capo calculations, and instrument transposition.">
+    <meta name="keywords"
+        content="key transposition, transpose key, semitone shift, capo calculator, music transposition, key change">   <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/key-transposition/">
+ 
+ 
+    <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/key-transposition/">
+ 
+    <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/key-transposition/">
+ 
+ 
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..." onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/dj-music-production-tools/key-transposition/"
+                                        class="active"><i class="bi bi-arrow-left-right"></i> Key Transposition</a></li>
+                                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
+                                        Key Finder</a></li>                               <li><a href="https://pitchdetectors.com/BPM-Pitch-Calculator.html"><i class="bi bi-sliders"></i>
+ 
+ 
+                                <li><a href="/dj-music-production-tools/pitch-shifter/"><i class="bi bi-sliders"></i>
+ 
+                                <li><a href="https://pitchdetectors.com/BPM-Pitch-Calculator.html"><i class="bi bi-sliders"></i>
+ 
+ 
+                                        Pitch Shifter</a></li>
+                            </ul>
+                        </div>
+
+ 
+                                                                             
+ 
+ 
+                        <div class="sidebar-category">
+                            <h5><i class="bi bi-music-note-list me-2"></i>Music Theory Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/music-theory-tools/scale-finder/"><i class="bi bi-grid-3x3"></i> Scale
+                                        Finder</a></li>
+                                <li><a href="/music-theory-tools/chord-identifier/"><i class="bi bi-vinyl"></i> Chord
+                                        Identifier</a></li>
+                            </ul>
+                        </div>
+ 
+ 
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/dj-music-production-tools/">DJ & Production Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Key Transposition</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-arrow-left-right me-2"></i>Key Transposition Calculator</h1>
+                        <p>Transpose musical keys up or down by any number of semitones. Useful for changing song keys,
+                            capo calculations, and instrument transposition.</p>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Original Key:</label>
+                            <select class="form-select form-select-lg" id="originalKey" onchange="calculate()">
+                                <option value="C">C</option>
+                                <option value="C#">C# / Db</option>
+                                <option value="D">D</option>
+                                <option value="D#">D# / Eb</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="F#">F# / Gb</option>
+                                <option value="G" selected>G</option>
+                                <option value="G#">G# / Ab</option>
+                                <option value="A">A</option>
+                                <option value="A#">A# / Bb</option>
+                                <option value="B">B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Scale Type:</label>
+                            <select class="form-select form-select-lg" id="scaleType" onchange="calculate()">
+                                <option value="major">Major</option>
+                                <option value="minor">Minor</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Transpose by (semitones):</label>
+                            <input type="number" class="form-control form-control-lg" id="semitones" value="5" min="-12" max="12" oninput="calculate()">
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Quick Transposition:</label>
+                        <div class="quick-buttons">
+                            <button class="quick-btn" onclick="setSemitones(-7)">-7 (5th down)</button>
+                            <button class="quick-btn" onclick="setSemitones(-5)">-5 (4th down)</button>
+                            <button class="quick-btn" onclick="setSemitones(-2)">-2</button>
+                            <button class="quick-btn" onclick="setSemitones(-1)">-1</button>
+                            <button class="quick-btn" onclick="setSemitones(1)">+1</button>
+                            <button class="quick-btn" onclick="setSemitones(2)">+2</button>
+                            <button class="quick-btn" onclick="setSemitones(5)">+5 (4th up)</button>
+                            <button class="quick-btn" onclick="setSemitones(7)">+7 (5th up)</button>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <h3>Transposition Result</h3>
+                        <div class="row mt-4">
+                            <div class="col-md-6 mb-3">
+                                <strong>Original Key:</strong><br>
+                                <span id="displayOriginal" class="fs-2 fw-bold">G Major</span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <strong>New Key:</strong><br>
+                                <span id="displayNew" class="fs-2 fw-bold text-teal">C Major</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <strong>Interval:</strong><br>
+                                <span id="interval">Perfect 4th up</span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <strong>Capo Position (guitar):</strong><br>
+                                <span id="capoPosition">Capo 5 (play G shapes)</span>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <strong>Pitch Shift:</strong><br>
+                                <span id="pitchShift">+5 semitones</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-light rounded">
+                        <h5 class="text-mid mb-3">All Keys Transposition Chart</h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm table-bordered">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Original</th>
+                                        <th id="transHeader">+5 semitones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transpositionChart">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4"><i class="bi bi-question-circle me-2"></i>FAQ</h2>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                        What is transposition?
+                                    </button>
+                                </h3>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Transposition is shifting all the notes in a piece of music up or down by a
+                                        fixed interval. This changes the key while keeping the relative relationships
+                                        between notes the same.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                        Why would I transpose a song?
+                                    </button>
+                                </h3>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Common reasons include: matching a singer's vocal range, making a song easier to
+                                        play on an instrument, matching keys for DJ mixing, or adapting music for
+                                        different instruments.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>   <script src="/assets/bootstrap5.js" defer></script>
+ 
+ 
+    <script defer src="/assets/bootstrap5.js"></script>
+ 
+    <script src="/assets/bootstrap5.js" defer></script>
+ 
+ 
+    <script src="/assets/tools.js" defer></script>
+
+    <script defer>
+        const notes = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const intervals = {
+            0: 'Unison', 1: 'Minor 2nd', 2: 'Major 2nd', 3: 'Minor 3rd', 4: 'Major 3rd',
+            5: 'Perfect 4th', 6: 'Tritone', 7: 'Perfect 5th', 8: 'Minor 6th',
+            9: 'Major 6th', 10: 'Minor 7th', 11: 'Major 7th', 12: 'Octave'
+        };
+
+        function setSemitones(val) {
+            document.getElementById('semitones').value = val;
+            calculate();
+        }
+
+        function transposeNote(note, semitones) {
+            const index = notes.indexOf(note);
+            const newIndex = ((index + semitones) % 12 + 12) % 12;
+            return notes[newIndex];
+        }
+
+        function calculate() {
+            const originalKey = document.getElementById('originalKey').value;
+            const scaleType = document.getElementById('scaleType').value;
+            const semitones = parseInt(document.getElementById('semitones').value) || 0;
+
+            const newKey = transposeNote(originalKey, semitones);
+            const scaleLabel = scaleType === 'major' ? 'Major' : 'minor';
+
+            document.getElementById('displayOriginal').textContent = originalKey + ' ' + scaleLabel;
+            document.getElementById('displayNew').textContent = newKey + ' ' + scaleLabel;
+
+            const absSemitones = Math.abs(semitones);
+            const direction = semitones >= 0 ? 'up' : 'down';
+            const intervalName = intervals[absSemitones % 12] || 'Unknown';
+            document.getElementById('interval').textContent = intervalName + ' ' + direction;
+
+            document.getElementById('pitchShift').textContent = (semitones >= 0 ? '+' : '') + semitones + ' semitones';
+
+            if (semitones > 0 && semitones <= 12) {
+                document.getElementById('capoPosition').textContent = `Capo ${semitones} (play ${originalKey} shapes)`;
+            } else if (semitones < 0) {
+                const capoForNew = 12 + semitones;
+                document.getElementById('capoPosition').textContent = `Capo ${capoForNew} on ${newKey} = ${originalKey}`;
+            } else {
+                document.getElementById('capoPosition').textContent = 'No capo needed';
+            }
+
+            document.getElementById('transHeader').textContent = (semitones >= 0 ? '+' : '') + semitones + ' semitones';
+            let chartHtml = '';
+            notes.forEach(note => {
+                const transposed = transposeNote(note, semitones);
+                chartHtml += `<tr><td>${note}</td><td class="fw-bold text-teal">${transposed}</td></tr>`;
+            });
+            document.getElementById('transpositionChart').innerHTML = chartHtml;
+        }
+
+        calculate();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+</body>
+
+</html>

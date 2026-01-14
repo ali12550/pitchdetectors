@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" /> <title>Scales Practice Generator | Pitch Detectors</title>
+ 
+ 
+  <title>Scales Practice Generator | Pitch Detectors</title>
+ 
+  <title>Scales Practice Generator | Pitch Detectors</title>
+ 
+ 
+  <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/bootstrap5.css" rel="stylesheet">
+  <link href="/assets/style.css" rel="stylesheet">
+  <link href="/assets/tools.css" rel="stylesheet"> <meta name="author" content="Pitch Detectors">
+ 
+ 
+  <meta name="author" content="Pitch Detectors">
+ 
+  <meta name="author" content="Pitch Detectors">
+ 
+ 
+
+
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NCHP45VYJ2');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+    crossorigin="anonymous"></script>
+  <style>
+    /* Tool-specific CSS only. Global styles from tools.css */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    @media(max-width:760px) {
+      .grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--mid-blue);
+    }
+
+    .controls-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center
+    }
+
+    .sequence-box {
+      white-space: pre-wrap;
+      font-family: monospace;
+      background: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #eee
+    }
+
+    .play-controls {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      margin-top: 8px
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <div class="container-fluid py-4">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3 col-md-4">
+        <div class="tools-sidebar">
+          <div class="sidebar-search mb-4">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                onkeyup="searchTools()">
+            </div>
+          </div>
+
+ 
+                         
+ 
+ 
+          <div class="sidebar-categories">
+            <div class="sidebar-category active">
+              <h5><i class="bi bi-music-note-list me-2"></i>Music Theory Tools</h5>
+              <ul class="sidebar-links">
+                <!-- <li><a href="/music-theory-tools/chord-generator/"><i class="bi bi-guitar"></i> Chord Generator</a></li> -->
+                <li><a href="/music-theory-tools/scale-finder/"><i class="bi bi-keyboard"></i> Scale Finder</a></li>
+                <li><a href="/music-theory-tools/chord-progression-generator/" class="active"><i
+                      class="bi bi-journal-music"></i> Chord Progression Generator</a></li>
+                <li><a href="/music-theory-tools/interval-calculator/"><i class="bi bi-circle-half"></i> Interval
+                    Calculator</a></li>
+              </ul>
+            </div>
+          </div>
+ 
+ 
+        </div>
+      </div>
+      <div class="col-lg-7 col-md-8 tool-container">
+        <div class="tool-title">
+          <h1>Scales Practice Generator</h1>
+          <p>Generate practice sequences for scales, set tempo, direction, repeats, and play a simple tone or metronome.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div>
+            <label>Root Key</label>
+            <select id="root" class="form-control">
+              <option value="C">C</option>
+              <option value="C#">C# / Db</option>
+              <option value="D">D</option>
+              <option value="D#">D# / Eb</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="F#">F# / Gb</option>
+              <option value="G">G</option>
+              <option value="G#">G# / Ab</option>
+              <option value="A">A</option>
+              <option value="A#">A# / Bb</option>
+              <option value="B">B</option>
+            </select>
+
+            <label style="margin-top:10px">Scale Type</label>
+            <select id="scaleType" class="form-control">
+              <option value="major">Major</option>
+              <option value="natural_minor">Natural Minor</option>
+              <option value="harmonic_minor">Harmonic Minor</option>
+              <option value="melodic_minor">Melodic Minor (ascending)</option>
+              <option value="major_pentatonic">Major Pentatonic</option>
+              <option value="minor_pentatonic">Minor Pentatonic</option>
+              <option value="blues">Blues</option>
+              <option value="ionian">Ionian</option>
+              <option value="dorian">Dorian</option>
+              <option value="phrygian">Phrygian</option>
+              <option value="lydian">Lydian</option>
+              <option value="mixolydian">Mixolydian</option>
+              <option value="locrian">Locrian</option>
+            </select>
+
+            <label style="margin-top:10px">Octave (root)</label>
+            <input id="octave" class="form-control" type="number" value="4" min="0" max="7" />
+
+            <label style="margin-top:10px">Tempo (BPM)</label>
+            <input id="bpm" class="form-control" type="number" value="80" min="30" max="300" />
+
+            <label style="margin-top:10px">Direction</label>
+            <select id="direction" class="form-control">
+              <option value="asc">Ascending</option>
+              <option value="desc">Descending</option>
+              <option value="both">Ascending + Descending</option>
+              <option value="random">Random</option>
+            </select>
+
+            <label style="margin-top:10px">Repeats</label>
+            <input id="repeats" class="form-control" type="number" min="1" value="2" />
+
+            <label style="margin-top:10px">Note length (beat fraction)</label>
+            <select id="noteLen" class="form-control">
+              <option value="1">Quarter note (1 beat)</option>
+              <option value="0.5">Eighth note (0.5 beat)</option>
+              <option value="0.25">Sixteenth (0.25 beat)</option>
+              <option value="2">Half note (2 beats)</option>
+            </select>
+
+            <div style="margin-top:12px" class="controls-row">
+              <button id="genBtn" class="btn-primary">Generate Sequence</button>
+              <button id="playBtn" class="btn-primary" disabled>Play</button>
+              <button id="stopBtn" class="btn-ghost" disabled>Stop</button>
+            </div>
+
+            <div style="margin-top:8px" class="small">Tip: Use slow tempo and repeat for muscle memory. Use metronome
+              for
+              steady timing.</div>
+          </div>
+
+          <div>
+            <div style="display:flex;gap:8px;align-items:center;">
+              <label style="margin:0">Include Metronome</label>
+              <input id="metronome" type="checkbox" checked />
+            </div>
+
+            <label style="margin-top:10px">Sequence Preview</label>
+            <div id="sequence" class="sequence-box">Generated sequence will appear here</div>
+
+            <div style="margin-top:10px" class="play-controls">
+              <label style="margin:0">Volume</label>
+              <input id="vol" type="range" min="0" max="1" step="0.01" value="0.6" />
+              <label style="margin-left:8px">Metronome Volume</label>
+              <input id="metroVol" type="range" min="0" max="1" step="0.01" value="0.6" />
+            </div>
+
+            <div style="margin-top:10px; display:flex; gap:8px;">
+              <button id="exportTxt" class="btn-ghost">Export Text</button>
+              <button id="copyBtn" class="btn-ghost">Copy Sequence</button>
+            </div>
+
+            <div id="status" style="margin-top:10px; color:var(--mid-blue);">Status: idle</div>
+          </div>
+        </div>
+
+        <div class="result-box" style="margin-top:16px; display:none" id="metaBox">
+          <h3>Sequence Info</h3>
+          <div id="metaInfo">—</div>
+        </div>
+        <section class="tool-seo-content">
+
+          <!-- ABRSM / Trinity Landing Snippet -->
+          <header class="exam-snippet">
+            <h2>Scale Practice Generator for ABRSM & Trinity Exams</h2>
+            <p>
+              This Scales Practice Generator is designed for structured scale practice aligned with
+              <strong>ABRSM (Associated Board of the Royal Schools of Music)</strong> and
+              <strong>Trinity College London</strong> practical exam requirements.
+              It allows exam candidates to practice scales with controlled tempo, clear key signatures,
+              repeatable routines, and accurate rhythmic timing across instruments.
+            </p>
+          </header>
+
+          <!-- Main Content -->
+          <article>
+            <h2>What Is a Scales Practice Generator?</h2>
+            <p>
+              A <strong>Scales Practice Generator</strong> is a digital music practice tool that creates
+              structured scale exercises based on selected key, scale type, octave range, tempo (BPM),
+              direction, and repetition. It supports consistent technical practice for musicians preparing
+              for graded music exams, auditions, and daily technique development.
+            </p>
+
+            <p>
+              This tool supports <strong>major scales</strong>, <strong>minor scales</strong>,
+              <strong>modal scales</strong>, <strong>pentatonic scales</strong>, <strong>blues scales</strong>,
+              and interval-based scale movement. It is suitable for piano, keyboard, strings, woodwind,
+              brass, guitar, bass guitar, and ocarina practice.
+            </p>
+
+            <h2>Who Should Use This Scale Practice Tool?</h2>
+            <ul>
+              <li>ABRSM exam candidates (Grades 1–8)</li>
+              <li>Trinity College London exam candidates</li>
+              <li>Music teachers assigning structured scale routines</li>
+              <li>Students studying music theory and technical exercises</li>
+              <li>Jazz students practicing modes and pentatonic scales</li>
+            </ul>
+
+            <h2>How This Tool Supports Exam Preparation</h2>
+            <p>
+              Both ABRSM and Trinity assess scales for <strong>accuracy</strong>,
+              <strong>even tone</strong>, <strong>steady tempo</strong>, and
+              <strong>correct key signatures</strong>. This generator allows players to:
+            </p>
+
+            <ul>
+              <li>Set a precise tempo in beats per minute (BPM)</li>
+              <li>Practice ascending, descending, or combined scale motion</li>
+              <li>Repeat scale patterns for muscle memory</li>
+              <li>Reinforce interval awareness and fingering patterns</li>
+              <li>Maintain rhythmic consistency using a metronome</li>
+            </ul>
+           <!-- Internal Linking Cluster -->
+            <h2>Related Music Theory Tools</h2>
+            <p>
+              Use this scale generator alongside other theory tools to build complete technical and musical
+              understanding:
+            </p>
+
+            <ul class="internal-links">
+              <li><a href="/music-theory-tools/chord-identifier/">Chord Generator</a> – Apply scale degrees to chords
+              </li>
+              <li><a href="/music-theory-tools/scale-finder/">Scale Finder</a> – Identify notes before practicing scales
+              </li>
+              <li><a href="/music-theory-tools/chord-progression-generator/">Chord Progression Generator</a> – Practice
+                scales in musical context</li>
+              
+            </ul>
+ 
+ 
+          </article>
+
+          <!-- FAQs -->
+          <section class="faqs">
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>What is a scales practice generator used for?</h3>
+            <p>
+              It is used to generate structured scale exercises for improving technique, timing,
+              fingering accuracy, and key familiarity across musical instruments.
+            </p>
+
+            <h3>Is this suitable for ABRSM exams?</h3>
+            <p>
+              Yes. The tool supports key signatures, tempo control, and repetitive practice methods
+              consistent with ABRSM scale assessment requirements.
+            </p>
+
+            <h3>Can Trinity College London students use this?</h3>
+            <p>
+              Yes. Trinity candidates can use it to practice scales and technical exercises
+              with controlled rhythm and consistent tempo.
+            </p>
+
+            <h3>Which instruments can use this tool?</h3>
+            <p>
+              Piano, keyboard, violin, viola, cello, bass, guitar, flute, clarinet, saxophone,
+              trumpet, trombone, horn, euphonium, tuba, and ocarina.
+            </p>
+
+            <h3>Does this tool help with music theory?</h3>
+            <p>
+              Yes. It reinforces scale structure, intervals, key signatures, and scale degrees.
+            </p>
+
+            <h3>Can beginners use this scale generator?</h3>
+            <p>
+              Yes. Beginners can start with slow tempo and simple ascending scales.
+            </p>
+
+            <h3>Does it support jazz scale practice?</h3>
+            <p>
+              Yes. It supports modes, blues scales, and pentatonic scales used in jazz grades.
+            </p>
+
+            <h3>Is a metronome included?</h3>
+            <p>
+              Yes. A metronome can be enabled to maintain steady rhythmic timing.
+            </p>
+
+            <h3>Can teachers use this for students?</h3>
+            <p>
+              Yes. Teachers can assign specific keys, tempos, and repetition settings.
+            </p>
+
+            <h3>Does this help with ear training?</h3>
+            <p>
+              Yes. Audio playback supports pitch recognition and intonation practice.
+            </p>
+
+            <h3>Is this useful for sight reading?</h3>
+            <p>
+              Indirectly, yes. Scale familiarity improves note recognition and reading confidence.
+            </p>
+
+            <h3>Can I practice intervals with this tool?</h3>
+            <p>
+              Yes. Generated scale sequences reinforce interval spacing and recognition.
+            </p>
+
+            <h3>Does this replace a music teacher?</h3>
+            <p>
+              No. It is a practice aid, not a substitute for professional instruction.
+            </p>
+
+            <h3>How often should I practice scales?</h3>
+            <p>
+              Short daily practice sessions are generally more effective than infrequent long sessions.
+            </p>
+
+            <h3>Is this tool free to use?</h3>
+            <p>
+              Availability depends on the platform’s access model.
+            </p>
+          </section>
+
+        </section>
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="footer"></div>
+ <script src="/assets/bootstrap5.js" defer></script>
+ 
+ 
+  <script defer src="/assets/bootstrap5.js"></script>
+ 
+  <script src="/assets/bootstrap5.js" defer></script>
+ 
+ 
+  <script src="/assets/tools.js" defer></script>
+
+  <!--include js-->
+  <script defer>
+
+
+    window.addEventListener("load", () => {
+      Promise.all([
+        fetch("../../header.html").then(res => res.text()),
+        fetch("../../footer.html").then(res => res.text())
+      ])
+        .then(([header, footer]) => {
+          document.getElementById("header").innerHTML = header;
+          document.getElementById("footer").innerHTML = footer;
+        })
+        .catch(err => console.error("Include load failed:", err));
+    });
+
+  </script>
+  <!-- tool js -->
+  <script defer>
+    // Scale intervals (semitones) definitions
+    const SCALES = {
+      major: [0, 2, 4, 5, 7, 9, 11, 12],
+      natural_minor: [0, 2, 3, 5, 7, 8, 10, 12],
+      harmonic_minor: [0, 2, 3, 5, 7, 8, 11, 12],
+      melodic_minor: [0, 2, 3, 5, 7, 9, 11, 12],
+      major_pentatonic: [0, 2, 4, 7, 9, 12],
+      minor_pentatonic: [0, 3, 5, 7, 10, 12],
+      blues: [0, 3, 5, 6, 7, 10, 12],
+      ionian: [0, 2, 4, 5, 7, 9, 11, 12],
+      dorian: [0, 2, 3, 5, 7, 9, 10, 12],
+      phrygian: [0, 1, 3, 5, 7, 8, 10, 12],
+      lydian: [0, 2, 4, 6, 7, 9, 11, 12],
+      mixolydian: [0, 2, 4, 5, 7, 9, 10, 12],
+      locrian: [0, 1, 3, 5, 6, 8, 10, 12]
+    };
+
+    // Note to semitone mapping
+    const NOTE_ORDER = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+    function noteToFreq(note, octave) {
+      // note like 'C#' and octave number
+      const index = NOTE_ORDER.indexOf(note);
+      const n = index + (octave - 4) * 12; // semitones from C4? we'll compute relative to A4
+      // compute semitone distance from A4 (A4 is note A in octave 4 index 9)
+      const semitoneFromA4 = (octave - 4) * 12 + index - 9; // A4 index 9
+      return 440 * Math.pow(2, semitoneFromA4 / 12);
+    }
+
+    function buildScale(root, octave, type) {
+      const intervals = SCALES[type];
+      if (!intervals) return [];
+      // find root index normalized to NOTE_ORDER (use sharp names)
+      let rootName = root;
+      // normalize flats to sharps if user selected has slash names
+      if (root.includes('/')) rootName = root.split('/')[0];
+      // if root is like A# or C#, keep as is
+      const notes = [];
+      const rootIdx = NOTE_ORDER.indexOf(rootName);
+      if (rootIdx === -1) return [];
+      for (let i = 0; i < intervals.length; i++) {
+        const sem = intervals[i];
+        const noteIdx = (rootIdx + sem) % 12;
+        const noteOct = octave + Math.floor((rootIdx + sem) / 12);
+        notes.push({ note: NOTE_ORDER[noteIdx], octave: noteOct, semitone: sem });
+      }
+      return notes;
+    }
+
+    // UI elements
+    const genBtn = document.getElementById('genBtn');
+    const playBtn = document.getElementById('playBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const sequenceEl = document.getElementById('sequence');
+    const statusEl = document.getElementById('status');
+    const exportTxt = document.getElementById('exportTxt');
+    const copyBtn = document.getElementById('copyBtn');
+    const metaBox = document.getElementById('metaBox');
+    const metaInfo = document.getElementById('metaInfo');
+
+    let audioCtx = null;
+    let isPlaying = false;
+    let playTimer = null;
+    let scheduled = [];
+
+    function generateSequence() {
+      const root = document.getElementById('root').value;
+      const type = document.getElementById('scaleType').value;
+      const octave = parseInt(document.getElementById('octave').value, 10) || 4;
+      const dir = document.getElementById('direction').value;
+      const repeats = parseInt(document.getElementById('repeats').value, 10) || 1;
+      const bpm = parseFloat(document.getElementById('bpm').value) || 80;
+      const noteLen = parseFloat(document.getElementById('noteLen').value) || 1;
+      const includeMetro = document.getElementById('metronome').checked;
+
+      const base = buildScale(root, octave, type);
+      if (base.length === 0) { sequenceEl.textContent = 'Could not build scale'; return; }
+
+      let seq = [];
+      const oneRun = base.map(n => ({ ...n }));
+
+      if (dir === 'asc') seq = [...oneRun];
+      else if (dir === 'desc') seq = [...oneRun].reverse();
+      else if (dir === 'both') seq = [...oneRun, ...[...oneRun].reverse().slice(1)];
+      else if (dir === 'random') {
+        // random order of notes length same as base
+        seq = [...oneRun];
+        for (let i = seq.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[seq[i], seq[j]] = [seq[j], seq[i]]; }
+      }
+
+      // apply repeats
+      const full = [];
+      for (let r = 0; r < repeats; r++) full.push(...seq.map(s => ({ ...s })));
+
+      // prepare preview text
+      const lines = full.map((s, idx) => `${idx + 1}. ${s.note}${s.octave} (${s.semitone})`);
+      sequenceEl.textContent = lines.join('\n');
+      metaBox.style.display = 'block';
+      metaInfo.innerHTML = `Notes: ${full.length} | Tempo: ${bpm} BPM | Note length: ${noteLen} beat(s) | Metronome: ${includeMetro ? 'Yes' : 'No'}`;
+      statusEl.textContent = 'Sequence generated';
+      return { sequence: full, bpm, noteLen, includeMetro };
+    }
+
+    function playSequence(obj) {
+      if (!obj) return;
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      stopSequence();
+      isPlaying = true; playBtn.disabled = true; stopBtn.disabled = false;
+      const { sequence, bpm, noteLen, includeMetro } = obj;
+      const secPerBeat = 60 / bpm;
+      const noteSec = secPerBeat * noteLen;
+      let t = audioCtx.currentTime + 0.1; // start slight delay
+      scheduled = [];
+
+      sequence.forEach((n, i) => {
+        const start = t + i * noteSec;
+        scheduled.push({ note: n, time: start });
+        scheduleNote(n.note, n.octave, start, noteSec * 0.95); // short fade
+      });
+
+      if (includeMetro) {
+        // schedule metronome clicks on each beat across whole length
+        const totalBeats = Math.ceil(sequence.length * noteLen * (1));
+        for (let b = 0; b < totalBeats; b++) {
+          const bt = audioCtx.currentTime + 0.1 + b * secPerBeat;
+          scheduleClick(bt);
+        }
+      }
+
+      // set a timer to stop after last note
+      const totalTime = sequence.length * noteSec;
+      playTimer = setTimeout(() => { stopSequence(); }, (totalTime + 0.3) * 1000);
+      statusEl.textContent = 'Playing';
+    }
+
+    function stopSequence() {
+      if (playTimer) { clearTimeout(playTimer); playTimer = null; }
+      // no need to disconnect scheduled oscillators because they stop automatically
+      isPlaying = false; playBtn.disabled = false; stopBtn.disabled = true; statusEl.textContent = 'Stopped';
+    }
+
+    function scheduleNote(note, octave, startTime, dur) {
+      const freq = noteToFreq(note, octave);
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'sine';
+      o.frequency.value = freq;
+      g.gain.value = 0;
+      const vol = parseFloat(document.getElementById('vol').value) || 0.6;
+      g.gain.setValueAtTime(0, startTime);
+      g.gain.linearRampToValueAtTime(vol, startTime + 0.01);
+      g.gain.linearRampToValueAtTime(0, startTime + dur);
+      o.connect(g).connect(audioCtx.destination);
+      o.start(startTime); o.stop(startTime + dur + 0.02);
+    }
+
+    function scheduleClick(time) {
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'square'; o.frequency.value = 1000;
+      const vol = parseFloat(document.getElementById('metroVol').value) || 0.6;
+      g.gain.setValueAtTime(vol, time);
+      g.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
+      o.connect(g).connect(audioCtx.destination);
+      o.start(time); o.stop(time + 0.09);
+    }
+
+    // export and copy
+    exportTxt.addEventListener('click', () => {
+      const txt = sequenceEl.textContent || '';
+      const blob = new Blob([txt], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = 'scale-practice.txt'; a.click(); URL.revokeObjectURL(url);
+    });
+
+    copyBtn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(sequenceEl.textContent || ''); statusEl.textContent = 'Copied to clipboard'; }
+      catch (e) { alert('Copy failed'); }
+    });
+
+    // wire up
+    let lastGenerated = null;
+    genBtn.addEventListener('click', () => { lastGenerated = generateSequence(); playBtn.disabled = !lastGenerated; stopBtn.disabled = true; });
+    playBtn.addEventListener('click', () => { if (lastGenerated) playSequence(lastGenerated); });
+    stopBtn.addEventListener('click', stopSequence);
+
+  </script>
+
+  <!-- FAQ Schema -->
+  <script defer type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a scales practice generator used for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is used to generate structured scale exercises to improve technique, timing, fingering accuracy, and key familiarity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this suitable for ABRSM exams?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The tool supports key signatures, tempo control, and repetition consistent with ABRSM scale assessment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Trinity College London students use this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Trinity candidates can use it to practice scales with controlled rhythm and tempo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which instruments can use this tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Piano, keyboard, strings, woodwind, brass, guitar, bass guitar, and ocarina."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does this tool help with music theory?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. It reinforces scale structure, intervals, and key signatures."
+      }
+    }
+  ]
+}
+</script>
+</body>
+
+</html>

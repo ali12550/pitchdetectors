@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cents Calculator | Pitch Difference Calculator | pitchdetectors</title>
+    <meta name="description"
+        content="Free online cents calculator. Calculate the difference in cents between two frequencies or notes. Essential for tuning, intonation analysis, and music theory.">
+    <meta name="keywords"
+        content="cents calculator, pitch difference, frequency comparison, tuning calculator, intonation, music theory">
+    <link rel="canonical" href="https://pitchdetectors.com/pitch-detector-tools/cents-calculator-online/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="container py-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <!-- Search Box -->
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/pitch-detector-tools/guitar-tuner-online/" class=""><i
+                                            class="bi bi-music-note-beamed"></i> Guitar Tuner</a></li>
+                                <li><a href="/pitch-detector-tools/vocal-range-finder-online/"><i class="bi bi-mic"></i>
+                                        Vocal
+                                        Range Finder</a></li>
+                                <li><a href="/pitch-detector-tools/frequency-to-note-online/"><i
+                                            class="bi bi-arrow-left-right"></i> Frequency to Note</a></li>
+                                <li><a href="/pitch-detector-tools/note-to-frequency-online/"><i
+                                            class="bi bi-calculator"></i>
+                                        Note to Frequency</a></li>
+                                <li><a href="/pitch-detector-tools/cents-calculator-online/" class="active"><i
+                                            class="bi bi-rulers"></i> Cents
+                                        Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/transpose-calculator-online/"><i
+                                            class="bi bi-arrows-expand"></i> Transpose Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/harmonic-series-calculator-online/"><i
+                                            class="bi bi-bar-chart-steps"></i> Harmonic Series</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-category">
+                            <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
+                                            class="bi bi-speedometer2"></i> BPM Calculator</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-tap-tempo/"><i class="bi bi-hand-index"></i>
+                                        BPM Tap Tempo</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-to-ms/"><i class="bi bi-clock"></i> BPM to
+                                        Milliseconds</a></li>
+                                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
+                                        Key Finder</a></li>
+                                <li><a href="https://pitchdetectors.com/BPM-Pitch-Calculator.html"><i class="bi bi-sliders"></i>
+                                        Pitch Shifter</a></li>
+                                <li><a href="/dj-music-production-tools/tempo-changer/"><i
+                                            class="bi bi-fast-forward"></i> Tempo Changer</a></li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9 col-md-8 ">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/pitch-detector-tools/">Pitch Detector Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Cents Calculator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-rulers me-2"></i>Cents Calculator</h1>
+                        <p>Calculate the difference in cents between two frequencies. A cent is 1/100th of a semitone -
+                            essential for precise tuning and intonation analysis.</p>
+                    </div>
+
+                    <!-- Mode Selector -->
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Calculation Mode:</label>
+                        <div class="btn-group w-100" role="group">
+                            <input type="radio" class="btn-check" name="mode" id="modeFreq" checked
+                                onchange="switchMode('freq')">
+                            <label class="btn btn-outline-primary" for="modeFreq">Frequency to Cents</label>
+                            <input type="radio" class="btn-check" name="mode" id="modeCents"
+                                onchange="switchMode('cents')">
+                            <label class="btn btn-outline-primary" for="modeCents">Cents to Frequency</label>
+                        </div>
+                    </div>
+
+                    <!-- Frequency to Cents -->
+                    <div id="freqMode">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Frequency 1 (Hz):</label>
+                                <input type="number" class="form-control form-control-lg" id="freq1"
+                                    placeholder="e.g., 440" value="440" step="0.01">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Frequency 2 (Hz):</label>
+                                <input type="number" class="form-control form-control-lg" id="freq2"
+                                    placeholder="e.g., 442" value="442" step="0.01">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Quick Comparisons:</label>
+                            <div class="quick-buttons">
+                                <button class="quick-btn" onclick="setFreqs(440, 442)">440 vs 442</button>
+                                <button class="quick-btn" onclick="setFreqs(440, 432)">440 vs 432</button>
+                                <button class="quick-btn" onclick="setFreqs(440, 880)">Octave (440→880)</button>
+                                <button class="quick-btn" onclick="setFreqs(440, 466.16)">Semitone Up</button>
+                                <button class="quick-btn" onclick="setFreqs(440, 415.30)">Semitone Down</button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg w-100 mb-4" onclick="calculateCents()">
+                            <i class="bi bi-calculator me-2"></i>Calculate Cents Difference
+                        </button>
+                    </div>
+
+                    <!-- Cents to Frequency -->
+                    <div id="centsMode" style="display: none;">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Base Frequency (Hz):</label>
+                                <input type="number" class="form-control form-control-lg" id="baseFreq"
+                                    placeholder="e.g., 440" value="440" step="0.01">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Cents to Add/Subtract:</label>
+                                <input type="number" class="form-control form-control-lg" id="centsInput"
+                                    placeholder="e.g., 50 or -50" value="100" step="1">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Quick Values:</label>
+                            <div class="quick-buttons">
+                                <button class="quick-btn" onclick="setCents(100)">+100¢ (Semitone)</button>
+                                <button class="quick-btn" onclick="setCents(-100)">-100¢</button>
+                                <button class="quick-btn" onclick="setCents(1200)">+1200¢ (Octave)</button>
+                                <button class="quick-btn" onclick="setCents(50)">+50¢ (Quarter tone)</button>
+                                <button class="quick-btn" onclick="setCents(-31.2)">-31.2¢ (432 Hz diff)</button>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg w-100 mb-4" onclick="calculateFromCents()">
+                            <i class="bi bi-calculator me-2"></i>Calculate New Frequency
+                        </button>
+                    </div>
+
+                    <!-- Result Box -->
+                    <div class="result-box" id="resultBox">
+                        <h3 id="resultTitle">Difference</h3>
+                        <p style="font-size: 56px; font-weight: 700; margin: 20px 0;" id="resultValue">7.85 cents</p>
+                        <div class="row text-start mt-4" id="resultDetails">
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Frequency Ratio:</strong><br>
+                                <span id="freqRatio">1.00455</span>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Semitones:</strong><br>
+                                <span id="semitones">0.08</span>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Perception:</strong><br>
+                                <span id="perception">Barely noticeable</span>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Direction:</strong><br>
+                                <span id="direction">F2 is sharper</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cents Reference Chart -->
+                    <div class="mt-4 p-4 bg-light rounded">
+                        <h5 class="text-mid mb-3">Cents Reference Chart</h5>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Cents</th>
+                                        <th>Musical Meaning</th>
+                                        <th>Perception</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1-5</td>
+                                        <td>Micro-adjustment</td>
+                                        <td>Usually imperceptible</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5-15</td>
+                                        <td>Fine tuning difference</td>
+                                        <td>Noticeable to trained ears</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15-30</td>
+                                        <td>Slightly out of tune</td>
+                                        <td>Clearly audible</td>
+                                    </tr>
+                                    <tr>
+                                        <td>50</td>
+                                        <td>Quarter tone</td>
+                                        <td>Very obvious</td>
+                                    </tr>
+                                    <tr>
+                                        <td>100</td>
+                                        <td>Semitone (half step)</td>
+                                        <td>Different note</td>
+                                    </tr>
+                                    <tr>
+                                        <td>200</td>
+                                        <td>Whole tone</td>
+                                        <td>Two semitones</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1200</td>
+                                        <td>Octave</td>
+                                        <td>Same note, higher/lower</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formula Section -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-3"><i class="bi bi-calculator me-2"></i>The Formulas</h2>
+
+                        <div class="bg-light p-4 rounded mb-4">
+                            <h5>Cents from Two Frequencies:</h5>
+                            <code style="font-size: 18px;">cents = 1200 × log₂(f₂ / f₁)</code>
+                            <p class="mt-2 mb-0">Where f₁ and f₂ are the two frequencies being compared.</p>
+                        </div>
+
+                        <div class="bg-light p-4 rounded mb-4">
+                            <h5>Frequency from Cents:</h5>
+                            <code style="font-size: 18px;">f₂ = f₁ × 2^(cents / 1200)</code>
+                            <p class="mt-2 mb-0">Add cents to a base frequency to get the new frequency.</p>
+                        </div>
+
+                        <h4 class="text-teal mt-4">Why Use Cents?</h4>
+                        <ul>
+                            <li><strong>Precision:</strong> Cents allow for much finer measurements than semitones</li>
+                            <li><strong>Universal:</strong> Same scale works across all octaves and frequencies</li>
+                            <li><strong>Perception-based:</strong> Cents roughly correspond to how we perceive pitch
+                                differences
+                            </li>
+                            <li><strong>Standard:</strong> Used worldwide by musicians, luthiers, and audio engineers
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4"><i class="bi bi-question-circle me-2"></i>Frequently Asked Questions
+                        </h2>
+
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq1">
+                                        How many cents difference can humans hear?
+                                    </button>
+                                </h3>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Most people can detect pitch differences of about 5-10 cents when notes are
+                                        played
+                                        sequentially. When played simultaneously, differences as small as 2-3 cents can
+                                        create
+                                        audible "beating" (wavering sound). Professional musicians often tune to within
+                                        1-2
+                                        cents.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq2">
+                                        What is the difference between 440 Hz and 432 Hz in cents?
+                                    </button>
+                                </h3>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The difference is approximately 31.2 cents, or about one-third of a semitone.
+                                        This is
+                                        clearly audible to most listeners and explains why instruments tuned to
+                                        different
+                                        standards sound noticeably different when played together.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq3">
+                                        Why are there 100 cents in a semitone?
+                                    </button>
+                                </h3>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The cents system was designed by Alexander Ellis in the 1880s specifically to
+                                        have 100
+                                        cents per semitone, making calculations intuitive. Since there are 12 semitones
+                                        in an
+                                        octave, there are exactly 1200 cents in an octave. The logarithmic scale ensures
+                                        equal
+                                        perception across all registers.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/include.js"></script>
+    <!-- tool js -->
+    <script defer>
+        function switchMode(mode) {
+            document.getElementById('freqMode').style.display = mode === 'freq' ? 'block' : 'none';
+            document.getElementById('centsMode').style.display = mode === 'cents' ? 'block' : 'none';
+
+            if (mode === 'freq') {
+                calculateCents();
+            } else {
+                calculateFromCents();
+            }
+        }
+
+        function setFreqs(f1, f2) {
+            document.getElementById('freq1').value = f1;
+            document.getElementById('freq2').value = f2;
+            calculateCents();
+        }
+
+        function setCents(c) {
+            document.getElementById('centsInput').value = c;
+            calculateFromCents();
+        }
+
+        function calculateCents() {
+            const f1 = parseFloat(document.getElementById('freq1').value);
+            const f2 = parseFloat(document.getElementById('freq2').value);
+
+            if (isNaN(f1) || isNaN(f2) || f1 <= 0 || f2 <= 0) {
+                alert('Please enter valid positive frequencies.');
+                return;
+            }
+
+            const cents = 1200 * Math.log2(f2 / f1);
+            const ratio = f2 / f1;
+            const semitones = cents / 100;
+
+            let perception = '';
+            const absCents = Math.abs(cents);
+            if (absCents < 5) perception = 'Usually imperceptible';
+            else if (absCents < 15) perception = 'Noticeable to trained ears';
+            else if (absCents < 30) perception = 'Clearly audible';
+            else if (absCents < 50) perception = 'Very obvious';
+            else if (absCents < 100) perception = 'Approaching semitone';
+            else perception = 'Different note';
+
+            let direction = '';
+            if (cents > 0) direction = 'F2 is sharper (higher)';
+            else if (cents < 0) direction = 'F2 is flatter (lower)';
+            else direction = 'Same frequency';
+
+            document.getElementById('resultTitle').textContent = 'Cents Difference';
+            document.getElementById('resultValue').textContent = cents.toFixed(2) + ' cents';
+            document.getElementById('freqRatio').textContent = ratio.toFixed(5);
+            document.getElementById('semitones').textContent = semitones.toFixed(2);
+            document.getElementById('perception').textContent = perception;
+            document.getElementById('direction').textContent = direction;
+        }
+
+        function calculateFromCents() {
+            const baseFreq = parseFloat(document.getElementById('baseFreq').value);
+            const cents = parseFloat(document.getElementById('centsInput').value);
+
+            if (isNaN(baseFreq) || baseFreq <= 0) {
+                alert('Please enter a valid positive base frequency.');
+                return;
+            }
+
+            if (isNaN(cents)) {
+                alert('Please enter a valid cents value.');
+                return;
+            }
+
+            const newFreq = baseFreq * Math.pow(2, cents / 1200);
+            const semitones = cents / 100;
+            const ratio = newFreq / baseFreq;
+
+            let perception = '';
+            const absCents = Math.abs(cents);
+            if (absCents < 5) perception = 'Usually imperceptible';
+            else if (absCents < 15) perception = 'Noticeable to trained ears';
+            else if (absCents < 30) perception = 'Clearly audible';
+            else if (absCents < 50) perception = 'Very obvious';
+            else if (absCents < 100) perception = 'Approaching semitone';
+            else perception = 'Different note';
+
+            let direction = cents > 0 ? 'Higher pitch' : cents < 0 ? 'Lower pitch' : 'Same pitch';
+
+            document.getElementById('resultTitle').textContent = 'New Frequency';
+            document.getElementById('resultValue').textContent = newFreq.toFixed(2) + ' Hz';
+            document.getElementById('freqRatio').textContent = ratio.toFixed(5);
+            document.getElementById('semitones').textContent = semitones.toFixed(2);
+            document.getElementById('perception').textContent = perception;
+            document.getElementById('direction').textContent = direction;
+        }
+
+        document.getElementById('freq1').addEventListener('input', calculateCents);
+        document.getElementById('freq2').addEventListener('input', calculateCents);
+        document.getElementById('baseFreq').addEventListener('input', calculateFromCents);
+        document.getElementById('centsInput').addEventListener('input', calculateFromCents);
+
+        calculateCents();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+</body>
+
+</html>

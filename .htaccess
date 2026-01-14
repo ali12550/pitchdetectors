@@ -1,0 +1,53 @@
+# ==============================
+# Pitch Detectors — Clean & SEO Safe
+# ==============================
+
+Options -Indexes
+RewriteEngine On
+
+RewriteEngine On
+RewriteRule ^site_map\.xml$ /site_map.php [L]
+
+# ------------------------------
+# 1. Force NON-WWW (first)
+# ------------------------------
+RewriteCond %{HTTP_HOST} ^www\.pitchdetectors\.com$ [NC]
+RewriteRule ^(.*)$ https://pitchdetectors.com/$1 [L,R=301]
+
+# ------------------------------
+# 2. Force HTTPS (second)
+# ------------------------------
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://pitchdetectors.com%{REQUEST_URI} [L,R=301]
+# ------------------------------
+# 2. Static Sitemap Headers
+# ------------------------------
+<IfModule mod_headers.c>
+  <FilesMatch "(^|/)(sitemap|site_map)\.xml$">
+    Header set Content-Type "application/xml; charset=UTF-8"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+</IfModule>
+
+
+# ------------------------------
+# 4. Custom 404 Page (REAL 404)
+# ------------------------------
+ErrorDocument 404 /404.html
+
+# ------------------------------
+# 5. Security Headers
+# ------------------------------
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+<!-- gzip -->
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain
+  AddOutputFilterByType DEFLATE application/javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json
+</IfModule>

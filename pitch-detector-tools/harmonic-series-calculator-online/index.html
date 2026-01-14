@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Harmonic Series Calculator — Harmonics, Subharmonics & Utonality | Pitch Detectors</title>
+    <meta name="description"
+        content="Harmonic Series Calculator. Generate harmonics and subharmonics from a fundamental (note+octave). Includes scaling factor, exponent, frequency addition, quantize microtones, MIDI mapping, cents adjustment and tab-delimited output for Excel." />
+    <meta name="keywords"
+        content="harmonic series calculator, overtone series, subharmonics, utonality, partial frequencies, scaling factor, exponent, cents adjustment, midi mapping, quantize microtones" />
+    <link rel="canonical" href="https://pitchdetectors.com/audio-tools/harmonic-series-generator-online/" />
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/tools.css" rel="stylesheet">
+    <meta name="author" content="Pitch Detectors">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Harmonic Series Calculator — Harmonics, Subharmonics & Utonality" />
+    <meta property="og:description"
+        content="Generate harmonic partials and subharmonics from a chosen fundamental. Includes scaling factor, exponent, frequency addition, microtone quantize, MIDI and cents adjustment." />
+    <meta property="og:image" content="https://pitchdetectors.com/assets/imgs/diamond-audio-city.png" />
+    <meta property="og:url" content="https://pitchdetectors.com/audio-tools/harmonic-series-generator-online/" />
+    <meta property="og:type" content="website" />
+
+    <style>
+        .generator-panel {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 100%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .generator-panel label {
+            color: #dbeef7;
+            font-weight: 700;
+        }
+
+        .result-box {
+            margin-top: 16px;
+        }
+
+        .result-table th,
+        .result-table td {
+            vertical-align: middle
+        }
+
+        .lsibox {
+            font-size: 14px;
+            color: #0b2b4a;
+            background: #f3fbff;
+            padding: 12px;
+            border-radius: 8px;
+            border-left: 4px solid #004764;
+        }
+
+        pre.codebox {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            overflow: auto
+        }
+
+        .small-muted {
+            font-size: 13px;
+            color: #6b7785;
+        }
+
+        .controls-inline .form-control {
+            display: inline-block;
+            width: auto;
+            min-width: 120px;
+        }
+
+        .tab-output {
+            white-space: pre;
+            font-family: monospace;
+            background: #fff;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #e9eef5;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <!-- Search Box -->
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/pitch-detector-tools/guitar-tuner-online/" class=""><i
+                                            class="bi bi-music-note-beamed"></i> Guitar Tuner</a></li>
+                                <li><a href="/pitch-detector-tools/vocal-range-finder-online/"><i class="bi bi-mic"></i> Vocal
+                                        Range Finder</a></li>
+                                <li><a href="/pitch-detector-tools/frequency-to-note-online/"><i
+                                            class="bi bi-arrow-left-right"></i> Frequency to Note</a></li>
+                                <li><a href="/pitch-detector-tools/note-to-frequency-online/"><i class="bi bi-calculator"></i>
+                                        Note to Frequency</a></li>
+                                <li><a href="/pitch-detector-tools/cents-calculator-online/"><i class="bi bi-rulers"></i> Cents
+                                        Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/transpose-calculator-online/"><i
+                                            class="bi bi-arrows-expand"></i> Transpose Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/harmonic-series-calculator-online/" class="active"><i
+                                            class="bi bi-bar-chart-steps"></i> Harmonic Series</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-category">
+                            <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
+                                            class="bi bi-speedometer2"></i> BPM Calculator</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-tap-tempo/"><i class="bi bi-hand-index"></i>
+                                        BPM Tap Tempo</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-to-ms/"><i class="bi bi-clock"></i> BPM to
+                                        Milliseconds</a></li>
+                                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
+                                        Key Finder</a></li>
+                                <li><a href="https://pitchdetectors.com/BPM-Pitch-Calculator.html"><i class="bi bi-sliders"></i>
+                                        Pitch Shifter</a></li>
+                                <li><a href="/dj-music-production-tools/tempo-changer/"><i
+                                            class="bi bi-fast-forward"></i> Tempo Changer</a></li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="col-lg-9 col-md-11">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/pitch-detector-tools/">Pitch Detector Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Harmonic Series Generator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title mb-2">
+                        <h1><i class="bi bi-ui-radios-grid me-2"></i>Harmonic Series Calculator</h1>
+                        <p class="mb-0">Calculates partials for harmonic &amp; subharmonic (utonal) series using
+                            scaling, exponent and addition constants. Output is tab-delimited for Excel, with MIDI
+                            mapping and cents adjustment.</p>
+                    </div>
+
+                    <!-- Generator Panel -->
+                    <div class="generator-panel mb-3">
+                        <div class="row g-3 align-items-end">
+                            <!-- Note -> Octave -> Hz -->
+                            <div class="col-md-4">
+                                <label class="form-label">Fundamental Note</label>
+                                <select id="noteSelect" class="form-control form-control-lg">
+                                    <option>C</option>
+                                    <option>C#</option>
+                                    <option>D</option>
+                                    <option>D#</option>
+                                    <option>E</option>
+                                    <option>F</option>
+                                    <option>F#</option>
+                                    <option>G</option>
+                                    <option>G#</option>
+                                    <option>A</option>
+                                    <option>A#</option>
+                                    <option>B</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label">Octave</label>
+                                <select id="octaveSelect" class="form-control form-control-lg">
+                                    <!-- 0..8 -->
+                                    <script>for (let o = 0; o <= 8; o++) { document.write(`<option>${o}</option>`) }</script>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label">Fundamental Frequency (Hz)</label>
+                                <input id="fundHz" class="form-control form-control-lg" type="number" step="any"
+                                    min="0.01">
+                                <div class="form-text small-muted">Auto-filled from note+octave; editable for fine
+                                    tuning.</div>
+                            </div>
+
+                            <div class="col-md-3 text-md-end">
+                                <label class="form-label">Default partials</label>
+                                <select id="presetPartials" class="form-control form-control-lg"
+                                    onchange="document.getElementById('harmonicCount').value=this.value">
+                                    <option value="16" selected>16 partials (default)</option>
+                                    <option value="20">20 partials</option>
+                                    <option value="32">32 partials</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Scaling Factor (s)</label>
+                                <input id="scaling" class="form-control form-control-lg" type="number" value="1.0"
+                                    step="any">
+                                <div class="form-text small-muted">1.0 = normal</div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Exponent (e)</label>
+                                <input id="exponent" class="form-control form-control-lg" type="number" value="1.0"
+                                    step="any">
+                                <div class="form-text small-muted">1.0 = normal</div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Frequency Addition (α) Hz</label>
+                                <input id="alpha" class="form-control form-control-lg" type="number" value="0.0"
+                                    step="any">
+                                <div class="form-text small-muted">Add or subtract Hz as per formula</div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Number of Partials</label>
+                                <input id="harmonicCount" class="form-control form-control-lg" type="number" value="16"
+                                    min="1" max="256">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Quantize microtones to nearest</label>
+                                <select id="quantizeSelect" class="form-control form-control-lg">
+                                    <option value="0">None (full precision)</option>
+                                    <option value="1">1/1 (semitone)</option>
+                                    <option value="0.5">1/2-tone</option>
+                                    <option value="0.25">1/4-tone</option>
+                                    <option value="0.125">1/8-tone</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Subharmonics / Utonality</label>
+                                <div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="subharmonics">
+                                        <label class="form-check-label small-muted" for="subharmonics">If checked
+                                            calculate subharmonics (utonal/inverted series)</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 text-end">
+                                <button class="btn btn-light btn-lg" id="generateBtn" onclick="generateSeries()"><i
+                                        class="bi bi-play-circle me-2"></i>Generate</button>
+                                <button class="btn btn-outline-light btn-lg" onclick="copyTabDelimited()"><i
+                                        class="bi bi-clipboard me-2"></i>Copy (tab-delimited)</button>
+                                <button class="btn btn-outline-light btn-lg" onclick="downloadTabDelimited()"><i
+                                        class="bi bi-download me-2"></i>Download TSV</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="result-box p-3">
+                        <h5 class="mb-3">Harmonic / Subharmonic Table</h5>
+
+                        <div class="table-responsive mb-2">
+                            <table class="table table-sm table-bordered result-table align-middle">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Frequency (Hz)</th>
+                                        <th>MIDI #</th>
+                                        <th>Keyboard Key</th>
+                                        <th>Pitch</th>
+                                        <th>Adjustment (cents)</th>
+                                        <th>Play</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="harmonicsBody">
+                                    <tr>
+                                        <td colspan="7" id="noResult" class="text-center text-muted">No harmonics
+                                            generated yet — click Generate.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="table-responsive mb-2">
+                            <label class="form-label fw-bold">Output (tab-delimited)</label>
+                            <div id="tabOutput" class="tab-output">Partial Frequency MIDI# KeyboardKey Pitch Adjustment
+                                (cents)
+                            </div>
+                        </div>
+
+                        <div class="small-muted">Frequencies shown to 2 decimal places; internal calculations use full
+                            precision. MIDI numbers rounded to nearest integer. Adjustment = cents difference between
+                            frequency and rounded MIDI note.</div>
+                    </div>
+
+                    <!-- Theory / LSI -->
+                    <div class="content_area container py-4">
+
+                        <h2 class="h5 fw-semibold" style="color:#003161;">Quick Summary</h2>
+                        <p>This Harmonic Series Calculator computes partial frequencies using the formula below and
+                            returns a tab-delimited table ready for Excel. It supports harmonic and subharmonic (utonal)
+                            calculations, scaling, exponentiation, a frequency addition term, microtone quantization,
+                            MIDI mapping and cents adjustment.</p>
+
+                        <div class="bg-light p-3 rounded mb-3">
+                            <pre class="codebox" style="margin:0;">
+Formulas used:
+Harmonics:
+  f_n = f0 * ( s*(n-1) + 1 )^e + α
+
+Subharmonics (Utonality):
+  f_n = f0 * ( s*(n-1) + 1 )^e - α
+
+Where:
+  f0 = fundamental frequency (Hz)
+  s  = scaling factor
+  n  = partial number (1..N)
+  e  = exponent
+  α  = frequency addition (Hz)
+Quantize: microtones quantized by rounding semitone value to selected fraction.
+              </pre>
+                        </div>
+
+                        <h2 class="h5 fw-semibold mt-3" style="color:#003161;">Use cases</h2>
+                        <ul>
+                            <li>Study overtone structure and timbre components.</li>
+                            <li>Create additive synthesis patches with custom partials.</li>
+                            <li>Compare harmonic partials to equal-tempered MIDI notes using cents adjustment.</li>
+                            <li>Export data to Excel/DAW for analysis or tuning work.</li>
+                        </ul>
+
+                        <h2 class="h5 fw-semibold mt-3" style="color:#003161;">FAQ</h2>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header"><button class="accordion-button" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq1">What is Utonality / subharmonic
+                                        series?</button></h3>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">Utonality (subharmonics) are frequencies below the
+                                        fundamental produced by inverting the harmonic series (partials like 1/2, 1/3
+                                        ... of the fundamental). This tool approximates subharmonics using the provided
+                                        formula.</div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header"><button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq2">Why quantize
+                                        microtones?</button></h3>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">Quantization rounds microtonal pitches to the nearest
+                                        fraction of a semitone (1/4-tone, 1/8-tone etc.), useful for mapping to
+                                        microtonal systems or simplifying data before export.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div> <!-- /main col -->
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+<!-- tools js -->
+    <script defer>
+        // Utilities and constants
+        const NOTE_NAMES_SHARP = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        const NOTE_NAMES_FLAT = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+        const A4 = 440;
+
+        function noteOctaveToHz(note, octave) {
+            // find semitone offset from A4
+            const noteIndex = NOTE_NAMES_SHARP.indexOf(note);
+            const semitoneFromC0 = (octave * 12) + noteIndex;
+            // MIDI for C0 = 12
+            const midi = semitoneFromC0 + 12;
+            const freq = A4 * Math.pow(2, (midi - 69) / 12);
+            return freq;
+        }
+
+        function freqToMidi(f) {
+            return 69 + 12 * Math.log2(f / A4);
+        }
+
+        function midiToFreq(m) {
+            return A4 * Math.pow(2, (m - 69) / 12);
+        }
+
+        function midiToNoteName(m) {
+            const round = Math.round(m);
+            if (round < 0) return 'undefined-2';
+            const name = NOTE_NAMES_SHARP[(round % 12 + 12) % 12];
+            const octave = Math.floor(round / 12) - 1;
+            return name + octave;
+        }
+
+        function centsBetween(f, refFreq) {
+            return 1200 * Math.log2(f / refFreq);
+        }
+
+        function quantizeFrequency(freq, quantFraction) {
+            if (!quantFraction || quantFraction <= 0) return freq;
+            // convert to semitone value relative to A4
+            const semis = 12 * Math.log2(freq / A4);
+            const rounded = Math.round(semis / quantFraction) * quantFraction;
+            return A4 * Math.pow(2, rounded / 12);
+        }
+
+        // UI wiring
+        const noteSelect = document.getElementById('noteSelect');
+        const octaveSelect = document.getElementById('octaveSelect');
+        const fundHzInput = document.getElementById('fundHz');
+
+        function autoFillHz() {
+            const note = noteSelect.value;
+            const octave = parseInt(octaveSelect.value, 10);
+            const hz = noteOctaveToHz(note, octave);
+            fundHzInput.value = hz.toFixed(4);
+        }
+
+        noteSelect.addEventListener('change', autoFillHz);
+        octaveSelect.addEventListener('change', autoFillHz);
+
+        // initialize
+        autoFillHz();
+
+        // Main generator
+        function generateSeries() {
+            const f0 = parseFloat(fundHzInput.value);
+            const s = parseFloat(document.getElementById('scaling').value) || 1.0;
+            const e = parseFloat(document.getElementById('exponent').value) || 1.0;
+            const alpha = parseFloat(document.getElementById('alpha').value) || 0.0;
+            let count = parseInt(document.getElementById('harmonicCount').value, 10) || 16;
+            count = Math.min(Math.max(count, 1), 256);
+            const sub = document.getElementById('subharmonics').checked;
+            const quantFraction = parseFloat(document.getElementById('quantizeSelect').value);
+            const tbody = document.getElementById('harmonicsBody');
+            const tabOut = document.getElementById('tabOutput');
+
+            tbody.innerHTML = '';
+            tabOut.textContent = 'Partial\tFrequency\tMIDI#\tKeyboardKey\tPitch\tAdjustment (cents)\n';
+
+            if (!f0 || f0 <= 0) {
+                tbody.innerHTML = '<tr><td colspan="7" class="text-center text-danger">Enter a valid fundamental frequency (Hz).</td></tr>';
+                return;
+            }
+
+            const rows = [];
+            for (let n = 1; n <= count; n++) {
+                // formula: f_n = f0 * ( s*(n-1) + 1 )^e +/- alpha
+                const base = Math.pow(s * (n - 1) + 1, e);
+                let freq = sub ? (f0 * base - alpha) : (f0 * base + alpha);
+                if (freq <= 0) freq = 0.000001; // avoid negative/zero
+
+                // quantize if asked (quantFraction represents fraction of semitone)
+                let freqQuant = quantizeFrequency(freq, quantFraction);
+
+                // report frequency to 2 decimals but keep internal precision for calculations
+                const freqReport = parseFloat(freqQuant.toFixed(2));
+
+                // MIDI calculation (rounded)
+                const midiFloat = freqToMidi(freq);
+                const midiRounded = Math.round(midiFloat);
+
+                // keyboard key number (as in your example column): we'll use MIDI - 20 (so MIDI 21 -> key 1)
+                const keyboardKey = midiRounded - 20;
+
+                // pitch name (from rounded MIDI); if out of typical range show undefined-2
+                const pitch = midiRounded < -12 ? 'undefined-2' : midiToNoteName(midiRounded);
+
+                // adjustment in cents between freq and the midiRounded frequency
+                const midiFreq = midiToFreq(midiRounded);
+                const adjustment = centsBetween(freq, midiFreq);
+
+                // push row
+                rows.push({
+                    partial: n,
+                    freqFull: freq,
+                    freqReport,
+                    midiFloat,
+                    midiRounded,
+                    keyboardKey,
+                    pitch,
+                    adjustment
+                });
+
+                // add table row
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td class="text-center">${n}</td>
+        <td class="text-center">${freqReport.toFixed(2)}hz</td>
+        <td class="text-center">${midiRounded}</td>
+        <td class="text-center">${keyboardKey}</td>
+        <td class="text-center">${pitch}</td>
+        <td class="text-center">${Math.round(adjustment)}</td>
+        <td class="text-center"><button class="btn btn-sm btn-outline-primary play-btn" onclick="playTone(${freqReport})"><i class="bi bi-play-fill"></i></button></td>`;
+                tbody.appendChild(tr);
+
+                // append tab output line
+                tabOut.textContent += `${n}\t${freqReport.toFixed(2)}\t${midiRounded}\t${keyboardKey}\t${pitch}\t${Math.round(adjustment)}\n`;
+            }
+
+            // store last
+            window._lastHarmonics = rows;
+            document.getElementById('noResult')?.remove();
+        }
+
+        // Audio playback
+        let audioCtx = null;
+        function ensureAudio() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            return audioCtx;
+        }
+
+        function playTone(freqHz, duration = 1.0) {
+            const ctx = ensureAudio();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.value = freqHz;
+            gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.3, ctx.currentTime + 0.01);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + duration + 0.02);
+        }
+
+        function playHarmonic(freqHz) { playTone(freqHz); }
+
+        // helpers: copy, download
+        function copyTabDelimited() {
+            const txt = document.getElementById('tabOutput').textContent;
+            navigator.clipboard.writeText(txt).then(() => alert('Copied tab-delimited data to clipboard. Paste into Excel/Sheets.'), (e) => alert('Copy failed: ' + e));
+        }
+
+        function downloadTabDelimited() {
+            const txt = document.getElementById('tabOutput').textContent;
+            const blob = new Blob([txt], { type: 'text/tab-separated-values' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'harmonic_series.tsv'; a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // small search function for sidebar
+        function searchTools() {
+            const q = document.getElementById('toolSearch').value.toLowerCase();
+            document.querySelectorAll('.sidebar-links li').forEach(li => {
+                const show = li.textContent.toLowerCase().includes(q);
+                li.style.display = show ? '' : 'none';
+            });
+        }
+
+        // wire includes and init sample
+        window.addEventListener('load', () => {
+            Promise.all([
+                fetch("../../header.html").then(r => r.text()),
+                fetch("../../footer.html").then(r => r.text())
+            ]).then(([h, f]) => {
+                document.getElementById('header').innerHTML = h;
+                document.getElementById('footer').innerHTML = f;
+            }).catch(e => console.error('Include load failed', e));
+
+            // fill initial values and generate default (16 partials)
+            setTimeout(() => {
+                autoFillHz();
+                generateSeries();
+            }, 250);
+        });
+    </script>
+
+</body>
+
+</html>

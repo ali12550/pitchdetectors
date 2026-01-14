@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transpose Calculator | Music Key Transposer & Chord Transposition Tool | pitchdetectors</title>
+    <meta name="description"
+        content="Free online Transpose Calculator. Easily shift music notes, change keys, transpose chords, and adjust melodies up or down in semitones for music theory, ear training, and composition.">
+    <meta name="keywords"
+        content="transpose calculator, key transposition, pitch shift, music key change, chord transposer, semitone shift, melody transpose, chord transposition, scale transpose, transpose music, shift notes">
+    <link rel="canonical" href="https://pitchdetectors.com/pitch-detector-tools/transpose-calculator-online/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .transpose-display {
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--mid-blue) 100%);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            color: #fff;
+            margin: 30px 0;
+        }
+
+        .note-input {
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            margin: 10px;
+        }
+
+        .transpose-btn {
+            background: var(--teal);
+            color: #fff;
+            border: none;
+            padding: 12px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .transpose-btn:hover {
+            background: var(--mid-blue);
+            transform: scale(1.05);
+        }
+
+        .result-box {
+            background: #f8f9fa;
+            color: var(--dark-blue);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .result-box h3 {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header"></div>
+    <div class="container py-4">
+        <div class="row">
+<!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <!-- Search Box -->
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/pitch-detector-tools/guitar-tuner-online/" class=""><i
+                                            class="bi bi-music-note-beamed"></i> Guitar Tuner</a></li>
+                                <li><a href="/pitch-detector-tools/vocal-range-finder-online/"><i class="bi bi-mic"></i> Vocal
+                                        Range Finder</a></li>
+                                <li><a href="/pitch-detector-tools/frequency-to-note-online/"><i
+                                            class="bi bi-arrow-left-right"></i> Frequency to Note</a></li>
+                                <li><a href="/pitch-detector-tools/note-to-frequency-online/"><i class="bi bi-calculator"></i>
+                                        Note to Frequency</a></li>
+                                <li><a href="/pitch-detector-tools/cents-calculator-online/"><i class="bi bi-rulers"></i> Cents
+                                        Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/transpose-calculator-online/" class="active"><i
+                                            class="bi bi-arrows-expand"></i> Transpose Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/harmonic-series-calculator-online/"><i
+                                            class="bi bi-bar-chart-steps"></i> Harmonic Series</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-category">
+                            <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
+                                            class="bi bi-speedometer2"></i> BPM Calculator</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-tap-tempo/"><i class="bi bi-hand-index"></i>
+                                        BPM Tap Tempo</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-to-ms/"><i class="bi bi-clock"></i> BPM to
+                                        Milliseconds</a></li>
+                                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
+                                        Key Finder</a></li>
+                                <li><a href="https://pitchdetectors.com/BPM-Pitch-Calculator.html"><i class="bi bi-sliders"></i>
+                                        Pitch Shifter</a></li>
+                                <li><a href="/dj-music-production-tools/tempo-changer/"><i
+                                            class="bi bi-fast-forward"></i> Tempo Changer</a></li>
+                            </ul>
+                        </div>
+
+                   
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-10">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/pitch-detector-tools/">Pitch Detector Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Transpose Calculator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-arrow-up-right-circle me-2"></i>Transpose Calculator</h1>
+                        <p>Easily shift music notes, transpose chords, and change key signatures up or down in
+                            semitones.
+                            Ideal for music composition, chord transposition, melody adjustment, and ear training
+                            exercises.</p>
+                    </div>
+
+                    <!-- Transpose Calculator Display -->
+                    <div class="transpose-display">
+                        <label for="originalNote" class="form-label text-white">Original Note or Chord:</label>
+                        <input type="text" id="originalNote" class="note-input" placeholder="e.g., C, G#m, Fmaj7">
+
+                        <label for="semitones" class="form-label text-white">Transpose By (Semitones):</label>
+                        <input type="number" id="semitones" class="note-input" placeholder="e.g., 2, -3">
+
+                        <br>
+                        <button class="transpose-btn" onclick="transposeNote()">Transpose</button>
+
+                        <div class="result-box" id="transposeResult" style="display: none;">
+                            <h3>Transposed Result</h3>
+                            <p id="transposedNote">New Note/Chord: --</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- How to Use -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-3"><i class="bi bi-info-circle me-2"></i>How to Use This Transpose
+                            Calculator
+                        </h2>
+                        <ol>
+                            <li>Enter the original note or chord in the input box. You can input single notes (C, F#,
+                                etc.) or
+                                chords (Gmaj7, D#m, F#m7).</li>
+                            <li>Enter the number of semitones you want to shift. Positive numbers transpose up, negative
+                                numbers
+                                transpose down.</li>
+                            <li>Click "Transpose" to get the new note or chord in the desired key.</li>
+                            <li>This tool is useful for chord transposition, key signature changes, melody shifting, and
+                                music
+                                composition.</li>
+                            <li>Practice ear training by transposing chords and recognizing interval changes in
+                                different keys.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4"><i class="bi bi-question-circle me-2"></i>Frequently Asked Questions
+                        </h2>
+
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq1">
+                                        What is transposition in music?
+                                    </button>
+                                </h3>
+                                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Transposition is shifting notes or chords up or down by a certain number of
+                                        semitones,
+                                        allowing musicians to change key signatures and adapt songs to different vocal
+                                        ranges or
+                                        instruments.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq2">
+                                        Can I transpose chords as well as single notes?
+                                    </button>
+                                </h3>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes! This calculator supports both single notes and common chord symbols like
+                                        maj, min,
+                                        m7, and sus chords. The output shows the correctly transposed chord.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq3">
+                                        How do I know how many semitones to transpose?
+                                    </button>
+                                </h3>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Count the distance between the original key and the target key. Positive numbers
+                                        transpose up, negative numbers transpose down. One semitone equals one half-step
+                                        on the
+                                        chromatic scale.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq4">
+                                        Can this help with ear training?
+                                    </button>
+                                </h3>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Absolutely! Transposing notes and chords helps develop your ear by recognizing
+                                        intervals, pitch shifts, and key changes across different scales.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/include.js"></script>
+    <!-- tool js -->
+    <script defer>
+        const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+
+        function transposeNote() {
+            let input = document.getElementById('originalNote').value.trim();
+            let semitones = parseInt(document.getElementById('semitones').value);
+
+            if (!input || isNaN(semitones)) return;
+
+            // Detect root note and chord type
+            const regex = /^([A-G]#?)(.*)$/;
+            const match = input.match(regex);
+            if (!match) return;
+
+            const [_, root, chordType] = match;
+            let index = NOTE_NAMES.indexOf(root);
+            if (index === -1) return;
+
+            let transposedIndex = (index + semitones + 12) % 12;
+            let transposedNote = NOTE_NAMES[transposedIndex] + chordType;
+
+            document.getElementById('transposedNote').textContent = 'New Note/Chord: ' + transposedNote;
+            document.getElementById('transposeResult').style.display = 'block';
+        }
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+</body>
+
+</html>

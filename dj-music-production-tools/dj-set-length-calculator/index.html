@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+ 
+    <title>DJ Set Length Calculator | Plan Your DJ Set | pitch detectors</title>
+    <meta name="description"
+        content="Free DJ set length calculator. Plan your DJ set by calculating how many tracks you need, average track length, and total set duration.">
+    <meta name="keywords" content="DJ set calculator, set length, track count, DJ planning, gig preparation, DJ tools">
+    <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/dj-set-length-calculator/">
+ 
+ 
+    <title>DJ Set Length Calculator | Plan Your DJ Set | pitchdetectors</title>
+    <meta name="description"
+        content="Free DJ set length calculator. Plan your DJ set by calculating how many tracks you need, average track length, and total set duration.">
+    <meta name="keywords" content="DJ set calculator, set length, track count, DJ planning, gig preparation, DJ tools">
+    <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/dj-set-length-calculator/">
+ 
+ 
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/dj-music-production-tools/dj-set-length-calculator/" class="active"><i
+                                            class="bi bi-clock-history"></i> DJ Set Length</a></li>
+                                <li><a href="/dj-music-production-tools/dj-transition-calculator/"><i
+                                            class="bi bi-shuffle"></i>
+                                        DJ Transition</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
+                                            class="bi bi-speedometer2"></i>
+                                        BPM Calculator</a></li>
+                                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
+                                        Key Finder</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/dj-music-production-tools/">DJ & Production Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">DJ Set Length Calculator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-clock-history me-2"></i>DJ Set Length Calculator</h1>
+                        <p>Calculate how many tracks you need for your DJ set, or determine the total duration of your
+                            prepared playlist. Optimize your set planning for clubs, festivals, radio shows, or private
+                            events.</p>
+                    </div>
+
+                    <ul class="nav nav-tabs mb-4" id="modeTabs">
+                        <li class="nav-item">
+                            <button class="nav-link active" onclick="setMode('tracks')">Calculate Tracks Needed</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" onclick="setMode('duration')">Calculate Set Duration</button>
+                        </li>
+                    </ul>
+
+                    <div id="tracksMode">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Set Duration:</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control form-control-lg" id="setHours" value="1"
+                                        min="0" oninput="calculateTracks()">
+                                    <span class="input-group-text">hours</span>
+                                    <input type="number" class="form-control form-control-lg" id="setMinutes" value="0"
+                                        min="0" max="59" oninput="calculateTracks()">
+                                    <span class="input-group-text">min</span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Average Track Length:</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control form-control-lg" id="avgTrackMin" value="4"
+                                        min="1" oninput="calculateTracks()">
+                                    <span class="input-group-text">:</span>
+                                    <input type="number" class="form-control form-control-lg" id="avgTrackSec"
+                                        value="30" min="0" max="59" oninput="calculateTracks()">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Quick Set Lengths:</label>
+                            <div class="quick-buttons">
+                                <button class="quick-btn" onclick="setSetLength(0.5)">30 min</button>
+                                <button class="quick-btn" onclick="setSetLength(1)">1 hour</button>
+                                <button class="quick-btn" onclick="setSetLength(1.5)">1.5 hours</button>
+                                <button class="quick-btn" onclick="setSetLength(2)">2 hours</button>
+                                <button class="quick-btn" onclick="setSetLength(3)">3 hours</button>
+                                <button class="quick-btn" onclick="setSetLength(4)">4 hours</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="durationMode" style="display: none;">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Number of Tracks:</label>
+                                <input type="number" class="form-control form-control-lg" id="trackCount" value="15"
+                                    min="1" oninput="calculateDuration()">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Average Track Length:</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control form-control-lg" id="avgTrackMin2"
+                                        value="4" min="1" oninput="calculateDuration()">
+                                    <span class="input-group-text">:</span>
+                                    <input type="number" class="form-control form-control-lg" id="avgTrackSec2"
+                                        value="30" min="0" max="59" oninput="calculateDuration()">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <h3 id="resultTitle">Tracks Needed</h3>
+                        <p class="result-value" id="mainResult">13-14 tracks</p>
+                        <div class="row text-start mt-4">
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Minimum Tracks:</strong><br>
+                                <span id="minTracks">13</span>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Recommended:</strong><br>
+                                <span id="recTracks">16-18</span>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>With Buffer:</strong><br>
+                                <span id="bufferTracks">20+</span>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Tracks/Hour:</strong><br>
+                                <span id="tracksPerHour">13.3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-info mt-4">
+                        <h5><i class="bi bi-lightbulb me-2"></i>Set Planning Tips</h5>
+                        <ul class="mb-0">
+                            <li><strong>Always prepare 30-50% more tracks</strong> than the minimum to handle crowd
+                                energy and technical issues.</li>
+                            <li><strong>Consider your mixing style:</strong> Quick cuts need more tracks; long blends
+                                need fewer.</li>
+                            <li><strong>Organize your set by energy level:</strong> Opening tracks, peak time, and
+                                closing tracks.</li>
+                            <li><strong>Include backup tracks:</strong> In case planned tracks don’t match the crowd’s
+                                vibe.</li>
+                            <li><strong>Plan transitions and mashups:</strong> Smooth mixing increases engagement and
+                                flow.</li>
+                            <li><strong>Adapt to event type:</strong> Club sets, festival sets, radio shows, or private
+                                parties require different pacing and track lengths.</li>
+                            <li><strong>Track duration variance:</strong> Account for extended mixes, radio edits, and
+                                VIP mixes when planning your set length.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-3">Genre Guide & Track Planning</h2>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Genre</th>
+                                        <th>Average Track Length</th>
+                                        <th>Tracks per Hour</th>
+                                        <th>Notes / Mixing Tips</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>House / Tech House</td>
+                                        <td>6-8 min</td>
+                                        <td>8-10</td>
+                                        <td>Long mixes, extended intros/outros, smooth transitions</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Techno</td>
+                                        <td>6-10 min</td>
+                                        <td>6-10</td>
+                                        <td>Very long tracks, deep mixing, gradual build-ups</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EDM / Big Room</td>
+                                        <td>3-5 min</td>
+                                        <td>12-20</td>
+                                        <td>Radio edits, fast-paced transitions, high energy</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hip-Hop / R&B</td>
+                                        <td>3-4 min</td>
+                                        <td>15-20</td>
+                                        <td>Short tracks, rapid transitions, popular mashups</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Drum & Bass</td>
+                                        <td>4-6 min</td>
+                                        <td>10-15</td>
+                                        <td>Fast mixing, double drops, high tempo energy</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Open Format</td>
+                                        <td>2-4 min</td>
+                                        <td>15-30</td>
+                                        <td>Quick cuts, mashups, adaptable for crowd interaction</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Trance / Progressive</td>
+                                        <td>6-9 min</td>
+                                        <td>6-10</td>
+                                        <td>Gradual build-ups, smooth transitions, atmospheric layering</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pop / Top 40 DJ Sets</td>
+                                        <td>3-5 min</td>
+                                        <td>12-20</td>
+                                        <td>Short edits, high rotation, crowd-pleasing transitions</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Latin / Reggaeton</td>
+                                        <td>3-5 min</td>
+                                        <td>12-20</td>
+                                        <td>Groove-heavy, rhythmic transitions, looped mashups</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Festival / Big Stage Sets</td>
+                                        <td>5-8 min</td>
+                                        <td>8-12</td>
+                                        <td>Extended tracks, dynamic drops, planned energy curves</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+               
+
+                <div class="tool-container mt-4">
+                    <h2 class="text-mid mb-3">DJ Set Length FAQ</h2>
+                    <div class="accordion" id="setLengthFAQ">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    How many tracks do I need for a 1-hour DJ set?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Most DJs need <strong>10–15 tracks for a 60-minute set</strong>, depending on mixing
+                                    style,
+                                    average track duration, transitions, and energy progression.
+                                </div>
+                            </div>
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    How many tracks do I need for a 2-hour set?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Calculate based on your
+                                    average track length. Include 20-50% extra for flexibility.
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="accordion-item">
+
+
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq6">
+                                    Can I use this for festival or club sets?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Yes, it’s designed for all
+                                    set types: club, festival, radio, or private events.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    How do I calculate DJ set length using average track duration?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Multiply the <strong>number of tracks</strong> by their <strong>average
+                                        length</strong>.
+                                    Example: 15 tracks × 4.5 minutes = 67.5 minutes.
+                                    This calculator does it instantly for you.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    How many tracks should I prepare for a DJ gig?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    DJs should prepare <strong>30–50% more tracks</strong> than the minimum needed.
+                                    This allows flexibility for reading the crowd, adjusting energy, and handling
+                                    unexpected shifts.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    Why do genres affect DJ set length planning?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Genres like techno and house have <strong>longer track lengths</strong>,
+                                    while hip-hop and open format have <strong>shorter tracks</strong>.
+                                    This directly changes how many songs fit into a set.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq8">
+                                    How do I handle long mixes and extended tracks?
+                                </button>
+                            </h2>
+                            <div id="faq8" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    Factor in longer track
+                                durations in the “Average Track Length” field to get accurate set length calculations.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq9">
+                                    Does this tool account for transitions?
+                                </button>
+                            </h2>
+                            <div id="faq9" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                   While it calculates total time
+                                and tracks, planning smooth transitions is recommended for accurate pacing.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq10">
+                                    Can I plan multiple genre sets?
+                                </button>
+                            </h2>
+                            <div id="faq10" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                   Yes, input average track lengths for
+                                each genre segment to plan hybrid sets or multi-style DJ sets.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="footer"></div>           <script src="/assets/bootstrap5.js" defer></script>
+ 
+ 
+            <script defer src="/assets/bootstrap5.js"></script>
+ 
+            <script src="/assets/bootstrap5.js" defer></script>
+ 
+ 
+            <script src="/assets/tools.js" defer></script>
+            <!-- tools js -->
+            <script>
+                let currentMode = 'tracks';
+
+                function setMode(mode) {
+                    currentMode = mode;
+                    document.querySelectorAll('#modeTabs .nav-link').forEach(btn => btn.classList.remove('active'));
+                    event.target.classList.add('active');
+
+                    document.getElementById('tracksMode').style.display = mode === 'tracks' ? 'block' : 'none';
+                    document.getElementById('durationMode').style.display = mode === 'duration' ? 'block' : 'none';
+
+                    if (mode === 'tracks') {
+                        calculateTracks();
+                    } else {
+                        calculateDuration();
+                    }
+                }
+
+                function setSetLength(hours) {
+                    const h = Math.floor(hours);
+                    const m = (hours - h) * 60;
+                    document.getElementById('setHours').value = h;
+                    document.getElementById('setMinutes').value = m;
+                    calculateTracks();
+                }
+
+                function calculateTracks() {
+                    const hours = parseInt(document.getElementById('setHours').value) || 0;
+                    const minutes = parseInt(document.getElementById('setMinutes').value) || 0;
+                    const trackMin = parseInt(document.getElementById('avgTrackMin').value) || 4;
+                    const trackSec = parseInt(document.getElementById('avgTrackSec').value) || 0;
+
+                    const totalSetMinutes = hours * 60 + minutes;
+                    const avgTrackMinutes = trackMin + trackSec / 60;
+                    const tracksNeeded = totalSetMinutes / avgTrackMinutes;
+                    const tracksPerHour = 60 / avgTrackMinutes;
+
+                    document.getElementById('resultTitle').textContent = 'Tracks Needed';
+                    document.getElementById('mainResult').textContent = Math.ceil(tracksNeeded) + ' tracks';
+                    document.getElementById('minTracks').textContent = Math.ceil(tracksNeeded);
+                    document.getElementById('recTracks').textContent = Math.ceil(tracksNeeded * 1.2) + '-' + Math.ceil(tracksNeeded * 1.4);
+                    document.getElementById('bufferTracks').textContent = Math.ceil(tracksNeeded * 1.5) + '+';
+                    document.getElementById('tracksPerHour').textContent = tracksPerHour.toFixed(1);
+                }
+
+                function calculateDuration() {
+                    const trackCount = parseInt(document.getElementById('trackCount').value) || 15;
+                    const trackMin = parseInt(document.getElementById('avgTrackMin2').value) || 4;
+                    const trackSec = parseInt(document.getElementById('avgTrackSec2').value) || 0;
+
+                    const avgTrackMinutes = trackMin + trackSec / 60;
+                    const totalMinutes = trackCount * avgTrackMinutes;
+                    const hours = Math.floor(totalMinutes / 60);
+                    const mins = Math.floor(totalMinutes % 60);
+                    const tracksPerHour = 60 / avgTrackMinutes;
+
+                    document.getElementById('resultTitle').textContent = 'Set Duration';
+                    document.getElementById('mainResult').textContent = hours + 'h ' + mins + 'm';
+                    document.getElementById('minTracks').textContent = trackCount;
+                    document.getElementById('recTracks').textContent = Math.ceil(trackCount * 0.7) + '-' + trackCount;
+                    document.getElementById('bufferTracks').textContent = Math.ceil(trackCount * 1.3) + '+';
+                    document.getElementById('tracksPerHour').textContent = tracksPerHour.toFixed(1);
+                }
+
+                calculateTracks();
+
+                window.addEventListener("load", () => {
+                    Promise.all([
+                        fetch("../../header.html").then(res => res.text()),
+                        fetch("../../footer.html").then(res => res.text())
+                    ])
+                        .then(([header, footer]) => {
+                            document.getElementById("header").innerHTML = header;
+                            document.getElementById("footer").innerHTML = footer;
+                        })
+                        .catch(err => console.error("Include load failed:", err));
+                });
+            </script>
+</body>
+
+</html>

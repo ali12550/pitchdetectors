@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+
+    <title>Pitch Shift Calculator – Instantly Calculate Semitones, Cents & Frequency</title>
+    <meta name="description"
+        content="Quickly find exact pitch changes with our Pitch Shift Calculator. Convert semitones, cents, octaves, or frequency ratios in seconds. Perfect for music producers, DJs, and sound designers.">
+    <meta name="keywords"
+        content="pitch shift calculator, pitch calculator, semitone calculator, cents calculator, frequency ratio calculator, audio pitch tool, music pitch shift">
+    <meta property="og:title" content="Pitch Shift Calculator – Instantly Calculate Semitones, Cents & Frequency">
+    <meta property="og:description"
+        content="Calculate precise pitch shifts instantly! Use our Pitch Shift Calculator for semitones, cents, octaves, or ratios. Ideal for musicians, DJs, and audio engineers.">
+
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+
+    <div class="container-fluid py-4">
+        <div class="row">
+            <!-- Right: Sidebar Tools Box -->
+
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <!-- Search Box -->
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/pitch-detector-tools/guitar-tuner-online/" class="active"><i
+                                            class="bi bi-music-note-beamed"></i> Guitar Tuner</a></li>
+                                <li><a href="/pitch-detector-tools/vocal-range-finder-online/"><i class="bi bi-mic"></i>
+                                        Vocal Range Finder</a></li>
+                                <li><a href="/pitch-detector-tools/frequency-to-note-online/"><i
+                                            class="bi bi-arrow-left-right"></i> Frequency to Note</a></li>
+                                <li><a href="/pitch-detector-tools/note-to-frequency-online/"><i
+                                            class="bi bi-calculator"></i> Note to Frequency</a></li>
+                                <li><a href="/pitch-detector-tools/cents-calculator-online/"><i
+                                            class="bi bi-rulers"></i> Cents Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/transpose-calculator-online/"><i
+                                            class="bi bi-arrows-expand"></i> Transpose Calculator</a></li>
+                                <li><a href="/pitch-detector-tools/harmonic-series-calculator-online/"><i
+                                            class="bi bi-bar-chart-steps"></i> Harmonic Series</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="sidebar-category">
+                            <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
+                                            class="bi bi-speedometer2"></i> BPM Calculator</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-tap-tempo/"><i class="bi bi-hand-index"></i>
+                                        BPM Tap Tempo</a></li>
+                                <li><a href="/dj-music-production-tools/bpm-to-ms/"><i class="bi bi-clock"></i> BPM to
+                                        Milliseconds</a></li>
+                                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
+                                        Key Finder</a></li>
+                                <li><a href="https://pitchdetectors.com/BPM-Pitch-Calculator.html"><i class="bi bi-sliders"></i>
+                                        Pitch Shifter</a></li>
+                                <li><a href="/dj-music-production-tools/tempo-changer/"><i
+                                            class="bi bi-fast-forward"></i> Tempo Changer</a></li>
+                            </ul>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left: Main Tool -->
+            <div class="col-lg-9 col-md-9">
+
+                <!-- BPM Pitch Calculator -->
+                <div class="tool-container py-4">
+                    <div class="tool-title">
+                        <h1>Pitch Shift Calculator – Complete Solution</h1>
+                    </div>
+
+                    <input type="number" id="semitones" class="form-control" placeholder="Semitones (e.g. +3 or -2)">
+                    <br>
+                    <input type="number" id="cents" class="form-control" placeholder="Cents (optional)">
+                    <br>
+                    <button class="btn-primary" onclick="calculatePitchShift()">Calculate Pitch Shift</button>
+
+                    <div id="result" class="result-box" style="display:none;"></div>
+                </div>
+
+                <!-- content container start -->
+                <article class="tool-container py-4">
+
+
+                    <section>
+                        <h2>What Is a Pitch Shift Calculator?</h2>
+                        <p>A Pitch Shift Calculator is a precise audio-math tool that calculates how much a sound’s
+                            pitch changes
+                            when it
+                            is shifted up or down by a defined musical interval, number of semitones, cents, or ratio.
+                            It determines
+                            the new
+                            frequency value after pitch alteration without changing the duration of the audio.</p>
+                        <p>Pitch shifting is used in music production, sound design, mixing, mastering, instrument
+                            tuning
+                            adjustments, and
+                            audio restoration. The calculator provides mathematically accurate results, eliminating
+                            estimation errors
+                            that
+                            often occur when shifting pitch by ear.</p>
+                    </section>
+
+                    <section>
+                        <h2>How Pitch Shifting Works (Scientific Explanation)</h2>
+                        <p>Pitch is directly related to frequency, measured in hertz (Hz). When pitch changes, frequency
+                            changes
+                            proportionally. Pitch shifting is calculated using exponential ratios, not linear math.</p>
+                    </section>
+
+                    <section>
+                        <h2>Core Mathematical Principle</h2>
+                        <ul>
+                            <li>Every octave = frequency × 2</li>
+                            <li>Every semitone = frequency × 2^(1/12)</li>
+                        </ul>
+                        <p>General Formula:<br>
+                            <strong>New Frequency = Original Frequency × 2^(n/12)</strong>
+                        </p>
+                        <p>Where: n = number of semitones (positive or negative)<br>
+                            12 semitones = 1 octave</p>
+                        <p>This formula ensures accuracy across all pitch values.</p>
+                    </section>
+
+                    <section>
+                        <h2>Inputs Used in a Pitch Shift Calculator</h2>
+                        <ol>
+                            <li>
+                                <strong>Original Frequency (Hz)</strong>: The starting pitch before shifting.
+                            </li>
+                            <li>
+                                <strong>Pitch Shift Amount</strong>: Can be entered as:
+                                <ul>
+                                    <li>Semitones</li>
+                                    <li>Cents (1 semitone = 100 cents)</li>
+                                    <li>Octaves</li>
+                                    <li>Frequency ratio</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <strong>Direction</strong>:
+                                <ul>
+                                    <li>Pitch up</li>
+                                    <li>Pitch down</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </section>
+
+                    <section>
+                        <h2>Output Generated by the Calculator</h2>
+                        <ul>
+                            <li>New frequency in Hz</li>
+                            <li>Exact pitch change ratio</li>
+                            <li>Decimal precision suitable for audio processing</li>
+                            <li>Mathematically lossless result</li>
+                            <li>No audio artifacts are introduced at the calculation stage.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Semitone-Based Pitch Shifting</h2>
+                        <p>Semitones are the most common unit in Western music.</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Semitones</th>
+                                    <th>Frequency Ratio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>+12</td>
+                                    <td>×2 (1 octave up)</td>
+                                </tr>
+                                <tr>
+                                    <td>+7</td>
+                                    <td>×1.498</td>
+                                </tr>
+                                <tr>
+                                    <td>+1</td>
+                                    <td>×1.059463</td>
+                                </tr>
+                                <tr>
+                                    <td>-1</td>
+                                    <td>×0.943874</td>
+                                </tr>
+                                <tr>
+                                    <td>-12</td>
+                                    <td>×0.5</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Semitone calculations maintain equal temperament accuracy.</p>
+                    </section>
+
+                    <section>
+                        <h2>Cents-Based Pitch Shifting</h2>
+                        <p>Cents allow micro-pitch adjustments, useful for:</p>
+                        <ul>
+                            <li>Vocal correction</li>
+                            <li>Instrument fine-tuning</li>
+                            <li>Detuning effects</li>
+                            <li>Historical tuning recreation</li>
+                        </ul>
+                        <p>Formula:<br>
+                            <strong>New Frequency = Original Frequency × 2^(cents/1200)</strong>
+                        </p>
+                        <p>Where: 1200 cents = 1 octave</p>
+                        <p>This method enables extremely precise pitch control.</p>
+                    </section>
+
+                    <section>
+                        <h2>Octave Pitch Shifting</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Shift</th>
+                                    <th>Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>+1 octave</td>
+                                    <td>Frequency × 2</td>
+                                </tr>
+                                <tr>
+                                    <td>-1 octave</td>
+                                    <td>Frequency ÷ 2</td>
+                                </tr>
+                                <tr>
+                                    <td>+2 octaves</td>
+                                    <td>Frequency × 4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p>Octave shifting preserves harmonic relationships perfectly.</p>
+                    </section>
+
+                    <section>
+                        <h2>Frequency Ratio Pitch Shifting</h2>
+                        <p>Some audio systems use ratio-based shifting.</p>
+                        <ul>
+                            <li>Ratio 1.25 = pitch increase</li>
+                            <li>Ratio 0.8 = pitch decrease</li>
+                        </ul>
+                        <p>Formula:<br>
+                            <strong>New Frequency = Original Frequency × Ratio</strong>
+                        </p>
+                        <p>This method is common in DSP engines and synthesis.</p>
+                    </section>
+
+                    <section>
+                        <h2>Common Practical Use Cases</h2>
+                        <h3>Music Production</h3>
+                        <ul>
+                            <li>Matching pitch across samples</li>
+                            <li>Creating harmonies</li>
+                            <li>Correcting off-key recordings</li>
+                        </ul>
+                        <h3>Sound Design</h3>
+                        <ul>
+                            <li>Creature voices</li>
+                            <li>Sci-fi effects</li>
+                            <li>Environmental pitch manipulation</li>
+                        </ul>
+                        <h3>Audio Engineering</h3>
+                        <ul>
+                            <li>Film ADR alignment</li>
+                            <li>Foley pitch matching</li>
+                            <li>Soundtrack synchronization</li>
+                        </ul>
+                        <h3>Education & Research</h3>
+                        <ul>
+                            <li>Acoustic analysis</li>
+                            <li>Pitch perception studies</li>
+                            <li>Music theory applications</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Pitch Shift vs Time Stretch (Critical Distinction)</h2>
+                        <p>A Pitch Shift Calculator:</p>
+                        <ul>
+                            <li>Changes frequency only</li>
+                            <li>Keeps time constant</li>
+                        </ul>
+                        <p>Time stretching:</p>
+                        <ul>
+                            <li>Changes duration</li>
+                            <li>May preserve pitch</li>
+                        </ul>
+                        <p>They are mathematically and technically separate processes.</p>
+                    </section>
+
+                    <section>
+                        <h2>Accuracy and Limitations</h2>
+                        <h3>What the Calculator Does Perfectly</h3>
+                        <ul>
+                            <li>Mathematical pitch conversion</li>
+                            <li>Interval precision</li>
+                            <li>Ratio correctness</li>
+                        </ul>
+                        <h3>What It Does NOT Do</h3>
+                        <ul>
+                            <li>Audio playback</li>
+                            <li>Artifact prevention</li>
+                            <li>Formant correction</li>
+                        </ul>
+                        <p>Those belong to audio processing engines, not calculators.</p>
+                    </section>
+
+                    <section>
+                        <h2>Why a Pitch Shift Calculator Is Essential</h2>
+                        <p>Manual pitch math is error-prone, especially with:</p>
+                        <ul>
+                            <li>Microtonal values</li>
+                            <li>Negative shifts</li>
+                            <li>Large octave jumps</li>
+                        </ul>
+                        <p>A calculator ensures:</p>
+                        <ul>
+                            <li>Consistency</li>
+                            <li>Scientific accuracy</li>
+                            <li>Repeatable results</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Common Mistakes Avoided by Using a Calculator</h2>
+                        <ul>
+                            <li>Linear frequency addition (incorrect)</li>
+                            <li>Incorrect octave scaling</li>
+                            <li>Rounding errors</li>
+                            <li>Misinterpreting cents vs semitones</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Practical Questions Related to Pitch Shifting</h2>
+                        <h3>How to Pitch Shift Vocals in Ableton Live</h3>
+                        <p>In Ableton Live, vocal pitch shifting is typically done using Clip Transpose, Complex /
+                            Complex Pro warp
+                            modes,
+                            or dedicated devices such as Pitch Shifter and Frequency Shifter. For clean vocal results,
+                            small semitone
+                            adjustments combined with proper warp mode selection are essential. Large shifts require
+                            formant-aware
+                            processing to avoid unnatural tone changes. This calculator helps determine the exact pitch
+                            shift amount
+                            before
+                            applying it inside Ableton, reducing trial-and-error adjustments.</p>
+
+                        <h3>What Is the Best Pitch Correction Software?</h3>
+                        <p>There is no single “best” solution for all cases. Professional pitch correction software
+                            differs based on
+                            use
+                            case: Studio vocal correction, Live performance correction, Transparent vs creative pitch
+                            effects. A Pitch
+                            Shift
+                            Calculator complements pitch correction software by providing accurate pitch targets rather
+                            than
+                            subjective
+                            estimation.</p>
+
+                        <h3>How Does Pitch Shifting Affect Audio Quality?</h3>
+                        <p>Pitch shifting can affect audio quality depending on: Amount of pitch change, Algorithm used,
+                            Source
+                            material
+                            complexity. Small pitch shifts preserve clarity, while extreme shifts can introduce: Phase
+                            distortion,
+                            Transient
+                            smearing, Digital artifacts. The calculator itself does not degrade audio—quality changes
+                            occur during
+                            processing, not calculation.</p>
+
+                        <h3>How to Avoid Artifacts When Pitch Shifting</h3>
+                        <p>To minimize artifacts: Avoid extreme pitch jumps when possible, Use high-quality algorithms
+                            designed for
+                            vocals
+                            or instruments, Maintain original sample rate, Apply pitch shifting before heavy compression
+                            or
+                            saturation.
+                            Accurate pitch calculation ensures the smallest necessary shift, which directly reduces
+                            artifact risk.</p>
+
+                        <h3>What Are Common Pitch Shifting Mistakes?</h3>
+                        <p>Common mistakes include: Treating pitch as a linear frequency change, Over-shifting instead
+                            of
+                            transposing
+                            correctly, Ignoring cents-level adjustments, Using wrong algorithms for vocals vs
+                            instruments, Pitch
+                            shifting
+                            after time-stretching without recalculation. Using a calculator prevents mathematical errors
+                            before
+                            processing
+                            begins.</p>
+                    </section>
+                </article>
+
+                <!-- =========================
+     💡 FAQs — Pitch shift Explained
+     ========================= -->
+                <div class="tool-container py-4">
+                    <div class="accordion" id="pitchShiftFAQ">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq1">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                                    Does pitch shifting change audio length?
+                                </button>
+                            </h2>
+                            <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    No. Pitch shifting affects frequency only, not duration.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq2">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                    Is pitch shifting linear?
+                                </button>
+                            </h2>
+                            <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    No. Pitch perception follows an exponential frequency relationship.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq3">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                    Can pitch be shifted by fractions of a semitone?
+                                </button>
+                            </h2>
+                            <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Yes. Cents allow extremely fine pitch adjustments.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq4">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                    Does pitch shifting affect harmonics?
+                                </button>
+                            </h2>
+                            <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Yes. All harmonics shift proportionally with the fundamental frequency.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq5">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                    Is the calculation tuning-system dependent?
+                                </button>
+                            </h2>
+                            <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    No. The math is universal; tuning systems affect note labeling, not frequency
+                                    ratios.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq6">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                    What Is Pitch Shifting for MP3 Files?
+                                </button>
+                            </h2>
+                            <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Pitch shifting MP3 files involves decoding, processing, and re-encoding audio. Large
+                                    pitch changes may
+                                    reduce quality due to compression artifacts, making accurate pitch calculation
+                                    especially important.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq7">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                    What Is Pitch Shifting for Karaoke?
+                                </button>
+                            </h2>
+                            <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="faq7"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Pitch shifting for karaoke is used to adapt song keys to vocal ranges. Calculating
+                                    the exact pitch
+                                    shift
+                                    ensures the song remains musically correct while fitting the singer’s voice.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq8">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                    What Is Pitch Bend Calculator Used For?
+                                </button>
+                            </h2>
+                            <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="faq8"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    A pitch bend calculator converts pitch wheel or MIDI pitch bend values into precise
+                                    musical intervals
+                                    or
+                                    frequency changes. This is useful for synthesizers, keyboards, and MIDI-controlled
+                                    pitch shifters
+                                    where
+                                    pitch movement must remain musically accurate.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq9">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse9" aria-expanded="false" aria-controls="collapse9">
+                                    What Is the Pitch–Time Formula?
+                                </button>
+                            </h2>
+                            <div id="collapse9" class="accordion-collapse collapse" aria-labelledby="faq9"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    The pitch–time formula explains how pitch changes relate to frequency ratios without
+                                    affecting
+                                    duration. The
+                                    core relationship is exponential:
+                                    Pitch increases multiply frequency
+                                    Pitch decreases divide frequency
+                                    Time remains constant unless time-stretching is applied separately.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq10">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse10" aria-expanded="false" aria-controls="collapse10">
+                                    What Is a BPM Pitch Shift Calculator?
+                                </button>
+                            </h2>
+                            <div id="collapse10" class="accordion-collapse collapse" aria-labelledby="faq10"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    A BPM pitch shift calculator is used when audio pitch is changed as a result of
+                                    tempo adjustments,
+                                    especially in DJing or legacy samplers. Changing BPM without time-stretching alters
+                                    pitch, and this
+                                    calculator helps determine the exact pitch difference created by tempo changes.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq11">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse11" aria-expanded="false" aria-controls="collapse11">
+                                    How Does a Pitch Shift Tempo Calculator Differ?
+                                </button>
+                            </h2>
+                            <div id="collapse11" class="accordion-collapse collapse" aria-labelledby="faq11"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    A pitch shift tempo calculator focuses on how pitch changes when tempo is modified.
+                                    It calculates
+                                    pitch
+                                    movement caused by speeding up or slowing down audio, which is especially relevant
+                                    for beat-matching
+                                    and
+                                    remixing.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq12">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                    What Is a Pitch Shift Key Calculator?
+                                </button>
+                            </h2>
+                            <div id="collapse12" class="accordion-collapse collapse" aria-labelledby="faq12"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    A pitch shift key calculator determines how far audio must be shifted to move from
+                                    one musical key to
+                                    another. It calculates the required semitone or cent change before applying the
+                                    shift in software.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq13">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                    What Is Pitch Shift in Cents?
+                                </button>
+                            </h2>
+                            <div id="collapse13" class="accordion-collapse collapse" aria-labelledby="faq13"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Pitch shift in cents refers to micro-adjustments smaller than a semitone. One
+                                    semitone equals 100
+                                    cents.
+                                    Cents-based shifting is used for fine tuning, vocal correction, and subtle detuning
+                                    effects.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq14">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                    What Is a Pitch Calculator for Songs?
+                                </button>
+                            </h2>
+                            <div id="collapse14" class="accordion-collapse collapse" aria-labelledby="faq14"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    A pitch calculator for songs determines how much an entire track needs to be shifted
+                                    to match another
+                                    key,
+                                    tuning reference, or performance requirement. This is common in karaoke, remixing,
+                                    and live
+                                    performance
+                                    preparation.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq15">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                                    What Is Pitch Shift Software?
+                                </button>
+                            </h2>
+                            <div id="collapse15" class="accordion-collapse collapse" aria-labelledby="faq15"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Pitch shift software applies calculated pitch changes to audio files or live
+                                    signals. The calculator
+                                    provides the exact values, while the software performs the signal processing.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq16">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse16" aria-expanded="false" aria-controls="collapse16">
+                                    Is Pitch Shifting Available Online for Free?
+                                </button>
+                            </h2>
+                            <div id="collapse16" class="accordion-collapse collapse" aria-labelledby="faq16"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Some platforms offer free online pitch shift tools with limitations. Regardless of
+                                    the tool used,
+                                    accurate
+                                    pitch calculations are essential to avoid unintended tuning errors.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq17">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse17" aria-expanded="false" aria-controls="collapse17">
+                                    How Does Pitch Shifting Apply to Keyboards and Synthesizers?
+                                </button>
+                            </h2>
+                            <div id="collapse17" class="accordion-collapse collapse" aria-labelledby="faq17"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Keyboards and synthesizers use pitch shifting for transposition, pitch bends, and
+                                    modulation.
+                                    Calculators
+                                    help convert musical intent into precise frequency or semitone values for hardware
+                                    and software
+                                    instruments.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq18">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse18" aria-expanded="false" aria-controls="collapse18">
+                                    Are There Dedicated Pitch Shifter Plugins?
+                                </button>
+                            </h2>
+                            <div id="collapse18" class="accordion-collapse collapse" aria-labelledby="faq18"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    Yes. Many plugins focus exclusively on pitch shifting. Examples include modular
+                                    pitch shifters,
+                                    creative
+                                    effect processors, and real-time pitch tools. Calculators are used alongside these
+                                    plugins for
+                                    accuracy.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="faq19">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse19" aria-expanded="false" aria-controls="collapse19">
+                                    Where Can I Apply Calculated Pitch Shifts Using Online or Software Tools?
+                                </button>
+                            </h2>
+                            <div id="collapse19" class="accordion-collapse collapse" aria-labelledby="faq19"
+                                data-bs-parent="#pitchShiftFAQ">
+                                <div class="accordion-body">
+                                    You can apply calculated pitch values using trusted pitch-shifting tools such as:
+                                    Digital audio workstations (Ableton Live, Cakewalk)
+                                    Dedicated pitch shift plugins
+                                    Online pitch shift platforms
+                                    Karaoke and practice software
+                                    The calculator determines the correct pitch values, while these tools execute the
+                                    actual pitch shift.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <!-- tool js -->
+    <script defer>
+        function calculatePitchShift() {
+            const semitones = parseFloat(document.getElementById('semitones').value) || 0;
+            const cents = parseFloat(document.getElementById('cents').value) || 0;
+
+            const totalSemitones = semitones + (cents / 100);
+            const ratio = Math.pow(2, totalSemitones / 12);
+            const percent = (ratio - 1) * 100;
+
+            document.getElementById('result').style.display = "block";
+            document.getElementById('result').innerHTML = `
+    <strong>Pitch Shift Result</strong><br><br>
+    Total Shift: <b>${totalSemitones.toFixed(2)} semitones</b><br>
+    Pitch Ratio: <b>${ratio.toFixed(5)}</b><br>
+    Playback Speed Change: <b>${percent.toFixed(2)}%</b>
+  `;
+        }
+    </script>
+
+    <div id="footer"></div>
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+
+
+    <!-- incluce js -->
+    <script defer>
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+</body>
+
+</html>
