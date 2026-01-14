@@ -3,25 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <title>Mix Compatibility Checker | Key & BPM Mixing Tool | pitchdetectors</title>
- 
- 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mix Compatibility Checker | Key & BPM Mixing Tool | pitch detectors</title>
- 
-    <title>Mix Compatibility Checker | Key & BPM Mixing Tool | pitchdetectors</title>
- 
- 
+
     <meta name="description"
         content="Free mix compatibility checker. Check if two tracks are compatible for DJ mixing based on key (Camelot) and BPM analysis.">
     <meta name="keywords"
-        content="mix compatibility, harmonic mixing, key matching, BPM matching, DJ mixing, Camelot wheel">   <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/mix-compatibility-checker/">
- 
- 
+        content="mix compatibility, harmonic mixing, key matching, BPM matching, DJ mixing, Camelot wheel">
     <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/mix-compatibility-checker/">
- 
-    <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/mix-compatibility-checker/">
- 
- 
 
     <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
 
@@ -52,7 +41,8 @@
                     <div class="sidebar-search mb-4">
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-search"></i></span>
-                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..." onkeyup="searchTools()">
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
                         </div>
                     </div>
 
@@ -60,13 +50,15 @@
                         <div class="sidebar-category active">
                             <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
                             <ul class="sidebar-links">
-                                <li><a href="/dj-music-production-tools/mix-compatibility-checker/"
-                                        class="active"><i class="bi bi-check2-circle"></i> Mix Compatibility</a></li>
-                                <li><a href="/dj-music-production-tools/dj-transition-calculator/"><i class="bi bi-shuffle"></i>
+                                <li><a href="/dj-music-production-tools/mix-compatibility-checker/" class="active"><i
+                                            class="bi bi-check2-circle"></i> Mix Compatibility</a></li>
+                                <li><a href="/dj-music-production-tools/dj-transition-calculator/"><i
+                                            class="bi bi-shuffle"></i>
                                         DJ Transition</a></li>
                                 <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
                                         Key Finder</a></li>
-                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i class="bi bi-speedometer2"></i>
+                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
+                                            class="bi bi-speedometer2"></i>
                                         BPM Calculator</a></li>
                             </ul>
                         </div>
@@ -96,7 +88,8 @@
                                 <h5 class="text-teal mb-3"><i class="bi bi-music-note me-2"></i>Track A</h5>
                                 <div class="mb-3">
                                     <label class="form-label">BPM:</label>
-                                    <input type="number" class="form-control" id="bpmA" value="128" min="60" max="200" oninput="checkCompatibility()">
+                                    <input type="number" class="form-control" id="bpmA" value="128" min="60" max="200"
+                                        oninput="checkCompatibility()">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Key (Camelot):</label>
@@ -134,7 +127,8 @@
                                 <h5 class="text-mid mb-3"><i class="bi bi-music-note-beamed me-2"></i>Track B</h5>
                                 <div class="mb-3">
                                     <label class="form-label">BPM:</label>
-                                    <input type="number" class="form-control" id="bpmB" value="126" min="60" max="200" oninput="checkCompatibility()">
+                                    <input type="number" class="form-control" id="bpmB" value="126" min="60" max="200"
+                                        oninput="checkCompatibility()">
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Key (Camelot):</label>
@@ -211,16 +205,11 @@
         </div>
     </div>
 
-    <div id="footer"></div>   <script src="/assets/bootstrap5.js" defer></script>
- 
- 
-    <script defer src="/assets/bootstrap5.js"></script>
- 
+    <div id="footer"></div>
     <script src="/assets/bootstrap5.js" defer></script>
- 
- 
+    <script src="/assets/bootstrap5.js" defer></script>
     <script src="/assets/tools.js" defer></script>
-
+    <!-- tool js -->
     <script defer>
         function checkCompatibility() {
             const bpmA = parseInt(document.getElementById('bpmA').value) || 128;
@@ -349,11 +338,11 @@
                 fetch("../../header.html").then(res => res.text()),
                 fetch("../../footer.html").then(res => res.text())
             ])
-            .then(([header, footer]) => {
-                document.getElementById("header").innerHTML = header;
-                document.getElementById("footer").innerHTML = footer;
-            })
-            .catch(err => console.error("Include load failed:", err));
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
         });
     </script>
 </body>
