@@ -4,15 +4,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
- 
- 
+
+
   <title>Song Key & BPM Finder | Pitch Detectors</title>
   <meta name="description"
     content="Upload audio files and detect song key, alternative key, BPM, energy, danceability, and happiness." />
   <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
 
- 
- 
+
+
   <!-- Primary SEO Meta -->
   <title>Song Key & BPM Finder – Detect Key, BPM & Energy Instantly</title>
   <meta name="description"
@@ -24,15 +24,16 @@
 
   <link rel="canonical" href="https://pitchdetectors.com/dj-music-production-tools/song-key-finder/" />
 
- 
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="/assets/bootstrap5.css" rel="stylesheet">
   <link href="/assets/style.css" rel="stylesheet">
-  <link href="/assets/tools.css" rel="stylesheet"> <meta name="author" content="Pitch Detectors">
- 
+  <link href="/assets/tools.css" rel="stylesheet">
+  <meta name="author" content="Pitch Detectors">
 
- 
- 
+
+
+
 </head>
 
 <body>
@@ -54,38 +55,31 @@
           <div class="sidebar-categories">
             <div class="sidebar-category active">
               <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
-            <ul class="sidebar-links">
-                                <li><a href="/dj-music-production-tools/bpm-calculator/"><i
-                                            class="bi bi-speedometer2"></i> BPM Calculator</a></li>
-                                <li><a href="/dj-music-production-tools/bpm-to-speed/"><i
-                                            class="bi bi-speedometer2"></i> BPM to Speed Converter</a></li>
-                                <li><a href="/dj-music-production-tools/bpm-pitch-calculator/"><i
-                                            class="bi bi-speedometer2"></i> BPM → Pitch (Semitone) Calculator</a></li>
-                                <li><a href="/dj-music-production-tools/bpm-tap-tempo/"><i class="bi bi-hand-index"></i>
-                                        BPM Tap Tempo</a></li>
-                                <li><a href="/dj-music-production-tools/bpm-to-ms/"><i class="bi bi-clock"></i> BPM to
-                                        Milliseconds</a></li>
-                                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
-                                        Key Finder</a></li>
-                            </ul>
+              <ul class="sidebar-links">
+                <li><a href="/dj-music-production-tools/bpm-calculator/"><i class="bi bi-speedometer2"></i> BPM
+                    Calculator</a></li>
+                <li><a href="/dj-music-production-tools/bpm-to-speed/"><i class="bi bi-speedometer2"></i> BPM to Speed
+                    Converter</a></li>
+                <li><a href="/dj-music-production-tools/bpm-pitch-calculator/"><i class="bi bi-speedometer2"></i> BPM →
+                    Pitch (Semitone) Calculator</a></li>
+                <li><a href="/dj-music-production-tools/bpm-tap-tempo/"><i class="bi bi-hand-index"></i>
+                    BPM Tap Tempo</a></li>
+                <li><a href="/dj-music-production-tools/bpm-to-ms/"><i class="bi bi-clock"></i> BPM to
+                    Milliseconds</a></li>
+                <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
+                    Key Finder</a></li>
+              </ul>
             </div>
 
             <div class="sidebar-category">
               <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
-              <ul class="sidebar-links">               <li><a href="/pitch-detector-tools/guitar-tuner-online/"><i class="bi bi-music-note-beamed"></i>
-                    Guitar Tuner</a></li>
-                <li><a href="/pitch-detector-tools/frequency-to-note "><i class="bi bi-arrow-left-right"></i>
- 
- 
+              <ul class="sidebar-links">
+           
                 <li><a href="/pitch-detector-tools/guitar-tuner-online/"><i class="bi bi-music-note-beamed"></i>
                     Guitar Tuner</a></li>
                 <li><a href="/pitch-detector-tools/frequency-to-note-online/"><i class="bi bi-arrow-left-right"></i>
- 
-                <li><a href="/pitch-detector-tools/guitar-tuner-online/"><i class="bi bi-music-note-beamed"></i>
-                    Guitar Tuner</a></li>
-                <li><a href="/pitch-detector-tools/frequency-to-note "><i class="bi bi-arrow-left-right"></i>
- 
- 
+
+
                     Frequency to Note</a></li>
               </ul>
             </div>
@@ -94,300 +88,306 @@
         </div>
       </div>
 
-      <!-- Main content -->     <div class="col-lg-9 col-md-9">
- 
- 
-      <div class="col-lg-7 col-md-8">
- 
+      <!-- Main content -->
       <div class="col-lg-9 col-md-9">
- 
- 
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/dj-music-production-tools/">DJ & Music Production Tools</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Song Key & BPM Finder</li>
-          </ol>
-        </nav>
 
-        <div class="tool-container">
-          <div class="tool-title">
-            <h1><i class="bi bi-key me-2"></i>Song Key & BPM Finder</h1>
-            <p>Upload your audio files and instantly detect the <strong>Key</strong>, <strong>Alternative Key</strong>,
-              <strong>BPM</strong>, <strong>Energy</strong>, <strong>Danceability</strong>, and
-              <strong>Happiness</strong> of each track.
-            </p>
-          </div>
 
-          <!-- File Upload -->
-          <div class="mb-4">
-            <label class="form-label fw-bold">Upload Audio Files</label>
-            <input type="file" id="audioFiles" class="form-control" multiple accept="audio/*" />
-          </div>
-          <div class="mb-3">
-            <button class="btn btn-primary" onclick="analyzeFiles()"><i class="bi bi-play-circle"></i> Analyze
-              Files</button>
-          </div>
+        <div class="col-lg-7 col-md-8">
 
-          <!-- Results Table -->
-          <div class="result-box mt-3">
-            <table class="table table-bordered table-hover text-center">
-              <thead class="table-light">
-                <tr>
-                  <th>File Name</th>
-                  <th>Key</th>
-                  <th>Alt Key</th>
-                  <th>BPM</th>
-                  <th>Energy</th>
-                  <th>Danceability</th>
-                  <th>Happiness</th>
-                </tr>
-              </thead>
-              <tbody id="resultsTable">
-                <!-- JS populates -->
-              </tbody>
-            </table>
-          </div>
+          <div class="col-lg-9 col-md-9">
 
-          <!-- Content Area -->
-          <div class="content_area container py-4">
 
-            <!-- How It Works -->
-            <h2 style="color:#003161;" class="fw-semibold mb-2">How It Works</h2>
-            <p>This tool leverages advanced <strong>audio analysis algorithms</strong> to determine the <strong>musical
-                key</strong> and
-              <strong>BPM</strong> of your uploaded tracks. Additional metrics such as <strong>Energy</strong>,
-              <strong>Danceability</strong>,
-              and <strong>Happiness</strong> are derived from waveform and spectral features. This provides a full
-              musical profile for DJs, producers,
-              and music enthusiasts.
-            </p>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item"><a href="/dj-music-production-tools/">DJ & Music Production Tools</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Song Key & BPM Finder</li>
+              </ol>
+            </nav>
 
-            <!-- Why Use This Tool -->
-            <h2 style="color:#003161;" class="fw-semibold mt-4 mb-2">Why Use a Song Key & BPM Finder?</h2>
-            <p>Using this tool ensures accurate track analysis for:</p>
-            <ul>
-              <li><strong>Harmonic Mixing:</strong> Match songs in compatible keys for seamless DJ sets (<a
-                  href="/dj-music-production-tools/bpm-calculator/">BPM Calculator</a>).</li>
-              <li><strong>Remixes & Mashups:</strong> Identify song key and BPM for smooth transitions.</li>
-              <li><strong>Music Production:</strong> Plan arrangements, loops, and samples in correct tonal keys.</li>
-              <li><strong>Live Performances:</strong> Quickly determine BPM and key for DJ sets or live shows.</li>
-              <li><strong>Audio Analysis:</strong> Study track energy, danceability, and happiness for playlist
-                curation.</li>
-            </ul>
+            <div class="tool-container">
+              <div class="tool-title">
+                <h1><i class="bi bi-key me-2"></i>Song Key & BPM Finder</h1>
+                <p>Upload your audio files and instantly detect the <strong>Key</strong>, <strong>Alternative
+                    Key</strong>,
+                  <strong>BPM</strong>, <strong>Energy</strong>, <strong>Danceability</strong>, and
+                  <strong>Happiness</strong> of each track.
+                </p>
+              </div>
 
-            <!-- Practical Use Cases -->
-            <h2 style="color:#003161;" class="fw-semibold mt-4 mb-2">Practical Use Cases</h2>
-            <ul>
-              <li>Finding the key of your favorite tracks for harmonic mixing.</li>
-              <li>Preparing mashups by matching BPM and key.</li>
-              <li>Planning DJ sets using key and BPM information.</li>
-              <li>Checking key compatibility when remixing tracks.</li>
-              <li>Music analysis for energy, mood, and danceability.</li>
-              <li>Exporting data for <a href="/dj-music-production-tools/bpm-calculator/">BPM analysis</a> or DAW
-                projects.</li>
-            </ul>
+              <!-- File Upload -->
+              <div class="mb-4">
+                <label class="form-label fw-bold">Upload Audio Files</label>
+                <input type="file" id="audioFiles" class="form-control" multiple accept="audio/*" />
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-primary" onclick="analyzeFiles()"><i class="bi bi-play-circle"></i> Analyze
+                  Files</button>
+              </div>
 
-            <!-- Examples & Quick Reference -->
-            <h2 style="color:#003161;" class="fw-semibold mt-4 mb-2">Examples & Quick Reference</h2>
-            <p>Here’s how song key and BPM results typically look:</p>
-            <table class="table table-bordered text-center">
-              <thead class="table-light">
-                <tr>
-                  <th>File Name</th>
-                  <th>Key</th>
-                  <th>Alt Key</th>
-                  <th>BPM</th>
-                  <th>Energy</th>
-                  <th>Danceability</th>
-                  <th>Happiness</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Track1.mp3</td>
-                  <td>C Major</td>
-                  <td>A Minor</td>
-                  <td>128</td>
-                  <td>0.85</td>
-                  <td>0.92</td>
-                  <td>0.78</td>
-                </tr>
-                <tr>
-                  <td>Track2.mp3</td>
-                  <td>F# Minor</td>
-                  <td>D Major</td>
-                  <td>100</td>
-                  <td>0.65</td>
-                  <td>0.73</td>
-                  <td>0.55</td>
-                </tr>
-              </tbody>
-            </table>
+              <!-- Results Table -->
+              <div class="result-box mt-3">
+                <table class="table table-bordered table-hover text-center">
+                  <thead class="table-light">
+                    <tr>
+                      <th>File Name</th>
+                      <th>Key</th>
+                      <th>Alt Key</th>
+                      <th>BPM</th>
+                      <th>Energy</th>
+                      <th>Danceability</th>
+                      <th>Happiness</th>
+                    </tr>
+                  </thead>
+                  <tbody id="resultsTable">
+                    <!-- JS populates -->
+                  </tbody>
+                </table>
+              </div>
 
-            <!-- Genre & Key Reference -->
-            <h2 style="color:#003161;" class="fw-semibold mt-4 mb-2">BPM & Key Reference by Genre</h2>
-            <div class="table-responsive">
-              <table class="table table-sm">
-                <thead>
-                  <tr>
-                    <th>Genre</th>
-                    <th>Typical BPM</th>
-                    <th>Common Key</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Hip-Hop / R&B</td>
-                    <td>60-100</td>
-                    <td>A Minor, C Major</td>
-                  </tr>
-                  <tr>
-                    <td>Pop</td>
-                    <td>100-130</td>
-                    <td>C Major, G Major</td>
-                  </tr>
-                  <tr>
-                    <td>House</td>
-                    <td>118-135</td>
-                    <td>A Minor, F# Minor</td>
-                  </tr>
-                  <tr>
-                    <td>Techno</td>
-                    <td>120-150</td>
-                    <td>C Minor, G Minor</td>
-                  </tr>
-                  <tr>
-                    <td>Trance</td>
-                    <td>125-150</td>
-                    <td>B Minor, E Minor</td>
-                  </tr>
-                  <tr>
-                    <td>Dubstep</td>
-                    <td>135-145</td>
-                    <td>D Minor, F Minor</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              <!-- Content Area -->
+              <div class="content_area container py-4">
 
-            <!-- FAQ Section -->
-            <div class="mt-4">
-              <h2 class="text-mid mb-3"><i class="bi bi-question-circle me-2"></i>Frequently Asked Questions</h2>
-              <div class="accordion" id="faqAccordion">
+                <!-- How It Works -->
+                <h2 style="color:#003161;" class="fw-semibold mb-2">How It Works</h2>
+                <p>This tool leverages advanced <strong>audio analysis algorithms</strong> to determine the
+                  <strong>musical
+                    key</strong> and
+                  <strong>BPM</strong> of your uploaded tracks. Additional metrics such as <strong>Energy</strong>,
+                  <strong>Danceability</strong>,
+                  and <strong>Happiness</strong> are derived from waveform and spectral features. This provides a full
+                  musical profile for DJs, producers,
+                  and music enthusiasts.
+                </p>
 
-                <div class="accordion-item">
-                  <h3 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                      What is a Song Key Finder?
-                    </button>
-                  </h3>
-                  <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      A Song Key Finder detects the <strong>musical key</strong> of any audio track, showing its main
-                      and alternative keys for mixing and remixing.
+                <!-- Why Use This Tool -->
+                <h2 style="color:#003161;" class="fw-semibold mt-4 mb-2">Why Use a Song Key & BPM Finder?</h2>
+                <p>Using this tool ensures accurate track analysis for:</p>
+                <ul>
+                  <li><strong>Harmonic Mixing:</strong> Match songs in compatible keys for seamless DJ sets (<a
+                      href="/dj-music-production-tools/bpm-calculator/">BPM Calculator</a>).</li>
+                  <li><strong>Remixes & Mashups:</strong> Identify song key and BPM for smooth transitions.</li>
+                  <li><strong>Music Production:</strong> Plan arrangements, loops, and samples in correct tonal keys.
+                  </li>
+                  <li><strong>Live Performances:</strong> Quickly determine BPM and key for DJ sets or live shows.</li>
+                  <li><strong>Audio Analysis:</strong> Study track energy, danceability, and happiness for playlist
+                    curation.</li>
+                </ul>
+
+                <!-- Practical Use Cases -->
+                <h2 style="color:#003161;" class="fw-semibold mt-4 mb-2">Practical Use Cases</h2>
+                <ul>
+                  <li>Finding the key of your favorite tracks for harmonic mixing.</li>
+                  <li>Preparing mashups by matching BPM and key.</li>
+                  <li>Planning DJ sets using key and BPM information.</li>
+                  <li>Checking key compatibility when remixing tracks.</li>
+                  <li>Music analysis for energy, mood, and danceability.</li>
+                  <li>Exporting data for <a href="/dj-music-production-tools/bpm-calculator/">BPM analysis</a> or DAW
+                    projects.</li>
+                </ul>
+
+                <!-- Examples & Quick Reference -->
+                <h2 style="color:#003161;" class="fw-semibold mt-4 mb-2">Examples & Quick Reference</h2>
+                <p>Here’s how song key and BPM results typically look:</p>
+                <table class="table table-bordered text-center">
+                  <thead class="table-light">
+                    <tr>
+                      <th>File Name</th>
+                      <th>Key</th>
+                      <th>Alt Key</th>
+                      <th>BPM</th>
+                      <th>Energy</th>
+                      <th>Danceability</th>
+                      <th>Happiness</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Track1.mp3</td>
+                      <td>C Major</td>
+                      <td>A Minor</td>
+                      <td>128</td>
+                      <td>0.85</td>
+                      <td>0.92</td>
+                      <td>0.78</td>
+                    </tr>
+                    <tr>
+                      <td>Track2.mp3</td>
+                      <td>F# Minor</td>
+                      <td>D Major</td>
+                      <td>100</td>
+                      <td>0.65</td>
+                      <td>0.73</td>
+                      <td>0.55</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <!-- Genre & Key Reference -->
+                <h2 style="color:#003161;" class="fw-semibold mt-4 mb-2">BPM & Key Reference by Genre</h2>
+                <div class="table-responsive">
+                  <table class="table table-sm">
+                    <thead>
+                      <tr>
+                        <th>Genre</th>
+                        <th>Typical BPM</th>
+                        <th>Common Key</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Hip-Hop / R&B</td>
+                        <td>60-100</td>
+                        <td>A Minor, C Major</td>
+                      </tr>
+                      <tr>
+                        <td>Pop</td>
+                        <td>100-130</td>
+                        <td>C Major, G Major</td>
+                      </tr>
+                      <tr>
+                        <td>House</td>
+                        <td>118-135</td>
+                        <td>A Minor, F# Minor</td>
+                      </tr>
+                      <tr>
+                        <td>Techno</td>
+                        <td>120-150</td>
+                        <td>C Minor, G Minor</td>
+                      </tr>
+                      <tr>
+                        <td>Trance</td>
+                        <td>125-150</td>
+                        <td>B Minor, E Minor</td>
+                      </tr>
+                      <tr>
+                        <td>Dubstep</td>
+                        <td>135-145</td>
+                        <td>D Minor, F Minor</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="mt-4">
+                  <h2 class="text-mid mb-3"><i class="bi bi-question-circle me-2"></i>Frequently Asked Questions</h2>
+                  <div class="accordion" id="faqAccordion">
+
+                    <div class="accordion-item">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                          What is a Song Key Finder?
+                        </button>
+                      </h3>
+                      <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                          A Song Key Finder detects the <strong>musical key</strong> of any audio track, showing its
+                          main
+                          and alternative keys for mixing and remixing.
+                        </div>
+                      </div>
                     </div>
+
+                    <div class="accordion-item">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq2">
+                          How accurate is the key detection?
+                        </button>
+                      </h3>
+                      <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                          The tool uses waveform analysis and spectral algorithms to deliver highly accurate key
+                          detection,
+                          suitable for DJing, production, and analysis.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq3">
+                          Can I find BPM and Key at the same time?
+                        </button>
+                      </h3>
+                      <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                          Yes, the Song Key & BPM Finder provides simultaneous detection of BPM and musical key for all
+                          uploaded tracks.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq4">
+                          Is this tool suitable for beginners?
+                        </button>
+                      </h3>
+                      <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                          Absolutely. Its simple interface makes it easy for DJs, producers, and music enthusiasts to
+                          analyze any track quickly.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="accordion-item">
+                      <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#faq5">
+                          Can I use it for live DJ sets?
+                        </button>
+                      </h3>
+                      <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                          Yes. It helps plan and synchronize tracks by key and BPM for smooth transitions during live
+                          performances.
+                        </div>
+                      </div>
+                    </div>
+
                   </div>
                 </div>
 
-                <div class="accordion-item">
-                  <h3 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#faq2">
-                      How accurate is the key detection?
-                    </button>
-                  </h3>
-                  <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      The tool uses waveform analysis and spectral algorithms to deliver highly accurate key detection,
-                      suitable for DJing, production, and analysis.
-                    </div>
-                  </div>
-                </div>
+                <!-- CTA -->
+                <p class="mt-3">
+                  Try the <strong>Song Key & BPM Finder</strong> now to detect the musical key, BPM, and energy of your
+                  tracks, and plan your DJ sets, remixes, or productions with perfect harmony and timing.
+                </p>
 
-                <div class="accordion-item">
-                  <h3 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#faq3">
-                      Can I find BPM and Key at the same time?
-                    </button>
-                  </h3>
-                  <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      Yes, the Song Key & BPM Finder provides simultaneous detection of BPM and musical key for all
-                      uploaded tracks.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h3 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#faq4">
-                      Is this tool suitable for beginners?
-                    </button>
-                  </h3>
-                  <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      Absolutely. Its simple interface makes it easy for DJs, producers, and music enthusiasts to
-                      analyze any track quickly.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h3 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                      data-bs-target="#faq5">
-                      Can I use it for live DJ sets?
-                    </button>
-                  </h3>
-                  <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                    <div class="accordion-body">
-                      Yes. It helps plan and synchronize tracks by key and BPM for smooth transitions during live
-                      performances.
-                    </div>
-                  </div>
-                </div>
+                <!-- Internal Linking Suggestions -->
+                <p>Explore related tools: <a href="/dj-music-production-tools/bpm-calculator/">BPM to speed</a>, <a
+                    href="/dj-music-production-tools/bpm-to-speed/"></a>.</p>
 
               </div>
             </div>
+          </div> <!-- /main col -->
 
-            <!-- CTA -->
-            <p class="mt-3">
-              Try the <strong>Song Key & BPM Finder</strong> now to detect the musical key, BPM, and energy of your
-              tracks, and plan your DJ sets, remixes, or productions with perfect harmony and timing.
-            </p>
-
-            <!-- Internal Linking Suggestions -->
-            <p>Explore related tools: <a href="/dj-music-production-tools/bpm-calculator/">BPM to speed</a>, <a
-                href="/dj-music-production-tools/bpm-to-speed/"></a>.</p>
-
-          </div>
         </div>
-      </div> <!-- /main col -->
+      </div>
 
-    </div>
-  </div>
+      <div id="footer"></div>
 
-  <div id="footer"></div>
 
-  
-  <script src="/assets/tools.js" defer></script>
-  <script defer src="/assets/bootstrap5.js"></script>
+      <script src="/assets/tools.js" defer></script>
+      <script defer src="/assets/bootstrap5.js"></script>
 
-  <script defer>
- 
- 
-    function analyzeFiles() {
-      const files = document.getElementById('audioFiles').files;
-      const tbody = document.getElementById('resultsTable');
-      tbody.innerHTML = '';
-      if (!files.length) return alert('Please select audio files.');
+      <script defer>
 
-      Array.from(files).forEach(file => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
+
+        function analyzeFiles() {
+          const files = document.getElementById('audioFiles').files;
+          const tbody = document.getElementById('resultsTable');
+          tbody.innerHTML = '';
+          if (!files.length) return alert('Please select audio files.');
+
+          Array.from(files).forEach(file => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
           <td>${file.name}</td>
           <td>Detecting...</td>
           <td>Detecting...</td>
@@ -396,67 +396,67 @@
           <td>--</td>
           <td>--</td>
         `;
-        tbody.appendChild(row);
+            tbody.appendChild(row);
 
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          audioContext.decodeAudioData(e.target.result, function (buffer) {
-            // Basic BPM estimation (simple peak detection)
-            const bpm = estimateBPM(buffer);
-            const key = estimateKey(buffer);
-            const altKey = getAltKey(key);
-            const energy = (Math.random() * 0.5 + 0.5).toFixed(2); // Placeholder random
-            const dance = (Math.random() * 0.5 + 0.5).toFixed(2);
-            const happy = (Math.random() * 0.5 + 0.5).toFixed(2);
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+              audioContext.decodeAudioData(e.target.result, function (buffer) {
+                // Basic BPM estimation (simple peak detection)
+                const bpm = estimateBPM(buffer);
+                const key = estimateKey(buffer);
+                const altKey = getAltKey(key);
+                const energy = (Math.random() * 0.5 + 0.5).toFixed(2); // Placeholder random
+                const dance = (Math.random() * 0.5 + 0.5).toFixed(2);
+                const happy = (Math.random() * 0.5 + 0.5).toFixed(2);
 
-            row.cells[1].textContent = key;
-            row.cells[2].textContent = altKey;
-            row.cells[3].textContent = bpm;
-            row.cells[4].textContent = energy;
-            row.cells[5].textContent = dance;
-            row.cells[6].textContent = happy;
+                row.cells[1].textContent = key;
+                row.cells[2].textContent = altKey;
+                row.cells[3].textContent = bpm;
+                row.cells[4].textContent = energy;
+                row.cells[5].textContent = dance;
+                row.cells[6].textContent = happy;
+              });
+            };
+            reader.readAsArrayBuffer(file);
           });
-        };
-        reader.readAsArrayBuffer(file);
-      });
-    }
+        }
 
-    
-    function estimateKey(buffer) {
-      const keys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-      const scales = ['Major', 'Minor'];
-      const key = keys[Math.floor(Math.random() * keys.length)];
-      const scale = scales[Math.floor(Math.random() * scales.length)];
-      return key + ' ' + scale;
-    }
 
-    function getAltKey(key) {
-      const parts = key.split(' ');
-      let alt = parts[0] + ' ' + (parts[1] === 'Major' ? 'Minor' : 'Major');
-      return alt;
-    }
+        function estimateKey(buffer) {
+          const keys = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+          const scales = ['Major', 'Minor'];
+          const key = keys[Math.floor(Math.random() * keys.length)];
+          const scale = scales[Math.floor(Math.random() * scales.length)];
+          return key + ' ' + scale;
+        }
 
-    // Dummy BPM estimation
-    function estimateBPM(buffer) {
-      return Math.floor(Math.random() * 60) + 90; // random 90-150 BPM
-    }
+        function getAltKey(key) {
+          const parts = key.split(' ');
+          let alt = parts[0] + ' ' + (parts[1] === 'Major' ? 'Minor' : 'Major');
+          return alt;
+        }
 
-    // Include header/footer
-    window.addEventListener("load", () => {
-      Promise.all([
-        fetch("../../header.html").then(res => res.text()),
-        fetch("../../footer.html").then(res => res.text())
-      ]).then(([header, footer]) => {
-        document.getElementById("header").innerHTML = header;
-        document.getElementById("footer").innerHTML = footer;
-      }).catch(err => console.error("Include load failed:", err));
-    });
-  </script>
- 
- 
-  <!-- JSON-LD Structured Data  -->
-  <script defer type="application/ld+json">
+        // Dummy BPM estimation
+        function estimateBPM(buffer) {
+          return Math.floor(Math.random() * 60) + 90; // random 90-150 BPM
+        }
+
+        // Include header/footer
+        window.addEventListener("load", () => {
+          Promise.all([
+            fetch("../../header.html").then(res => res.text()),
+            fetch("../../footer.html").then(res => res.text())
+          ]).then(([header, footer]) => {
+            document.getElementById("header").innerHTML = header;
+            document.getElementById("footer").innerHTML = footer;
+          }).catch(err => console.error("Include load failed:", err));
+        });
+      </script>
+
+
+      <!-- JSON-LD Structured Data  -->
+      <script defer type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -496,8 +496,8 @@
   }
 }
 </script>
- 
- 
+
+
 </body>
 
 </html>
