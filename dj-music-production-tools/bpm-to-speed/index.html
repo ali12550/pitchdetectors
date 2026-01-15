@@ -237,83 +237,6 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
 
 
 
-          <!-- Left: Main Tool -->
-          <div class="container">
-            <div class="row">
-              <!-- Sidebar -->
-              <div class="col-lg-3 col-md-4">
-                <div class="tools-sidebar">
-                  <div class="sidebar-search mb-4">
-                    <div class="input-group">
-                      <span class="input-group-text"><i class="bi bi-search"></i></span>
-                      <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
-                        onkeyup="searchTools()">
-                    </div>
-                  </div>
-
-                  <div class="sidebar-categories">
-                    <div class="sidebar-category active">
-                      <h5><i class="bi bi-disc me-2"></i>DJ & Production Tools</h5>
-                      <ul class="sidebar-links">
-                        <li><a href="/dj-music-production-tools/bpm-calculator/"><i class="bi bi-speedometer2"></i>
-                            BPM Calculator</a></li>
-                        <li><a href="/dj-music-production-tools/bpm-to-speed/" class=""><i
-                              class="bi bi-speedometer2"></i> BPM to Speed Converter</a></li>
-                        <li><a href="https://pitchdetectors.com/dj-music-production-tools/bpm-pitch-calculator/"
-                            class=""><i class="bi bi-speedometer2"></i> BPM → Pitch (Semitone) Calculator</a></li>
-                        <li><a href="/dj-music-production-tools/bpm-tap-tempo/" class=""><i
-                              class="bi bi-hand-index"></i> BPM Tap Tempo</a></li>
-                        <li><a href="/dj-music-production-tools/bpm-to-ms/"><i class="bi bi-clock"></i> BPM to
-                            Milliseconds</a></li>
-
-
-                      </ul>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-7 col-md-6">
-                <div class="tool-container">
-                  <div class="tool-title">
-                    <h1>🎵 BPM to Speed Converter</h1>
-                    <p>Convert beats per minute (BPM) to playback speed multiplier.</p>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="originalBPM" class="form-label">Original BPM</label>
-                    <input type="number" id="originalBPM" class="form-control" placeholder="e.g. 100" min="1" required>
-                  </div>
-
-                  <div class="mb-3">
-                    <label for="newBPM" class="form-label">Target BPM</label>
-                    <input type="number" id="newBPM" class="form-control" placeholder="e.g. 120" min="1" required>
-
-                    <div class="quick-buttons mt-2">
-                      <button type="button" class="quick-btn" onclick="setBPM(80, 100)">80 → 100</button>
-                      <button type="button" class="quick-btn" onclick="setBPM(100, 120)">100 → 120</button>
-                      <button type="button" class="quick-btn" onclick="setBPM(90, 140)">90 → 140</button>
-                      <button type="button" class="quick-btn" onclick="setBPM(120, 100)">120 → 100</button>
-                    </div>
-                  </div>
-
-                  <button class="btn btn-primary w-100 py-2" onclick="calculateSpeed()">Convert</button>
-
-                  <div id="result" class="result-box d-none">
-                    <h3>Calculated Speed:</h3>
-                    <p id="speedResult" class="fs-5 fw-bold"></p>
-                    <hr>
-                    <p>
-                      <strong>Interpretation:</strong> <span id="interpretation" class="fw-semibold text-mid"></span>
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
 
 
 
@@ -358,12 +281,6 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
               <li><strong>For choreographers:</strong> Sync dance moves with precise timing based on music BPM.</li>
             </ul>
 
-            <h2>Formula Used</h2>
-            <pre>
-Speed (m/s)  = (Step Length × BPM) / 60
-Speed (km/h) = (Step Length × BPM × 0.06)
-Speed (mph)  = (Step Length × BPM × 0.0373)
-  </pre>
             <p>Example: 120 BPM with 0.8 m stride = 0.8 × 120 × 0.06 = <strong>5.76 km/h</strong>. This formula works
               for both
               motion and beat timing analysis.</p>
@@ -909,222 +826,6 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
                 </ul>
 
 
-                <h2>FAQs — BPM to Speed Calculator Explained</h2>
-                <div class="accordion" id="faqBPM">
-
-                  <!-- CATEGORY: HOW -->
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#how1">What
-                        is a BPM to
-                        Speed Calculator and how does it work?</button>
-                    </h3>
-                    <div id="how1" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">It converts beats per minute into walking, running, or musical tempo
-                        using stride
-                        length and standard speed formulas.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#how2">How do
-                        I use a BPM
-                        to Speed Calculator to determine distance covered in a song?</button>
-                    </h3>
-                    <div id="how2" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Multiply BPM by stride length and song duration to estimate total
-                        distance covered
-                        while walking or running.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#how3">How
-                        does a BPM to
-                        Speed Calculator account for different step lengths?</button>
-                    </h3>
-                    <div id="how3" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">By allowing adjustable stride input (in meters or feet), giving
-                        personalized
-                        results for each user’s height or gait.</div>
-                    </div>
-                  </div>
-
-                  <!-- CATEGORY: WHAT -->
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#what1">What
-                        are the
-                        common units of measurement used in a BPM to Speed Calculator?</button>
-                    </h3>
-                    <div id="what1" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Meters per second (m/s), kilometers per hour (km/h), and miles per
-                        hour (mph) are
-                        commonly supported units.</div>
-                    </div>
-                  </div>
-
-                  <!-- CATEGORY: WHY -->
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#why1">Why is
-                        a BPM to
-                        Speed Calculator useful for runners and musicians?</button>
-                    </h3>
-                    <div id="why1" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">It links tempo with motion, helping runners find rhythmic pacing and
-                        DJs control
-                        tempo transitions accurately.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#why2">Why
-                        should I use a
-                        BPM to Speed Calculator instead of estimating my pace?</button>
-                    </h3>
-                    <div id="why2" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Because it provides mathematical accuracy using BPM-based formulas
-                        instead of
-                        rough guesswork.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header">
-                      <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#why3">Why
-                        does a DJ need
-                        to understand BPM to speed conversion?</button>
-                    </h3>
-                    <div id="why3" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">It helps DJs relate tempo with groove or playback speed when adjusting
-                        live mixes
-                        or syncing tracks.</div>
-                    </div>
-                  </div>
-
-                  <!-- CATEGORY: SPEED & TEMPO VARIATIONS -->
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed1">How fast is 120 BPM in mph?</button></h3>
-                    <div id="speed1" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">About 3.8–4 mph at 0.8 m stride — brisk walk or standard pop tempo.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed2">Is 135 BPM fast or slow?</button></h3>
-                    <div id="speed2" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Moderately fast — often used in pop or light running music.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed3">What speed is 100 BPM?</button></h3>
-                    <div id="speed3" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Roughly 3.2 mph — comfortable walk or mid-tempo groove.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed4">Is 170 BPM fast?</button></h3>
-                    <div id="speed4" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Yes — matches about 7.5–8 mph running pace or drum & bass tempo.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed5">What tempo is 180 BPM?</button></h3>
-                    <div id="speed5" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Very fast tempo — suitable for high-energy running or EDM genres.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed6">What speed is 110 BPM?</button></h3>
-                    <div id="speed6" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Around 3.5 mph — ideal for casual walking or smooth rhythm tracks.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed7">Is 128 BPM fast tempo?</button></h3>
-                    <div id="speed7" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Yes — 128 BPM is the industry standard for dance and EDM tracks.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed8">How many BPM is 3 mph?</button></h3>
-                    <div id="speed8" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">About 110–115 BPM, depending on stride length.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed9">What BPM is best for running?</button></h3>
-                    <div id="speed9" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">160–180 BPM — aligns with efficient stride frequency for endurance
-                        running.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#speed10">What is 140 BPM in tempo?</button></h3>
-                    <div id="speed10" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Moderate-fast tempo typical of trap, dubstep, and cardio sessions.
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- CATEGORY: WHEN -->
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#when1">When should I use a BPM to Speed Calculator during my workout
-                        routine?</button></h3>
-                    <div id="when1" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Use it before a workout to choose songs matching your target running
-                        pace.</div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#when2">When does BPM to Speed calculation become crucial for
-                        choreographers?</button></h3>
-                    <div id="when2" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">When aligning dance steps to music tempo or syncing moves with beats
-                        per minute.
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- CATEGORY: WHO -->
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#who1">Who benefits most from using a BPM to Speed Calculator?</button></h3>
-                    <div id="who1" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Runners, DJs, choreographers, and fitness coaches who rely on rhythm
-                        precision.
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h3 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#who2">Who developed the concept of converting BPM to speed?</button></h3>
-                    <div id="who2" class="accordion-collapse collapse" data-bs-parent="#faqBPM">
-                      <div class="accordion-body">Early biomechanics and music researchers studying tempo-motion
-                        synchronization.
-                      </div>
-                    </div>
-
-
-                  </div>
-
-                </div>
-
-
 
                 <div class="tool-container mb-5">
                   <h2>Accuracy, Timing, and Audio Processing Considerations</h2>
@@ -1148,12 +849,7 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
 
 
 
-                <h2>Final Thoughts</h2>
-                <p>The BPM to Speed Calculator merges rhythm and movement through math. Whether you’re training, mixing,
-                  or
-                  composing, it helps align beats, stride, and timing accurately. Trusted by producers and athletes
-                  worldwide, its
-                  formulas match DAW and cadence-tracking standards.</p>
+
 
                 <!-- AUTHOR BOX -->
                 <div style="margin-top:40px; border-top:1px solid #e5e7eb; padding-top:20px;">
@@ -1167,63 +863,63 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
 
 
               </div>
+            </div>
+            <!-- content area end -->
 
-              <!-- content area end -->
 
-              <!-- ===== Script tool ===== -->
-              <script defer>
-                function setBPM(original, target) {
-                  document.getElementById('originalBPM').value = original;
-                  document.getElementById('newBPM').value = target;
+
+            <div id="footer"></div>
+            <script src="/assets/tools.js" defer></script>
+            <script defer src="/assets/bootstrap5.js"></script>
+
+
+            <!-- ===== Script tool ===== -->
+            <script defer>
+              function setBPM(original, target) {
+                document.getElementById('originalBPM').value = original;
+                document.getElementById('newBPM').value = target;
+              }
+
+              function calculateSpeed() {
+                const originalBPM = parseFloat(document.getElementById('originalBPM').value);
+                const newBPM = parseFloat(document.getElementById('newBPM').value);
+
+                if (!originalBPM || !newBPM || originalBPM <= 0) {
+                  alert("Please enter valid BPM values.");
+                  return;
                 }
 
-                function calculateSpeed() {
-                  const originalBPM = parseFloat(document.getElementById('originalBPM').value);
-                  const newBPM = parseFloat(document.getElementById('newBPM').value);
+                const speed = (newBPM / originalBPM).toFixed(2);
+                document.getElementById('result').classList.remove('d-none');
+                document.getElementById('speedResult').innerText = `${speed}×`;
 
-                  if (!originalBPM || !newBPM || originalBPM <= 0) {
-                    alert("Please enter valid BPM values.");
-                    return;
-                  }
-
-                  const speed = (newBPM / originalBPM).toFixed(2);
-                  document.getElementById('result').classList.remove('d-none');
-                  document.getElementById('speedResult').innerText = `${speed}×`;
-
-                  let interpretation = "";
-                  if (speed > 1) {
-                    interpretation = `This will play ${((speed - 1) * 100).toFixed(0)}% faster than the original.`;
-                  } else if (speed < 1) {
-                    interpretation = `This will play ${((1 - speed) * 100).toFixed(0)}% slower than the original.`;
-                  } else {
-                    interpretation = "No change — same speed as the original BPM.";
-                  }
-                  document.getElementById('interpretation').innerText = interpretation;
+                let interpretation = "";
+                if (speed > 1) {
+                  interpretation = `This will play ${((speed - 1) * 100).toFixed(0)}% faster than the original.`;
+                } else if (speed < 1) {
+                  interpretation = `This will play ${((1 - speed) * 100).toFixed(0)}% slower than the original.`;
+                } else {
+                  interpretation = "No change — same speed as the original BPM.";
                 }
-              </script>
-
-              <div id="footer"></div>
-              <script src="/assets/tools.js" defer></script>
-              <script defer src="/assets/bootstrap5.js"></script>
-
-
-
-              <!-- incluce js -->
-              <script defer>
-                window.addEventListener("load", () => {
-                  Promise.all([
-                    fetch("../../header.html").then(res => res.text()),
-                    fetch("../../footer.html").then(res => res.text())
-                  ])
-                    .then(([header, footer]) => {
-                      document.getElementById("header").innerHTML = header;
-                      document.getElementById("footer").innerHTML = footer;
-                    })
-                    .catch(err => console.error("Include load failed:", err));
-                });
-              </script>
-              <!-- JSON-LD FAQ SCHEMA -->
-              <script defer type="application/ld+json">
+                document.getElementById('interpretation').innerText = interpretation;
+              }
+            </script>
+            <!-- incluce js -->
+            <script defer>
+              window.addEventListener("load", () => {
+                Promise.all([
+                  fetch("../../header.html").then(res => res.text()),
+                  fetch("../../footer.html").then(res => res.text())
+                ])
+                  .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                  })
+                  .catch(err => console.error("Include load failed:", err));
+              });
+            </script>
+            <!-- JSON-LD FAQ SCHEMA -->
+            <script defer type="application/ld+json">
  {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -1439,8 +1135,8 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
   ]
 }
   </script>
-              <!-- entity schema -->
-              <script defer type="application/ld+json">
+            <!-- entity schema -->
+            <script defer type="application/ld+json">
     {
   "@context": "https://schema.org",
   "@graph": [
@@ -1660,8 +1356,8 @@ Speed (mph)  = (Step Length × BPM × 0.0373)
   ]
 }
     </script>
-              <!-- JSON-LD FAQ SCHEMA -->
-              <script defer type="application/ld+json">
+            <!-- JSON-LD FAQ SCHEMA -->
+            <script defer type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
