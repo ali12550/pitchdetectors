@@ -2,13 +2,28 @@
    Common Tool Layout Styles — pitchdetectors
    ========================================= */
 
-:root {
+/* :root {
     --dark-blue: #000b58;
     --mid-blue: #003161;
     --teal: #006a67;
     --accent: #fdeb9e;
     --light-bg: #f8f9fa;
     --border-color: #e0e0e0;
+} */
+
+:root {
+    /* Core Brand Colors */
+    --dark-blue: #1b1c1e;        /* Dark hero / headings / bold elements */
+    --mid-blue: #2c2f33;         /* Cards, nav, secondary surfaces */
+    --teal: #00d4aa;             /* Highlights, icons, stats */
+    --accent: #f59e0b;           /* CTA buttons, primary accent */
+
+    /* Backgrounds */
+    --light-bg: #f0f2f5;         /* Section backgrounds / page background */
+    --white: #ffffff;            /* Card / container backgrounds */
+
+    /* Borders */
+    --border-color: #d1d5db;     /* Card / container borders / dividers */
 }
 
 body {
