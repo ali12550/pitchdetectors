@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     "@type": "Organization",
     "name": "Diamond Audio City",
     "url": "https://pitchdetectors.com",
-    "logo": "https://pitchdetectors.com/assets/imgs/diamond-audio-city.png",
+    "logo": "https://pitchdetectors.com/assets/imgs/favicon.png",
     "sameAs": [
       "https://www.facebook.com/p/Diamond-Audio-CiTy-100076963165150/"
     ]

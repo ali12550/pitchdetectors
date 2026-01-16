@@ -14,10 +14,10 @@
     content="Learn more about Pitch Detectors — your trusted source for smart audio, playback, and file-based calculators built to simplify audio and media calculations." />
 
 
-  <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
-  <link href="/assets/bootstrap5.css" rel="stylesheet" />
+  <link rel="icon" href="/assets/imgs/favicon.png" type="image/x-icon">
+  <link href="../assets/bootstrap5.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="..//assets/style.css">
 
 
 
@@ -114,7 +114,7 @@
   <div id="footer"></div>
 
 
-  <script defer src="/assets/bootstrap5.js"></script>
+  <script defer src="../assets/bootstrap5.js"></script>
 
 
 
@@ -126,8 +126,8 @@
 
     window.addEventListener("load", () => {
       Promise.all([
-        fetch("header.html").then(res => res.text()),
-        fetch("footer.html").then(res => res.text())
+        fetch("../header.html").then(res => res.text()),
+        fetch("../footer.html").then(res => res.text())
       ])
         .then(([header, footer]) => {
           document.getElementById("header").innerHTML = header;

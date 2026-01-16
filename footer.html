@@ -34,8 +34,8 @@
             <div class="col-lg-2 col-md-4 col-6 mb-4">
                 <h6 class="footer-title">Quick Links</h6>
                 <ul class="footer-links">
-                    <li><a href="/about.html">About Us</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/contact/">Contact</a></li>
                     <li><a href="/privacy-policy.html">Privacy Policy</a></li>
                     <li><a href="/terms-and-conditions.html">Terms of Service</a></li>
                     <li><a href="/disclaimer.html">Disclamer</a></li>
@@ -53,3 +53,44 @@
         </div>
     </div>
 </footer>
+
+<!-- global schema -->
+ <script defer type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://pitchdetectors.com/#organization",
+      "name": "Pitch Detectors",
+      "url": "https://pitchdetectors.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://pitchdetectors.com/logo.png"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://pitchdetectors.com/#website",
+      "url": "https://pitchdetectors.com/",
+      "name": "Pitch Detectors",
+      "publisher": {
+        "@id": "https://pitchdetectors.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://pitchdetectors.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://pitchdetectors.com/#author",
+      "name": "Pitch Detectors Team",
+      "affiliation": {
+        "@id": "https://pitchdetectors.com/#organization"
+      }
+    }
+  ]
+}
+</script>
