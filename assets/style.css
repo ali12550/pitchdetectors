@@ -48,7 +48,7 @@ body {
 
 /* ===== Navigation ===== */
 .main-nav {
-    background: var(--gradient-primary) !important;
+    background: var(--accent) !important;
     padding: 12px 0;
     box-shadow: var(--shadow-md);
 }
@@ -68,7 +68,7 @@ body {
 }
 
 .main-nav .nav-link:hover {
-    color: var(--accent) !important;
+    color: var(--dark-blue) !important;
     background: rgba(255, 255, 255, 0.1);
 }
 
