@@ -6,7 +6,7 @@ Options -Indexes
 RewriteEngine On
 
 RewriteEngine On
-RewriteRule ^site_map\.xml$ /site_map.php [L]
+RewriteRule ^site_map\.xml$ /site_map.xml [L]
 
 # ------------------------------
 # 1. Force NON-WWW (first)
