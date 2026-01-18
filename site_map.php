@@ -55,7 +55,7 @@ $relativePath = str_replace(DIRECTORY_SEPARATOR, '/', $relativePath);
 
 // Normalize index.html to directory URL
 if (basename($relativePath) === 'index.html') {
-    $relativePath = rtrim(dirname($relativePath), '/');
+    $relativePath = rtrim(dirname($relativePath), '/') . '/';
 }
 
 $urls[] = [
