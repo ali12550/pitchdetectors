@@ -1,4 +1,4 @@
-// DiamondAudioCity Tools JavaScript
+// Pitch Detectors Tools JavaScript
 
 // Tool Search Functionality
 function searchTools() {
