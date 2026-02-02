@@ -1,20 +1,21 @@
 # ------------------------------
-# Pitch Detectors — Clean & SEO Safe
+# Pitch Detectors — Full SEO & AI Optimized
 # ------------------------------
 
 Options -Indexes
 RewriteEngine On
 
-# ------------------------------
 # 1. Force HTTPS + NON-WWW
-# ------------------------------
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.pitchdetectors\.com$ [NC]
 RewriteRule ^ https://pitchdetectors.com%{REQUEST_URI} [L,R=301]
 
-# ------------------------------
-# 2. Sitemap rewrite
-# ------------------------------
+# 2. Trailing Slash Normalization (except files)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !/$
+RewriteRule ^(.*)$ https://pitchdetectors.com/$1/ [R=301,L]
+
+# 3. Sitemap Rewrite
 RewriteRule ^site_map\.xml$ /site_map.php [L,QSA]
 
 <IfModule mod_headers.c>
@@ -26,26 +27,46 @@ RewriteRule ^site_map\.xml$ /site_map.php [L,QSA]
   </FilesMatch>
 </IfModule>
 
-# ------------------------------
-# 3. Custom 404 Page
-# ------------------------------
+# 4. Custom 404 Page
 ErrorDocument 404 /404.html
 
-# ------------------------------
-# 4. Security Headers
-# ------------------------------
+# 5. Security Headers
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:;"
 </IfModule>
 
-# ------------------------------
-# 5. GZIP / Deflate
-# ------------------------------
+# 6. GZIP / Deflate
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain
-  AddOutputFilterByType DEFLATE application/javascript text/javascript
-  AddOutputFilterByType DEFLATE application/json
-  AddOutputFilterByType DEFLATE font/woff font/woff2 image/svg+xml
+  AddOutputFilterByType DEFLATE application/javascript text/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff font/woff2 application/font-woff
+</IfModule>
+
+# 7. Optional: Brotli Compression
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/css text/plain
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript text/javascript application/json
+  AddOutputFilterByType BROTLI_COMPRESS application/xml image/svg+xml
+  AddOutputFilterByType BROTLI_COMPRESS font/woff font/woff2 application/font-woff
+</IfModule>
+
+# 8. Browser Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/xml "access plus 1 hour"
+  ExpiresByType text/html "access plus 1 hour"
 </IfModule>
