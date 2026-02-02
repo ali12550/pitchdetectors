@@ -1,51 +1,51 @@
-# ==============================
+# ------------------------------
 # Pitch Detectors — Clean & SEO Safe
-# ==============================
+# ------------------------------
 
 Options -Indexes
 RewriteEngine On
-RewriteRule ^site_map\.xml$ /site_map.php [L]
 
 # ------------------------------
-# 1. Force NON-WWW (first)
+# 1. Force HTTPS + NON-WWW
 # ------------------------------
+RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.pitchdetectors\.com$ [NC]
-RewriteRule ^(.*)$ https://pitchdetectors.com/$1 [L,R=301]
+RewriteRule ^ https://pitchdetectors.com%{REQUEST_URI} [L,R=301]
 
 # ------------------------------
-# 2. Force HTTPS (second)
+# 2. Sitemap rewrite
 # ------------------------------
-RewriteCond %{HTTPS} off
-RewriteRule ^ https://pitchdetectors.com%{REQUEST_URI} [L,R=301]
-# ------------------------------
-# 2. Static Sitemap Headers
-# ------------------------------
+RewriteRule ^site_map\.xml$ /site_map.php [L,QSA]
+
 <IfModule mod_headers.c>
   <FilesMatch "(^|/)(sitemap|site_map)\.xml$">
     Header set Content-Type "application/xml; charset=UTF-8"
-    Header set Cache-Control "no-cache, no-store, must-revalidate"
-    Header set Pragma "no-cache"
-    Header set Expires 0
+    Header set Cache-Control "public, max-age=3600"
+    Header set Pragma "cache"
+    Header set Expires "Wed, 21 Oct 2030 07:28:00 GMT"
   </FilesMatch>
 </IfModule>
 
-
 # ------------------------------
-# 4. Custom 404 Page (REAL 404)
+# 3. Custom 404 Page
 # ------------------------------
 ErrorDocument 404 /404.html
 
 # ------------------------------
-# 5. Security Headers
+# 4. Security Headers
 # ------------------------------
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
-<!-- gzip -->
+
+# ------------------------------
+# 5. GZIP / Deflate
+# ------------------------------
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/css text/plain
   AddOutputFilterByType DEFLATE application/javascript text/javascript
   AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE font/woff font/woff2 image/svg+xml
 </IfModule>
