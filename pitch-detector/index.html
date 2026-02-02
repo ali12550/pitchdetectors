@@ -437,29 +437,11 @@
           </div>
 
 
-          <!-- Accuracy -->
-          <div class="container my-5">
-            <div class="tool-container mb-5">
-              <h1>🎵 Pitch Detector – Real-Time Voice & Pitch Analyzer</h1>
-              <p>
-                This pitch detector analyzes your voice in real time using a microphone and displays the detected
-                musical note, frequency (Hz), and tuning accuracy instantly. As you sing, the tool tracks pitch changes
-                live and shows whether the note is sharp, flat, or in tune based on standard tuning (A4 = 440 Hz).
-              </p>
-            </div>
+          <!-- start content -->
+          <div class="">
+         
 
-
-            <div class="tool-container mb-5">
-              <h2>What is a Pitch Detector?</h2>
-              <p>
-                A pitch detector is a pitch detection tool that measures the fundamental frequency of sound produced by
-                the human voice. It converts microphone audio into frequency values (Hz) and maps them to the closest
-                musical note using standard note frequency references.
-              </p>
-              <p>
-                This pitch detector is designed for real-time vocal analysis, not audio file uploads.
-              </p>
-            </div>
+            
 
             <!-- <div class="tool-container mb-5">
     <h2>How does this Pitch Detector work?</h2>
@@ -478,307 +460,8 @@
     </p>
   </div> -->
 
-            <div class="tool-container mb-5">
-              <h2>What does the tuning meter show?</h2>
-              <p>
-                The tuning meter visualizes intonation accuracy relative to the detected pitch.
-              </p>
-              <ul>
-                <li>Center: in tune</li>
-                <li>Left: flat (frequency too low)</li>
-                <li>Right: sharp (frequency too high)</li>
-              </ul>
-              <p>
-                This cent-level feedback allows precise vocal pitch control and intonation training.
-              </p>
-            </div>
+          
 
-            <div class="tool-container mb-5">
-              <h2>Which tuning standard does this Pitch Detector use?</h2>
-              <p>
-                This pitch detector uses Standard Tuning (A4 = 440 Hz) as the reference pitch.
-              </p>
-              <p>
-                A4 at 440 Hz is the globally accepted reference used by orchestras, music schools & conservatories, and
-                pianos and digital instruments.
-              </p>
-              <p>
-                Alternative standards (e.g., Verdi tuning) are not applied in this tool.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>What pitch range can this Pitch Detector detect?</h2>
-              <p>
-                The pitch detector can identify low and high vocal frequencies typically produced by human voices.
-              </p>
-              <ul>
-                <li>Low frequencies: ~63 Hz</li>
-                <li>High frequencies: above 1,000 Hz</li>
-              </ul>
-              <p>
-                This range covers bass, baritone, tenor, alto, and soprano vocal registers. Actual accuracy depends on
-                microphone quality and background noise levels.
-              </p>
-            </div>
-            <div class="tool-container my-5">
-              <h2>Pitch Detection Formula Used by This Tool</h2>
-
-              <p>
-                This pitch detector calculates pitch by identifying the <strong>fundamental frequency</strong> of the
-                human voice captured through the microphone.
-                The detected frequency is then converted into a musical note using standard tuning references.
-              </p>
-
-              <h3>1. Fundamental Frequency Detection</h3>
-              <p>
-                The tool analyzes incoming sound waves and detects repeating patterns using an
-                <strong>autocorrelation algorithm</strong>.
-                The strongest repeating interval represents the fundamental frequency (Hz).
-              </p>
-
-              <pre class="bg-light p-3 border rounded">
-Fundamental Frequency (Hz) = Sample Rate / Period Length
-  </pre>
-
-              <h3>2. Frequency to Musical Note Conversion</h3>
-              <p>
-                Once frequency is detected, it is converted to a musical note using the
-                <strong>equal temperament system</strong> with A4 = 440 Hz.
-              </p>
-
-              <pre class="bg-light p-3 border rounded">
-Note Number = 69 + 12 × log₂(Frequency / 440)
-  </pre>
-
-              <p>
-                The calculated note number is then rounded to the nearest integer and mapped to a
-                musical note name (C, D, E, F, G, A, B).
-              </p>
-
-              <h3>3. Cent Deviation (Tuning Accuracy)</h3>
-              <p>
-                Tuning accuracy is measured in <strong>cents</strong>, where 100 cents equals one semitone.
-              </p>
-
-              <pre class="bg-light p-3 border rounded">
-Cent Deviation = 1200 × log₂(Detected Frequency / Reference Note Frequency)
-  </pre>
-
-              <p>
-                This value determines whether the voice is <strong>flat</strong>, <strong>sharp</strong>, or
-                <strong>in tune</strong> and drives the tuning meter display.
-              </p>
-            </div>
-
-            <div class="tool-container my-5">
-              <h2>Pitch to Frequency Reference (Standard Tuning)</h2>
-
-              <div class="table-responsive">
-                <table class="table table-bordered table-striped align-middle">
-                  <thead class="table-dark">
-                    <tr>
-                      <th>Musical Note</th>
-                      <th>Octave</th>
-                      <th>Frequency (Hz)</th>
-                      <th>Pitch Class</th>
-                      <th>Reference Standard</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>C</td>
-                      <td>4</td>
-                      <td>261.63 Hz</td>
-                      <td>C</td>
-                      <td>Equal Temperament</td>
-                    </tr>
-                    <tr>
-                      <td>D</td>
-                      <td>4</td>
-                      <td>293.66 Hz</td>
-                      <td>D</td>
-                      <td>Equal Temperament</td>
-                    </tr>
-                    <tr>
-                      <td>E</td>
-                      <td>4</td>
-                      <td>329.63 Hz</td>
-                      <td>E</td>
-                      <td>Equal Temperament</td>
-                    </tr>
-                    <tr>
-                      <td>F</td>
-                      <td>4</td>
-                      <td>349.23 Hz</td>
-                      <td>F</td>
-                      <td>Equal Temperament</td>
-                    </tr>
-                    <tr>
-                      <td>G</td>
-                      <td>4</td>
-                      <td>392.00 Hz</td>
-                      <td>G</td>
-                      <td>Equal Temperament</td>
-                    </tr>
-                    <tr>
-                      <td>A</td>
-                      <td>4</td>
-                      <td>440.00 Hz</td>
-                      <td>A</td>
-                      <td>Standard Tuning (A4)</td>
-                    </tr>
-                    <tr>
-                      <td>B</td>
-                      <td>4</td>
-                      <td>493.88 Hz</td>
-                      <td>B</td>
-                      <td>Equal Temperament</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>Can this Pitch Detector analyze vibrato and pitch drift?</h2>
-              <p>
-                Yes. The real-time pitch tracker displays continuous pitch changes over time, making it suitable for
-                analyzing vibrato and pitch modulation, identifying pitch drift during sustained notes, and monitoring
-                vocal stability.
-              </p>
-              <p>
-                This is especially useful for vocal training and melody accuracy assessment.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>Is this Pitch Detector suitable for vocal training?</h2>
-              <p>
-                Yes. This pitch detector is commonly used for vocal pitch accuracy practice, intonation control, melody
-                matching, and ear training.
-              </p>
-              <p>
-                It is trusted by music students, vocal coaches, and educators, including users from over 200 music
-                schools and conservatories.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>What devices and operating systems are supported?</h2>
-              <p>
-                This online pitch detector works on modern devices with a microphone and supported web browser.
-              </p>
-              <ul>
-                <li>Desktop and laptop computers</li>
-                <li>Built-in or USB microphone</li>
-                <li>Windows, macOS, Linux</li>
-                <li>Chrome, Edge, Safari, Firefox</li>
-              </ul>
-              <p>
-                No software installation is required.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>Do I need to create an account or download anything?</h2>
-              <p>
-                No. This is a free online pitch detector.
-              </p>
-              <ul>
-                <li>No downloads</li>
-                <li>No account required</li>
-                <li>No recordings saved</li>
-              </ul>
-              <p>
-                Microphone access is temporary and user-controlled.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>How accurate is this Pitch Detector?</h2>
-              <p>
-                The pitch detector provides real-time cent-level accuracy under normal conditions.
-              </p>
-              <p>
-                Accuracy depends on microphone sensitivity, background noise, and vocal clarity. For best results, use a
-                quiet environment and sing a steady note.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>Who should use this Pitch Detector?</h2>
-              <p>
-                This pitch detector is designed for vocalists and singers, music students, vocal coaches, sound
-                engineers, and music educators.
-              </p>
-              <p>
-                It is ideal for real-time voice pitch monitoring, not instrument tuning via audio files.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>What is the difference between pitch and frequency?</h2>
-              <p>
-                Frequency (Hz) is a physical measurement of sound wave vibration, while pitch is how humans perceive
-                that frequency.
-              </p>
-              <p>
-                This pitch detector converts frequency into musical note names using standardized note frequency tables.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>Is microphone access safe?</h2>
-              <p>
-                Yes. Microphone input is processed locally in your browser.
-              </p>
-              <ul>
-                <li>No audio is uploaded</li>
-                <li>No data is stored</li>
-                <li>No recordings are saved</li>
-              </ul>
-              <p>
-                You can stop detection at any time by disabling microphone access.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>How do I start using the Pitch Detector?</h2>
-              <ol>
-                <li>Click START DETECTION</li>
-                <li>Allow microphone access</li>
-                <li>Sing a note clearly</li>
-                <li>Watch the detected note, frequency, and tuning meter update in real time</li>
-              </ol>
-              <p>
-                The piano keyboard highlights the detected pitch instantly.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>Why use this Pitch Detector instead of other tools?</h2>
-              <p>
-                This pitch detector focuses on voice-only real-time pitch detection, instant visual feedback,
-                cent-accurate tuning display, and local, private audio processing.
-              </p>
-              <p>
-                It is built for clarity, accuracy, and educational use, not file conversion or audio uploads.
-              </p>
-            </div>
-
-            <div class="tool-container mb-5">
-              <h2>Tool Scope Disclaimer</h2>
-              <p>
-                This pitch detector analyzes live voice input only.
-              </p>
-              <ul>
-                <li>Does not upload audio files</li>
-                <li>Does not convert audio to MIDI</li>
-                <li>Does not generate sheet music</li>
-                <li>Does not save recordings</li>
-              </ul>
-            </div>
 
           </div>
 
@@ -786,226 +469,269 @@ Cent Deviation = 1200 × log₂(Detected Frequency / Reference Note Frequency)
         </div>
         <div class="container my-5">
 
-  <div class="tool-container mb-5">
-    <h1>🎵 Pitch Detector – Real-Time Voice Pitch Analysis</h1>
-    <p>
-      This pitch detector measures your voice pitch in real time through a microphone.
-      The tool displays the detected musical note, frequency (Hz), and tuning deviation instantly.
-    </p>
-    <p>
-      You see whether the pitch is in tune, flat, or sharp based on A4 = 440 Hz.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h1>🎵 Pitch Detector – Real-Time Voice Pitch Analysis</h1>
+            <p>
+              This pitch detector measures your voice pitch in real time through a microphone.
+              The tool displays the detected musical note, frequency (Hz), and tuning deviation instantly.
+            </p>
+            <p>
+              You see whether the pitch is in tune, flat, or sharp based on A4 = 440 Hz.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>What is a pitch detector?</h2>
-    <p>
-      A pitch detector identifies the fundamental frequency of the human voice.
-      The tool converts microphone input into Hertz (Hz) and maps the value to the nearest musical note.
-    </p>
-    <ul>
-      <li>Input: live voice</li>
-      <li>Output: note, frequency, cent deviation</li>
-      <li>Scope: real-time analysis only</li>
-    </ul>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>What is a pitch detector?</h2>
+            <p>
+              A pitch detector identifies the fundamental frequency of the human voice.
+              The tool converts microphone input into Hertz (Hz) and maps the value to the nearest musical note.
+            </p>
+            <ul>
+              <li>Input: live voice</li>
+              <li>Output: note, frequency, cent deviation</li>
+              <li>Scope: real-time analysis only</li>
+            </ul>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>What does the tuning meter show?</h2>
-    <p>
-      The tuning meter visualizes pitch accuracy relative to the detected note.
-    </p>
-    <ul>
-      <li>Center: in tune</li>
-      <li>Left: flat (frequency too low)</li>
-      <li>Right: sharp (frequency too high)</li>
-    </ul>
-    <p>
-      The meter operates in cents, where 100 cents equal one semitone.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>What does the tuning meter show?</h2>
+            <p>
+              The tuning meter visualizes pitch accuracy relative to the detected note.
+            </p>
+            <ul>
+              <li>Center: in tune</li>
+              <li>Left: flat (frequency too low)</li>
+              <li>Right: sharp (frequency too high)</li>
+            </ul>
+            <p>
+              The meter operates in cents, where 100 cents equal one semitone.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Which tuning standard does this pitch detector use?</h2>
-    <p>
-      This pitch detector uses standard tuning with A4 = 440 Hz.
-      This reference is adopted globally by orchestras, music schools, conservatories, and instrument manufacturers.
-    </p>
-    <p>
-      Alternative tuning systems such as A4 = 432 Hz are not applied.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Which tuning standard does this pitch detector use?</h2>
+            <p>
+              This pitch detector uses standard tuning with A4 = 440 Hz.
+              This reference is adopted globally by orchestras, music schools, conservatories, and instrument
+              manufacturers.
+            </p>
+            <p>
+              Alternative tuning systems such as A4 = 432 Hz are not applied.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>What pitch range can the pitch detector detect?</h2>
-    <p>
-      The pitch detector detects vocal frequencies from approximately 63 Hz to above 1,000 Hz.
-    </p>
-    <ul>
-      <li>Low range: bass, baritone</li>
-      <li>Mid range: tenor, alto</li>
-      <li>High range: soprano</li>
-    </ul>
-    <p>
-      Detection accuracy depends on microphone quality and ambient noise.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>What pitch range can the pitch detector detect?</h2>
+            <p>
+              The pitch detector detects vocal frequencies from approximately 63 Hz to above 1,000 Hz.
+            </p>
+            <ul>
+              <li>Low range: bass, baritone</li>
+              <li>Mid range: tenor, alto</li>
+              <li>High range: soprano</li>
+            </ul>
+            <p>
+              Detection accuracy depends on microphone quality and ambient noise.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Which pitch detection formula does this tool use?</h2>
+          <div class="tool-container mb-5">
+            <h2>Which pitch detection formula does this tool use?</h2>
 
-    <h3>How is the fundamental frequency detected?</h3>
-    <p>
-      The pitch detector applies an autocorrelation algorithm to the audio signal.
-      The strongest periodic repetition represents the fundamental frequency.
-    </p>
-    <pre class="bg-light p-3 border rounded">
+            <h3>How is the fundamental frequency detected?</h3>
+            <p>
+              The pitch detector applies an autocorrelation algorithm to the audio signal.
+              The strongest periodic repetition represents the fundamental frequency.
+            </p>
+            <pre class="bg-light p-3 border rounded">
 Fundamental Frequency (Hz) = Sample Rate / Period Length
     </pre>
 
-    <h3>How is frequency converted into a musical note?</h3>
-    <p>
-      The tool uses equal temperament with A4 = 440 Hz.
-    </p>
-    <pre class="bg-light p-3 border rounded">
+            <h3>How is frequency converted into a musical note?</h3>
+            <p>
+              The tool uses equal temperament with A4 = 440 Hz.
+            </p>
+            <pre class="bg-light p-3 border rounded">
 Note Number = 69 + 12 × log₂(Frequency / 440)
     </pre>
 
-    <h3>How is tuning deviation calculated?</h3>
-    <p>
-      The tool measures pitch deviation in cents.
-    </p>
-    <pre class="bg-light p-3 border rounded">
+            <h3>How is tuning deviation calculated?</h3>
+            <p>
+              The tool measures pitch deviation in cents.
+            </p>
+            <pre class="bg-light p-3 border rounded">
 Cent Deviation = 1200 × log₂(Detected Frequency / Reference Frequency)
     </pre>
-  </div>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>What are the standard pitch-to-frequency values?</h2>
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped align-middle">
-        <thead class="table-dark">
-          <tr>
-            <th>Musical Note</th>
-            <th>Octave</th>
-            <th>Frequency (Hz)</th>
-            <th>Pitch Class</th>
-            <th>Reference</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>C</td><td>4</td><td>261.63</td><td>C</td><td>Equal Temperament</td></tr>
-          <tr><td>D</td><td>4</td><td>293.66</td><td>D</td><td>Equal Temperament</td></tr>
-          <tr><td>E</td><td>4</td><td>329.63</td><td>E</td><td>Equal Temperament</td></tr>
-          <tr><td>F</td><td>4</td><td>349.23</td><td>F</td><td>Equal Temperament</td></tr>
-          <tr><td>G</td><td>4</td><td>392.00</td><td>G</td><td>Equal Temperament</td></tr>
-          <tr><td>A</td><td>4</td><td>440.00</td><td>A</td><td>Standard Tuning</td></tr>
-          <tr><td>B</td><td>4</td><td>493.88</td><td>B</td><td>Equal Temperament</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>What are the standard pitch-to-frequency values?</h2>
+            <div class="table-responsive">
+              <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                  <tr>
+                    <th>Musical Note</th>
+                    <th>Octave</th>
+                    <th>Frequency (Hz)</th>
+                    <th>Pitch Class</th>
+                    <th>Reference</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>C</td>
+                    <td>4</td>
+                    <td>261.63</td>
+                    <td>C</td>
+                    <td>Equal Temperament</td>
+                  </tr>
+                  <tr>
+                    <td>D</td>
+                    <td>4</td>
+                    <td>293.66</td>
+                    <td>D</td>
+                    <td>Equal Temperament</td>
+                  </tr>
+                  <tr>
+                    <td>E</td>
+                    <td>4</td>
+                    <td>329.63</td>
+                    <td>E</td>
+                    <td>Equal Temperament</td>
+                  </tr>
+                  <tr>
+                    <td>F</td>
+                    <td>4</td>
+                    <td>349.23</td>
+                    <td>F</td>
+                    <td>Equal Temperament</td>
+                  </tr>
+                  <tr>
+                    <td>G</td>
+                    <td>4</td>
+                    <td>392.00</td>
+                    <td>G</td>
+                    <td>Equal Temperament</td>
+                  </tr>
+                  <tr>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>440.00</td>
+                    <td>A</td>
+                    <td>Standard Tuning</td>
+                  </tr>
+                  <tr>
+                    <td>B</td>
+                    <td>4</td>
+                    <td>493.88</td>
+                    <td>B</td>
+                    <td>Equal Temperament</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Can this pitch detector analyze vibrato and pitch drift?</h2>
-    <p>
-      Yes. The pitch detector tracks continuous pitch variation in real time.
-      The display reveals vibrato oscillation, sustained-note instability, and gradual pitch drift.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Can this pitch detector analyze vibrato and pitch drift?</h2>
+            <p>
+              Yes. The pitch detector tracks continuous pitch variation in real time.
+              The display reveals vibrato oscillation, sustained-note instability, and gradual pitch drift.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Is this pitch detector suitable for vocal training?</h2>
-    <p>
-      Yes. The pitch detector supports pitch accuracy practice, melody matching, and ear training.
-      The tool is used by singers, music students, and vocal coaches.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Is this pitch detector suitable for vocal training?</h2>
+            <p>
+              Yes. The pitch detector supports pitch accuracy practice, melody matching, and ear training.
+              The tool is used by singers, music students, and vocal coaches.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Which devices and operating systems are supported?</h2>
-    <ul>
-      <li>Desktop and laptop computers</li>
-      <li>Windows, macOS, Linux</li>
-      <li>Chrome, Edge, Safari, Firefox</li>
-    </ul>
-    <p>No installation is required.</p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Which devices and operating systems are supported?</h2>
+            <ul>
+              <li>Desktop and laptop computers</li>
+              <li>Windows, macOS, Linux</li>
+              <li>Chrome, Edge, Safari, Firefox</li>
+            </ul>
+            <p>No installation is required.</p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Do you need an account or downloads?</h2>
-    <ul>
-      <li>No downloads</li>
-      <li>No registration</li>
-      <li>No saved recordings</li>
-    </ul>
-    <p>Microphone access remains temporary and user-controlled.</p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Do you need an account or downloads?</h2>
+            <ul>
+              <li>No downloads</li>
+              <li>No registration</li>
+              <li>No saved recordings</li>
+            </ul>
+            <p>Microphone access remains temporary and user-controlled.</p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>How accurate is this pitch detector?</h2>
-    <p>
-      The pitch detector delivers real-time, cent-level accuracy.
-      Accuracy depends on microphone sensitivity, background noise, and steady vocal production.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>How accurate is this pitch detector?</h2>
+            <p>
+              The pitch detector delivers real-time, cent-level accuracy.
+              Accuracy depends on microphone sensitivity, background noise, and steady vocal production.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Who should use this pitch detector?</h2>
-    <p>
-      This pitch detector targets singers, vocal students, vocal coaches, and music educators.
-      The tool does not target audio-file or MIDI workflows.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Who should use this pitch detector?</h2>
+            <p>
+              This pitch detector targets singers, vocal students, vocal coaches, and music educators.
+              The tool does not target audio-file or MIDI workflows.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>What is the difference between pitch and frequency?</h2>
-    <p>
-      Frequency measures sound vibration in Hertz.
-      Pitch describes how humans perceive that frequency.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>What is the difference between pitch and frequency?</h2>
+            <p>
+              Frequency measures sound vibration in Hertz.
+              Pitch describes how humans perceive that frequency.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Is microphone access safe?</h2>
-    <ul>
-      <li>No uploads</li>
-      <li>No storage</li>
-      <li>No recording</li>
-    </ul>
-    <p>Audio processing occurs locally inside your browser.</p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Is microphone access safe?</h2>
+            <ul>
+              <li>No uploads</li>
+              <li>No storage</li>
+              <li>No recording</li>
+            </ul>
+            <p>Audio processing occurs locally inside your browser.</p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>How do you start using the pitch detector?</h2>
-    <ol>
-      <li>Click Start Detection</li>
-      <li>Allow microphone access</li>
-      <li>Sing a steady note</li>
-      <li>Observe the detected pitch in real time</li>
-    </ol>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>How do you start using the pitch detector?</h2>
+            <ol>
+              <li>Click Start Detection</li>
+              <li>Allow microphone access</li>
+              <li>Sing a steady note</li>
+              <li>Observe the detected pitch in real time</li>
+            </ol>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Why use this pitch detector instead of other tools?</h2>
-    <p>
-      This pitch detector focuses exclusively on real-time voice pitch detection.
-      The tool provides instant visual feedback, cent-accurate tuning, and local audio processing.
-    </p>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Why use this pitch detector instead of other tools?</h2>
+            <p>
+              This pitch detector focuses exclusively on real-time voice pitch detection.
+              The tool provides instant visual feedback, cent-accurate tuning, and local audio processing.
+            </p>
+          </div>
 
-  <div class="tool-container mb-5">
-    <h2>Tool scope disclaimer</h2>
-    <ul>
-      <li>Analyzes live voice only</li>
-      <li>Does not upload audio files</li>
-      <li>Does not convert audio to MIDI</li>
-      <li>Does not generate sheet music</li>
-      <li>Does not store recordings</li>
-    </ul>
-  </div>
+          <div class="tool-container mb-5">
+            <h2>Tool scope disclaimer</h2>
+            <ul>
+              <li>Analyzes live voice only</li>
+              <li>Does not upload audio files</li>
+              <li>Does not convert audio to MIDI</li>
+              <li>Does not generate sheet music</li>
+              <li>Does not store recordings</li>
+            </ul>
+          </div>
 
-</div>
+        </div>
 
         <div class="card my-4 shadow-sm">
           <div class="card-body">
