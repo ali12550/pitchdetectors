@@ -1,42 +1,51 @@
-# ------------------------------
-# Pitch Detectors — Full SEO & AI Optimized
-# ------------------------------
+# ==============================
+# Pitch Detectors — Clean & SEO Safe
+# ==============================
 
 Options -Indexes
 RewriteEngine On
+RewriteRule ^site_map\.xml$ /site_map.php [L]
 
-# 1. Force HTTPS + NON-WWW
-RewriteCond %{HTTPS} off [OR]
+# ------------------------------
+# 1. Force NON-WWW (first)
+# ------------------------------
 RewriteCond %{HTTP_HOST} ^www\.pitchdetectors\.com$ [NC]
+RewriteRule ^(.*)$ https://pitchdetectors.com/$1 [L,R=301]
+
+# ------------------------------
+# 2. Force HTTPS (second)
+# ------------------------------
+RewriteCond %{HTTPS} off
 RewriteRule ^ https://pitchdetectors.com%{REQUEST_URI} [L,R=301]
-
-# 2. Trailing Slash Normalization (except files)
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_URI} !/$
-RewriteRule ^(.*)$ https://pitchdetectors.com/$1/ [R=301,L]
-
-# 3. Sitemap Rewrite
-RewriteRule ^site_map\.xml$ /site_map.php [L,QSA]
-
+# ------------------------------
+# 2. Static Sitemap Headers
+# ------------------------------
 <IfModule mod_headers.c>
   <FilesMatch "(^|/)(sitemap|site_map)\.xml$">
     Header set Content-Type "application/xml; charset=UTF-8"
-    Header set Cache-Control "public, max-age=3600"
-    Header set Pragma "cache"
-    Header set Expires "Wed, 21 Oct 2030 07:28:00 GMT"
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
   </FilesMatch>
 </IfModule>
 
-# 4. Custom 404 Page
+
+# ------------------------------
+# 4. Custom 404 Page (REAL 404)
+# ------------------------------
 ErrorDocument 404 /404.html
 
+# ------------------------------
 # 5. Security Headers
+# ------------------------------
 <IfModule mod_headers.c>
   Header always set X-Content-Type-Options "nosniff"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
-  Header always set X-XSS-Protection "1; mode=block"
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:;"
 </IfModule>
-
+<!-- gzip -->
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain
+  AddOutputFilterByType DEFLATE application/javascript text/javascript
+  AddOutputFilterByType DEFLATE application/json
+</IfModule>
