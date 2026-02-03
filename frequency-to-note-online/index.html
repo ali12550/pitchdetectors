@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frequency to Note Converter | Hz to Musical Note | pitchdetectors</title>
+    <title>Frequency to Musical Note Converter – Pitch, Octave & Cents Calculator</title>
     <meta name="description"
-        content="Free online frequency to note converter. Convert any frequency in Hz to its corresponding musical note with cents deviation, octave, and nearest pitch information.">
+        content="Convert any frequency (Hz) into its nearest musical note, octave, MIDI value, and cents deviation. Free, accurate frequency-to-note calculator using A4 = 440 Hz.">
     <meta name="keywords"
         content="frequency to note, Hz to note, frequency converter, pitch calculator, music frequency, hertz to musical note">
     <link rel="canonical" href="https://pitchdetectors.com/frequency-to-note-online/">
@@ -53,8 +53,8 @@
                         <div class="sidebar-category active">
                             <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
                             <ul class="sidebar-links">
-                                <li><a href="/guitar-tuner-online/" class=""><i
-                                            class="bi bi-music-note-beamed"></i> Guitar Tuner</a></li>
+                                <li><a href="/guitar-tuner-online/" class=""><i class="bi bi-music-note-beamed"></i>
+                                        Guitar Tuner</a></li>
                                 <li><a href="/vocal-range-finder-online/"><i class="bi bi-mic"></i> Vocal
                                         Range Finder</a></li>
                                 <li><a href="/frequency-to-note-online/" class="active"><i
@@ -63,10 +63,10 @@
                                         Note to Frequency</a></li>
                                 <li><a href="/cents-calculator-online/"><i class="bi bi-rulers"></i> Cents
                                         Calculator</a></li>
-                                <li><a href="/transpose-calculator-online/"><i
-                                            class="bi bi-arrows-expand"></i> Transpose Calculator</a></li>
-                                <li><a href="/harmonic-series-calculator-online/"><i
-                                            class="bi bi-bar-chart-steps"></i> Harmonic Series</a></li>
+                                <li><a href="/transpose-calculator-online/"><i class="bi bi-arrows-expand"></i>
+                                        Transpose Calculator</a></li>
+                                <li><a href="/harmonic-series-calculator-online/"><i class="bi bi-bar-chart-steps"></i>
+                                        Harmonic Series</a></li>
                             </ul>
                         </div>
 
@@ -81,281 +81,441 @@
                                         Milliseconds</a></li>
                                 <li><a href="/dj-music-production-tools/song-key-finder/"><i class="bi bi-key"></i> Song
                                         Key Finder</a></li>
-                                <li><a href="https://pitchdetectors.com/dj-music-production-tools/bpm-pitch-calculator/"><i class="bi bi-sliders"></i>
+                                <li><a
+                                        href="https://pitchdetectors.com/dj-music-production-tools/bpm-pitch-calculator/"><i
+                                            class="bi bi-sliders"></i>
                                         Pitch Shifter</a></li>
 
                             </ul>
                         </div>
 
 
-                       
+
                     </div>
                 </div>
             </div>
             <div class="col-lg-9 col-md-8">
                 <!-- Breadcrumb -->
-                <navaria-label="breadcrumb">
+                <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item"><a href="/pitch-detector-tools/">Pitch Detector Tools</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Frequency to Note Converter</li>
                     </ol>
-                    </nav>
+                </nav>
 
-                    <div class="tool-container">
-                        <div class="tool-title">
-                            <h1><i class="bi bi-arrow-left-right me-2"></i>Frequency to Note Converter</h1>
-                            <p>Convert any frequency in Hertz (Hz) to its corresponding musical note. Get the note name,
-                                octave,
-                                cents deviation, and exact pitch information.</p>
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-arrow-left-right me-2"></i>Frequency to Note Converter</h1>
+                        <p>Convert any frequency in Hertz (Hz) to its corresponding musical note. Get the note name,
+                            octave,
+                            cents deviation, and exact pitch information.</p>
+                    </div>
+
+                    <!-- Input Section -->
+                    <div class="row mb-4">
+                        <div class="col-md-8">
+                            <label class="form-label">Enter Frequency (Hz):</label>
+                            <input type="number" class="form-control form-control-lg" id="frequencyInput"
+                                placeholder="e.g., 440" min="20" max="20000" step="0.01" value="440">
                         </div>
-
-                        <!-- Input Section -->
-                        <div class="row mb-4">
-                            <div class="col-md-8">
-                                <label class="form-label">Enter Frequency (Hz):</label>
-                                <input type="number" class="form-control form-control-lg" id="frequencyInput"
-                                    placeholder="e.g., 440" min="20" max="20000" step="0.01" value="440">
-                            </div>
-                            <div class="col-md-4">
-                                <label class="form-label">A4 Reference (Hz):</label>
-                                <input type="number" class="form-control form-control-lg" id="a4Reference" value="440"
-                                    min="430" max="450" step="1">
-                            </div>
+                        <div class="col-md-4">
+                            <label class="form-label">A4 Reference (Hz):</label>
+                            <input type="number" class="form-control form-control-lg" id="a4Reference" value="440"
+                                min="430" max="450" step="1">
                         </div>
+                    </div>
 
-                        <!-- Quick Buttons -->
-                        <div class="mb-4">
-                            <label class="form-label">Common Frequencies:</label>
-                            <div class="quick-buttons">
-                                <button class="quick-btn" onclick="setFrequency(261.63)">C4 (261.63)</button>
-                                <button class="quick-btn" onclick="setFrequency(440)">A4 (440)</button>
-                                <button class="quick-btn" onclick="setFrequency(523.25)">C5 (523.25)</button>
-                                <button class="quick-btn" onclick="setFrequency(880)">A5 (880)</button>
-                                <button class="quick-btn" onclick="setFrequency(1000)">1000 Hz</button>
-                                <button class="quick-btn" onclick="setFrequency(60)">60 Hz (Hum)</button>
-                            </div>
+                    <!-- Quick Buttons -->
+                    <div class="mb-4">
+                        <label class="form-label">Common Frequencies:</label>
+                        <div class="quick-buttons">
+                            <button class="quick-btn" onclick="setFrequency(261.63)">C4 (261.63)</button>
+                            <button class="quick-btn" onclick="setFrequency(440)">A4 (440)</button>
+                            <button class="quick-btn" onclick="setFrequency(523.25)">C5 (523.25)</button>
+                            <button class="quick-btn" onclick="setFrequency(880)">A5 (880)</button>
+                            <button class="quick-btn" onclick="setFrequency(1000)">1000 Hz</button>
+                            <button class="quick-btn" onclick="setFrequency(60)">60 Hz (Hum)</button>
                         </div>
+                    </div>
 
-                        <!-- Convert Button -->
-                        <button class="btn btn-primary btn-lg w-100 mb-4" onclick="convertFrequency()">
-                            <i class="bi bi-arrow-repeat me-2"></i>Convert to Note
-                        </button>
+                    <!-- Convert Button -->
+                    <button class="btn btn-primary btn-lg w-100 mb-4" onclick="convertFrequency()">
+                        <i class="bi bi-arrow-repeat me-2"></i>Convert to Note
+                    </button>
 
-                        <!-- Result Box -->
-                        <div class="result-box" id="resultBox">
-                            <h3 id="resultNote">A4</h3>
-                            <p class="mb-2" style="font-size: 24px;" id="resultFreq">440.00 Hz</p>
-                            <div class="row text-start mt-4">
-                                <div class="col-6 col-md-3 mb-3">
-                                    <strong>Note:</strong><br>
-                                    <span id="noteName">A</span>
-                                </div>
-                                <div class="col-6 col-md-3 mb-3">
-                                    <strong>Octave:</strong><br>
-                                    <span id="noteOctave">4</span>
-                                </div>
-                                <div class="col-6 col-md-3 mb-3">
-                                    <strong>Cents:</strong><br>
-                                    <span id="noteCents">0.00</span>
-                                </div>
-                                <div class="col-6 col-md-3 mb-3">
-                                    <strong>Exact Freq:</strong><br>
-                                    <span id="exactFreq">440.00 Hz</span>
-                                </div>
+                    <!-- Result Box -->
+                    <div class="result-box" id="resultBox">
+                        <h3 id="resultNote">A4</h3>
+                        <p class="mb-2" style="font-size: 24px;" id="resultFreq">440.00 Hz</p>
+                        <div class="row text-start mt-4">
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Note:</strong><br>
+                                <span id="noteName">A</span>
                             </div>
-                            <div class="mt-3 p-3 bg-white rounded">
-                                <p class="mb-0" id="centsExplanation">This frequency is exactly at A4 (perfectly in
-                                    tune).</p>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Octave:</strong><br>
+                                <span id="noteOctave">4</span>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Cents:</strong><br>
+                                <span id="noteCents">0.00</span>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <strong>Exact Freq:</strong><br>
+                                <span id="exactFreq">440.00 Hz</span>
                             </div>
                         </div>
+                        <div class="mt-3 p-3 bg-white rounded">
+                            <p class="mb-0" id="centsExplanation">This frequency is exactly at A4 (perfectly in
+                                tune).</p>
+                        </div>
+                    </div>
 
-                        <!-- Cents Visualization -->
-                        <div class="mt-4 p-4 bg-light rounded">
-                            <h5 class="text-mid mb-3">Cents Deviation</h5>
+                    <!-- Cents Visualization -->
+                    <div class="mt-4 p-4 bg-light rounded">
+                        <h5 class="text-mid mb-3">Cents Deviation</h5>
+                        <div
+                            style="height: 30px; background: #e0e0e0; border-radius: 15px; position: relative; overflow: hidden;">
                             <div
-                                style="height: 30px; background: #e0e0e0; border-radius: 15px; position: relative; overflow: hidden;">
-                                <div
-                                    style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--dark-blue);">
-                                </div>
-                                <div id="centsIndicator"
-                                    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--teal); border-radius: 50%; transition: left 0.3s;">
-                                </div>
+                                style="position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: var(--dark-blue);">
                             </div>
-                            <div class="d-flex justify-content-between mt-2">
-                                <span>-50¢ (Flat)</span>
-                                <span>0¢</span>
-                                <span>+50¢ (Sharp)</span>
+                            <div id="centsIndicator"
+                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 20px; height: 20px; background: var(--teal); border-radius: 50%; transition: left 0.3s;">
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Formula Section -->
-                    <div class="tool-container mt-4">
-                        <div class="tool-section">
-                            <h2 class="text-mid mb-3"><i class="bi bi-calculator me-2"></i>The Formula</h2>
-                            <p>The conversion from frequency to note uses the following formulas:</p>
-
-                            <div class="bg-light p-4 rounded mb-4">
-                                <h5>Semitones from A4:</h5>
-                                <code style="font-size: 18px;">n = 12 × log₂(f / 440)</code>
-                                <p class="mt-2 mb-0">Where <em>f</em> is the frequency in Hz and <em>n</em> is the
-                                    number of
-                                    semitones from A4.</p>
-                            </div>
-
-                            <div class="bg-light p-4 rounded mb-4">
-                                <h5>Cents Deviation:</h5>
-                                <code style="font-size: 18px;">cents = 1200 × log₂(f / f_note)</code>
-                                <p class="mt-2 mb-0">Where <em>f</em> is the input frequency and <em>f_note</em> is the
-                                    exact
-                                    frequency of the nearest note.</p>
-                            </div>
-
-                            <h4 class="text-teal mt-4">Understanding Cents</h4>
-                            <ul>
-                                <li>There are <strong>100 cents</strong> in one semitone</li>
-                                <li><strong>0 cents</strong> = perfectly in tune</li>
-                                <li><strong>Negative cents</strong> = flat (below the note)</li>
-                                <li><strong>Positive cents</strong> = sharp (above the note)</li>
-                                <li>Most people can't hear differences smaller than <strong>5-10 cents</strong></li>
-                            </ul>
+                        <div class="d-flex justify-content-between mt-2">
+                            <span>-50¢ (Flat)</span>
+                            <span>0¢</span>
+                            <span>+50¢ (Sharp)</span>
                         </div>
                     </div>
+                </div>
+                <!-- content start -->
+                <!-- Frequency to Note Converter Tool Content -->
+                <section class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2>Frequency to Note Converter</h2>
+                        <h3>Convert Frequencies (Hz) into Musical Notes Instantly</h3>
 
-                    <!-- Reference Table -->
-                    <div class="tool-container mt-4">
-                        <div class="tool-section">
-                            <h2 class="text-mid mb-3"><i class="bi bi-table me-2"></i>Common Note Frequencies</h2>
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Note</th>
-                                            <th>Frequency (Hz)</th>
-                                            <th>Note</th>
-                                            <th>Frequency (Hz)</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>C4 (Middle C)</td>
-                                            <td>261.63</td>
-                                            <td>C5</td>
-                                            <td>523.25</td>
-                                        </tr>
-                                        <tr>
-                                            <td>D4</td>
-                                            <td>293.66</td>
-                                            <td>D5</td>
-                                            <td>587.33</td>
-                                        </tr>
-                                        <tr>
-                                            <td>E4</td>
-                                            <td>329.63</td>
-                                            <td>E5</td>
-                                            <td>659.25</td>
-                                        </tr>
-                                        <tr>
-                                            <td>F4</td>
-                                            <td>349.23</td>
-                                            <td>F5</td>
-                                            <td>698.46</td>
-                                        </tr>
-                                        <tr>
-                                            <td>G4</td>
-                                            <td>392.00</td>
-                                            <td>G5</td>
-                                            <td>783.99</td>
-                                        </tr>
-                                        <tr>
-                                            <td>A4</td>
-                                            <td>440.00</td>
-                                            <td>A5</td>
-                                            <td>880.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td>B4</td>
-                                            <td>493.88</td>
-                                            <td>B5</td>
-                                            <td>987.77</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <p>
+                            The <strong>Frequency to Note Converter</strong> is a free online tool designed to
+                            translate any frequency in Hertz (Hz) into its closest musical note, pitch name,
+                            octave position, or MIDI note number. It works by mapping sound frequency values
+                            onto the standard musical pitch system used in Western music.
+                        </p>
+
+                        <p>
+                            This tool is commonly used for instrument tuning, pitch detection, audio signal
+                            analysis, music production, and music theory learning. It supports tasks such as
+                            identifying the note of a recorded sound, verifying tuning accuracy, or converting
+                            measured audio frequencies into readable musical note names.
+                        </p>
+
+                        <h2>How the Frequency to Note Converter Works</h2>
+
+                        <p>
+                            Musical pitch follows a logarithmic frequency scale where each octave represents
+                            a doubling of frequency. This converter uses the
+                            <strong>twelve-tone equal temperament (12-TET)</strong> system, which divides each
+                            octave into twelve equal semitones.
+                        </p>
+
+                        <p>
+                            The input frequency is compared against a fixed
+                            <strong>reference pitch of A4 = 440 Hz</strong>, defined by the ISO 16 tuning
+                            standard. From this reference, the tool calculates the nearest pitch class,
+                            note name, and octave number.
+                        </p>
+
+                        <p>
+                            When the frequency does not match an exact note value, the converter calculates
+                            the <strong>cents deviation</strong>, indicating whether the pitch is sharp or flat
+                            relative to the nearest note frequency.
+                        </p>
+
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li>Convert any audio frequency (Hz) into its nearest musical note and octave</li>
+                            <li>Measure tuning accuracy using cents deviation</li>
+                            <li>Display corresponding MIDI note numbers</li>
+                            <li>Understand pitch repetition and octave relationships</li>
+                            <li>Use as a reference alongside note-to-frequency charts</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Formula Section -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-3">
+                            <i class="bi bi-calculator me-2"></i>The Formula
+                        </h2>
+
+                        <p>
+                            Frequency-to-note conversion relies on calculating the distance between an input
+                            frequency and a known reference pitch. This distance is measured in semitones,
+                            which represent equal steps in the musical tuning system.
+                        </p>
+
+                        <p>
+                            By determining how many semitones the frequency is above or below A4 (440 Hz),
+                            the converter assigns the correct note name and octave.
+                        </p>
+
+                        <div class="bg-light p-4 rounded mb-4">
+                            <h5>Semitones from A4:</h5>
+                            <code style="font-size: 18px;">n = 12 × log₂(f / 440)</code>
+                            <p class="mt-2 mb-0">
+                                Where <em>f</em> is the input frequency in Hertz and <em>n</em> is the number of
+                                semitones relative to A4.
+                            </p>
+                        </div>
+
+                        <div class="bg-light p-4 rounded mb-4">
+                            <h5>Cents Deviation:</h5>
+                            <code style="font-size: 18px;">cents = 1200 × log₂(f / f_note)</code>
+                            <p class="mt-2 mb-0">
+                                This calculation shows how far the input frequency deviates from the exact
+                                frequency of the nearest musical note.
+                            </p>
+                        </div>
+
+                        <h4 class="text-teal mt-4">Understanding Cents</h4>
+                        <ul>
+                            <li>One semitone equals <strong>100 cents</strong></li>
+                            <li><strong>0 cents</strong> means the pitch is perfectly in tune</li>
+                            <li>Negative values indicate the pitch is flat</li>
+                            <li>Positive values indicate the pitch is sharp</li>
+                            <li>Pitch differences below <strong>5–10 cents</strong> are often imperceptible</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Reference Table -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2>Reference Table: Frequency to Musical Note Mapping</h2>
+
+                        <p>
+                            This reference table shows how standard musical notes correspond to their
+                            fundamental frequencies in Hertz. Because pitch repeats across octaves, the
+                            same note name appears at multiple frequency values.
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Note</th>
+                                        <th>Frequency (Hz)</th>
+                                        <th>Note</th>
+                                        <th>Frequency (Hz)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>C4 (Middle C)</td>
+                                        <td>261.63</td>
+                                        <td>C5</td>
+                                        <td>523.25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>D4</td>
+                                        <td>293.66</td>
+                                        <td>D5</td>
+                                        <td>587.33</td>
+                                    </tr>
+                                    <tr>
+                                        <td>E4</td>
+                                        <td>329.63</td>
+                                        <td>E5</td>
+                                        <td>659.25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>F4</td>
+                                        <td>349.23</td>
+                                        <td>F5</td>
+                                        <td>698.46</td>
+                                    </tr>
+                                    <tr>
+                                        <td>G4</td>
+                                        <td>392.00</td>
+                                        <td>G5</td>
+                                        <td>783.99</td>
+                                    </tr>
+                                    <tr>
+                                        <td>A4</td>
+                                        <td>440.00</td>
+                                        <td>A5</td>
+                                        <td>880.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B4</td>
+                                        <td>493.88</td>
+                                        <td>B5</td>
+                                        <td>987.77</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
+                </div>
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2>Tuning System and Reference Pitch Considerations</h2>
 
-                    <!-- FAQ Section -->
-                    <div class="tool-container mt-4">
-                        <div class="tool-section">
-                            <h2 class="text-mid mb-4"><i class="bi bi-question-circle me-2"></i>Frequently Asked
-                                Questions</h2>
+                        <p>
+                            Frequency-to-note conversion depends on the selected tuning system and reference
+                            pitch. This tool uses the twelve-tone equal temperament system, where each octave
+                            is divided into twelve equal semitones.
+                        </p>
 
-                            <div class="accordion" id="faqAccordion">
-                                <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#faq1">
-                                            What frequency is middle C?
-                                        </button>
-                                    </h3>
-                                    <div id="faq1" class="accordion-collapse collapse show"
-                                        data-bs-parent="#faqAccordion">
-                                        <div class="accordion-body">
-                                            Middle C (C4) is approximately 261.63 Hz when using standard A4 = 440 Hz
-                                            tuning.
-                                            This is the C note located near the middle of a standard 88-key piano.
-                                        </div>
+                        <p>
+                            By default, calculations are based on the international tuning standard
+                            <strong>A4 = 440 Hz</strong>. Different reference pitches, such as A4 = 432 Hz,
+                            will produce different note mappings and cent deviations.
+                        </p>
+
+                        <p>
+                            Because musical tuning standards can vary by historical context, genre, or
+                            performance preference, frequency-to-note results should always be interpreted
+                            relative to the chosen reference pitch.
+                        </p>
+                    </div>
+                </div>
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2>Practical Applications of Frequency to Note Conversion</h2>
+
+                        <p>
+                            Frequency-to-note calculators are widely used in instrument tuning, vocal pitch
+                            analysis, sound design, and digital audio production. They help translate raw
+                            frequency measurements into meaningful musical information.
+                        </p>
+
+                        <p>
+                            Musicians use frequency-to-note tools to identify pitches from microphones or
+                            recordings, while audio engineers rely on them to analyze harmonics, detect tuning
+                            issues, or align sounds with musical scales in digital audio workstations.
+                        </p>
+                    </div>
+                </div>
+                <!-- faq Section -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4">
+                            <i class="bi bi-question-circle me-2"></i>Frequently Asked Questions
+                        </h2>
+
+                        <div class="accordion" id="frequencyNoteFaq">
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="fnf1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#fnfCollapse1">
+                                        Does frequency to note conversion depend on tuning standards?
+                                    </button>
+                                </h3>
+                                <div id="fnfCollapse1" class="accordion-collapse collapse show"
+                                    data-bs-parent="#frequencyNoteFaq">
+                                    <div class="accordion-body">
+                                        Yes. Frequency-to-note conversion depends on the selected reference pitch and
+                                        tuning system.
+                                        Most tools use A4 = 440 Hz with twelve-tone equal temperament. Changing the
+                                        reference pitch
+                                        alters note assignments and cent deviation values.
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#faq2">
-                                            Why is A4 = 440 Hz the standard?
-                                        </button>
-                                    </h3>
-                                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                        <div class="accordion-body">
-                                            A4 = 440 Hz was adopted as the international standard (ISO 16) in 1955.
-                                            Before this,
-                                            there was significant variation in tuning standards across different
-                                            countries and
-                                            time periods. 440 Hz was chosen as a compromise that was already in common
-                                            use.
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#faq3">
-                                            What is the relationship between frequency and octaves?
-                                        </button>
-                                    </h3>
-                                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                        <div class="accordion-body">
-                                            Each octave represents a doubling of frequency. For example, A4 = 440 Hz, A5
-                                            = 880
-                                            Hz (double), and A3 = 220 Hz (half). This 2:1 ratio is consistent across all
-                                            notes
-                                            and is why octaves sound so harmonically related.
-                                        </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="fnf2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#fnfCollapse2">
+                                        What musical note corresponds to a specific frequency?
+                                    </button>
+                                </h3>
+                                <div id="fnfCollapse2" class="accordion-collapse collapse"
+                                    data-bs-parent="#frequencyNoteFaq">
+                                    <div class="accordion-body">
+                                        A specific frequency corresponds to the nearest musical note based on
+                                        logarithmic pitch spacing.
+                                        The calculation compares the frequency to a reference pitch, determines semitone
+                                        distance,
+                                        and assigns the appropriate note name and octave.
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="fnf3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#fnfCollapse3">
+                                        Why do frequencies repeat across octaves?
+                                    </button>
+                                </h3>
+                                <div id="fnfCollapse3" class="accordion-collapse collapse"
+                                    data-bs-parent="#frequencyNoteFaq">
+                                    <div class="accordion-body">
+                                        Frequencies repeat across octaves because musical pitch doubles with each octave
+                                        increase.
+                                        When a frequency is doubled, it produces the same note name at a higher octave
+                                        while
+                                        maintaining the same pitch class.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="fnf4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#fnfCollapse4">
+                                        How accurate is frequency to note calculation?
+                                    </button>
+                                </h3>
+                                <div id="fnfCollapse4" class="accordion-collapse collapse"
+                                    data-bs-parent="#frequencyNoteFaq">
+                                    <div class="accordion-body">
+                                        Frequency-to-note calculation is mathematically precise within the selected
+                                        tuning system.
+                                        Accuracy depends on the input frequency measurement and reference pitch.
+                                        Small deviations are expressed in cents for detailed tuning analysis.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="fnf5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#fnfCollapse5">
+                                        Can one frequency map to different notes?
+                                    </button>
+                                </h3>
+                                <div id="fnfCollapse5" class="accordion-collapse collapse"
+                                    data-bs-parent="#frequencyNoteFaq">
+                                    <div class="accordion-body">
+                                        A frequency can map to different note labels when the reference pitch changes.
+                                        Using alternative tuning standards, such as A4 = 432 Hz instead of 440 Hz,
+                                        shifts note boundaries and alters cent deviation values.
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
+                </div>
+
+                
+                <!-- content end -->
+
             </div>
         </div>
     </div>
     <div id="footer"></div>
-    
-    <script src="/include.js"></script>
 
+    <script src="/assets/bootstrap5.js"></script>
+    <!-- tool js -->
     <script defer>
         const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 
@@ -428,6 +588,56 @@
                 .catch(err => console.error("Include load failed:", err));
         });
     </script>
+    <!-- faq schema -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does frequency to note conversion depend on tuning standards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Frequency-to-note conversion depends on the selected reference pitch and tuning system. Most tools use A4 = 440 Hz with twelve-tone equal temperament. Changing the reference pitch alters note assignments and cent deviation values."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What musical note corresponds to a specific frequency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A specific frequency corresponds to the nearest musical note based on logarithmic pitch spacing. The calculation compares the frequency to a reference pitch, determines semitone distance, and assigns the appropriate note name and octave."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do frequencies repeat across octaves?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Frequencies repeat across octaves because musical pitch doubles with each octave increase. When a frequency is doubled, it produces the same note name at a higher octave while maintaining the same pitch class."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is frequency to note calculation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Frequency-to-note calculation is mathematically precise within the selected tuning system. Accuracy depends on the input frequency measurement and reference pitch. Small deviations are expressed in cents for detailed tuning analysis."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can one frequency map to different notes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A frequency can map to different note labels when the reference pitch changes. Using alternative tuning standards, such as A4 = 432 Hz instead of 440 Hz, shifts note boundaries and alters cent deviation values."
+      }
+    }
+  ]
+}
+</script>
+
 </body>
 
 </html>
