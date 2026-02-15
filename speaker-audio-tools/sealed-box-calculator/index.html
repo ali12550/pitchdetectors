@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sealed Box Calculator – Design Speaker & Subwoofer Enclosures</title>
+    <meta name="description"
+        content="Calculate sealed speaker box volume, system Qtc, F3, and dimensions instantly. Free online tool for subwoofer & speaker enclosure design with precision results.">
+    <meta name="keywords"
+        content="sealed box, acoustic suspension, speaker enclosure, closed box, subwoofer box calculator">
+    <link rel="canonical" href="https://pitchdetectors.com/speaker-audio-tools/sealed-box-calculator/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row justify-content-around">
+
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-speaker me-2"></i>Speaker Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/speaker-audio-tools/speaker-wattage-calculator/"><i class="bi bi-lightning"></i>
+                                        Speaker Wattage</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-impedance-calculator/"><i
+                                            class="bi bi-diagram-3"></i>
+                                        Impedance Calculator</a></li>
+                                <li><a href="/speaker-audio-tools/amplifier-power-calculator/"><i class="bi bi-plug"></i>
+                                        Amplifier Power</a></li>
+                                <li><a href="/speaker-audio-tools/sound-distance-drop-calculator/"><i
+                                            class="bi bi-rulers"></i>
+                                        Sound Distance Drop</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-placement-calculator/"><i
+                                            class="bi bi-arrows-move"></i>
+                                        Speaker Placement</a></li>
+                                <li><a href="/speaker-audio-tools/room-acoustics-calculator/"><i class="bi bi-house"></i> Room
+                                        Acoustics</a></li>
+                                <li><a href="/speaker-audio-tools/ported-enclosure-calculator/"><i class="bi bi-box"></i>
+                                        Ported Enclosure</a></li>
+                                <li><a href="/speaker-audio-tools/sealed-box-calculator/"><i class="bi bi-box-seam"></i>
+                                        Sealed Box</a></li>
+                                <li><a href="/speaker-audio-tools/crossover-frequency-calculator/"><i
+                                            class="bi bi-filter"></i>
+                                        Crossover Frequency</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/speaker-audio-tools/">Speaker Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sealed Box Calculator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h2><i class="bi bi-box-seam me-2"></i>Sealed Box Calculator</h2>
+                        <p>Design sealed (acoustic suspension) speaker enclosures. Calculate optimal box volume based on
+                            driver parameters.</p>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Driver Vas (liters):</label>
+                            <input type="number" class="form-control" id="vas" value="50" min="5" max="500" step="1"
+                                oninput="calculate()">
+                            <small class="text-muted">Equivalent compliance volume</small>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Driver Qts:</label>
+                            <input type="number" class="form-control" id="qts" value="0.4" min="0.1" max="2" step="0.01"
+                                oninput="calculate()">
+                            <small class="text-muted">Total Q factor</small>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Driver Fs (Hz):</label>
+                            <input type="number" class="form-control" id="fs" value="30" min="15" max="100" step="1"
+                                oninput="calculate()">
+                            <small class="text-muted">Free-air resonance</small>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Target Qtc:</label>
+                            <input type="range" class="form-range" id="qtc" value="0.707" min="0.5" max="1.2"
+                                step="0.01" oninput="calculate()">
+                            <div class="d-flex justify-content-between">
+                                <small>0.5 (Tight)</small>
+                                <strong id="qtcDisplay">0.707 (Butterworth)</strong>
+                                <small>1.2 (Boomy)</small>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Box Volume Unit:</label>
+                            <select class="form-select" id="volumeUnit" onchange="calculate()">
+                                <option value="liters" selected>Liters</option>
+                                <option value="cuft">Cubic Feet</option>
+                                <option value="cuin">Cubic Inches</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <h3>Sealed Box Specifications</h3>
+                        <p class="result-value" id="boxVolumeResult">28.4 liters</p>
+                        <div class="row text-start mt-4">
+                            <div class="col-md-3 col-6 mb-3">
+                                <strong>Box Volume:</strong><br>
+                                <span id="boxVolume" class="fs-4">28.4 L</span>
+                            </div>
+                            <div class="col-md-3 col-6 mb-3">
+                                <strong>System Fc:</strong><br>
+                                <span id="systemFc" class="fs-4 text-teal">42 Hz</span>
+                            </div>
+                            <div class="col-md-3 col-6 mb-3">
+                                <strong>F3 (-3dB):</strong><br>
+                                <span id="f3" class="fs-4">38 Hz</span>
+                            </div>
+                            <div class="col-md-3 col-6 mb-3">
+                                <strong>Response Type:</strong><br>
+                                <span id="responseType" class="fs-4">Butterworth</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-light rounded">
+                        <h5 class="text-mid mb-3"><i class="bi bi-rulers me-2"></i>Box Dimensions (assuming cube)</h5>
+                        <div class="row text-center">
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>Internal:</strong><br>
+                                <span id="intDimensions" class="fs-5">30.5 × 30.5 × 30.5 cm</span>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>External (3/4" walls):</strong><br>
+                                <span id="extDimensions" class="fs-5">34.3 × 34.3 × 34.3 cm</span>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>Material Volume:</strong><br>
+                                <span id="materialVol" class="fs-5">~12 liters</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Content Section -->
+                <div class="tool-container">
+                    <div>
+                        <h1 class="tool-title"><i class="bi bi-box-seam me-2"></i>Sealed Box Calculator (Sealed
+                            Subwoofer & Speaker
+                            Enclosure Volume Tool)</h1>
+                        <p>Calculates sealed enclosure volume using Thiele-Small parameters. Computes internal air
+                            volume, system resonance (Fc), damping alignment (Qtc), low-frequency cutoff (F3), and cube
+                            dimensions for accurate subwoofer or speaker builds.</p>
+                    </div>
+
+                    <!-- Definition Layer -->
+                    <h2 class="">What is a sealed box calculator?</h2>
+                    <p>A sealed box calculator is a precision tool for car audio and loudspeaker engineering that
+                        computes the internal air volume of closed (airtight) speaker enclosures. It determines system
+                        resonance (Fc), damping alignment (Qtc), low-frequency cutoff (F3), and internal dimensions
+                        based on driver Thiele-Small parameters. This tool eliminates manual formulas and ensures
+                        predictable acoustic suspension and cone motion in sealed cabinets.</p>
+
+                    <!-- Functional Explanation -->
+                    <h2 class="">How do you calculate sealed enclosure volume?</h2>
+                    <p>The calculator uses driver Vas, Qts, and Fs to compute the enclosure’s net internal volume (Vb).
+                        Users input compliance volume, damping, and resonance data. Outputs include box volume, system
+                        Fc, F3, and internal cube dimensions. These results guide enclosure sizing, alignment selection,
+                        and proper acoustic suspension for subwoofer and speaker designs.</p>
+
+                    <!-- Engineering & Formula Layer -->
+                    <h2 class="">What formulas are used in sealed box calculations?</h2>
+                    <div class="formula">
+                        Vb = Vas / ((Qtc / Qts)^2 - 1)
+                    </div>
+                    <p>Where: <br>
+                        Vb = Sealed box volume (liters)<br>
+                        Vas = Driver compliance volume (liters)<br>
+                        Qts = Total driver Q factor<br>
+                        Qtc = Target system Q</p>
+
+                    <div class="formula">
+                        Fc = Fs × √(Vas / Vb + 1)
+                    </div>
+                    <p>Fc is system resonance after enclosure. Fs is driver free-air resonance. These formulas model
+                        acoustic suspension, controlling low-frequency roll-off and cone motion.</p>
+                    <div class="tool-container mt-4">
+                        <div class="tool-section">
+                            <h2 class="text-mid mb-4"><i class="bi bi-info-circle me-2"></i>Qtc Reference</h2>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Qtc Value</th>
+                                            <th>Response</th>
+                                            <th>Character</th>
+                                            <th>Best For</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>0.5</td>
+                                            <td>Overdamped</td>
+                                            <td>Very tight, fast decay</td>
+                                            <td>Analytical listening</td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.577</td>
+                                            <td>Bessel</td>
+                                            <td>Best transient response</td>
+                                            <td>Music accuracy</td>
+                                        </tr>
+                                        <tr class="table-active">
+                                            <td>0.707</td>
+                                            <td>Butterworth</td>
+                                            <td>Maximally flat</td>
+                                            <td>All-around best</td>
+                                        </tr>
+                                        <tr>
+                                            <td>0.9</td>
+                                            <td>Slight peak</td>
+                                            <td>Warmer, fuller bass</td>
+                                            <td>Home theater</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1.0+</td>
+                                            <td>Underdamped</td>
+                                            <td>Boomy, resonant</td>
+                                            <td>Car audio (some)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Input Parameters -->
+                    <h2 class="">Input Parameters</h2>
+                    <ul>
+                        <li><strong>Vas (Equivalent Compliance Volume):</strong> Defines driver suspension stiffness.
+                            Unit: liters. Larger Vas → larger box. Controls system resonance shift.</li>
+                        <li><strong>Qts (Total Q Factor):</strong> Combines electrical and mechanical damping. Unitless.
+                            Higher Qts → looser damping, influencing F3 and transient response.</li>
+                        <li><strong>Fs (Free-Air Resonance):</strong> Driver resonance without enclosure. Unit: Hz. Sets
+                            Fc starting point in sealed design.</li>
+                        <li><strong>Sd (Cone Area):</strong> Cone surface in cm². Influences air displacement. Larger
+                            cones → larger Vb for controlled excursion.</li>
+                        <li><strong>Xmax (Peak Linear Excursion):</strong> Driver maximum excursion. Unit: mm. Ensures
+                            cone motion stays within linear range to prevent distortion.</li>
+                    </ul>
+
+                    <!-- Output Interpretation -->
+                    <h2 class="">What outputs does a sealed box calculator provide?</h2>
+                    <p>The calculator outputs net internal volume (Vb), system resonance (Fc), low-frequency cutoff
+                        (F3), response type based on Qtc, and cube dimensions. These guide real-world builds by ensuring
+                        the enclosure achieves targeted acoustic behavior and cone control.</p>
+
+                    <!-- Acoustic Behavior -->
+                    <h2 class="">How does a sealed box affect acoustic behavior?</h2>
+                    <p>Sealed enclosures provide smooth low-frequency roll-off, consistent transient response, and
+                        controlled group delay. Air stiffness acts as a restoring spring, improving cone damping and
+                        reducing distortion. Correctly sized boxes optimize power handling and maintain linear response
+                        across usable bandwidth.</p>
+
+                    <!-- Design Constraints -->
+                    <h2 class="">What real-world factors alter sealed box design?</h2>
+                    <p>Driver displacement, internal bracing, MDF/plywood thickness, air leaks, and cabin gain all
+                        affect net box volume. Calculated Vb is theoretical; gross construction must account for these
+                        variables to preserve intended Qtc alignment and frequency response.</p>
+
+                    <!-- Use-Case Intent -->
+                    <h2 class="">Who should use a sealed box calculator?</h2>
+                    <p>This tool serves car audio enthusiasts, home theater builders, and OEM integrators. It supports
+                        daily listening setups, SQL builds, trunk-space optimization, and precise subwoofer integration.
+                        Users from beginner to advanced levels can model acoustic suspension efficiently.</p>
+
+                    <!-- Accuracy & Limits -->
+                    <h2 class="">What limits calculation accuracy in sealed boxes?</h2>
+                    <p>Calculations assume ideal, airtight conditions. Manufacturing tolerances, measurement variance in
+                        Vas, Qts, Fs, and thermal compression effects introduce minor deviations. Users must allow
+                        margin in enclosure fabrication for accurate Qtc and F3 performance.</p>
+
+
+
+                </div>
+                <div class="tool-container">
+                     <!-- FAQ Section -->
+                    <h2 class="">Frequently Asked Questions</h2>
+                 <div class="accordion" id="sealedBoxFAQ">
+  <!-- FAQ 1 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq1Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false" aria-controls="faq1">
+        What is a sealed box calculator for subwoofers?
+      </button>
+    </h2>
+    <div id="faq1" class="accordion-collapse collapse" aria-labelledby="faq1Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        A sealed box calculator models airtight subwoofer and speaker enclosures using Vas, Qts, and Fs parameters. It computes internal volume, F3, Qtc alignment, and system resonance to optimize acoustic suspension and low-frequency performance for sealed sub boxes.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 2 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq2Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+        How do I calculate sealed box volume for a car subwoofer?
+      </button>
+    </h2>
+    <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        To calculate sealed box volume, input the driver’s Vas, Qts, and Fs into a closed box speaker calculator. The tool provides internal cubic volume, Qtc alignment, and F3 frequency, ensuring proper damping and bass extension for car subwoofer sealed enclosures.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 3 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq3Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+        What are 12 inch sealed subwoofer box dimensions?
+      </button>
+    </h2>
+    <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        12 inch sealed subwoofer box dimensions depend on calculated internal air volume. A sealed box volume calculator converts the required liters or cubic feet into height, width, and depth, ensuring the acoustic suspension maintains correct Qtc and F3 response.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 4 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq4Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+        What is Qtc in sealed box speaker design?
+      </button>
+    </h2>
+    <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faq4Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        Qtc represents total system damping in a sealed enclosure. Calculated using driver Qts and box volume, it influences bass response, transient behavior, and resonance. The sealed box Qtc calculator adjusts enclosure size to achieve Butterworth, overdamped, or underdamped alignment.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 5 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq5Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+        Can I use a sealed box calculator for a home theater subwoofer?
+      </button>
+    </h2>
+    <div id="faq5" class="accordion-collapse collapse" aria-labelledby="faq5Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        Yes. A sealed subwoofer box calculator is ideal for home theater subwoofers, providing precise internal volume, system Fc, and F3 outputs. It ensures accurate low-frequency roll-off, controlled cone motion, and consistent damping for indoor listening environments.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 6 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq6Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+        What is a sealed cabinet in speaker engineering?
+      </button>
+    </h2>
+    <div id="faq6" class="accordion-collapse collapse" aria-labelledby="faq6Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        A sealed cabinet is an airtight speaker enclosure that traps air as a compliance spring. It maintains predictable system damping, reduces cone over-excursion, and ensures low-frequency roll-off. Sealed cabinet design is calculated via sealed box calculators for accurate internal volume.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 7 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq7Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+        How does a sealed box f3 calculator work?
+      </button>
+    </h2>
+    <div id="faq7" class="accordion-collapse collapse" aria-labelledby="faq7Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        A sealed box F3 calculator estimates the -3 dB low-frequency cutoff for a sealed enclosure. It uses driver Fs, Vas, and Qtc alignment to provide the usable bass extension, helping engineers and audiophiles optimize sealed subwoofer or speaker box performance.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 8 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq8Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8" aria-expanded="false" aria-controls="faq8">
+        What is a sealed subwoofer box tuning calculator?
+      </button>
+    </h2>
+    <div id="faq8" class="accordion-collapse collapse" aria-labelledby="faq8Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        A sealed subwoofer box tuning calculator determines optimal box volume for target Qtc and frequency response. It guides design for bass precision, cone excursion control, and consistent damping, ensuring subwoofer outputs match intended acoustic alignment.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 9 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq9Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9" aria-expanded="false" aria-controls="faq9">
+        How does driver Vas impact sealed box volume?
+      </button>
+    </h2>
+    <div id="faq9" class="accordion-collapse collapse" aria-labelledby="faq9Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        Driver Vas is the equivalent compliance volume. Larger Vas requires bigger sealed enclosures to maintain Qtc and correct low-frequency response. A sealed box calculator converts Vas input into internal volume and dimensions for accurate enclosure design.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 10 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq10Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq10" aria-expanded="false" aria-controls="faq10">
+        What are sealed speaker box size calculator benefits?
+      </button>
+    </h2>
+    <div id="faq10" class="accordion-collapse collapse" aria-labelledby="faq10Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        Sealed speaker box size calculators provide exact internal volume, cube dimensions, and system Fc. They reduce guesswork, prevent over- or under-sized enclosures, and allow precise control over Qtc and F3, ensuring accurate low-frequency performance.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 11 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq11Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq11" aria-expanded="false" aria-controls="faq11">
+        Can sealed box calculators be used for sub boxes with 15-inch drivers?
+      </button>
+    </h2>
+    <div id="faq11" class="accordion-collapse collapse" aria-labelledby="faq11Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        Yes, a sealed box calculator scales internal volume for larger drivers such as 15-inch subwoofers. It ensures correct air compliance, maintains Qtc alignment, and provides cube dimensions, F3 cutoff, and system resonance for accurate sealed subwoofer design.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 12 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq12Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq12" aria-expanded="false" aria-controls="faq12">
+        How to convert sealed box volume to cubic feet or inches?
+      </button>
+    </h2>
+    <div id="faq12" class="accordion-collapse collapse" aria-labelledby="faq12Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        Sealed box calculators allow unit conversion to liters, cubic feet, or cubic inches. This ensures consistent acoustic compliance while supporting regional measurement preferences for building sealed enclosures with precise internal volume and dimension accuracy.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 13 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq13Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq13" aria-expanded="false" aria-controls="faq13">
+        What is a sealed box meaning in speaker design?
+      </button>
+    </h2>
+    <div id="faq13" class="accordion-collapse collapse" aria-labelledby="faq13Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        Sealed box meaning refers to an airtight enclosure that relies on trapped air as a spring. It controls cone excursion, defines system Qtc, and maintains predictable low-frequency response. All sealed subwoofer and speaker designs utilize this principle.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 14 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq14Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq14" aria-expanded="false" aria-controls="faq14">
+        How do material thickness and bracing affect sealed box volume?
+      </button>
+    </h2>
+    <div id="faq14" class="accordion-collapse collapse" aria-labelledby="faq14Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        MDF or birch plywood thickness and internal bracing reduce effective air volume. A sealed box calculator estimates internal displacement, ensuring target Qtc, F3, and cone control are maintained after accounting for material and bracing volume.
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ 15 -->
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="faq15Heading">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq15" aria-expanded="false" aria-controls="faq15">
+        What are sealed box subwoofer calculator limitations?
+      </button>
+    </h2>
+    <div id="faq15" class="accordion-collapse collapse" aria-labelledby="faq15Heading" data-bs-parent="#sealedBoxFAQ">
+      <div class="accordion-body">
+        Sealed box subwoofer calculators assume ideal air compression and measured Thiele-Small parameters. Real-world tolerances, air leaks, thermal effects, or inaccurate Vas and Qts can slightly alter internal volume, Qtc, or low-frequency cutoff results.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+                    <!-- PAA Cluster -->
+                    <h2 class=" pt-3">Common Related Queries</h2>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">How do I calculate a sealed subwoofer box?</li>
+                        <li class="list-group-item">What is the ideal sealed box volume for a 12-inch subwoofer?</li>
+                        <li class="list-group-item">Why does Vas affect sealed enclosure size?</li>
+                        <li class="list-group-item">How does Qtc impact sound quality in sealed boxes?</li>
+                        <li class="list-group-item">Can I use a sealed box calculator online?</li>
+                        <!-- Continue PAA items as needed -->
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+
+    <script defer>
+        function calculate() {
+            const vas = parseFloat(document.getElementById('vas').value) || 50;
+            const qts = parseFloat(document.getElementById('qts').value) || 0.4;
+            const fs = parseFloat(document.getElementById('fs').value) || 30;
+            const qtc = parseFloat(document.getElementById('qtc').value) || 0.707;
+            const volumeUnit = document.getElementById('volumeUnit').value;
+
+            // Update Qtc display
+            let qtcLabel = qtc.toFixed(3);
+            if (Math.abs(qtc - 0.707) < 0.01) qtcLabel += ' (Butterworth)';
+            else if (Math.abs(qtc - 0.577) < 0.01) qtcLabel += ' (Bessel)';
+            else if (qtc < 0.6) qtcLabel += ' (Tight)';
+            else if (qtc > 0.9) qtcLabel += ' (Warm)';
+            document.getElementById('qtcDisplay').textContent = qtcLabel;
+
+            // Calculate box volume: Vb = Vas / ((Qtc/Qts)² - 1)
+            const ratio = Math.pow(qtc / qts, 2) - 1;
+            let boxVolumeLiters = vas / ratio;
+
+            if (boxVolumeLiters < 0 || !isFinite(boxVolumeLiters)) {
+                boxVolumeLiters = vas * 0.5; // Fallback
+            }
+
+            // System resonance: Fc = Fs × (Qtc/Qts)
+            const systemFc = fs * (qtc / qts);
+
+            // F3 (approximately): F3 ≈ Fc × sqrt(1 - 1/(2×Qtc²)) for Qtc > 0.5
+            let f3;
+            if (qtc > 0.5) {
+                f3 = systemFc * Math.sqrt(1 - 1 / (2 * Math.pow(qtc, 2)));
+            } else {
+                f3 = systemFc * 0.9;
+            }
+
+            // Convert volume
+            let volumeDisplay, unitLabel;
+            switch (volumeUnit) {
+                case 'liters':
+                    volumeDisplay = boxVolumeLiters.toFixed(1);
+                    unitLabel = 'L';
+                    break;
+                case 'cuft':
+                    volumeDisplay = (boxVolumeLiters / 28.317).toFixed(2);
+                    unitLabel = 'ft³';
+                    break;
+                case 'cuin':
+                    volumeDisplay = (boxVolumeLiters * 61.024).toFixed(0);
+                    unitLabel = 'in³';
+                    break;
+            }
+
+            document.getElementById('boxVolumeResult').textContent = volumeDisplay + ' ' + unitLabel;
+            document.getElementById('boxVolume').textContent = volumeDisplay + ' ' + unitLabel;
+            document.getElementById('systemFc').textContent = Math.round(systemFc) + ' Hz';
+            document.getElementById('f3').textContent = Math.round(f3) + ' Hz';
+
+            // Response type
+            let responseType = 'Custom';
+            if (Math.abs(qtc - 0.707) < 0.02) responseType = 'Butterworth';
+            else if (Math.abs(qtc - 0.577) < 0.02) responseType = 'Bessel';
+            else if (qtc < 0.6) responseType = 'Overdamped';
+            else if (qtc > 0.85) responseType = 'Warm/Peaked';
+            document.getElementById('responseType').textContent = responseType;
+
+            // Calculate dimensions (cube)
+            const volumeCm3 = boxVolumeLiters * 1000;
+            const sideCm = Math.pow(volumeCm3, 1 / 3);
+            const wallThickness = 1.9; // cm (3/4")
+            const extSideCm = sideCm + 2 * wallThickness;
+
+            document.getElementById('intDimensions').textContent =
+                `${sideCm.toFixed(1)} × ${sideCm.toFixed(1)} × ${sideCm.toFixed(1)} cm`;
+            document.getElementById('extDimensions').textContent =
+                `${extSideCm.toFixed(1)} × ${extSideCm.toFixed(1)} × ${extSideCm.toFixed(1)} cm`;
+
+            const extVolume = Math.pow(extSideCm, 3) / 1000;
+            const materialVolume = extVolume - boxVolumeLiters;
+            document.getElementById('materialVol').textContent = `~${materialVolume.toFixed(1)} liters`;
+        }
+
+        calculate();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+</body>
+
+</html>

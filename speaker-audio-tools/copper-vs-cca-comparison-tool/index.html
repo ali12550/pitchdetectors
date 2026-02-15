@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copper vs CCA Wire Calculator | pitchdetectors</title>
+    <meta name="description"
+        content="Compare Copper and CCA wires for audio and power applications. Calculate resistance, efficiency, and cost to choose the best option.">
+    <meta name="keywords"
+        content="Copper vs CCA, wire comparison calculator, copper wire, CCA wire, speaker wire, wire resistance, voltage drop, audio cable efficiency, electrical wiring, wire gauge calculator">
+    <link rel="canonical" href="https://pitchdetectors.com/speaker-audio-tools/copper-vs-cca-comparison-tool/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row justify-content-around">
+            <div class="col-lg-7 col-md-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/speaker-audio-tools/">Speaker Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Copper vs CCA Comparison Tool</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-wifi me-2"></i>Copper vs CCA Comparison Tool</h1>
+                        <p>Compare Copper and Copper-Clad Aluminum (CCA) wires for resistance, voltage drop, efficiency, and cost to select the optimal wire for audio or power applications.</p>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Wire Gauge (AWG):</label>
+                            <input type="number" class="form-control" id="awg" value="12" min="8" max="24" step="1" oninput="calculateWire()">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Wire Length [m]:</label>
+                            <input type="number" class="form-control" id="length" value="10" min="1" max="100" step="0.1" oninput="calculateWire()">
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Current Load [A]:</label>
+                            <input type="number" class="form-control" id="current" value="15" min="0.1" max="50" step="0.1" oninput="calculateWire()">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Cost per Meter (Copper) [$]:</label>
+                            <input type="number" class="form-control" id="costCu" value="1.5" min="0.1" step="0.01" oninput="calculateWire()">
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Cost per Meter (CCA) [$]:</label>
+                            <input type="number" class="form-control" id="costCCA" value="0.8" min="0.1" step="0.01" oninput="calculateWire()">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Copper Resistivity [Ω·m]:</label>
+                            <input type="number" class="form-control" id="rhoCu" value="1.68e-8" step="1e-9" oninput="calculateWire()">
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">CCA Resistivity [Ω·m]:</label>
+                            <input type="number" class="form-control" id="rhoCCA" value="2.82e-8" step="1e-9" oninput="calculateWire()">
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <h3>Wire Comparison Results</h3>
+                        <span id="wireResult" class="fs-5">--</span>
+                    </div>
+
+                    <!-- Formulas & Notes -->
+                    <div class="mt-4 p-4 rounded bg-success bg-opacity-10">
+                        <h5><i class="bi bi-info-circle me-2"></i>Formulas & Notes</h5>
+                        <ul>
+                            <li><strong>Wire Resistance (Ω):</strong> <code>R = ρ × L / A</code>, where ρ = resistivity, L = length, A = cross-sectional area.</li>
+                            <li><strong>Voltage Drop (V):</strong> <code>V = I × R</code>, I = current load.</li>
+                            <li>Cross-sectional area (A) can be derived from AWG tables: e.g., 12 AWG ≈ 3.31 mm².</li>
+                            <li>Compare cost and efficiency for optimal wire selection.</li>
+                        </ul>
+                    </div>
+
+                    <!-- How to Use -->
+                    <div class="tool-container mt-4">
+                        <div class="tool-section">
+                            <h2 class="text-mid mb-4"><i class="bi bi-play-btn me-2"></i>How to Use</h2>
+                            <ul>
+                                <li>Enter the wire gauge (AWG) for the cable.</li>
+                                <li>Input wire length and expected current load.</li>
+                                <li>Provide cost per meter for Copper and CCA wires.</li>
+                                <li>View calculated resistance, voltage drop, and total cost for both options.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Who Can Use -->
+                    <div class="tool-container mt-4">
+                        <div class="tool-section">
+                            <h2 class="text-mid mb-4"><i class="bi bi-people me-2"></i>Who Can Use</h2>
+                            <ul>
+                                <li>Home audio enthusiasts</li>
+                                <li>DIY speaker system builders</li>
+                                <li>Electrical engineers evaluating wire performance</li>
+                                <li>Live sound and PA system designers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Where to Use -->
+                    <div class="tool-container mt-4">
+                        <div class="tool-section">
+                            <h2 class="text-mid mb-4"><i class="bi bi-geo-alt me-2"></i>Where to Use</h2>
+                            <ul>
+                                <li>Home theater and stereo setups</li>
+                                <li>PA systems and stage wiring</li>
+                                <li>Car audio installations</li>
+                                <li>Professional recording or mixing environments</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQs -->
+                    <div class="tool-container mt-4">
+                        <div class="tool-section">
+                            <h2 class="text-mid mb-4"><i class="bi bi-question-circle me-2"></i>FAQs</h2>
+                            <div class="accordion" id="wireFAQ">
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                            What is CCA wire?
+                                        </button>
+                                    </h3>
+                                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#wireFAQ">
+                                        <div class="accordion-body">
+                                            CCA (Copper-Clad Aluminum) is aluminum wire coated with a thin layer of copper to reduce cost and weight while retaining some conductivity advantages of copper.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                            Is Copper always better than CCA?
+                                        </button>
+                                    </h3>
+                                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#wireFAQ">
+                                        <div class="accordion-body">
+                                            Copper offers lower resistance, better conductivity, and durability. CCA can be sufficient for short runs or low-current applications but has higher voltage drop and lower efficiency.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                            How do I calculate resistance for a wire?
+                                        </button>
+                                    </h3>
+                                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#wireFAQ">
+                                        <div class="accordion-body">
+                                            Use the formula R = ρ × L / A, where ρ = resistivity of material, L = wire length, and A = cross-sectional area based on AWG.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                            Can I use this for speaker wiring?
+                                        </button>
+                                    </h3>
+                                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#wireFAQ">
+                                        <div class="accordion-body">
+                                            Yes, this tool helps compare Copper and CCA for speaker wiring based on resistance, voltage drop, and cost to select the best option for audio performance.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                            Why is voltage drop important?
+                                        </button>
+                                    </h3>
+                                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#wireFAQ">
+                                        <div class="accordion-body">
+                                            Excessive voltage drop reduces efficiency, audio performance, and can overload amplifiers. Choosing correct wire type and gauge minimizes losses.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..." onkeyup="searchTools()">
+                        </div>
+                    </div>
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-wifi me-2"></i>Wire Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/speaker-audio-tools/speaker-wire-gauge-calculator/"><i class="bi bi-rulers"></i> Wire Gauge</a></li>
+                                <li><a href="/speaker-audio-tools/sound-distance-drop-calculator/"><i class="bi bi-lightning"></i> Voltage Drop</a></li>
+                                <li><a href="/speaker-audio-tools/copper-vs-cca-comparison-tool/" class="active"><i class="bi bi-wifi"></i> Copper vs CCA</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+    <script defer>
+        const awgToArea = {
+            8: 8.37, 10: 5.26, 12: 3.31, 14: 2.08, 16: 1.31, 18: 0.823, 20: 0.519, 22: 0.326, 24: 0.205
+        }; // mm²
+
+        function calculateWire() {
+            const awg = parseInt(document.getElementById('awg').value);
+            const length = parseFloat(document.getElementById('length').value) || 0;
+            const current = parseFloat(document.getElementById('current').value) || 0;
+            const rhoCu = parseFloat(document.getElementById('rhoCu').value) || 1.68e-8;
+            const rhoCCA = parseFloat(document.getElementById('rhoCCA').value) || 2.82e-8;
+            const costCu = parseFloat(document.getElementById('costCu').value) || 0;
+            const costCCA = parseFloat(document.getElementById('costCCA').value) || 0;
+
+            const area = awgToArea[awg] * 1e-6; // convert mm² to m²
+
+            const R_Cu = rhoCu * length / area;
+            const R_CCA = rhoCCA * length / area;
+
+            const VdropCu = current * R_Cu;
+            const VdropCCA = current * R_CCA;
+
+            const totalCostCu = length * costCu;
+            const totalCostCCA = length * costCCA;
+
+            const result = `
+                <ul class="text-start">
+                    <li><strong>Copper Wire:</strong> Resistance = ${R_Cu.toFixed(3)} Ω, Voltage Drop = ${VdropCu.toFixed(2)} V, Cost = $${totalCostCu.toFixed(2)}</li>
+                    <li><strong>CCA Wire:</strong> Resistance = ${R_CCA.toFixed(3)} Ω, Voltage Drop = ${VdropCCA.toFixed(2)} V, Cost = $${totalCostCCA.toFixed(2)}</li>
+                </ul>
+            `;
+
+            document.getElementById('wireResult').innerHTML = result;
+        }
+
+        document.getElementById('awg').addEventListener('input', calculateWire);
+        document.getElementById('length').addEventListener('input', calculateWire);
+        document.getElementById('current').addEventListener('input', calculateWire);
+        document.getElementById('costCu').addEventListener('input', calculateWire);
+        document.getElementById('costCCA').addEventListener('input', calculateWire);
+
+        calculateWire();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+            .then(([header, footer]) => {
+                document.getElementById("header").innerHTML = header;
+                document.getElementById("footer").innerHTML = footer;
+            })
+            .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+</body>
+
+</html>

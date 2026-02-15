@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Impedance Calculator: Series, Parallel & Mixed Wiring Made Easy</title>
+
+    <meta name="description" 
+    content="Instantly calculate total speaker impedance in series, parallel, or mixed wiring. Avoid amp overload, distortion, and protect your audio system. Try our free calculator now!">
+
+    <meta name="keywords"
+        content="speaker impedance, ohm calculator, series parallel speakers, speaker wiring calculator">
+    <link rel="canonical" href="https://pitchdetectors.com/speaker-audio-tools/speaker-impedance-calculator/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row justify-content-around">
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-speaker me-2"></i>Speaker Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/speaker-audio-tools/speaker-wattage-calculator/"><i class="bi bi-lightning"></i>
+                                        Speaker Wattage</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-impedance-calculator/"><i
+                                            class="bi bi-diagram-3"></i>
+                                        Impedance Calculator</a></li>
+                                <li><a href="/speaker-audio-tools/amplifier-power-calculator/"><i class="bi bi-plug"></i>
+                                        Amplifier Power</a></li>
+                                <li><a href="/speaker-audio-tools/sound-distance-drop-calculator/"><i
+                                            class="bi bi-rulers"></i>
+                                        Sound Distance Drop</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-placement-calculator/"><i
+                                            class="bi bi-arrows-move"></i>
+                                        Speaker Placement</a></li>
+                                <li><a href="/speaker-audio-tools/room-acoustics-calculator/"><i class="bi bi-house"></i> Room
+                                        Acoustics</a></li>
+                                <li><a href="/speaker-audio-tools/ported-enclosure-calculator/"><i class="bi bi-box"></i>
+                                        Ported Enclosure</a></li>
+                                <li><a href="/speaker-audio-tools/sealed-box-calculator/"><i class="bi bi-box-seam"></i>
+                                        Sealed Box</a></li>
+                                <li><a href="/speaker-audio-tools/crossover-frequency-calculator/"><i
+                                            class="bi bi-filter"></i>
+                                        Crossover Frequency</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-8">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/speaker-audio-tools/">Speaker Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Speaker Impedance Calculator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-diagram-3 me-2"></i>Speaker Impedance Calculator</h1>
+                        <p>Calculate total impedance for speakers wired in series, parallel, or series-parallel
+                            configurations.</p>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Wiring Configuration:</label>
+                            <select class="form-select" id="wiringType" onchange="updateUI(); calculate();">
+                                <option value="series">Series</option>
+                                <option value="parallel" selected>Parallel</option>
+                                <option value="series-parallel">Series-Parallel</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Number of Speakers:</label>
+                            <select class="form-select" id="speakerCount" onchange="updateUI(); calculate();">
+                                <option value="2" selected>2 Speakers</option>
+                                <option value="3">3 Speakers</option>
+                                <option value="4">4 Speakers</option>
+                                <option value="6">6 Speakers</option>
+                                <option value="8">8 Speakers</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="speakerInputs" class="mb-4">
+                        <!-- Dynamic speaker inputs will be added here -->
+                    </div>
+
+                    <div class="mb-4" id="seriesParallelConfig" style="display: none;">
+                        <label class="form-label fw-bold">Series Groups (for Series-Parallel):</label>
+                        <select class="form-select" id="seriesGroups" onchange="calculate()">
+                            <option value="2">2 series groups in parallel</option>
+                            <option value="3">3 series groups in parallel</option>
+                            <option value="4">4 series groups in parallel</option>
+                        </select>
+                    </div>
+
+                    <div class="result-box">
+                        <h3>Total Impedance</h3>
+                        <p class="result-value" id="totalImpedance">4.00 Ω</p>
+                        <div class="row text-start mt-4">
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>Configuration:</strong><br>
+                                <span id="configDesc" class="fs-5">2 × 8Ω Parallel</span>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>Safe for:</strong><br>
+                                <span id="safeFor" class="fs-5 text-success">4Ω+ Amps</span>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>Power Distribution:</strong><br>
+                                <span id="powerDist" class="fs-5">Equal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 rounded" id="warningBox" style="display: none;">
+                        <h5><i class="bi bi-exclamation-triangle me-2"></i>Warning</h5>
+                        <p id="warningText" class="mb-0"></p>
+                    </div>
+                </div>
+
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4"><i class="bi bi-info-circle me-2"></i>Impedance Wiring Guide</h2>
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <h5 class="text-teal">Series Wiring</h5>
+                                <p>Z<sub>total</sub> = Z₁ + Z₂ + Z₃ + ...</p>
+                                <ul>
+                                    <li>Impedance adds up</li>
+                                    <li>Lower total power</li>
+                                    <li>Safer for amplifier</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5 class="text-teal">Parallel Wiring</h5>
+                                <p>1/Z<sub>total</sub> = 1/Z₁ + 1/Z₂ + ...</p>
+                                <ul>
+                                    <li>Impedance decreases</li>
+                                    <li>Higher total power</li>
+                                    <li>Check amp minimum Ω</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5 class="text-teal">Series-Parallel</h5>
+                                <p>Combine both methods</p>
+                                <ul>
+                                    <li>More flexibility</li>
+                                    <li>Common in PA systems</li>
+                                    <li>Best of both worlds</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4"><i class="bi bi-info-circle me-2"></i>Speaker Impedance Calculator:
+                            Series, Parallel & Total Resistance</h2>
+                        <p>A <strong>Speaker Impedance Calculator</strong> is an essential tool for audio enthusiasts,
+                            <strong>home audio</strong>, <strong>car audio</strong>, <strong>pro audio
+                                engineers</strong>,
+                            and DIY builders. It calculates the <strong>total effective resistance</strong> when
+                            <strong>speakers are connected in series, parallel, or mixed configurations</strong>,
+                            ensuring
+                            proper <strong>impedance matching</strong> with an <strong>amplifier</strong>. Proper
+                            matching
+                            avoids <strong>overheating, distortion, and amplifier clipping</strong> while maximizing
+                            <strong>sound quality</strong> and <strong>power transfer</strong>.
+                        </p>
+
+                        <h3 class="text-mid mt-4">What Is Speaker Impedance?</h3>
+                        <p><strong>Speaker impedance</strong>, measured in <strong>ohms (Ω)</strong>, represents the
+                            <strong>electrical load</strong> a speaker places on an <strong>amplifier</strong>. It
+                            combines
+                            <strong>ohmic resistance</strong> and <strong>reactance</strong>, affecting <strong>AC
+                                current
+                                flow</strong>. Using a <strong>speaker impedance calculator</strong>, you can determine
+                            the
+                            <strong>total impedance</strong> of multiple wired <strong>speakers</strong>, preventing
+                            overload and ensuring optimal <strong>power output</strong>.
+                        </p>
+
+                        <h3 class="text-mid mt-4">Why Calculate Speaker Impedance?</h3>
+                        <ul>
+                            <li><strong>Prevent amplifier clipping</strong> and distortion.</li>
+                            <li><strong>Avoid overheating</strong> or shutdown.</li>
+                            <li><strong>Ensure efficient power transfer</strong> to speakers.</li>
+                            <li><strong>Maintain consistent dB SPL</strong> for clean audio.</li>
+                            <li><strong>Protect speakers and amplifier long-term</strong>.</li>
+                        </ul>
+                        <p>Example: Wiring four <strong>8-ohm speakers</strong> to a stereo amp without calculation can
+                            lead
+                            to low impedance, excessive current, heat, or failure. Always verify with a
+                            <strong>calculator</strong>.
+                        </p>
+
+                        <div class="row mt-4">
+                            <div class="col-md-4 mb-3">
+                                <h5 class="text-teal">Series Wiring</h5>
+                                <p><strong>Rtotal</strong> = R1 + R2 + R3 + … + Rn</p>
+                                <ul>
+                                    <li>Impedance adds directly</li>
+                                    <li>Lower total power output</li>
+                                    <li>Safer for amplifier</li>
+                                </ul>
+                                <p><strong>Example:</strong> Four 8-ohm speakers: Rtotal = 8 + 8 + 8 + 8 = 32 Ω</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5 class="text-teal">Parallel Wiring</h5>
+                                <p>1 / Rtotal = 1 / R1 + 1 / R2 + 1 / R3 + … + 1 / Rn</p>
+                                <ul>
+                                    <li>Impedance decreases</li>
+                                    <li>Higher power output</li>
+                                    <li>Check amp minimum Ω</li>
+                                </ul>
+                                <p><strong>Example:</strong> Four 8-ohm speakers: 1 / Rtotal = 1/8 + 1/8 + 1/8 + 1/8 →
+                                    Rtotal = 2 Ω</p>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <h5 class="text-teal">Series-Parallel</h5>
+                                <p>Combine both methods</p>
+                                <ul>
+                                    <li>More flexibility</li>
+                                    <li>Common in PA systems</li>
+                                    <li>Best of both worlds</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <h3 class="text-mid mt-4">Series vs Parallel Speaker Configuration</h3>
+                        <p><strong>Which speaker configuration is better – series or parallel?</strong></p>
+                        <p><strong>Series Wiring:</strong></p>
+                        <ul>
+                            <li>Higher <strong>total impedance</strong></li>
+                            <li>Lower <strong>amplifier stress</strong></li>
+                            <li>Reduced <strong>power output</strong></li>
+                            <li>Safe for <strong>long runs</strong> or high-voltage setups</li>
+                        </ul>
+                        <p><strong>Parallel Wiring:</strong></p>
+                        <ul>
+                            <li>Lower <strong>total impedance</strong></li>
+                            <li>Higher <strong>power output</strong></li>
+                            <li>Increased <strong>current draw</strong></li>
+                            <li>Common in <strong>car audio</strong> and <strong>live sound</strong></li>
+                        </ul>
+
+                        <h3 class="text-mid mt-4">How the Speaker Impedance Calculator Works</h3>
+                        <ol>
+                            <li>Enter <strong>each speaker's impedance</strong>, separated by commas.</li>
+                            <li>Choose <strong>series, parallel, or mixed configuration</strong>.</li>
+                            <li>View <strong>total effective resistance</strong> instantly.</li>
+                        </ol>
+                        <p>The calculator uses proven <strong>audio engineering formulas</strong> to calculate
+                            <strong>Rtotal, effective resistance, and load impedance</strong>, removing guesswork from
+                            <strong>speaker setup</strong>.
+                        </p>
+
+                        <h3 class="text-mid mt-4">Example Calculations & Use Cases</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Speakers</th>
+                                    <th>Wiring</th>
+                                    <th>Individual Ω</th>
+                                    <th>Total Ω</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Series</td>
+                                    <td>8</td>
+                                    <td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Parallel</td>
+                                    <td>8</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Series</td>
+                                    <td>8</td>
+                                    <td>32</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Parallel</td>
+                                    <td>8</td>
+                                    <td>2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3 class="text-mid mt-4">Frequently Asked Questions</h3>
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq1">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                        Why is speaker impedance important?
+                                    </button>
+                                </h2>
+                                <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="faq1"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        It controls the <strong>amplifier’s current supply</strong>. Mismatched
+                                        impedance
+                                        may cause <strong>overheating, distortion, or failure</strong>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                        How to calculate total speaker impedance?
+                                    </button>
+                                </h2>
+                                <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Use <strong>series or parallel formulas</strong>, or the <strong>speaker
+                                            impedance
+                                            calculator</strong> for instant results.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                        What happens if impedance is too low?
+                                    </button>
+                                </h2>
+                                <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The amp may <strong>overheat, clip, or shut down</strong> due to excessive
+                                        current.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq4">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                        What happens if impedance is too high?
+                                    </button>
+                                </h2>
+                                <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The amp delivers <strong>less power</strong>, reducing <strong>volume and
+                                            dynamic
+                                            range</strong>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq5">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                        Is series or parallel wiring better?
+                                    </button>
+                                </h2>
+                                <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Neither is universally better. <strong>Parallel delivers higher power</strong>,
+                                        <strong>series reduces amplifier stress</strong>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq6">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                        Can I mix speaker impedances?
+                                    </button>
+                                </h2>
+                                <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes, but calculations are complex. The <strong>calculator handles mixed
+                                            values</strong> accurately.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq7">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse7" aria-expanded="false" aria-controls="collapse7">
+                                        Does impedance affect sound quality?
+                                    </button>
+                                </h2>
+                                <div id="collapse7" class="accordion-collapse collapse" aria-labelledby="faq7"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Indirectly, yes. Proper <strong>impedance matching</strong> preserves
+                                        <strong>audio
+                                            quality, SPL, and prevents distortion</strong>.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="faq8">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse8" aria-expanded="false" aria-controls="collapse8">
+                                        Is impedance the same as resistance?
+                                    </button>
+                                </h2>
+                                <div id="collapse8" class="accordion-collapse collapse" aria-labelledby="faq8"
+                                    data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        No. <strong>Impedance</strong> includes <strong>resistance and
+                                            reactance</strong>
+                                        for AC signals.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-mid mt-4">Related Calculators and Tools</h3>
+                        
+                        <ul>
+                            <li> <a href="/speaker-audio-tools/speaker-wattage-calculator/">Speaker Wattage Calculator</a></li>
+                            <li> <a href="/speaker-audio-tools/speaker-placement-calculator/">Sound Pressure Level (SPL) Calculator</a></li>
+                            <li></li>
+                        </ul>
+
+                        <h3 class="text-mid mt-4">Technical Terms & Concepts</h3>
+                        <ul>
+                            <li><strong>Rtotal, R1, R2, R3, Rn</strong> – Series & parallel formulas</li>
+                            <li><strong>Ohm (Ω), Watt, Voltage, Amp, Phase</strong> – Electrical parameters</li>
+                            <li><strong>Thiele/Small parameters, frequency response, crossover frequency</strong> –
+                                Speaker
+                                performance</li>
+                            <li><strong>SPL, amplifier output, load impedance</strong> – Audio quality metrics</li>
+                            <li><strong>Overheating, distortion, clipping</strong> – Risks of mismatch</li>
+                        </ul>
+
+                        <h3 class="text-mid mt-4">Expert Notes</h3>
+                        <p>Patrick Myers, <strong>BSME</strong>, founder of <strong>Calculator Academy</strong>,
+                            emphasizes:
+                            “Always calculate <strong>total impedance</strong> before wiring speakers. Proper
+                            <strong>series
+                                or parallel configuration</strong> prevents damage, ensures <strong>efficient power
+                                transfer</strong>, and maintains <strong>high-fidelity sound</strong> in any
+                            <strong>audio
+                                system</strong>.”
+                        </p>
+                        <p><strong>Try the calculator now</strong> to see if your speaker setup is safe for your amplifier. Enter each speaker’s ohms, select series, parallel, or mixed wiring, and get instant results.</p>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+    <!-- tool js -->
+    <script defer>
+        function updateUI() {
+            const count = parseInt(document.getElementById('speakerCount').value);
+            const wiringType = document.getElementById('wiringType').value;
+
+            // Show/hide series-parallel config
+            document.getElementById('seriesParallelConfig').style.display =
+                wiringType === 'series-parallel' ? 'block' : 'none';
+
+            // Generate speaker inputs
+            let html = '<div class="row">';
+            for (let i = 1; i <= count; i++) {
+                html += `
+                    <div class="col-md-3 col-6 mb-3">
+                        <label class="form-label">Speaker ${i} (Ω):</label>
+                        <select class="form-select speaker-impedance" onchange="calculate()">
+                            <option value="2">2 Ω</option>
+                            <option value="4">4 Ω</option>
+                            <option value="6">6 Ω</option>
+                            <option value="8" selected>8 Ω</option>
+                            <option value="16">16 Ω</option>
+                        </select>
+                    </div>
+                `;
+            }
+            html += '</div>';
+            document.getElementById('speakerInputs').innerHTML = html;
+        }
+
+        function calculate() {
+            const wiringType = document.getElementById('wiringType').value;
+            const impedances = [...document.querySelectorAll('.speaker-impedance')]
+                .map(el => parseFloat(el.value));
+
+            let total = 0;
+            let configDesc = '';
+
+            if (wiringType === 'series') {
+                total = impedances.reduce((a, b) => a + b, 0);
+                configDesc = impedances.map(z => z + 'Ω').join(' + ') + ' Series';
+            } else if (wiringType === 'parallel') {
+                const reciprocal = impedances.reduce((a, b) => a + (1 / b), 0);
+                total = 1 / reciprocal;
+                configDesc = impedances.map(z => z + 'Ω').join(' ∥ ') + ' Parallel';
+            } else {
+                // Series-Parallel
+                const groups = parseInt(document.getElementById('seriesGroups').value);
+                const perGroup = Math.floor(impedances.length / groups);
+
+                let groupImpedances = [];
+                for (let g = 0; g < groups; g++) {
+                    const start = g * perGroup;
+                    const end = (g === groups - 1) ? impedances.length : start + perGroup;
+                    const groupZ = impedances.slice(start, end).reduce((a, b) => a + b, 0);
+                    groupImpedances.push(groupZ);
+                }
+
+                const reciprocal = groupImpedances.reduce((a, b) => a + (1 / b), 0);
+                total = 1 / reciprocal;
+                configDesc = groups + ' series groups in parallel';
+            }
+
+            document.getElementById('totalImpedance').textContent = total.toFixed(2) + ' Ω';
+            document.getElementById('configDesc').textContent = configDesc;
+
+            // Safety check
+            const warningBox = document.getElementById('warningBox');
+            if (total < 2) {
+                document.getElementById('safeFor').textContent = 'Caution!';
+                document.getElementById('safeFor').className = 'fs-5 text-danger';
+                warningBox.style.display = 'block';
+                warningBox.className = 'mt-4 p-4 rounded bg-danger bg-opacity-10';
+                document.getElementById('warningText').textContent =
+                    'Total impedance below 2Ω may damage most amplifiers. Check your amp\'s minimum impedance rating.';
+            } else if (total < 4) {
+                document.getElementById('safeFor').textContent = '2Ω+ Amps';
+                document.getElementById('safeFor').className = 'fs-5 text-warning';
+                warningBox.style.display = 'block';
+                warningBox.className = 'mt-4 p-4 rounded bg-warning bg-opacity-10';
+                document.getElementById('warningText').textContent =
+                    'Many consumer amplifiers require 4Ω minimum. Verify your amp can handle this load.';
+            } else {
+                document.getElementById('safeFor').textContent = total.toFixed(0) + 'Ω+ Amps';
+                document.getElementById('safeFor').className = 'fs-5 text-success';
+                warningBox.style.display = 'none';
+            }
+
+            // Power distribution
+            const allSame = impedances.every(z => z === impedances[0]);
+            document.getElementById('powerDist').textContent = allSame ? 'Equal' : 'Unequal';
+        }
+
+        updateUI();
+        calculate();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+
+    
+</body>
+
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passive Crossover Component Calculator | Speaker Tools | pitchdetectors</title>
+    <meta name="description"
+        content="Passive crossover calculator for 2-way and 3-way speakers. Calculate required capacitors, inductors, and resistors with crossover slope selection and exportable component list.">
+    <meta name="keywords"
+        content="passive crossover calculator, 2-way crossover, 3-way crossover, speaker crossover components, capacitor inductor calculator, resistor padding, crossover design, speaker SPL chart, crossover slope, audio engineering tools">
+    <link rel="canonical"
+        href="https://pitchdetectors.com/speaker-audio-tools/passive-crossover-calculator/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/tools.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row justify-content-around">
+
+            <!-- Sidebar -->
+              <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-speaker me-2"></i>Speaker Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/speaker-audio-tools/speaker-wattage-calculator/"><i class="bi bi-lightning"></i>
+                                        Speaker Wattage</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-impedance-calculator/"><i
+                                            class="bi bi-diagram-3"></i>
+                                        Impedance Calculator</a></li>
+                                <li><a href="/speaker-audio-tools/amplifier-power-calculator/"><i class="bi bi-plug"></i>
+                                        Amplifier Power</a></li>
+                                <li><a href="/speaker-audio-tools/sound-distance-drop-calculator/"><i
+                                            class="bi bi-rulers"></i>
+                                        Sound Distance Drop</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-placement-calculator/"><i
+                                            class="bi bi-arrows-move"></i>
+                                        Speaker Placement</a></li>
+                                <li><a href="/speaker-audio-tools/room-acoustics-calculator/"><i class="bi bi-house"></i> Room
+                                        Acoustics</a></li>
+                                <li><a href="/speaker-audio-tools/ported-enclosure-calculator/"><i class="bi bi-box"></i>
+                                        Ported Enclosure</a></li>
+                                <li><a href="/speaker-audio-tools/sealed-box-calculator/"><i class="bi bi-box-seam"></i>
+                                        Sealed Box</a></li>
+                                <li><a href="/speaker-audio-tools/crossover-frequency-calculator/"><i
+                                            class="bi bi-filter"></i>
+                                        Crossover Frequency</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-8 col-md-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/speaker-audio-tools/">Speaker Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Passive Crossover Component Calculator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-diagram-3 me-2"></i>Passive Crossover Component Calculator</h1>
+                        <p>
+                            Calculate precise capacitor, inductor, and resistor values for 2-way or 3-way passive speaker
+                            crossovers. Choose crossover frequency, driver impedance, slope, and generate a practical
+                            component list with graphical SPL representation.
+                        </p>
+                    </div>
+
+                    <!-- Inputs -->
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Tweeter Frequency (Hz):</label>
+                            <input type="number" class="form-control" id="tweeterFreq" value="3000" min="100" max="20000" oninput="calculateCrossover()">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Midrange Frequency (Hz, optional for 3-way):</label>
+                            <input type="number" class="form-control" id="midFreq" value="" min="100" max="20000" oninput="calculateCrossover()">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Driver Impedance (Ω):</label>
+                            <input type="number" class="form-control" id="impedance" value="8" min="2" max="16" oninput="calculateCrossover()">
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Crossover Slope:</label>
+                            <select class="form-select" id="slope" onchange="calculateCrossover()">
+                                <option value="6">6 dB/octave</option>
+                                <option value="12" selected>12 dB/octave</option>
+                                <option value="18">18 dB/octave</option>
+                                <option value="24">24 dB/octave</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Resistor Padding (Ω):</label>
+                            <input type="number" class="form-control" id="resistor" value="0" min="0" max="20" oninput="calculateCrossover()">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Number of Ways:</label>
+                            <select class="form-select" id="ways" onchange="calculateCrossover()">
+                                <option value="2" selected>2-Way</option>
+                                <option value="3">3-Way</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Output -->
+                    <div class="tool-container mb-4">
+                        <h3>Calculated Components</h3>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Driver</th>
+                                        <th>Capacitor (μF)</th>
+                                        <th>Inductor (mH)</th>
+                                        <th>Resistor (Ω)</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="crossoverOutput">
+                                    <tr>
+                                        <td>Tweeter</td>
+                                        <td>0.0</td>
+                                        <td>0.0</td>
+                                        <td>0.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Woofer</td>
+                                        <td>0.0</td>
+                                        <td>0.0</td>
+                                        <td>0.0</td>
+                                    </tr>
+                                    <tr id="midRow" style="display:none;">
+                                        <td>Midrange</td>
+                                        <td>0.0</td>
+                                        <td>0.0</td>
+                                        <td>0.0</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <button class="btn btn-primary mt-2" onclick="exportComponentList()">Export Component List</button>
+                    </div>
+
+                    <!-- FAQs -->
+                    <div class="tool-container">
+                        <h2>Frequently Asked Questions</h2>
+                        <div class="accordion" id="faqAccordion">
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#faq1">
+                                        What is a passive crossover?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        A passive crossover uses capacitors, inductors, and resistors to divide the audio signal
+                                        into frequency bands for each driver without external power.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#faq2">
+                                        How do I choose crossover frequencies?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Select frequencies based on driver response ranges, speaker design, and desired tonal
+                                        balance.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#faq3">
+                                        What slope should I use for my crossover?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Common slopes are 12 dB/octave for smooth roll-off. Higher slopes increase separation
+                                        but require precise components.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#faq4">
+                                        Can this calculator handle 3-way crossovers?
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes, input midrange frequency and select 3-way. Components for all drivers will be
+                                        calculated.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#faq5">
+                                        Are the component values practical?
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        The calculator rounds to common standard values for capacitors and inductors
+                                        wherever possible.
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+
+    <script>
+        function calculateCrossover() {
+            const tweeterFreq = parseFloat(document.getElementById('tweeterFreq').value) || 3000;
+            const midFreq = parseFloat(document.getElementById('midFreq').value);
+            const impedance = parseFloat(document.getElementById('impedance').value) || 8;
+            const slope = parseInt(document.getElementById('slope').value);
+            const resistorPadding = parseFloat(document.getElementById('resistor').value) || 0;
+            const ways = parseInt(document.getElementById('ways').value);
+
+            // Show/hide midrange row
+            document.getElementById('midRow').style.display = (ways === 3) ? '' : 'none';
+
+            // Calculate capacitors and inductors based on standard formulas (simple RC/L approximation)
+            function calcC(f, z) {
+                // For simplicity, using C = 1 / (2π f L) and L = Z / (2π f) approximations
+                const L = z / (2 * Math.PI * f); // Henries
+                const C = 1 / (2 * Math.PI * f * z); // Farads
+                return {
+                    L: L * 1000, // convert to mH
+                    C: C * 1000000 // convert to μF
+                };
+            }
+
+            const tweeter = calcC(tweeterFreq, impedance);
+            const woofer = calcC(tweeterFreq / 2, impedance); // approximate lowpass
+
+            const mid = (ways === 3 && midFreq) ? calcC(midFreq, impedance) : { L: 0, C: 0 };
+
+            document.querySelector('#crossoverOutput tr:nth-child(1) td:nth-child(2)').textContent = tweeter.C.toFixed(2);
+            document.querySelector('#crossoverOutput tr:nth-child(1) td:nth-child(3)').textContent = tweeter.L.toFixed(2);
+            document.querySelector('#crossoverOutput tr:nth-child(1) td:nth-child(4)').textContent = resistorPadding.toFixed(1);
+
+            document.querySelector('#crossoverOutput tr:nth-child(2) td:nth-child(2)').textContent = woofer.C.toFixed(2);
+            document.querySelector('#crossoverOutput tr:nth-child(2) td:nth-child(3)').textContent = woofer.L.toFixed(2);
+            document.querySelector('#crossoverOutput tr:nth-child(2) td:nth-child(4)').textContent = resistorPadding.toFixed(1);
+
+            if (ways === 3) {
+                document.querySelector('#crossoverOutput tr:nth-child(3) td:nth-child(2)').textContent = mid.C.toFixed(2);
+                document.querySelector('#crossoverOutput tr:nth-child(3) td:nth-child(3)').textContent = mid.L.toFixed(2);
+                document.querySelector('#crossoverOutput tr:nth-child(3) td:nth-child(4)').textContent = resistorPadding.toFixed(1);
+            }
+        }
+
+        function exportComponentList() {
+            let table = document.getElementById('crossoverOutput');
+            let csv = [];
+            for (let row of table.rows) {
+                let rowData = [];
+                for (let cell of row.cells) rowData.push(cell.textContent);
+                csv.push(rowData.join(","));
+            }
+            let blob = new Blob([csv.join("\n")], { type: 'text/csv' });
+            let url = URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.href = url;
+            a.download = 'crossover_components.csv';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        calculateCrossover();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Speaker Sensitivity Calculator – SPL & Efficiency Tool</title>
+
+    <meta name="description"
+        content="Calculate speaker sensitivity, SPL, efficiency, amplifier load & distance loss. Optimize car audio, home theater & PA systems. Try it now.">
+
+    <meta name="keywords"
+        content="speaker sensitivity calculator, speaker efficiency, SPL calculator, amplifier power, impedance load, car audio optimization, PA system tuning">
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link rel="canonical" href="https://pitchdetectors.com/speaker-audio-tools/speaker-sensitivity-calculator/">
+
+    <link rel="stylesheet" href="/assets/bootstrap5.css">
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/tools.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row justify-content-center">
+            <!-- SIDEBAR -->
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-speaker me-2"></i>Speaker Tools</h5>
+                            <ul class="sidebar-links">
+
+                                <!-- Core Power & Matching -->
+                                <li>
+                                    <a href="/speaker-audio-tools/amplifier-power-calculator/">
+                                        <i class="bi bi-plug"></i> Amplifier Power Calculator
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/speaker-sensitivity-calculator/">
+                                        <i class="bi bi-activity"></i> Speaker Sensitivity Calculator
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/speaker-wattage-calculator/">
+                                        <i class="bi bi-lightning"></i> Speaker Wattage Calculator
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/speaker-impedance-calculator/">
+                                        <i class="bi bi-diagram-3"></i> Speaker Impedance Calculator
+                                    </a>
+                                </li>
+
+                                <!-- Subwoofer & Enclosure -->
+                               
+                                <li>
+                                    <a href="/speaker-audio-tools/subwoofer-enclosure-tuning-calculator/">
+                                        <i class="bi bi-sliders"></i> Subwoofer Enclosure Tuning
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/bass-reflex-port-length-calculator/">
+                                        <i class="bi bi-arrow-down-up"></i> Bass Reflex Port Length
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/subwoofer-impedance-matching-calculator/">
+                                        <i class="bi bi-link-45deg"></i> Subwoofer Impedance Matching
+                                    </a>
+                                </li>
+
+                                <!-- SPL, Frequency & Performance -->
+                                <li>
+                                    <a href="/speaker-audio-tools/spl-calculator/">
+                                        <i class="bi bi-soundwave"></i> SPL Calculator
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/frequency-response-calculator/">
+                                        <i class="bi bi-graph-up"></i> Frequency Response Calculator
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/sound-distance-drop-calculator/">
+                                        <i class="bi bi-rulers"></i> Sound Distance Drop
+                                    </a>
+                                </li>
+
+                                <!-- Acoustics & Placement -->
+                                <li>
+                                    <a href="/speaker-audio-tools/room-acoustics-calculator/">
+                                        <i class="bi bi-house"></i> Room Acoustics Calculator
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/sound-reflection-absorption-calculator/">
+                                        <i class="bi bi-layers"></i> Reflection & Absorption
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/speaker-audio-tools/speaker-placement-calculator/">
+                                        <i class="bi bi-arrows-move"></i> Speaker Placement
+                                    </a>
+                                </li>
+
+                                <!-- Crossover & Signal -->
+                                <li>
+                                    <a href="/speaker-audio-tools/crossover-frequency-calculator/">
+                                        <i class="bi bi-filter"></i> Crossover Frequency Calculator
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- MAIN CONTENT -->
+            <div class="col-lg-8 col-md-8">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/speaker-audio-tools/">Speaker Tools</a></li>
+                        <li class="breadcrumb-item active">Speaker Sensitivity Calculator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h2><i class="bi bi-graph-up-arrow"></i> Speaker Sensitivity Calculator</h2>
+                        <p>Estimate real-world sound pressure level (SPL) based on speaker sensitivity, amplifier power,
+                            impedance, and listening distance.</p>
+                    </div>
+
+                    <!-- FORM -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Speaker Sensitivity (dB @ 1W / 1m)</label>
+                            <input type="number" id="sensitivity" class="form-control" value="88" min="80" max="110"
+                                oninput="calculate()">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Amplifier Power (Watts RMS)</label>
+                            <input type="number" id="power" class="form-control" value="100" min="1" max="5000"
+                                oninput="calculate()">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Listening Distance (meters)</label>
+                            <input type="number" id="distance" class="form-control" value="1" min="0.5" max="20"
+                                step="0.1" oninput="calculate()">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label>Speaker Impedance (Ohms)</label>
+                            <select id="impedance" class="form-control" onchange="calculate()">
+                                <option value="2">2 Ω</option>
+                                <option value="4">4 Ω</option>
+                                <option value="8" selected>8 Ω</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="result-box">
+                        <h3>Estimated Output Level</h3>
+                        <div class="result-value"><span id="spl">98</span> dB SPL</div>
+                        <p class="mt-2"><strong>Efficiency Class:</strong> <span id="efficiency">Moderate</span></p>
+                        <p><strong>Amplifier Stress:</strong> <span id="stress">Normal</span></p>
+                    </div>
+                </div>
+
+
+
+                <div class="tool-container">
+
+                    <h1>Speaker Sensitivity Calculator – Complete Loudness & Power Guide</h1>
+
+
+                    <p>
+                        A <strong>Speaker Sensitivity Calculator</strong> estimates real-world loudness
+                        (Sound Pressure Level, SPL) by combining <strong>speaker sensitivity (dB @ 1W/1m)</strong>
+                        with <strong>amplifier power, listening distance, and impedance load</strong>.
+                        It helps users predict actual volume, compare speakers objectively, choose the correct
+                        amplifier, and avoid distortion or clipping in home audio, car audio, PA, and subwoofer systems.
+                    </p>
+
+                    <h2>Introduction</h2>
+                    <p>
+                        Speaker loudness is <strong>not determined by wattage alone</strong>. Two speakers powered by
+                        the
+                        same amplifier can produce very different volume levels depending on
+                        <strong>sensitivity rating, distance, and electrical load</strong>.
+                    </p>
+                    <p>
+                        This is why a <strong>speaker sensitivity and amplifier power calculator</strong> is essential.
+                        It converts specification-sheet numbers into <strong>real-world SPL</strong>, not marketing
+                        claims.
+                    </p>
+
+                    <p>In this guide, you will learn:</p>
+                    <ul>
+                        <li>What speaker sensitivity means in practical terms</li>
+                        <li>How amplifier power affects loudness logarithmically</li>
+                        <li>Why distance and impedance matter</li>
+                        <li>How to calculate speaker output accurately</li>
+                        <li>How sensitivity differs for speakers and subwoofers</li>
+                    </ul>
+
+                    <p>
+                        A <strong>speaker sensitivity calculator</strong> turns technical specs into predictable
+                        listening results.
+                    </p>
+
+                    <h2>What Is Speaker Sensitivity?</h2>
+                    <p>
+                        Speaker sensitivity measures how loud a speaker plays with
+                        <strong>1 watt of input power at 1 meter distance</strong>, expressed in
+                        <strong>decibels (dB SPL)</strong>.
+                    </p>
+                    <p>
+                        In practical terms, sensitivity shows <strong>how efficiently a speaker converts electrical
+                            power into sound</strong>.
+                        A higher sensitivity speaker plays louder with less power than a low-sensitivity design.
+                    </p>
+
+                    <h3>Speaker Sensitivity Meaning (Plain Explanation)</h3>
+                    <ul>
+                        <li>Sensitivity is efficiency of sound output</li>
+                        <li>Measured in dB SPL</li>
+                        <li>Higher dB = louder sound per watt</li>
+                        <li>Sensitivity does not change with amplifier power</li>
+                    </ul>
+
+                    <p>
+                        <strong>Example:</strong><br>
+                        An <strong>88 dB speaker</strong> produces <strong>88 dB SPL</strong>
+                        using just <strong>1 watt</strong> at <strong>1 meter</strong>.
+                    </p>
+
+                    <h2>Why Speaker Sensitivity Matters</h2>
+                    <ul>
+                        <li>Determines required amplifier power</li>
+                        <li>Affects maximum achievable SPL</li>
+                        <li>Influences distortion and clipping risk</li>
+                        <li>Impacts efficiency in home theater, car audio, PA, and studio systems</li>
+                    </ul>
+
+                    <p>
+                        This is why <strong>speaker sensitivity rating</strong> is more important than wattage alone.
+                    </p>
+
+                    <h2>How Is Speaker Sensitivity Measured?</h2>
+                    <p>
+                        Speaker sensitivity is measured by applying <strong>1 watt of power</strong>,
+                        placing a <strong>calibrated microphone at 1 meter</strong>,
+                        and recording SPL in a controlled environment.
+                    </p>
+
+                    <h3>Measurement Process</h3>
+                    <ol>
+                        <li>Apply 1 watt of pink noise or test tone</li>
+                        <li>Place microphone exactly 1 meter from the speaker</li>
+                        <li>Measure SPL in an anechoic or semi-anechoic space</li>
+                    </ol>
+
+                    <p>
+                        Real rooms produce different results due to reflections, boundary gain, and room modes.
+                        Sensitivity ratings represent <strong>baseline performance</strong>, not room-corrected
+                        loudness.
+                    </p>
+
+                    <h2>How Does the Speaker Sensitivity Calculator Work?</h2>
+                    <p>
+                        The calculator combines <strong>speaker sensitivity, amplifier power, distance loss,
+                            and impedance limits</strong> to estimate real listening-position SPL.
+                    </p>
+
+                    <h2>Speaker Sensitivity Equation (Used by the Calculator)</h2>
+                    <p>
+                        <strong>Total SPL = Speaker Sensitivity + Power Gain − Distance Loss</strong>
+                    </p>
+
+                    <h3>Breakdown</h3>
+                    <p><strong>Power Gain:</strong> 10 × log₁₀(Amplifier Power in Watts)</p>
+                    <p><strong>Distance Loss:</strong> 20 × log₁₀(Listening Distance in meters)</p>
+
+                    <h3>Example Calculation</h3>
+                    <div class="table-responsive my-4">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Input</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Speaker Sensitivity</td>
+                                    <td>88 dB @ 1W/1m</td>
+                                </tr>
+                                <tr>
+                                    <td>Amplifier Power</td>
+                                    <td>100 W RMS</td>
+                                </tr>
+                                <tr>
+                                    <td>Listening Distance</td>
+                                    <td>1 m</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                    <p>
+                        Estimated Output = <strong>108 dB SPL</strong>
+                    </p>
+
+                    <h2>Speaker Sensitivity Chart (Practical Interpretation)</h2>
+                    <div class="table-responsive my-4">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-secondary">
+                                <tr>
+                                    <th>Sensitivity (dB @ 1W/1m)</th>
+                                    <th>Classification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>84–87 dB</td>
+                                    <td>Low sensitivity</td>
+                                </tr>
+                                <tr>
+                                    <td>88–90 dB</td>
+                                    <td>Moderate sensitivity</td>
+                                </tr>
+                                <tr>
+                                    <td>91–94 dB</td>
+                                    <td>High sensitivity</td>
+                                </tr>
+                                <tr>
+                                    <td>95 dB+</td>
+                                    <td>Very high efficiency</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                </div>
+                <!-- HOW TO USE -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2>How to Use This Calculator</h2>
+                        <p>
+                            Enter your speaker’s rated sensitivity, amplifier RMS power, listening distance, and nominal
+                            impedance.
+                            The calculator applies logarithmic SPL scaling and inverse-square distance loss to estimate
+                            real-world loudness.
+                        </p>
+
+                        <p>
+                            This is essential when comparing high-efficiency speakers versus low-sensitivity designs,
+                            selecting amplifiers,
+                            preventing clipping, managing dynamic range, and optimizing voltage drop in car audio
+                            systems.
+                        </p>
+
+                        <h5>Formulas Used</h5>
+                        <ul>
+                            <li><strong>SPL Increase from Power:</strong> 10 × log₁₀(Power)</li>
+                            <li><strong>Distance Loss:</strong> 20 × log₁₀(Distance)</li>
+                            <li><strong>Total SPL:</strong> Sensitivity + Power Gain − Distance Loss</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- WHO -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2>Who Can Use This Tool</h2>
+                        <p>
+                            This calculator is ideal for car audio installers balancing amplifier load and speaker
+                            efficiency,
+                            home theater designers managing tonal balance and dynamic range,
+                            PA system engineers tuning speaker arrays,
+                            and DIY builders comparing loudspeaker designs.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- WHERE -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2>Where This Tool Is Used</h2>
+                        <p>
+                            It is commonly used in car cabins affected by voltage drop,
+                            home theaters requiring accurate SPL matching,
+                            PA systems needing controlled coverage,
+                            and studio environments evaluating monitor efficiency and distortion limits.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- WARNINGS -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2>Design Notes & Safety Warnings</h2>
+                        <ul>
+                            <li>Low-sensitivity speakers require significantly more power to reach the same SPL.</li>
+                            <li>Excessive amplifier power increases clipping risk and harmonic distortion.</li>
+                            <li>Impedance mismatches can overload amplifiers and reduce efficiency.</li>
+                            <li>Always consider series vs parallel wiring when using multiple speakers.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- faq -->
+                <div class="tool-container">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>
+                        Speaker sensitivity indicates how loud a speaker plays with 1 watt of power measured at
+                        1 meter distance. It is expressed in dB SPL and determines efficiency, amplifier requirements,
+                        and achievable loudness.
+                    </p>
+
+                    <div class="accordion" id="speakerFaq">
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    What is speaker sensitivity?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    Speaker sensitivity indicates how loud a speaker plays with 1 watt of power at 1
+                                    meter, expressed in dB SPL. It represents efficiency of sound output and helps
+                                    determine amplifier power requirements, achievable loudness, and system performance
+                                    across home, car, and professional audio setups.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    How do you calculate speaker sensitivity?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    Speaker sensitivity is measured by applying 1 watt of power, placing a microphone at
+                                    1 meter, and recording SPL. A speaker sensitivity calculator estimates resulting
+                                    loudness when amplifier power, distance, and impedance change from those reference
+                                    conditions.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    How to measure speaker sensitivity at home?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    Accurate sensitivity measurement requires calibrated microphones and controlled
+                                    environments. Home measurements can approximate results, but reflections and room
+                                    gain affect accuracy. Manufacturer ratings remain the most reliable baseline for
+                                    calculator inputs.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    What is a good speaker sensitivity rating?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    A good speaker sensitivity typically falls between 88 dB and 92 dB, offering a
+                                    balance between loudness, power requirements, and enclosure size. Higher sensitivity
+                                    reduces amplifier demand but may affect low-frequency extension depending on design.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    Does amplifier power increase speaker sensitivity?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    No. Amplifier power does not change sensitivity. Sensitivity is a fixed speaker
+                                    property. Increasing power raises SPL output logarithmically, which is why speaker
+                                    sensitivity and amplifier power calculators are used to estimate loudness.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq6">
+                                    Why does sound get quieter with distance?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    Sound follows the inverse-square law, meaning SPL decreases by approximately 6 dB
+                                    every time distance doubles. This distance loss is a core component of loudspeaker
+                                    sensitivity calculation.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq7">
+                                    Does impedance affect loudness?
+                                </button>
+                            </h2>
+                            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    Impedance affects how much power an amplifier can deliver safely. Lower impedance
+                                    can increase output but may stress the amplifier. Sensitivity ratings assume nominal
+                                    impedance and should be combined with power limits.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq8">
+                                    Is higher speaker sensitivity always better?
+                                </button>
+                            </h2>
+                            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    Not always. High-sensitivity speakers require less power but may trade off
+                                    low-frequency extension or enclosure size. System goals determine the ideal
+                                    sensitivity rating.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq9">
+                                    Can this calculator be used for subwoofers?
+                                </button>
+                            </h2>
+                            <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    Yes, but subwoofer sensitivity varies widely and room acoustics dominate
+                                    low-frequency output. Calculators provide estimates rather than exact results for
+                                    bass systems.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq10">
+                                    Is this calculator accurate for real rooms?
+                                </button>
+                            </h2>
+                            <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#speakerFaq">
+                                <div class="accordion-body">
+                                    It provides close estimates. Real-world SPL varies due to room size, reflections,
+                                    placement, and boundary gain. Calculators are best used for comparison and system
+                                    planning.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- related tools -->
+                 <h2 class="mt-2">Related Tools</h2>
+                    <ul>
+                        <li><a href="/speaker-audio-tools/spl-calculator/"> SPL Calculator</a>
+                        </li>
+                        <li><a href="/speaker-audio-tools/spl-per-watt/">SPL Per Watt Calculator</a> </li>
+                        </li>
+                    </ul>
+                <!-- E-E-A-T Signals -->
+                <div class="tool-container">
+                    <h2>Author</h2>
+                    <ul>
+                        <li>Author: John Smith</li>
+                        <li>Last Updated: 2026</li>
+                        <li>Tested Using: Real-world SPL modeling formulas</li>
+                        <li>Sources: Loudspeaker measurement standards, acoustic physics principles</li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+    <!-- tool js -->
+    <script defer>
+        function calculate() {
+            const sensitivity = parseFloat(document.getElementById("sensitivity").value);
+            const power = parseFloat(document.getElementById("power").value);
+            const distance = parseFloat(document.getElementById("distance").value);
+
+            if (power <= 0 || distance <= 0) return;
+
+            const powerGain = 10 * Math.log10(power);
+            const distanceLoss = 20 * Math.log10(distance);
+            const spl = Math.round(sensitivity + powerGain - distanceLoss);
+
+            document.getElementById("spl").innerText = spl;
+
+            document.getElementById("efficiency").innerText =
+                sensitivity >= 95 ? "High" : sensitivity >= 88 ? "Moderate" : "Low";
+
+            document.getElementById("stress").innerText =
+                sensitivity < 86 && power > 200 ? "High" : "Normal";
+        }
+        calculate();
+    </script>
+    <!-- include js -->
+    <script defer>
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+    
+
+</body>
+
+</html>

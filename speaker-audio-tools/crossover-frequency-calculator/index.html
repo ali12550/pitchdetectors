@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaker Crossover Frequency Calculator | 2-Way & Multi-Driver Design</title>
+
+    <meta name="description"
+        content="Free crossover frequency calculator. Design passive crossover networks with component values for multi-driver speaker systems.">
+    <meta name="keywords"
+        content="crossover calculator, speaker crossover, passive crossover, high pass, low pass, capacitor, inductor">
+    <link rel="canonical" href="https://pitchdetectors.com/speaker-audio-tools/crossover-frequency-calculator/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row justify-content-around">
+
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                                onkeyup="searchTools()">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-speaker me-2"></i>Speaker Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/speaker-audio-tools/speaker-wattage-calculator/"><i class="bi bi-lightning"></i>
+                                        Speaker Wattage</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-impedance-calculator/"><i
+                                            class="bi bi-diagram-3"></i>
+                                        Impedance Calculator</a></li>
+                                <li><a href="/speaker-audio-tools/amplifier-power-calculator/"><i class="bi bi-plug"></i>
+                                        Amplifier Power</a></li>
+                                <li><a href="/speaker-audio-tools/sound-distance-drop-calculator/"><i
+                                            class="bi bi-rulers"></i>
+                                        Sound Distance Drop</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-placement-calculator/"><i
+                                            class="bi bi-arrows-move"></i>
+                                        Speaker Placement</a></li>
+                                <li><a href="/speaker-audio-tools/room-acoustics-calculator/"><i class="bi bi-house"></i> Room
+                                        Acoustics</a></li>
+                                <li><a href="/speaker-audio-tools/ported-enclosure-calculator/"><i class="bi bi-box"></i>
+                                        Ported Enclosure</a></li>
+                                <li><a href="/speaker-audio-tools/sealed-box-calculator/"><i class="bi bi-box-seam"></i>
+                                        Sealed Box</a></li>
+                                <li><a href="/speaker-audio-tools/crossover-frequency-calculator/"><i
+                                            class="bi bi-filter"></i>
+                                        Crossover Frequency</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-9">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/speaker-audio-tools/">Speaker Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Crossover Frequency Calculator</li>
+                    </ol>
+                </nav>
+
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h2><i class="bi bi-filter me-2"></i>Crossover Frequency Calculator</h2>
+                        <p>Calculate component values for passive speaker crossovers. Design high-pass and low-pass
+                            filters for multi-way speakers.</p>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Crossover Frequency (Hz):</label>
+                            <input type="number" class="form-control" id="crossoverFreq" value="3000" min="100"
+                                max="20000" oninput="calculate()">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Speaker Impedance (Ω):</label>
+                            <select class="form-select" id="impedance" onchange="calculate()">
+                                <option value="4">4 Ω</option>
+                                <option value="6">6 Ω</option>
+                                <option value="8" selected>8 Ω</option>
+                                <option value="16">16 Ω</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-bold">Crossover Order:</label>
+                            <select class="form-select" id="order" onchange="calculate()">
+                                <option value="1">1st Order (6 dB/oct)</option>
+                                <option value="2" selected>2nd Order (12 dB/oct)</option>
+                                <option value="3">3rd Order (18 dB/oct)</option>
+                                <option value="4">4th Order (24 dB/oct)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Crossover Type (2nd order):</label>
+                            <select class="form-select" id="crossoverType" onchange="calculate()">
+                                <option value="butterworth" selected>Butterworth (Q = 0.707)</option>
+                                <option value="linkwitz">Linkwitz-Riley (Q = 0.5)</option>
+                                <option value="bessel">Bessel (Q = 0.577)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="result-box h-100">
+                                <h3><i class="bi bi-arrow-down me-2"></i>Low-Pass (Woofer)</h3>
+                                <div class="text-start mt-3">
+                                    <div class="mb-3">
+                                        <strong>Inductor (L):</strong><br>
+                                        <span id="lpInductor" class="fs-3 text-teal">0.42 mH</span>
+                                    </div>
+                                    <div class="mb-3" id="lpCapRow">
+                                        <strong>Capacitor (C):</strong><br>
+                                        <span id="lpCapacitor" class="fs-3 text-teal">6.63 µF</span>
+                                    </div>
+                                    <div id="lpExtra"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="result-box h-100">
+                                <h3><i class="bi bi-arrow-up me-2"></i>High-Pass (Tweeter)</h3>
+                                <div class="text-start mt-3">
+                                    <div class="mb-3">
+                                        <strong>Capacitor (C):</strong><br>
+                                        <span id="hpCapacitor" class="fs-3 text-teal">6.63 µF</span>
+                                    </div>
+                                    <div class="mb-3" id="hpIndRow">
+                                        <strong>Inductor (L):</strong><br>
+                                        <span id="hpInductor" class="fs-3 text-teal">0.42 mH</span>
+                                    </div>
+                                    <div id="hpExtra"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 p-4 bg-light rounded">
+                        <h5 class="text-mid mb-3"><i class="bi bi-info-circle me-2"></i>Crossover Characteristics</h5>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <strong>Slope:</strong> <span id="slope">12 dB/octave</span><br>
+                                <strong>Phase Shift:</strong> <span id="phaseShift">180° (invert polarity)</span>
+                            </div>
+                            <div class="col-md-6">
+                                <strong>Summed Response:</strong> <span id="sumResponse">Flat at crossover</span><br>
+                                <strong>Recommended For:</strong> <span id="recommended">General use</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4"><i class="bi bi-lightning me-2"></i>Crossover Order Comparison</h2>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Order</th>
+                                        <th>Slope</th>
+                                        <th>Components</th>
+                                        <th>Phase</th>
+                                        <th>Character</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1st</td>
+                                        <td>6 dB/oct</td>
+                                        <td>1 each</td>
+                                        <td>90°</td>
+                                        <td>Gentle, wide overlap</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2nd</td>
+                                        <td>12 dB/oct</td>
+                                        <td>2 each</td>
+                                        <td>180°</td>
+                                        <td>Common, good isolation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3rd</td>
+                                        <td>18 dB/oct</td>
+                                        <td>3 each</td>
+                                        <td>270°</td>
+                                        <td>Better isolation</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4th</td>
+                                        <td>24 dB/oct</td>
+                                        <td>4 each</td>
+                                        <td>360°</td>
+                                        <td>Steep, excellent isolation</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content Start -->
+
+                
+                <div class="tool-container">
+                    <h1>Crossover Frequency Calculator – Speaker Crossover Design Tool</h1>
+                    <h2>Tool Overview & Purpose</h2>
+                    <p>
+                        A <strong>crossover frequency calculator for speakers</strong> is a technical tool used to
+                        design
+                        <strong>passive speaker crossovers</strong> by calculating capacitor and inductor values for
+                        <strong>high-pass and low-pass filters</strong>. These filters divide the audio signal so each
+                        speaker driver operates only within its safe and effective frequency range.
+                    </p>
+                    <p>
+                        This calculator is primarily used for <strong>2 way crossover frequency design</strong>, where a
+                        woofer handles low frequencies and a tweeter handles high frequencies. It supports accurate
+                        crossover point selection based on <strong>speaker impedance, crossover order, and filter
+                            type</strong>.
+                    </p>
+                    <ul>
+                        <li>Driver protection</li>
+                        <li>Frequency band separation</li>
+                        <li>System reliability</li>
+                        <li>Electrical filter accuracy</li>
+                    </ul>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Who This Tool Is For</h2>
+                    <ul>
+                        <li>Passive speaker builders</li>
+                        <li>DIY loudspeaker designers</li>
+                        <li>Car audio system builders</li>
+                        <li>Home audio and hi-fi enthusiasts</li>
+                        <li>Installers working with passive crossover networks</li>
+                        <li>Users designing woofer-tweeter crossover systems</li>
+                    </ul>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Why Crossover Frequency Matters</h2>
+
+                    <h3>What Is Crossover Frequency</h3>
+                    <p>
+                        Crossover frequency is the point where an audio signal is divided between speaker drivers using
+                        electrical filters. Below this point, frequencies are routed to the woofer using a
+                        <strong>low-pass filter</strong>. Above this point, frequencies are routed to the tweeter using
+                        a
+                        <strong>high-pass filter</strong>.
+                    </p>
+
+                    <h3>Why It Is Critical in Speaker Design</h3>
+                    <ul>
+                        <li>Tweeter damage from low frequencies</li>
+                        <li>Woofer distortion at high frequencies</li>
+                        <li>Uneven frequency response</li>
+                        <li>Poor driver integration</li>
+                    </ul>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Core Audio Concepts Used in This Calculator</h2>
+                    <ul>
+                        <li>Passive crossover network</li>
+                        <li>Crossover point</li>
+                        <li>High-pass filter for tweeter</li>
+                        <li>Low-pass filter for woofer</li>
+                        <li>Speaker impedance (Ohms)</li>
+                        <li>Frequency band separation</li>
+                        <li>Roll-off slope (dB per octave)</li>
+                        <li>Electrical crossover vs acoustic crossover</li>
+                        <li>Phase alignment</li>
+                        <li>Frequency response overlap</li>
+                    </ul>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Calculator Input Parameters</h2>
+
+                    <h3>Crossover Frequency (Hz)</h3>
+                    <ul>
+                        <li>2–3 kHz for 2 way home speakers</li>
+                        <li>1.5–2.5 kHz for car audio</li>
+                        <li>Higher values for small tweeters</li>
+                    </ul>
+
+                    <h3>Speaker Impedance (Ω)</h3>
+                    <ul>
+                        <li>4 ohm speakers</li>
+                        <li>8 ohm speakers</li>
+                    </ul>
+
+                    <h3>Crossover Order</h3>
+                    <ul>
+                        <li>1st order: 6 dB/oct</li>
+                        <li>2nd order: 12 dB/oct</li>
+                    </ul>
+
+                    <h3>Crossover Type (2nd Order)</h3>
+                    <p><strong>Butterworth filter (Q = 0.707)</strong></p>
+                </div>
+
+                <div class="tool-container">
+                    <h2>How the Crossover Frequency Calculator Works</h2>
+
+                    <h3>2nd Order High-Pass Filter (Tweeter)</h3>
+                    <p>
+                        Capacitor and inductor values are calculated using impedance and crossover frequency to block
+                        low frequencies from reaching the tweeter.
+                    </p>
+
+                    <h3>2nd Order Low-Pass Filter (Woofer)</h3>
+                    <p>
+                        Inductor and capacitor values are calculated to block high frequencies from reaching the woofer.
+                    </p>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Crossover Frequency Formulas (Audio Engineering)</h2>
+
+                    <h3>Capacitor Value Formula</h3>
+                    <pre>C = 1 / (2π × f × R)</pre>
+
+                    <h3>Inductor Value Formula</h3>
+                    <pre>L = R / (2π × f)</pre>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Calculator Outputs Explained</h2>
+
+                    <h3>Low-Pass Section Output</h3>
+                    <ul>
+                        <li>Inductor value (mH)</li>
+                        <li>Capacitor value (µF)</li>
+                        <li>Designed for woofer filtering</li>
+                    </ul>
+
+                    <h3>High-Pass Section Output</h3>
+                    <ul>
+                        <li>Capacitor value (µF)</li>
+                        <li>Inductor value (mH)</li>
+                        <li>Designed for tweeter protection</li>
+                    </ul>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Step-by-Step: How to Use the Calculator</h2>
+                    <ol>
+                        <li>Enter crossover frequency in Hz</li>
+                        <li>Select speaker impedance (4Ω or 8Ω)</li>
+                        <li>Choose crossover order (2nd order)</li>
+                        <li>Select Butterworth crossover type</li>
+                        <li>Calculate component values</li>
+                        <li>Build crossover using calculated components</li>
+                    </ol>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Example: 2 Way Speaker Crossover Calculation</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>Crossover Frequency</th>
+                                    <td>3000 Hz</td>
+                                </tr>
+                                <tr>
+                                    <th>Speaker Impedance</th>
+                                    <td>8 Ω</td>
+                                </tr>
+                                <tr>
+                                    <th>Crossover Order</th>
+                                    <td>2nd Order</td>
+                                </tr>
+                                <tr>
+                                    <th>Filter Type</th>
+                                    <td>Butterworth</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Typical Crossover Frequency Chart</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Speaker Type</th>
+                                    <th>Recommended Crossover</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Woofer → Tweeter</td>
+                                    <td>2–3 kHz</td>
+                                </tr>
+                                <tr>
+                                    <td>Subwoofer → Speaker</td>
+                                    <td>80–120 Hz</td>
+                                </tr>
+                                <tr>
+                                    <td>Midrange → Tweeter</td>
+                                    <td>3–5 kHz</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tool-container">
+                    <h2>Frequently Asked Questions</h2>
+
+                    <div class="accordion" id="faqAccordion">
+
+                        <!-- OLD FAQS (kept + merged) -->
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+                                    What is a good crossover frequency for speakers?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    For most 2 way speakers, 2–3 kHz is common, depending on driver specifications.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+                                    How do I calculate crossover frequency for speakers?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Use speaker impedance and target frequency with passive crossover formulas or this
+                                    calculator.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+                                    Can I use this for car audio speakers?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, for passive car audio crossovers using 4Ω or 8Ω drivers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+                                    What does Butterworth crossover mean?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    It is a filter alignment that provides a flat electrical response at the crossover
+                                    point.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NEW FAQS -->
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+                                    What is a crossover frequency calculator for speakers?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    A crossover frequency calculator computes component values for passive crossover
+                                    networks that divide audio signals between woofers, midrange drivers, and tweeters.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq6">
+                                    What does a 2 way crossover frequency calculator do?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    It designs a passive crossover that splits audio between a woofer and a tweeter at a
+                                    defined crossover point.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq7">
+                                    What is a passive speaker crossover calculator?
+                                </button>
+                            </h2>
+                            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    It calculates capacitor and inductor values required to build a crossover network
+                                    without active electronics.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq8">
+                                    What is a low pass crossover calculator?
+                                </button>
+                            </h2>
+                            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    It determines component values that allow low frequencies to pass to a woofer while
+                                    reducing higher frequencies.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq9">
+                                    What is a high pass crossover calculator?
+                                </button>
+                            </h2>
+                            <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    It calculates filter components that block low frequencies from reaching a tweeter.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq10">
+                                    How does speaker impedance affect crossover frequency?
+                                </button>
+                            </h2>
+                            <div id="faq10" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Speaker impedance directly affects capacitor and inductor values required to achieve
+                                    a specific crossover frequency.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq11">
+                                    What is the difference between 4 ohm and 8 ohm crossover calculations?
+                                </button>
+                            </h2>
+                            <div id="faq11" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Lower impedance speakers require different component values than higher impedance
+                                    speakers to maintain the same crossover point.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq12">
+                                    What does crossover order mean?
+                                </button>
+                            </h2>
+                            <div id="faq12" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Crossover order defines how steeply frequencies are attenuated beyond the crossover
+                                    point, measured in dB per octave.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq13">
+                                    What is a 2nd order crossover frequency calculator?
+                                </button>
+                            </h2>
+                            <div id="faq13" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    It designs a crossover with a 12 dB per octave slope using both capacitors and
+                                    inductors.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq14">
+                                    What is crossover frequency bandwidth?
+                                </button>
+                            </h2>
+                            <div id="faq14" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    It refers to the transition range where both drivers contribute output near the
+                                    crossover point.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                    data-bs-target="#faq15">
+                                    Does crossover slope affect sound quality?
+                                </button>
+                            </h2>
+                            <div id="faq15" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes. Steeper slopes reduce overlap but increase phase shift, while gentler slopes
+                                    allow smoother transitions.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Content End -->
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+    <!-- tool js -->
+    <script defer>
+        function calculate() {
+            const freq = parseFloat(document.getElementById('crossoverFreq').value) || 3000;
+            const impedance = parseFloat(document.getElementById('impedance').value) || 8;
+            const order = parseInt(document.getElementById('order').value) || 2;
+            const crossoverType = document.getElementById('crossoverType').value;
+
+            const omega = 2 * Math.PI * freq;
+
+            // Get Q factor based on type
+            let Q = 0.707; // Butterworth default
+            if (crossoverType === 'linkwitz') Q = 0.5;
+            else if (crossoverType === 'bessel') Q = 0.577;
+
+            let lpL, lpC, hpC, hpL;
+            let lpL2, lpC2, hpC2, hpL2;
+
+            // First order: L = R/ω, C = 1/(ωR)
+            const L1 = (impedance / omega) * 1000; // mH
+            const C1 = (1 / (omega * impedance)) * 1000000; // µF
+
+            if (order === 1) {
+                lpL = L1;
+                hpC = C1;
+                document.getElementById('lpCapRow').style.display = 'none';
+                document.getElementById('hpIndRow').style.display = 'none';
+                document.getElementById('lpExtra').innerHTML = '';
+                document.getElementById('hpExtra').innerHTML = '';
+            } else if (order === 2) {
+                // Second order
+                lpL = (impedance / omega) * 1000; // mH
+                lpC = (1 / (omega * impedance)) * 1000000; // µF
+
+                // Adjust for Q
+                lpL = lpL / Q;
+                lpC = lpC / Q;
+
+                hpC = lpC;
+                hpL = lpL;
+
+                document.getElementById('lpCapRow').style.display = 'block';
+                document.getElementById('hpIndRow').style.display = 'block';
+                document.getElementById('lpCapacitor').textContent = lpC.toFixed(2) + ' µF';
+                document.getElementById('hpInductor').textContent = hpL.toFixed(2) + ' mH';
+                document.getElementById('lpExtra').innerHTML = '';
+                document.getElementById('hpExtra').innerHTML = '';
+            } else if (order === 3) {
+                // Third order (simplified)
+                lpL = (1.5 * impedance / omega) * 1000;
+                lpC = (0.667 / (omega * impedance)) * 1000000;
+                lpL2 = (0.5 * impedance / omega) * 1000;
+
+                hpC = (0.667 / (omega * impedance)) * 1000000;
+                hpL = (1.5 * impedance / omega) * 1000;
+                hpC2 = (1.333 / (omega * impedance)) * 1000000;
+
+                document.getElementById('lpCapRow').style.display = 'block';
+                document.getElementById('hpIndRow').style.display = 'block';
+                document.getElementById('lpCapacitor').textContent = lpC.toFixed(2) + ' µF';
+                document.getElementById('hpInductor').textContent = hpL.toFixed(2) + ' mH';
+                document.getElementById('lpExtra').innerHTML = `<strong>L2:</strong> ${lpL2.toFixed(2)} mH`;
+                document.getElementById('hpExtra').innerHTML = `<strong>C2:</strong> ${hpC2.toFixed(2)} µF`;
+            } else {
+                // Fourth order
+                lpL = (1.414 * impedance / omega) * 1000;
+                lpC = (0.707 / (omega * impedance)) * 1000000;
+                lpL2 = (0.707 * impedance / omega) * 1000;
+                lpC2 = (1.414 / (omega * impedance)) * 1000000;
+
+                hpC = lpC;
+                hpL = lpL;
+                hpC2 = lpC2;
+                hpL2 = lpL2;
+
+                document.getElementById('lpCapRow').style.display = 'block';
+                document.getElementById('hpIndRow').style.display = 'block';
+                document.getElementById('lpCapacitor').textContent = lpC.toFixed(2) + ' µF';
+                document.getElementById('hpInductor').textContent = hpL.toFixed(2) + ' mH';
+                document.getElementById('lpExtra').innerHTML = `<strong>L2:</strong> ${lpL2.toFixed(2)} mH<br><strong>C2:</strong> ${lpC2.toFixed(2)} µF`;
+                document.getElementById('hpExtra').innerHTML = `<strong>C2:</strong> ${hpC2.toFixed(2)} µF<br><strong>L2:</strong> ${hpL2.toFixed(2)} mH`;
+            }
+
+            document.getElementById('lpInductor').textContent = lpL.toFixed(2) + ' mH';
+            document.getElementById('hpCapacitor').textContent = (hpC || C1).toFixed(2) + ' µF';
+
+            // Update characteristics
+            document.getElementById('slope').textContent = (order * 6) + ' dB/octave';
+            document.getElementById('phaseShift').textContent = (order * 90) + '° total';
+
+            let sumResponse = 'Flat at crossover';
+            if (crossoverType === 'linkwitz') sumResponse = '-6 dB at crossover (LR flat sum)';
+            else if (crossoverType === 'bessel') sumResponse = 'Best transient response';
+            document.getElementById('sumResponse').textContent = sumResponse;
+
+            let recommended = 'General use';
+            if (order === 1) recommended = 'Coaxial, simple systems';
+            else if (order === 2 && crossoverType === 'butterworth') recommended = 'Most 2-way speakers';
+            else if (order === 4 && crossoverType === 'linkwitz') recommended = 'Professional, home theater';
+            document.getElementById('recommended').textContent = recommended;
+        }
+
+        calculate();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ])
+                .then(([header, footer]) => {
+                    document.getElementById("header").innerHTML = header;
+                    document.getElementById("footer").innerHTML = footer;
+                })
+                .catch(err => console.error("Include load failed:", err));
+        });
+    </script>
+ 
+
+</body>
+
+</html>

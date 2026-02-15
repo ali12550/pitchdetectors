@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Total Harmonic Distortion (THD) Calculator | pitchdetectors</title>
+
+    <meta name="description"
+        content="Free THD calculator to measure total harmonic distortion in speakers and amplifiers. Analyze distortion, clipping, and sound quality for car audio, home theater, and PA systems.">
+
+    <meta name="keywords"
+        content="THD calculator, total harmonic distortion, speaker distortion, amplifier distortion, audio THD, harmonic distortion">
+
+    <link rel="canonical"
+        href="https://pitchdetectors.com/speaker-audio-tools/total-harmonic-distortion-thd-calculator/">
+
+    <link rel="icon" href="/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+
+     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6855609395201774"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="container-fluid py-4">
+        <div class="row justify-content-around">
+
+            <!-- MAIN CONTENT -->
+            <div class="col-lg-7 col-md-6">
+
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/speaker-audio-tools/">Speaker Tools</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">THD Calculator</li>
+                    </ol>
+                </nav>
+
+                <!-- TOOL -->
+                <div class="tool-container">
+                    <div class="tool-title">
+                        <h1><i class="bi bi-waveform me-2"></i>Total Harmonic Distortion (THD) Calculator</h1>
+                        <p>
+                            Measure <strong>Total Harmonic Distortion</strong> to evaluate audio clarity, nonlinear
+                            distortion, and clipping behavior in speakers, amplifiers, and full audio systems.
+                        </p>
+                    </div>
+
+                    <!-- INPUTS -->
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Fundamental Signal (V RMS)</label>
+                            <input type="number" class="form-control" id="fundamental" value="1" min="0.1" step="0.01"
+                                oninput="calculateTHD()">
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Harmonic RMS Voltages</label>
+                            <input type="text" class="form-control" id="harmonics"
+                                value="0.02,0.015,0.01" oninput="calculateTHD()">
+                            <small class="text-muted">Comma-separated (2nd, 3rd, 4th harmonics)</small>
+                        </div>
+                    </div>
+
+                    <!-- RESULTS -->
+                    <div class="result-box">
+                        <h3>Total Harmonic Distortion</h3>
+                        <p class="result-value">
+                            <span id="thdValue">0.00</span> %
+                        </p>
+
+                        <div class="row text-start mt-4">
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>Distortion Grade</strong><br>
+                                <span id="distortionGrade" class="fs-5">—</span>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>Signal Purity</strong><br>
+                                <span id="signalPurity" class="fs-5">—</span>
+                            </div>
+                            <div class="col-md-4 col-6 mb-3">
+                                <strong>Best Use Case</strong><br>
+                                <span id="useCase" class="fs-5">—</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HOW TO USE -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4">
+                            <i class="bi bi-info-circle me-2"></i>How to Use the THD Calculator
+                        </h2>
+
+                        <p>
+                            This tool calculates <strong>total harmonic distortion</strong> by comparing unwanted
+                            harmonic energy to the original signal. THD is a key indicator of <strong>clipping
+                                prevention</strong>, amplifier linearity, speaker efficiency, and overall
+                            <strong>dynamic range</strong>.
+                        </p>
+
+                        <ol>
+                            <li>Enter the RMS voltage of the fundamental frequency.</li>
+                            <li>Input RMS voltages of harmonic components generated by the system.</li>
+                            <li>The calculator determines distortion caused by nonlinear speaker behavior,
+                                amplifier load stress, impedance effects, and voltage drop.</li>
+                        </ol>
+
+                        <h5 class="text-teal mt-3">Formula Used</h5>
+                        <ul>
+                            <li>
+                                THD (%) = √(V₂² + V₃² + V₄² …) ÷ V₁ × 100
+                            </li>
+                            <li>
+                                V₁ = Fundamental RMS signal
+                            </li>
+                            <li>
+                                V₂…Vn = Harmonic RMS voltages
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- WHO CAN USE -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4">
+                            <i class="bi bi-person-lines-fill me-2"></i>Who Can Use This Calculator
+                        </h2>
+
+                        <ul>
+                            <li>Car audio enthusiasts optimizing amplifier gain and avoiding distortion.</li>
+                            <li>Home theater designers analyzing speaker clarity and tonal accuracy.</li>
+                            <li>PA system technicians managing high SPL distortion.</li>
+                            <li>Speaker designers evaluating enclosure resonance and cone linearity.</li>
+                            <li>Audio engineers measuring harmonic distortion during system calibration.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- WHERE TO USE -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4">
+                            <i class="bi bi-geo-alt-fill me-2"></i>Where THD Analysis Matters
+                        </h2>
+
+                        <ul>
+                            <li>Car audio systems with high power subwoofer banks.</li>
+                            <li>Home listening rooms sensitive to tonal balance.</li>
+                            <li>PA systems operating near amplifier limits.</li>
+                            <li>Studios requiring low distortion reference monitoring.</li>
+                            <li>Live sound environments prone to clipping and voltage sag.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- FAQ -->
+                <div class="tool-container mt-4">
+                    <div class="tool-section">
+                        <h2 class="text-mid mb-4">
+                            <i class="bi bi-question-circle me-2"></i>Additional FAQ
+                        </h2>
+
+                        <div class="accordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button" data-bs-toggle="collapse"
+                                        data-bs-target="#faq1">
+                                        What is a good THD value?
+                                    </button>
+                                </h3>
+                                <div id="faq1" class="accordion-collapse collapse show">
+                                    <div class="accordion-body">
+                                        THD below 0.5% is generally considered clean. Below 0.1% is reference-grade
+                                        audio quality.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#faq2">
+                                        Does clipping increase THD?
+                                    </button>
+                                </h3>
+                                <div id="faq2" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        Yes. Clipping introduces high-order harmonics, dramatically increasing
+                                        distortion and risking speaker damage.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item">
+                                <h3 class="accordion-header">
+                                    <button class="accordion-button collapsed" data-bs-toggle="collapse"
+                                        data-bs-target="#faq3">
+                                        Is THD affected by impedance?
+                                    </button>
+                                </h3>
+                                <div id="faq3" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        Impedance mismatches increase amplifier stress, voltage drop, and nonlinear
+                                        behavior, raising THD.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="col-lg-3 col-md-4">
+                <div class="tools-sidebar">
+
+                    <div class="sidebar-search mb-4">
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Search tools...">
+                        </div>
+                    </div>
+
+                    <div class="sidebar-categories">
+                        <div class="sidebar-category active">
+                            <h5><i class="bi bi-speaker me-2"></i>Speaker Tools</h5>
+                            <ul class="sidebar-links">
+                                <li><a href="/speaker-audio-tools/speaker-wattage-calculator/"><i class="bi bi-lightning"></i> Speaker Wattage</a></li>
+                                <li><a href="/speaker-audio-tools/speaker-impedance-calculator/"><i class="bi bi-diagram-3"></i> Impedance Calculator</a></li>
+                                <li><a href="/speaker-audio-tools/amplifier-power-calculator/"><i class="bi bi-plug"></i> Amplifier Power</a></li>
+                                <li><a href="/speaker-audio-tools/spl-calculator/"><i class="bi bi-volume-up"></i> SPL Calculator</a></li>
+                                <li><a href="/speaker-audio-tools/frequency-response-calculator/"><i class="bi bi-graph-up"></i> Frequency Response</a></li>
+                                <li>
+                                    <a class="active" href="/speaker-audio-tools/total-harmonic-distortion-thd-calculator/">
+                                        <i class="bi bi-waveform"></i> THD Calculator
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="/assets/bootstrap5.js" defer></script>
+    <script src="/assets/tools.js" defer></script>
+
+    <script defer>
+        function calculateTHD() {
+            const fundamental = parseFloat(document.getElementById('fundamental').value);
+            const harmonicValues = document.getElementById('harmonics').value
+                .split(',')
+                .map(v => parseFloat(v.trim()))
+                .filter(v => !isNaN(v) && v > 0);
+
+            if (!fundamental || fundamental <= 0) return;
+
+            let sumSquares = 0;
+            harmonicValues.forEach(v => sumSquares += v * v);
+
+            const thd = Math.sqrt(sumSquares) / fundamental * 100;
+            document.getElementById('thdValue').textContent = thd.toFixed(2);
+
+            let grade = "High Distortion";
+            let purity = "Low";
+            let useCase = "Limited";
+
+            if (thd < 0.1) {
+                grade = "Reference Grade";
+                purity = "Extremely Clean";
+                useCase = "Studio / Audiophile";
+            } else if (thd < 0.5) {
+                grade = "High Fidelity";
+                purity = "Clean";
+                useCase = "Home & Car Audio";
+            } else if (thd < 1) {
+                grade = "Acceptable";
+                purity = "Moderate";
+                useCase = "General Listening";
+            }
+
+            document.getElementById('distortionGrade').textContent = grade;
+            document.getElementById('signalPurity').textContent = purity;
+            document.getElementById('useCase').textContent = useCase;
+        }
+
+        calculateTHD();
+
+        window.addEventListener("load", () => {
+            Promise.all([
+                fetch("../../header.html").then(res => res.text()),
+                fetch("../../footer.html").then(res => res.text())
+            ]).then(([header, footer]) => {
+                document.getElementById("header").innerHTML = header;
+                document.getElementById("footer").innerHTML = footer;
+            });
+        });
+    </script>
+</body>
+
+</html>
