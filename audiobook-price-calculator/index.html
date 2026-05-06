@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://pitchdetectors.com/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+  <title> Audiobook Price Calculator – Narrator Cost & Production Budget
+  </title>
+  <meta name="description"
+    content="Enter audiobook length and narrator rate per finished hour to estimate total production cost. Add editing and mastering fees for a complete budget breakdown.">
+  <meta name="keywords"
+    content="audiobook price calculator, audiobook cost estimator, narrator rate calculator, audiobook production cost, audiobook PFH calculator, audiobook budget tool">
+
+  <link rel="canonical" href="https://pitchdetectors.com/audiobook-price-calculator/">
+
+  <link rel="icon" href="https://pitchdetectors.com/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+  <meta property="og:description"
+    content="Enter audiobook length and narrator rate per finished hour to estimate total production cost. Add editing and mastering fees for a complete budget breakdown.">
+  <meta property="og:url" content="https://pitchdetectors.com/audiobook-price-calculator/">
+  <meta property="og:type" content="website">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/bootstrap5.css" rel="stylesheet">
+  <link href="/assets/style.css" rel="stylesheet">
+  <link href="/assets/tools.css" rel="stylesheet">
+  <meta name="author" content="Pitch Detectors">
+
+  <style>
+    .comparison-card {
+      background: #f8f9fa;
+      border: 2px solid #dee2e6;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .comparison-card:hover {
+      border-color: #0d6efd;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .best-value {
+      background: #d1e7dd;
+      border-color: #0f5132;
+      position: relative;
+    }
+
+    .best-value::before {
+      content: "🏆 Best Value";
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      background: #198754;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .price-metric {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      padding: 10px;
+      background: white;
+      border-radius: 5px;
+    }
+
+    .price-metric-label {
+      font-weight: 600;
+      color: #495057;
+    }
+
+    .price-metric-value {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #0d6efd;
+    }
+
+    .format-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #0d6efd;
+      color: white;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .add-format-btn {
+      background: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .add-format-btn:hover {
+      background: #218838;
+    }
+
+    .remove-format-btn {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.85em;
+      float: right;
+    }
+
+    .remove-format-btn:hover {
+      background: #c82333;
+    }
+
+    .savings-highlight {
+      background: #fff3cd;
+      border: 2px solid #ffc107;
+      border-radius: 10px;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .savings-amount {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #856404;
+    }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-NCHP45VYJ2');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5860966996605385"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <div class="container-fluid py-4">
+    <div class="row justify-content-start">
+      <!-- Sidebar -->
+      <div class="col-lg-3 col-md-4">
+        <div class="tools-sidebar">
+          <div class="sidebar-search mb-4">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                onkeyup="searchTools()">
+            </div>
+          </div>
+
+          <div class="sidebar-categories">
+            <div class="sidebar-category active">
+              <h5><i class=" me-2"></i>🎧 Audiobook Tools</h5>
+              <ul class="sidebar-links">
+                <li><a href="https://pitchdetectors.com/audiobook-speed-calculator/" class=""><i class=""></i>🎧
+                    Audiobook
+                    Speed Calculator</a></li>
+                <li><a href="https://pitchdetectors.com/audiobook-length-calculator/
+" class=""><i class=""></i>🎧 Audiobook
+                    Length
+                    Calculator</a></li>
+                <li><a href="https://pitchdetectors.com/audiobook-progress-calculator/" class=""><i
+                      class=""></i>🎧 Audiobook
+                    Progress Calculator</a></li>
+                <li><a href="https://pitchdetectors.com/audiobook-percentage-calculator/" class=""><i
+                      class=""></i>🎧 Audiobook
+                    Percentage Calculator</a></li>
+                <li><a href="https://pitchdetectors.com/audiobook-price-calculator/" class="active"><i
+                      class=""></i>💰
+                    Audiobook
+                    Price Calculator</a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-category">
+              <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
+              <ul class="sidebar-links">
+                <li><a href="/pitch-detector-tools/guitar-tuner-online/"><i class="bi bi-music-note-beamed"></i>
+                    Guitar Tuner</a></li>
+                <li><a href="/pitch-detector-tools/frequency-to-note-online/"><i class="bi bi-arrow-left-right"></i>
+                    Frequency to Note</a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-category">
+              <h5><i class="bi bi-music-note-list me-2"></i>Music Theory Tools</h5>
+              <ul class="sidebar-links">
+                <li><a href="/music-theory-tools/online-metronome/"><i class="bi bi-stopwatch"></i>
+                    Online Metronome</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Tool -->
+      <div class="col-lg-7 col-md-6">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="https://pitchdetectors.com/audiobook-tools/">Audiobook Tools</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Audiobook Price Calculator</li>
+          </ol>
+        </nav>
+
+        <div class="tool-container">
+          <div class="tool-title">
+            <h2>💰 Audiobook Price Calculator</h2>
+            <p>Calculate cost per hour and compare audiobook formats to find the best value.</p>
+          </div>
+
+          <div id="formatsContainer">
+            <div class="format-entry" data-format-id="1">
+              <h5>Format 1</h5>
+              <div class="mb-3">
+                <label class="form-label">Format Name (e.g., Audible, CD, Subscription)</label>
+                <input type="text" class="format-name form-control" placeholder="e.g. Audible Credit">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Price ($)</label>
+                <input type="number" class="format-price form-control" placeholder="e.g. 14.95" min="0" step="0.01">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Duration (Hours)</label>
+                <input type="number" class="format-hours form-control" placeholder="e.g. 8" min="0" step="0.1">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Duration (Minutes)</label>
+                <input type="number" class="format-minutes form-control" placeholder="e.g. 30" min="0" max="59">
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="add-format-btn" onclick="addFormat()">
+            <i class="bi bi-plus-circle"></i> Add Another Format
+          </button>
+
+          <button type="button" class="btn btn-primary w-100 mt-3" onclick="calculatePrices()">Calculate &
+            Compare</button>
+
+          <div id="result" class="result-box mt-4 d-none">
+            <h3>Price Comparison Results:</h3>
+            <div id="comparisonResults"></div>
+            <div id="savingsInfo" class="savings-highlight d-none">
+              <p class="mb-2"><strong>Potential Savings:</strong></p>
+              <p class="savings-amount" id="savingsAmount"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Area -->
+
+  <div class="content_area container py-4">
+
+    <!-- Audiobook Price Calculator Page Start -->
+    <div class="container my-5">
+
+      <!-- TITLE -->
+      <div class="tool-container mb-4">
+        <h1> Audiobook Price Calculator — Estimate Production & Cost Efficiently</h1>
+        <p>
+          The <strong>Audiobook Price Calculator</strong> estimates the <strong>total cost to produce an
+            audiobook</strong> based on key cost drivers like narrator rate per finished hour, audiobook length
+          (hours/minutes), and optional production fees.
+          This tool acts as an <strong>audiobook cost estimator</strong>, helping authors, narrators, and publishers
+          budget audiobook creation accurately.
+        </p>
+      </div>
+
+      <!-- HOW IT WORKS -->
+      <div class="tool-container mb-4">
+        <h2>How the Calculator Works</h2>
+        <p>This tool calculates total audiobook production cost using three core inputs:</p>
+        <ol>
+          <li><strong>Audiobook Length (hours/minutes)</strong> — Total listening time to produce.</li>
+          <li><strong>Narrator Rate per Finished Hour (PFH)</strong> — Standard industry cost for narrator work.</li>
+          <li><strong>Optional Production Fees</strong> — Editing, mastering, or distribution costs.</li>
+        </ol>
+        <p><strong>Core formula used:</strong></p>
+        <ul>
+          <li><strong>Total Cost = (Audiobook Length × Narrator Rate per Finished Hour) + Production Fees</strong></li>
+        </ul>
+        <p>The result shows the estimated <strong>total cost to produce an audiobook</strong> in your preferred
+          currency.</p>
+      </div>
+
+      <!-- WHY USE -->
+      <div class="tool-container mb-4">
+        <h2>Why Use an Audiobook Price Calculator</h2>
+        <ul>
+          <li><strong>Budget audiobook production accurately</strong> by estimating cost per finished hour.</li>
+          <li><strong>Compare narrator rates</strong> and see how they affect total cost.</li>
+          <li><strong>Plan for editing or mastering fees</strong> as part of the production budget.</li>
+          <li><strong>Make informed publishing decisions</strong> before recording starts.</li>
+        </ul>
+        <p>This tool is ideal for <strong>indie authors, small publishers, narrators</strong>, or anyone planning an
+          audiobook project.</p>
+      </div>
+
+      <!-- INPUTS -->
+      <div class="tool-container mb-4">
+        <h2>Inputs You Need</h2>
+        <h3>Audiobook Length</h3>
+        <p>The total duration of the finished audiobook (hours and minutes). Longer audiobooks cost more to produce.If you have a manuscript but have not recorded yet, use the 
+<a href="https://pitchdetectors.com/audiobook-length-calculator/">Audiobook Length Calculator</a> 
+to estimate finished hours from word count or page count before entering a value here.</p>
+        <h3>Narrator Rate per Finished Hour</h3>
+        <p>Narration costs are usually billed per finished hour (PFH). Lower rates reduce overall cost; higher rates
+          reflect experienced narrators.</p>
+        <h3>Production Fees (Optional)</h3>
+        <p>Include editing, mastering, proofing, or distribution fees to refine the total cost estimate.</p>
+      </div>
+
+      <!-- PRACTICAL EXAMPLES -->
+      <div class="tool-container mb-4">
+        <h2>Practical Cost Examples</h2>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Audiobook Length</th>
+                <th>Narrator PFH ($)</th>
+                <th>Production Fees ($)</th>
+                <th>Estimated Cost ($)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8 hours</td>
+                <td>150/hr</td>
+                <td>500</td>
+                <td>1,700</td>
+              </tr>
+              <tr>
+                <td>10 hours</td>
+                <td>200/hr</td>
+                <td>750</td>
+                <td>2,750</td>
+              </tr>
+              <tr>
+                <td>12 hours</td>
+                <td>175/hr</td>
+                <td>1,000</td>
+                <td>3,100</td>
+              </tr>
+              <tr>
+                <td>6 hours</td>
+                <td>120/hr</td>
+                <td>250</td>
+                <td>970</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- EXCLUSIONS -->
+      <div class="tool-container mb-4">
+        <h2>What This Calculator Does NOT Calculate</h2>
+        <p>To maintain precise intent, this calculator does <strong>not</strong> estimate:</p>
+        <ul>
+          <li>Audiobook listening duration or time remaining</li>
+          <li>Income or royalty splits</li>
+          <li>Retail price or revenue distributions</li>
+          <li>Per-page or word-count time estimates</li>
+        </ul>
+        <p>To estimate audiobook duration from a manuscript, use the 
+<a href="https://pitchdetectors.com/audiobook-length-calculator/">Audiobook Length Calculator</a>. 
+To track listening progress or completion percentage, use the 
+<a href="https://pitchdetectors.com/audiobook-progress-calculator/">Audiobook Progress Calculator</a>.</p>
+      </div>
+
+      <!-- TERMS -->
+      <div class="tool-container mb-4">
+        <h2>Audiobook Pricing Terms You Should Know</h2>
+        <ul>
+          <li><strong>Finished Hour (PFH):</strong> The time of completed audiobook content, used for narrator billing.Note: finished hour refers to the final recorded duration at normal playback speed. 
+To see how that duration changes for listeners at 1.25x or 1.5x, use the 
+<a href="https://pitchdetectors.com/audiobook-speed-calculator/">Audiobook Speed Calculator</a>.
+          </li>
+          <li><strong>Narrator Rate:</strong> Amount paid per finished hour for voice work.</li>
+          <li><strong>Production Fees:</strong> Costs associated with editing, mastering, proofing, or other production
+            tasks.</li>
+          <li><strong>Total Audiobook Cost:</strong> Combined cost of narration and production fees.</li>
+        </ul>
+      </div>
+
+      <!-- FAQ -->
+      <div class="tool-container">
+        <h2>❓ Frequently Asked Questions</h2>
+        <div class="accordion" id="audiobookPriceFaqs">
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq1Heading">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
+                aria-expanded="true" aria-controls="faq1">
+                How is audiobook production cost calculated?
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1Heading"
+              data-bs-parent="#audiobookPriceFaqs">
+              <div class="accordion-body">
+                Audiobook production cost is calculated by multiplying the audiobook length (in hours) by the narrator
+                rate per finished hour, then adding any optional production fees such as editing or mastering. This
+                gives an estimate of the total production budget.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq2Heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+                aria-expanded="false" aria-controls="faq2">
+                What does narrator rate per finished hour mean?
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2Heading"
+              data-bs-parent="#audiobookPriceFaqs">
+              <div class="accordion-body">
+                Narrator rate per finished hour (PFH) refers to the standard billing unit in audiobook production. It is
+                the cost a narrator charges to record one finished hour of audio, inclusive of actual recording time and
+                performance pacing.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq3Heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
+                aria-expanded="false" aria-controls="faq3">
+                Can I include editing and mastering costs in this calculator?
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3Heading"
+              data-bs-parent="#audiobookPriceFaqs">
+              <div class="accordion-body">
+                Yes. You can add optional production fees such as editing and mastering when using the calculator.
+                Include these values to achieve a more complete estimate of the total cost to produce your audiobook.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq4Heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4"
+                aria-expanded="false" aria-controls="faq4">
+                Why do longer audiobooks cost more?
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faq4Heading"
+              data-bs-parent="#audiobookPriceFaqs">
+              <div class="accordion-body">
+                Longer audiobooks require more recording time, which increases total narrator fees and often raises
+                production complexity. Since cost is directly tied to duration, longer length results in higher overall
+                production expenses.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="faq5Heading">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5"
+                aria-expanded="false" aria-controls="faq5">
+                Is this calculator suitable for self-publishers?
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" aria-labelledby="faq5Heading"
+              data-bs-parent="#audiobookPriceFaqs">
+              <div class="accordion-body">
+                Yes. This audiobook cost estimator is ideal for self-publishers, indie authors, and small studios to
+                estimate production budgets and compare narrator rates before starting a project.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RELATED TOOLS -->
+      <div class="tool-container mb-4">
+        <h2>Related Audiobook Tools</h2>
+        <ul>
+          <li><a href="/audiobook-length-calculator/">🎧 Audiobook Length Calculator</a></li>
+          <li><a href="/audiobook-progress-calculator/">🎧 Audiobook Progress Calculator</a></li>
+          <li><a href="/audiobook-percentage-calculator/">🎧 Audiobook Percentage Calculator</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <!-- Audiobook Price Calculator Page End -->
+
+  </div>
+
+
+
+  <div id="footer"></div>
+
+  <script src="/assets/bootstrap5.js" defer></script>
+  <script src="/assets/tools.js" defer></script>
+  <!-- tool js -->
+  <script defer>
+    let formatCount = 1;
+
+    function addFormat() {
+      formatCount++;
+      const container = document.getElementById('formatsContainer');
+      const newFormat = document.createElement('div');
+      newFormat.className = 'format-entry';
+      newFormat.setAttribute('data-format-id', formatCount);
+      newFormat.innerHTML = `
+        <hr class="my-4">
+        <h5>Format ${formatCount} <button class="remove-format-btn" onclick="removeFormat(${formatCount})">Remove</button></h5>
+        <div class="mb-3">
+          <label class="form-label">Format Name</label>
+          <input type="text" class="format-name form-control" placeholder="e.g. Direct Purchase">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Price ($)</label>
+          <input type="number" class="format-price form-control" placeholder="e.g. 24.95" min="0" step="0.01">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Duration (Hours)</label>
+          <input type="number" class="format-hours form-control" placeholder="e.g. 8" min="0" step="0.1">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Duration (Minutes)</label>
+          <input type="number" class="format-minutes form-control" placeholder="e.g. 30" min="0" max="59">
+        </div>
+      `;
+      container.appendChild(newFormat);
+    }
+
+    function removeFormat(formatId) {
+      const formatEntry = document.querySelector(`[data-format-id="${formatId}"]`);
+      if (formatEntry) {
+        formatEntry.remove();
+      }
+    }
+
+    function calculatePrices() {
+      const formats = document.querySelectorAll('.format-entry');
+      let results = [];
+      let hasError = false;
+
+      formats.forEach((format) => {
+        const name = format.querySelector('.format-name').value || 'Unnamed Format';
+        const price = parseFloat(format.querySelector('.format-price').value);
+        const hours = parseFloat(format.querySelector('.format-hours').value) || 0;
+        const minutes = parseFloat(format.querySelector('.format-minutes').value) || 0;
+
+        if (!price || price <= 0 || (hours === 0 && minutes === 0)) {
+          hasError = true;
+          return;
+        }
+
+        const totalHours = hours + (minutes / 60);
+        const costPerHour = price / totalHours;
+        const costPerMinute = costPerHour / 60;
+
+        results.push({
+          name,
+          price,
+          totalHours,
+          costPerHour,
+          costPerMinute
+        });
+      });
+
+      if (hasError || results.length === 0) {
+        alert('Please fill in valid price and duration for all formats.');
+        return;
+      }
+
+      // Sort by cost per hour
+      results.sort((a, b) => a.costPerHour - b.costPerHour);
+
+      // Display results
+      const resultDiv = document.getElementById('result');
+      const comparisonDiv = document.getElementById('comparisonResults');
+      resultDiv.classList.remove('d-none');
+
+      let html = '';
+      results.forEach((result, index) => {
+        const isBest = index === 0;
+        html += `
+          <div class="comparison-card ${isBest ? 'best-value' : ''}">
+            <span class="format-badge">${result.name}</span>
+            <div class="price-metric">
+              <span class="price-metric-label">Total Price:</span>
+              <span class="price-metric-value">$${result.price.toFixed(2)}</span>
+            </div>
+            <div class="price-metric">
+              <span class="price-metric-label">Duration:</span>
+              <span class="price-metric-value">${result.totalHours.toFixed(2)} hours</span>
+            </div>
+            <div class="price-metric">
+              <span class="price-metric-label">Cost per Hour:</span>
+              <span class="price-metric-value">$${result.costPerHour.toFixed(2)}/hr</span>
+            </div>
+            <div class="price-metric">
+              <span class="price-metric-label">Cost per Minute:</span>
+              <span class="price-metric-value">$${result.costPerMinute.toFixed(3)}/min</span>
+            </div>
+          </div>
+        `;
+      });
+
+      comparisonDiv.innerHTML = html;
+
+      // Calculate savings
+      if (results.length > 1) {
+        const bestValue = results[0];
+        const worstValue = results[results.length - 1];
+        const savingsPerHour = worstValue.costPerHour - bestValue.costPerHour;
+        const totalSavings = savingsPerHour * bestValue.totalHours;
+
+        document.getElementById('savingsInfo').classList.remove('d-none');
+        document.getElementById('savingsAmount').textContent =
+          `Save $${totalSavings.toFixed(2)} ($${savingsPerHour.toFixed(2)}/hr) by choosing ${bestValue.name}`;
+      }
+    }
+  </script>
+  <!-- include js -->
+  <script defer>
+    window.addEventListener("load", () => {
+      Promise.all([
+        fetch("../../header.html").then(res => res.text()),
+        fetch("../../footer.html").then(res => res.text())
+      ]).then(([header, footer]) => {
+        document.getElementById("header").innerHTML = header;
+        document.getElementById("footer").innerHTML = footer;
+      }).catch(err => console.error("Include load failed:", err));
+    });
+  </script>
+
+
+
+
+
+
+
+  <!-- 5. FAQPage Schema -->
+
+  <script defer type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is audiobook production cost calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Audiobook production cost is calculated by multiplying the audiobook length (in hours) by the narrator rate per finished hour, then adding any optional production fees such as editing or mastering. This gives an estimate of the total production budget."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does narrator rate per finished hour mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Narrator rate per finished hour (PFH) refers to the standard billing unit in audiobook production. It is the cost a narrator charges to record one finished hour of audio, inclusive of actual recording time and performance pacing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I include editing and mastering costs in this calculator?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can add optional production fees such as editing and mastering when using the calculator. Include these values to achieve a more complete estimate of the total cost to produce your audiobook."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do longer audiobooks cost more?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Longer audiobooks require more recording time, which increases total narrator fees and often raises production complexity. Since cost is directly tied to duration, longer length results in higher overall production expenses."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this calculator suitable for self-publishers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. This audiobook cost estimator is ideal for self-publishers, indie authors, and small studios to estimate production budgets and compare narrator rates before starting a project."
+      }
+    }
+  ]
+}
+</script>
+
+</body>
+
+</html>

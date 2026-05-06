@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="https://pitchdetectors.com/assets/imgs/diamond-audio-city.png" type="image/x-icon">
+
+  <title>Audiobook Percentage Calculator ⏳ Find Your Completion Percentage
+  </title>
+  <meta name="description"
+    content="Enter total duration and time listened to get your exact audiobook completion percentage. Works with Audible, Spotify, Apple Books, and any audiobook player.">
+  <meta name="keywords"
+    content="audiobook percentage calculator, audiobook progress calculator, audiobook completion tracker, percentage of audiobook completed, audiobook time tracker, audiobook listening progress, Audible audiobook tracker, Spotify audiobook progress, audiobook completion percentage, audiobook time remaining calculator, audiobook session tracker, audiobook goal tracker, audiobook listening percentage, audiobook progress percentage, audiobook duration calculator">
+  <link rel="canonical" href="https://pitchdetectors.com/audiobook-percentage-calculator/">
+
+  <meta property="og:title" content="Audiobook Percentage Calculator – Find Your Completion Percentage">
+  <meta property="og:description"
+    content="Enter total duration and time listened to get your exact audiobook completion percentage. Works with Audible, Spotify, Apple Books, and any audiobook player.">
+  <meta property="og:url" content="https://pitchdetectors.com/audiobook-percentage-calculator/">
+  <meta property="og:type" content="website">
+
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/bootstrap5.css" rel="stylesheet">
+  <link href="/assets/style.css" rel="stylesheet">
+  <link href="/assets/tools.css" rel="stylesheet">
+  <meta name="author" content="Pitch Detectors">
+
+
+
+  <!-- Google tag (gtag.js) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Audiobook Percentage Calculator – Completion & Time Estimator">
+  <meta property="og:description"
+    content="Convert audiobook progress into percentages and remaining listening time. Useful for tracking goals and schedules.">
+  <meta property="og:url" content="https://pitchdetectors.com/audiobook-percentage-calculator/">
+  <meta property="og:site_name" content="Pitch Detectors">
+  <meta property="og:image" content="/assets/imgs/diamond-audio-city.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Audiobook Percentage Calculator – Listening Progress Tool">
+  <meta name="twitter:description"
+    content="Calculate audiobook completion percentage and remaining time with precision.">
+  <meta name="twitter:image" content="/assets/imgs/diamond-audio-city.png">
+
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-NCHP45VYJ2');
+  </script>
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5860966996605385"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <!-- Header Include -->
+  <div id="header"></div>
+  <div class="container-fluid py-4">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-lg-3 col-md-4">
+        <div class="tools-sidebar">
+          <div class="sidebar-search mb-4">
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-search"></i></span>
+              <input type="text" class="form-control" id="toolSearch" placeholder="Search tools..."
+                onkeyup="searchTools()">
+            </div>
+          </div>
+
+          <div class="sidebar-categories">
+            <div class="sidebar-category active">
+              <h5><i class=" me-2"></i>🎧 Audiobook Tools</h5>
+              <ul class="sidebar-links">
+                <li><a href="audiobook-speed-calculator/" class=""><i class=""></i>🎧 Audiobook
+                    Speed Calculator</a></li>
+                <li><a href="https://pitchdetectors.com/audiobook-length-calculator/
+" class=""><i class=""></i>🎧 Audiobook Length
+                    Calculator</a></li>
+                <li><a href="audiobook-progress-calculator/" class=""><i class=""></i>🎧 Audiobook
+                    Progress Calculator</a></li>
+                <li><a href="audiobook-percentage-calculator/" class="active"><i class=""></i>🎧 Audiobook
+                    Percentage Calculator</a></li>
+                <li><a href="https://pitchdetectors.com/audiobook-price-calculator/" class=""><i class=""></i>💰
+                    Audiobook
+                    Price Calculator</a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-category">
+              <h5><i class="bi bi-soundwave me-2"></i>Pitch Detector Tools</h5>
+              <ul class="sidebar-links">
+                <li><a href="/pitch-detector-tools/guitar-tuner-online/"><i class="bi bi-music-note-beamed"></i>
+                    Guitar Tuner</a></li>
+                <li><a href="/pitch-detector-tools/frequency-to-note-online/"><i class="bi bi-arrow-left-right"></i>
+                    Frequency to Note</a></li>
+              </ul>
+            </div>
+
+            <div class="sidebar-category">
+              <h5><i class="bi bi-music-note-list me-2"></i>Music Theory Tools</h5>
+              <ul class="sidebar-links">
+                <li><a href="/music-theory-tools/online-metronome/"><i class="bi bi-stopwatch"></i>
+                    Online Metronome</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- right: Main Tool -->
+      <div class="col-lg-7 col-md-6">
+         <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="audiobook-tools/">Audiobook Tools</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Audiobook Percentage Calculator</li>
+          </ol>
+        </nav>
+        <div class="tool-container">
+          <h2>📗 Audiobook Percentage Calculator</h2>
+          <p>Find out how much of your audiobook you’ve completed.</p>
+
+          <div class="mb-3">
+            <label for="totalHours" class="form-label">Total Audiobook Length (Hours)</label>
+            <input type="number" id="totalHours" class="form-control" placeholder="e.g. 8" min="0">
+          </div>
+
+          <div class="mb-3">
+            <label for="totalMinutes" class="form-label">Total Audiobook Length (Minutes)</label>
+            <input type="number" id="totalMinutes" class="form-control" placeholder="e.g. 30" min="0" max="59">
+          </div>
+
+          <div class="mb-3">
+            <label for="listenedHours" class="form-label">Listened (Hours)</label>
+            <input type="number" id="listenedHours" class="form-control" placeholder="e.g. 3" min="0">
+          </div>
+
+          <div class="mb-3">
+            <label for="listenedMinutes" class="form-label">Listened (Minutes)</label>
+            <input type="number" id="listenedMinutes" class="form-control" placeholder="e.g. 45" min="0" max="59">
+          </div>
+
+          <button class="btn btn-primary w-100 py-2" onclick="calculateProgress()">Calculate</button>
+
+          <div id="result" class="result-box d-none">
+            <h4>Calculated Progress:</h4>
+            <p class="percentage" id="completionPercent"></p>
+
+            <div class="progress">
+              <div id="progressBar" class="progress-bar" role="progressbar"></div>
+            </div>
+
+            <p class="mt-3 mb-1"><strong>Time Remaining:</strong> <span id="remainingTime"
+                class="text-success fw-semibold"></span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- contant area start -->
+  <div class="content_area container py-5">
+
+    <!-- How to Use Box -->
+    <div style="background-color: rgba(0,11,88,0.04); padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+      <h3>🛠️ How to Use the Audiobook Percentage Calculator</h3>
+      <ol>
+        <li>Enter the <strong>total audiobook duration</strong> in hours, minutes, or seconds for accurate
+          <strong>percentage calculation</strong>.
+        </li>
+        <li>Input the <strong>time listened</strong> so far to update your <strong>completion metric</strong> and
+          <strong>progress Calculator</strong>.
+        </li>
+        <li>Adjust for <strong>playback speed</strong> to see <strong>adjusted completion</strong> across Audible,
+          Spotify, iPhone audiobook players, MP3 files, or other audiobook formats.</li>
+        <li>Click calculate to instantly view <strong>percentage completed</strong>, <strong>time remaining</strong>,
+          and <strong>adjusted time</strong> for <strong>session planning</strong> or <strong>multi-session
+            tracking</strong>.</li>
+        <li>Optionally, <strong>log your time listened</strong> daily for <strong>reading challenge tracking</strong>,
+          <strong>study audiobook goals</strong>, or <strong>personal tracking</strong> on a <strong><a
+              href="audiobook-progress-calculator/">Audiobook progress Calculator</a>
+          </strong>.
+        </li>
+
+      </ol>
+    </div>
+    <div class="tool-container">
+
+      <section class="mb-5">
+        <h1 class="mb-3">Audiobook Percentage Calculator</h1>
+
+        <article>
+          <h2>What Does the Audiobook Percentage Calculator Do?</h2>
+          <p>
+            The Audiobook Percentage Calculator calculates how much of an audiobook has been completed as a percentage.
+            It compares the time listened to the total audiobook duration and outputs a single, clear value:
+            percentage completed (%).
+          </p>
+          <p>
+            This tool is designed for listeners who want to calculate audiobook completion accurately when their app
+            does not clearly display percentage read.
+
+            For listeners who also want time remaining, estimated finish date, and multi-session
+            tracking in one place, the
+            <a href="https://pitchdetectors.com/audiobook-progress-calculator/">Audiobook Progress Calculator</a>
+            covers all of those alongside percentage completed.
+          </p>
+        </article>
+      </section>
+
+      <section class="mb-5">
+        <article>
+          <h2>Inputs Used in the Audiobook Percentage Calculation</h2>
+
+          <h3>Total Audiobook Duration</h3>
+          <p>
+            The full length of the audiobook, entered in hours, minutes, or seconds.
+            This value represents 100% of the audiobook.
+          </p>
+
+          <h3>Time Listened</h3>
+          <p>
+            The amount of time already listened.
+            This can be taken directly from any audiobook player that shows elapsed or listened time.
+          </p>
+
+          <p>
+            Both inputs must use the same time units for accurate calculation.
+          </p>
+        </article>
+      </section>
+
+      <section class="mb-5">
+        <article>
+          <h2>Output You Get From the Calculator</h2>
+
+          <h3>Audiobook Completion Percentage</h3>
+          <p>
+            The calculator outputs the percentage of the audiobook completed, expressed as a numeric percentage (%).
+          </p>
+          <p>
+            This value represents the proportion of total audiobook duration that has already been listened to.
+          </p>
+        </article>
+      </section>
+      <section class="mp-5">
+        <!-- Formula Section -->
+        <h2>Formula Used</h2>
+        <pre>
+Percentage Completed (%) = (Time Listened / Total Duration) × 100
+Time Remaining = Total Duration - Time Listened
+Adjusted Time = Time Remaining ÷ Playback Speed
+  </pre>
+        <p>This formula ensures accurate <strong>completion rate</strong>, <strong>adjusted completion</strong>, and
+          <strong>time estimation</strong> for all <strong>audiobook formats</strong>. Calculations support
+          <strong>multi-session tracking</strong> and <strong>personal tracking</strong> with <strong>progress
+            dashboards</strong>.
+        </p>
+      </section>
+      <section class="mb-5">
+        <article>
+          <h2>How Is Audiobook Percentage Calculated?</h2>
+          <p>
+            The audiobook percentage is calculated using a standard percentage formula based on time.
+          </p>
+
+          <h3>Formula:</h3>
+          <p>
+            <strong>Percentage Completed (%) =</strong><br>
+            (Time Listened ÷ Total Audiobook Duration) × 100
+          </p>
+
+          <p>
+            The result shows how much of the audiobook has been completed relative to its full length.
+            The calculation does not depend on the audiobook platform, file type, or playback method.
+          </p>
+        </article>
+      </section>
+
+      <section class="mb-5">
+        <article>
+          <h2>How to Determine Percentage Read on an Audiobook</h2>
+          <p>To determine the percentage read on an audiobook:</p>
+          <ul>
+            <li>Find the total audiobook duration shown in your player.If you do not know the total audiobook duration,
+              the
+              <a href="https://pitchdetectors.com/audiobook-length-calculator/">Audiobook Length Calculator</a>
+              estimates it from word count or page count before you begin.
+            </li>
+            <li>Note the time already listened.</li>
+            <li>Enter both values into the audiobook percentage calculator.</li>
+            <li>Calculate to receive the completion percentage.</li>
+          </ul>
+          <p>
+            This method works even when the audiobook app does not display percentage completed.
+          </p>
+        </article>
+      </section>
+
+      <section class="mb-5">
+        <article>
+          <h2>Does This Audiobook Percentage Calculator Work With Audible and Spotify?</h2>
+          <p>
+            Yes. The calculator is platform-independent.
+          </p>
+          <p>
+            It works with Audible, Spotify audiobooks, iPhone audiobook players, MP3 audiobooks,
+            and any other audiobook app that displays total duration and listened time.
+          </p>
+          <p>
+            The calculation is based solely on time values, not platform-specific tracking systems.
+          </p>
+        </article>
+      </section>
+
+      <section class="mb-5">
+        <article>
+          <h2>What Affects Audiobook Percentage Accuracy?</h2>
+          <p>Audiobook percentage accuracy depends on:</p>
+          <ul>
+            <li>Correct total duration value</li>
+            <li>Accurate time listened value</li>
+            <li>Consistent time units</li>
+          </ul>
+          <p>
+            Skipping or replaying sections can change the listened time shown by the player,
+            which may affect the calculated percentage.
+          </p>
+          <p>
+            Playback speed does not change how the percentage is calculated,
+            because the formula uses actual time listened, not perceived speed.
+            To calculate how playback speed affects your total listening time and finish date, use the
+            <a href="https://pitchdetectors.com/audiobook-speed-calculator/">Audiobook Speed Calculator</a>
+            separately.
+          </p>
+        </article>
+      </section>
+
+      <section class="mb-5">
+        <article>
+          <h2>What This Calculator Does NOT Calculate</h2>
+          <p>
+            To maintain accuracy and intent clarity, this calculator does not calculate:
+          </p>
+          <ul>
+            <li>Playback speed adjustments</li>
+            <li>Time remaining in hours or minutes</li>
+            <li>Daily listening goals</li>
+            <li>Progress tracking over multiple sessions</li>
+            <li>Audiobook pricing, rates, or sales percentages</li>
+          </ul>
+          For time remaining, daily listening goals, and multi-session progress tracking, use the
+          <a href="https://pitchdetectors.com/audiobook-progress-calculator/">Audiobook Progress Calculator</a>.
+          For playback speed adjustments and finish time at faster speeds, use the
+          <a href="https://pitchdetectors.com/audiobook-speed-calculator/">Audiobook Speed Calculator</a>.
+        </article>
+      </section>
+
+      <section class="mb-5">
+        <article>
+          <h2>Audiobook Percentage Calculation Examples</h2>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Total Duration</th>
+                  <th>Time Listened</th>
+                  <th>Percentage Completed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10 hours</td>
+                  <td>2.5 hours</td>
+                  <td>25%</td>
+                </tr>
+                <tr>
+                  <td>8 hours</td>
+                  <td>4 hours</td>
+                  <td>50%</td>
+                </tr>
+                <tr>
+                  <td>12 hours</td>
+                  <td>9 hours</td>
+                  <td>75%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            These examples show how audiobook percentage is derived directly from time comparison.
+          </p>
+        </article>
+      </section>
+
+
+
+
+    </div>
+    <div class="tool-container">
+
+      <div class="mb-4">
+        <h2 class="h2">Audiobook Percentage Calculator FAQs</h2>
+      </div>
+
+      <section class="accordion" id="audiobookFaqs">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq1Heading">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1"
+              aria-expanded="true" aria-controls="faq1">
+              How do I calculate audiobook percentage if my app doesn’t show it?
+            </button>
+          </h2>
+          <div id="faq1" class="accordion-collapse collapse show" aria-labelledby="faq1Heading"
+            data-bs-parent="#audiobookFaqs">
+            <div class="accordion-body">
+              If your audiobook app does not display percentage completed, you can calculate audiobook percentage
+              manually by dividing time listened by total audiobook duration. Enter both values into this audiobook
+              percentage calculator to get an accurate audiobook listening percentage instantly.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq2Heading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2"
+              aria-expanded="false" aria-controls="faq2">
+              Does playback speed affect audiobook percentage calculation?
+            </button>
+          </h2>
+          <div id="faq2" class="accordion-collapse collapse" aria-labelledby="faq2Heading"
+            data-bs-parent="#audiobookFaqs">
+            <div class="accordion-body">
+              Playback speed does not affect audiobook percentage calculation. Audiobook percentage is based on actual
+              time listened compared to total audiobook length. Even if playback speed changes, the percentage
+              completed reflects real listening time, not adjusted or accelerated playback duration.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq3Heading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3"
+              aria-expanded="false" aria-controls="faq3">
+              Is this a free audiobook percentage calculator online?
+            </button>
+          </h2>
+          <div id="faq3" class="accordion-collapse collapse" aria-labelledby="faq3Heading"
+            data-bs-parent="#audiobookFaqs">
+            <div class="accordion-body">
+              Yes, this is a free audiobook percentage calculator online. You can calculate audiobook percentage,
+              audiobook listening percentage, and audiobook completion percentage without registration, payment, or
+              account creation, making it suitable for quick and accurate audiobook percentage calculations.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq4Heading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4"
+              aria-expanded="false" aria-controls="faq4">
+              Can I use this percentage calculator for audiobooks on Audible or Spotify?
+            </button>
+          </h2>
+          <div id="faq4" class="accordion-collapse collapse" aria-labelledby="faq4Heading"
+            data-bs-parent="#audiobookFaqs">
+            <div class="accordion-body">
+              Yes, this audiobook percentage calculator works with Audible audiobooks, Spotify audiobooks, and any
+              audiobook platform that shows total duration and listened time. The calculator is platform-independent
+              and does not rely on Audible percentage read or Spotify progress indicators.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq5Heading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5"
+              aria-expanded="false" aria-controls="faq5">
+              What information do I need to calculate audiobook percentage accurately?
+            </button>
+          </h2>
+          <div id="faq5" class="accordion-collapse collapse" aria-labelledby="faq5Heading"
+            data-bs-parent="#audiobookFaqs">
+            <div class="accordion-body">
+              To calculate audiobook percentage accurately, you need the total audiobook duration and the exact time
+              listened so far. Both values must use the same time format. Incorrect duration or incomplete listened
+              time data can affect audiobook percentage accuracy.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="faq6Heading">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6"
+              aria-expanded="false" aria-controls="faq6">
+              Is audiobook percentage the same as audiobook progress?
+            </button>
+          </h2>
+          <div id="faq6" class="accordion-collapse collapse" aria-labelledby="faq6Heading"
+            data-bs-parent="#audiobookFaqs">
+            <div class="accordion-body">
+              Audiobook percentage represents a numeric completion value showing how much of the audiobook has been
+              listened to. Audiobook progress may include additional elements such as session history or tracking
+              features, while this calculator focuses only on percentage completed.
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+
+  </div>
+
+
+  <!-- contant area end -->
+  <script src="/assets/bootstrap5.js" defer></script>
+  <script src="/assets/tools.js" defer></script>
+  <!-- JSON-LD FAQ Schema -->
+  <script defer type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I calculate audiobook percentage if my app doesn’t show it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If your audiobook app does not display percentage completed, divide time listened by total audiobook duration. Enter both values into this free audiobook percentage calculator to instantly get accurate listening percentage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does playback speed affect audiobook percentage calculation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Playback speed does not affect audiobook percentage calculation. Percentage completed is based on actual time listened compared to total audiobook length, independent of accelerated or slowed playback."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is this a free audiobook percentage calculator online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this is a free audiobook percentage calculator online. Calculate audiobook completion instantly without registration or payment, making it easy to track your listening progress across multiple platforms."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this percentage calculator for audiobooks on Audible or Spotify?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, this calculator works with Audible, Spotify, or any audiobook platform showing total duration and listened time. It is platform-independent and does not rely on app-specific percentage indicators."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What information do I need to calculate audiobook percentage accurately?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You need total audiobook duration and the exact time listened so far. Both values must use the same time format to ensure accurate audiobook percentage calculations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is audiobook percentage the same as audiobook progress?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Audiobook percentage shows numeric completion of listening. Audiobook progress may include session history or tracking features, whereas this calculator focuses strictly on percentage completed for clarity and accuracy."
+      }
+    }
+  ]
+}
+</script>
+  <!-- webpage schema -->
+  <script defer type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Audiobook Percentage Calculator – Track Your Listening Progress",
+  "url": "https://pitchdetectors.com/audiobook-percentage-calculator/",
+  "description": "Use this free Audiobook Percentage Calculator to track your audiobook progress, calculate percentage completed, and see time remaining. Works with Audible, Spotify, Apple Books, and other audiobook platforms.",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Pitch Detectors",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://pitchdetectors.com/assets/imgs/diamond-audio-city.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://pitchdetectors.com/audiobook-percentage-calculator/"
+  }
+}
+</script>
+
+  <div id="footer"></div>
+  <!-- tool js -->
+  <script defer>
+    function calculateProgress() {
+      const totalHours = parseFloat(document.getElementById('totalHours').value) || 0;
+      const totalMinutes = parseFloat(document.getElementById('totalMinutes').value) || 0;
+      const listenedHours = parseFloat(document.getElementById('listenedHours').value) || 0;
+      const listenedMinutes = parseFloat(document.getElementById('listenedMinutes').value) || 0;
+
+      const totalTime = (totalHours * 60) + totalMinutes;
+      const listenedTime = (listenedHours * 60) + listenedMinutes;
+
+      if (totalTime <= 0 || listenedTime > totalTime) {
+        alert('Please enter valid audiobook durations.');
+        return;
+      }
+
+      const percent = ((listenedTime / totalTime) * 100).toFixed(1);
+      const remaining = totalTime - listenedTime;
+      const remH = Math.floor(remaining / 60);
+      const remM = Math.round(remaining % 60);
+
+      document.getElementById('result').classList.remove('d-none');
+      document.getElementById('completionPercent').innerText = `${percent}% Completed`;
+      document.getElementById('remainingTime').innerText = `${remH}h ${remM}m remaining`;
+
+      const progressBar = document.getElementById('progressBar');
+      progressBar.style.width = percent + '%';
+      progressBar.textContent = percent + '%';
+    }
+  </script>
+
+  <!--include js-->
+  <script defer>
+
+    // include header/footer
+    window.addEventListener("load", () => {
+      Promise.all([
+        fetch("../../header.html").then(res => res.text()),
+        fetch("../../footer.html").then(res => res.text())
+      ]).then(([header, footer]) => {
+        document.getElementById("header").innerHTML = header;
+        document.getElementById("footer").innerHTML = footer;
+      }).catch(err => console.error("Include load failed:", err));
+    });
+  </script>
+</body>
+
+
+</html>
