@@ -9,8 +9,7 @@
 ">
     <meta name="keywords"
         content="audio tools, music tools, BPM calculator, pitch detector, metronome, voice recorder, DJ tools, music production">
-    <link rel="canonical" href="https://pitchdetectors.com">
-
+ 
     <link rel="icon" href="/assets/imgs/favicon3.png" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -390,74 +389,6 @@
                 .catch(err => console.error("Include load failed:", err));
         });
     </script>
-    <!-- search filter js -->
-    <!-- <script defer>
-
-        const allTools = [
-          
-            // Pitch Detector
-            { name: 'Audiobook Progress calculator', url: '/audiobook-progress-calculator/', category: 'Audiobook calculator', icon: 'bi-music-note-beamed' },
-            { name: 'Audiobook calculator', url: '/pitch-detector.html', category: 'Audiobook calculator', icon: 'bi-soundwave' },
-            { name: 'Audiobook Speed Calculator', url: '/audiobook-speed-calculator/', category: 'Audiobook calculator', icon: 'bi-mic' },
-            { name: 'Audiobook Length Calculator', url: '/audiobook-length-calculator/', category: 'Audiobook calculator', icon: 'bi-mic-fill' },
-            { name: 'Audiobook Percentage Calculator', url: '/audiobook-percentage-calculator/', category: 'Audiobook calculator', icon: 'bi-mic-mute' },
-            
-
-        ];
-
-        const searchInput = document.getElementById('globalSearch');
-        const searchResults = document.getElementById('searchResults');
-
-        searchInput.addEventListener('input', function () {
-            const query = this.value.toLowerCase().trim();
-
-            if (query.length < 2) {
-                searchResults.innerHTML = '';
-                searchResults.style.display = 'none';
-                return;
-            }
-
-            const filtered = allTools.filter(tool =>
-                tool.name.toLowerCase().includes(query) ||
-                tool.category.toLowerCase().includes(query)
-            ).slice(0, 8);
-
-            if (filtered.length === 0) {
-                searchResults.innerHTML = '<div class="search-no-results">No tools found</div>';
-            } else {
-                searchResults.innerHTML = filtered.map(tool => `
-                    <a href="${tool.url}" class="search-result-item">
-                        <i class="bi ${tool.icon}"></i>
-                        <div>
-                            <strong>${tool.name}</strong>
-                            <small>${tool.category}</small>
-                        </div>
-                    </a>
-                `).join('');
-            }
-            searchResults.style.display = 'block';
-        });
-
-        document.addEventListener('click', function (e) {
-            if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                searchResults.style.display = 'none';
-            }
-        });
-
-        function performSearch() {
-            const query = searchInput.value.toLowerCase().trim();
-            if (query) {
-                window.location.href = '/search/?q=' + encodeURIComponent(query);
-            }
-        }
-
-        searchInput.addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
-
-    </script> -->
 
     <!-- WebApp schema -->
     <script defer type="application/ld+json">
