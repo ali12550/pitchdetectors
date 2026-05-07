@@ -1,40 +1,92 @@
 <!-- pitch detectors Header -->
 <nav class="navbar navbar-expand-lg navbar-dark main-nav">
-    <div class="container px-0">
+   <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+
+        <!-- Logo -->
         <a class="navbar-brand fw-bold" href="/">
             <i class="bi bi-soundwave me-2"></i>PitchDetectors
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse mt-3 mt-lg-0 " id="navbarNav">
+
+            <!-- Left Menu -->
             <ul class="navbar-nav me-auto">
-                <!-- dj bpm category -->
+
+                <!-- Audiobook Tools -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                        <i class="bi bi-disc me-1"></i>Audoobook Tools
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="bi bi-headphones me-1"></i>Audiobook Tools
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="/audiobook-tools/"><i
-                                    class="bi bi-grid me-2"></i>All Audiobook Tools</a></li>
+
+                    <ul class="dropdown-menu dropdown-menu-dark border-0 shadow-lg">
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-tools/">
+                                <i class="bi bi-grid me-2"></i>All Audiobook Tools
+                            </a>
+                        </li>
+
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="/audiobook-progress-calculator/"><i
-                                    class="bi bi-book me-2"></i>Audiobook Progress Calculator</a></li>
-                        <li><a class="dropdown-item" href="/audiobook-percentage-calculator/"><i
-                                    class="bi bi-book me-2"></i>Audiobook Percentage Calculator</a></li>
-                        <li><a class="dropdown-item" href="/audiobook-length-calculator/"><i
-                                    class="bi bi-book me-2"></i>Audiobook Length Calculator</a></li>
-                        <li><a class="dropdown-item" href="/audiobook-speed-calculator/"><i
-                                    class="bi bi-book me-2"></i>Audiobook Speed Calculator</a></li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-progress-calculator/">
+                                <i class="bi bi-book me-2"></i>Audiobook Progress Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-percentage-calculator/">
+                                <i class="bi bi-percent me-2"></i>Audiobook Percentage Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-length-calculator/">
+                                <i class="bi bi-clock me-2"></i>Audiobook Length Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-speed-calculator/">
+                                <i class="bi bi-speedometer2 me-2"></i>Audiobook Speed Calculator
+                            </a>
+                        </li>
 
                     </ul>
                 </li>
-           
-            
+
             </ul>
-           
+
+            <!-- Right Menu -->
+            <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-3 mt-3 mt-lg-0">
+
+                <a class="text-white text-decoration-none" href="/about/">
+                    About Us
+                </a>
+
+                <a href="/contact/"
+                    class="btn btn-light px-3 py-2 text-dark fw-medium rounded-3">
+                    Contact Us
+                </a>
+
+            </div>
+
         </div>
-    </div>
+
+    </nav>
+
+</div>
 </nav>
