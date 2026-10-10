@@ -1,7 +1,9 @@
 <?php
 header("Content-Type: application/xml; charset=UTF-8");
 
-$baseUrl = "https://pitchdetectors.com";
+$protocol = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? "https" : "https";
+$host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'pitchdetectors.com';
+$baseUrl = $protocol . "://" . $host;
 $rootDir = __DIR__;
 
 // Excluded directories
@@ -71,12 +73,11 @@ $urls[] = [
 }
 
 function calculatePriority($path) {
-    $depth = substr_count(trim($path, '/'), '/');
-
-    if ($depth === 0) return '0.80';
-    if ($depth === 1) return '0.64';
-    if ($depth === 2) return '0.51';
-
+    $cleanPath = trim($path, '/');
+    if ($cleanPath === '') return '1.00';
+    if (strpos($cleanPath, 'audiobook-') === 0 || $cleanPath === 'articles') return '0.80';
+    if (strpos($cleanPath, 'articles/') === 0) return '0.70';
+    if (in_array($cleanPath, ['about', 'contact'])) return '0.60';
     return '0.40';
 }
 

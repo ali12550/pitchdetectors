@@ -89,128 +89,6 @@ function initMobileSidebar() {
     sidebar.parentElement.insertBefore(toggleBtn, sidebar);
 }
 
-// Audio Context Helper
-let globalAudioContext = null;
-function getAudioContext() {
-    if (!globalAudioContext) {
-        globalAudioContext = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    return globalAudioContext;
-}
-
-// Play Tone Helper
-function playTone(frequency, duration = 1, type = 'sine') {
-    const audioContext = getAudioContext();
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-
-    oscillator.frequency.value = frequency;
-    oscillator.type = type;
-
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
-
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + duration);
-}
-
-// Note/Frequency Constants
-const NOTE_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
-const A4_FREQ = 440;
-
-// Frequency to Note Conversion
-function frequencyToNote(freq, a4 = A4_FREQ) {
-    const semitones = 12 * Math.log2(freq / a4);
-    const noteIndex = Math.round(semitones) + 9;
-    const octave = Math.floor((noteIndex + 12) / 12) + 3;
-    const note = NOTE_NAMES[(noteIndex % 12 + 12) % 12];
-    const exactFreq = a4 * Math.pow(2, Math.round(semitones) / 12);
-    const cents = 1200 * Math.log2(freq / exactFreq);
-
-    return { note, octave, cents, exactFreq };
-}
-
-// Note to Frequency Conversion
-function noteToFrequency(note, octave, a4 = A4_FREQ) {
-    const noteIndex = NOTE_NAMES.indexOf(note);
-    if (noteIndex === -1) return null;
-
-    const semitonesFromA4 = (octave - 4) * 12 + (noteIndex - 9);
-    return a4 * Math.pow(2, semitonesFromA4 / 12);
-}
-
-// Auto-correlate for Pitch Detection
-function autoCorrelate(buffer, sampleRate) {
-    let SIZE = buffer.length;
-    let rms = 0;
-    for (let i = 0; i < SIZE; i++) {
-        rms += buffer[i] * buffer[i];
-    }
-    rms = Math.sqrt(rms / SIZE);
-    if (rms < 0.01) return -1;
-
-    let r1 = 0, r2 = SIZE - 1;
-    const threshold = 0.2;
-    for (let i = 0; i < SIZE / 2; i++) {
-        if (Math.abs(buffer[i]) < threshold) { r1 = i; break; }
-    }
-    for (let i = 1; i < SIZE / 2; i++) {
-        if (Math.abs(buffer[SIZE - i]) < threshold) { r2 = SIZE - i; break; }
-    }
-
-    buffer = buffer.slice(r1, r2);
-    SIZE = buffer.length;
-
-    const c = new Array(SIZE).fill(0);
-    for (let i = 0; i < SIZE; i++) {
-        for (let j = 0; j < SIZE - i; j++) {
-            c[i] = c[i] + buffer[j] * buffer[j + i];
-        }
-    }
-
-    let d = 0;
-    while (c[d] > c[d + 1]) d++;
-
-    let maxval = -1, maxpos = -1;
-    for (let i = d; i < SIZE; i++) {
-        if (c[i] > maxval) {
-            maxval = c[i];
-            maxpos = i;
-        }
-    }
-
-    let T0 = maxpos;
-    const x1 = c[T0 - 1], x2 = c[T0], x3 = c[T0 + 1];
-    const a = (x1 + x3 - 2 * x2) / 2;
-    const b = (x3 - x1) / 2;
-    if (a) T0 = T0 - b / (2 * a);
-
-    return sampleRate / T0;
-}
-
-// Format Time
-function formatTime(seconds) {
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-}
-
-// Debounce Function
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
 // Initialize on DOM Load
 document.addEventListener('DOMContentLoaded', function () {
     initSidebarCategories();
@@ -219,17 +97,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Export for use in other scripts
-window.DiamondAudio = {
+window.PitchDetectorsTools = {
     searchTools,
-    playTone,
-    frequencyToNote,
-    noteToFrequency,
-    autoCorrelate,
-    formatTime,
-    debounce,
-    NOTE_NAMES,
-    A4_FREQ,
-    getAudioContext
+    initSidebarCategories,
+    highlightActiveLink,
+    initMobileSidebar
 };
 
 

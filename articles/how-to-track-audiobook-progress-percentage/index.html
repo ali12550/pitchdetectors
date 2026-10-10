@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Track Audiobook Progress: Percentage, Time Remaining & Challenge Pacing | PitchDetectors</title>
+    <meta name="description"
+        content="Learn how to calculate and track your audiobook progress. Master percentage-to-page conversions for Goodreads and StoryGraph, and calculate exact time remaining.">
+    <meta name="keywords"
+        content="audiobook progress calculator, audiobook percentage calculator, track audiobook progress, Goodreads audiobook progress, StoryGraph audiobook tracking, audiobook time remaining">
+    <link rel="canonical" href="https://pitchdetectors.com/articles/how-to-track-audiobook-progress-percentage/">
+
+    <link rel="icon" href="/assets/imgs/favicon3.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/bootstrap5.css" rel="stylesheet">
+    <link href="/assets/style.css" rel="stylesheet">
+    <link href="/assets/tools.css" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCHP45VYJ2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-NCHP45VYJ2');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3408671496512773"
+         crossorigin="anonymous"></script>
+
+    <meta name="google-adsense-account" content="ca-pub-3408671496512773">
+
+    <!-- Article Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://pitchdetectors.com/articles/how-to-track-audiobook-progress-percentage/"
+      },
+      "headline": "How to Track Audiobook Progress: Percentage, Time Remaining, and Pacing for Book Challenges",
+      "description": "A comprehensive guide on converting audiobook timestamps into accurate percentages, syncing audio with reading challenge trackers like Goodreads and StoryGraph, and beating the mid-book slump.",
+      "author": {
+        "@type": "Organization",
+        "name": "Pitch Detectors Editorial Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Pitch Detectors",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://pitchdetectors.com/assets/imgs/favicon3.png"
+        }
+      },
+      "datePublished": "2026-02-01T08:00:00+00:00",
+      "dateModified": "2026-03-10T12:00:00+00:00"
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Global Header -->
+    <div id="header">
+<!-- pitch detectors Header -->
+<nav class="navbar navbar-expand-lg navbar-dark main-nav">
+   <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-3">
+
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="bi bi-soundwave me-2"></i>PitchDetectors
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse mt-3 mt-lg-0 " id="navbarNav">
+
+            <!-- Left Menu -->
+            <ul class="navbar-nav me-auto">
+
+                <!-- Audiobook Tools -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="bi bi-headphones me-1"></i>Audiobook Tools
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-dark border-0 shadow-lg">
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-tools/">
+                                <i class="bi bi-grid me-2"></i>All Audiobook Tools
+                            </a>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-progress-calculator/">
+                                <i class="bi bi-book me-2"></i>Audiobook Progress Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-percentage-calculator/">
+                                <i class="bi bi-percent me-2"></i>Audiobook Percentage Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-length-calculator/">
+                                <i class="bi bi-clock me-2"></i>Audiobook Length Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-speed-calculator/">
+                                <i class="bi bi-speedometer2 me-2"></i>Audiobook Speed Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-price-calculator/">
+                                <i class="bi bi-currency-dollar me-2"></i>Audiobook Price Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-goal-calculator/">
+                                <i class="bi bi-trophy me-2"></i>Audiobook Goal Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audible-credits-calculator/">
+                                <i class="bi bi-ticket-perforated me-2"></i>Audible Credits Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-sleep-timer-calculator/">
+                                <i class="bi bi-moon-stars me-2"></i>Audiobook Sleep Timer Calculator
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="/audiobook-vs-reading-time-calculator/">
+                                <i class="bi bi-book-half me-2"></i>Audiobook vs Reading Time Calculator
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <!-- Articles -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/articles/">
+                        <i class="bi bi-journal-text me-1"></i>Articles & Guides
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Right Menu -->
+            <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-3 mt-3 mt-lg-0">
+
+                <a class="text-white text-decoration-none" href="/about/">
+                    About Us
+                </a>
+
+                <a href="/contact/"
+                    class="btn btn-light px-3 py-2 text-dark fw-medium rounded-3">
+                    Contact Us
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+</div>
+</nav>
+</div>
+
+    <main class="container py-5">
+        <!-- Breadcrumb Navigation -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/" class="text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="/articles/" class="text-decoration-none">Articles</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Audiobook Progress Tracking</li>
+            </ol>
+        </nav>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <!-- Article Header -->
+                <header class="mb-5">
+                    <span class="badge bg-warning text-dark px-3 py-2 text-uppercase fw-semibold mb-3">Reading Tracking & Habits</span>
+                    <h1 class="display-5 fw-bold text-dark mb-3">
+                        How to Track Audiobook Progress: Percentage, Time Remaining, and Pacing for Book Challenges
+                    </h1>
+                    <div class="d-flex align-items-center gap-3 text-muted border-bottom pb-4">
+                        <div><i class="bi bi-person-circle me-1"></i> Pitch Detectors Editorial Team</div>
+                        <div>•</div>
+                        <div><i class="bi bi-clock me-1"></i> 8 min read</div>
+                        <div>•</div>
+                        <div><i class="bi bi-calendar3 me-1"></i> Updated March 2026</div>
+                    </div>
+                </header>
+
+                <!-- Article Body -->
+                <article class="article-content lh-lg">
+                    <!-- Key Takeaways Box -->
+                    <div class="p-4 mb-4 rounded-4 shadow-sm" style="background-color: #f8fafc; border-left: 5px solid var(--dark-blue);">
+                        <h4 class="fw-bold mb-2 text-dark"><i class="bi bi-check2-circle me-2 text-primary"></i>Key Takeaways</h4>
+                        <ul class="mb-0 ps-3">
+                            <li>Different apps format progress differently: Audible displays time remaining, Apple Books displays elapsed chapters, and Libby offers custom timeline scrubber percentages.</li>
+                            <li>To update Goodreads or StoryGraph without errors, converting elapsed audio seconds to a precise percentage is essential.</li>
+                            <li>The mathematical formula for completion percentage is: <code>(Elapsed Seconds ÷ Total Seconds) × 100</code>.</li>
+                            <li>Tracking daily percentage milestones (e.g. 10% per day) prevents the psychological "mid-book slump" that affects long 15+ hour titles.</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="h3 fw-bold text-dark mt-5 mb-3">The Inconsistency of Audiobook Progress Across Apps</h2>
+                    <p>
+                        If you listen across multiple platforms—such as library apps like Libby and BorrowBox, commercial platforms like Audible and Audiobooks.com, or streaming services like Spotify and Storytel—you have likely experienced the frustrating inconsistency of progress reporting:
+                    </p>
+                    <ul>
+                        <li><strong>Audible:</strong> Defaults to displaying "Time Left in Chapter" or "Time Left in Book", frequently shifting based on your current playback speed multiplier.</li>
+                        <li><strong>Apple Books:</strong> Frequently highlights track or chapter counts (e.g. "Chapter 14 of 38") rather than total book percentage.</li>
+                        <li><strong>Spotify Audiobooks:</strong> Tracks playback position across individual chapter tracks, making it tricky to assess overall multi-chapter book completion at a glance.</li>
+                        <li><strong>StoryGraph & Goodreads:</strong> Allow users to update progress via either page numbers or percentages, but rarely translate audio timestamps directly.</li>
+                    </ul>
+                    <p>
+                        This fragmentation makes tracking reading goals feel like guesswork. Fortunately, simple mathematical models and dedicated browser calculators make progress tracking seamless.
+                    </p>
+
+                    <!-- Interactive Tool Callout Box -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 my-4" style="background: linear-gradient(135deg, #1b1c1e, #2c2f33); color: white;">
+                        <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3">
+                            <div>
+                                <h4 class="text-white fw-bold mb-1"><i class="bi bi-pie-chart text-warning me-2"></i>Find Your Exact Audiobook Percentage</h4>
+                                <p class="text-light mb-0 small">Input your current listened hours/minutes and total runtime to get exact percentage and estimated completion date.</p>
+                            </div>
+                            <a href="/audiobook-percentage-calculator/" class="btn btn-warning px-4 py-2 fw-semibold text-dark rounded-3 text-nowrap">
+                                Open Percentage Tool
+                            </a>
+                        </div>
+                    </div>
+
+                    <h2 class="h3 fw-bold text-dark mt-5 mb-3">How to Calculate Audiobook Percentage Accurately</h2>
+                    <p>
+                        Calculating completion percentage requires converting all hours, minutes, and seconds into a single common denominator (total minutes or seconds):
+                    </p>
+                    <div class="p-4 my-3 bg-light border rounded-3 font-monospace">
+                        <p class="mb-1"><strong>Step 1:</strong> Convert Elapsed Time to Total Minutes</p>
+                        <p class="text-muted small mb-2">Elapsed Minutes = (Elapsed Hours × 60) + Elapsed Minutes</p>
+                        <p class="mb-1"><strong>Step 2:</strong> Convert Total Book Length to Total Minutes</p>
+                        <p class="text-muted small mb-2">Total Minutes = (Total Hours × 60) + Total Minutes</p>
+                        <p class="mb-1"><strong>Step 3:</strong> Calculate Percentage</p>
+                        <p class="text-primary fw-bold mb-0">Percentage Complete = (Elapsed Minutes ÷ Total Minutes) × 100</p>
+                    </div>
+
+                    <p>
+                        Let’s look at a concrete example:
+                    </p>
+                    <ul>
+                        <li><strong>Audiobook:</strong> <em>Atomic Habits</em> by James Clear</li>
+                        <li><strong>Total Duration:</strong> 5 hours and 35 minutes (335 total minutes)</li>
+                        <li><strong>Current Position:</strong> 2 hours and 14 minutes (134 total minutes)</li>
+                        <li><strong>Calculation:</strong> (134 ÷ 335) × 100 = <strong>40.0% Complete</strong></li>
+                    </ul>
+                    <p>
+                        Entering 40% into StoryGraph or Goodreads immediately aligns your progress tracker without requiring any guesswork.
+                    </p>
+
+                    <h2 class="h3 fw-bold text-dark mt-5 mb-3">Syncing Audiobooks to Printed Page Counts</h2>
+                    <p>
+                        Many reading trackers default to page numbers. If your book club or friend is reading the physical copy, how do you report what "page" you are on?
+                    </p>
+                    <div class="table-responsive my-4">
+                        <table class="table table-bordered table-hover align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Audio Progress %</th>
+                                    <th>Page in 300-Page Book</th>
+                                    <th>Page in 450-Page Book</th>
+                                    <th>Page in 700-Page Epic</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>10% Complete</strong></td>
+                                    <td>Page 30</td>
+                                    <td>Page 45</td>
+                                    <td>Page 70</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>25% (First Quarter)</strong></td>
+                                    <td>Page 75</td>
+                                    <td>Page 112</td>
+                                    <td>Page 175</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>50% (Halfway Mark)</strong></td>
+                                    <td>Page 150</td>
+                                    <td>Page 225</td>
+                                    <td>Page 350</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>75% (The Climax)</strong></td>
+                                    <td>Page 225</td>
+                                    <td>Page 337</td>
+                                    <td>Page 525</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>90% (Final Chapters)</strong></td>
+                                    <td>Page 270</td>
+                                    <td>Page 405</td>
+                                    <td>Page 630</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        The formula is simply: <code>Equivalent Page = Total Book Pages × (Percentage ÷ 100)</code>. Our <a href="/audiobook-percentage-calculator/" class="fw-semibold">Audiobook Percentage Calculator</a> does this automatically for both directions.
+                    </p>
+
+                    <h2 class="h3 fw-bold text-dark mt-5 mb-3">Psychological Benefits: Overcoming the 40–60% Mid-Book Slump</h2>
+                    <p>
+                        In reading psychology, the "mid-book slump" occurs between 40% and 60% completion. The initial novelty of character introductions and world-building has faded, while the climax remains hours away. In a 20-hour audiobook, being at 50% still means facing 10 full hours of listening.
+                    </p>
+                    <p>
+                        Tracking incremental progress counteracts this cognitive fatigue:
+                    </p>
+                    <ol>
+                        <li><strong>Break books into 10% micro-sprints:</strong> In a 12-hour book, 10% is just 72 minutes (roughly one commute and workout session). Celebrating 10% daily milestones maintains dopamine momentum.</li>
+                        <li><strong>Visualize time remaining at your current speed:</strong> If you listen at 1.4x speed, a remaining 6-hour timestamp is actually only 4.2 hours of real listening time. Use the <a href="/audiobook-progress-calculator/" class="fw-semibold">Audiobook Progress Calculator</a> to see your true remaining commitment.</li>
+                        <li><strong>Set an estimated finish date:</strong> Knowing you will finish on Friday afternoon gives you a concrete finish line rather than an abstract cloud of hours.</li>
+                    </ol>
+
+                    <h2 class="h3 fw-bold text-dark mt-5 mb-3">Managing Annual Reading Challenges with Audiobooks</h2>
+                    <p>
+                        Whether participating in the Goodreads 52-Book Challenge, StoryGraph Streak, or the 50-Book Pledge, audiobooks are completely legitimate and officially recognized reading formats. Here is how top readers plan their challenge pacing:
+                    </p>
+                    <ul>
+                        <li><strong>Target Weekly Audiobook Hours:</strong> For a goal of 40 books per year (averaging 10 hours each = 400 total hours), you need roughly <strong>7.7 hours per week</strong> (roughly 66 minutes per day).</li>
+                        <li><strong>Mix Epic Tomes with Short Non-fiction:</strong> Pair a 30-hour biography with two 4-hour novellas to keep your challenge tally on schedule.</li>
+                        <li><strong>Log audiobooks consistently:</strong> Always log progress on the same day every week to keep your reading pace graphs linear and motivating.</li>
+                    </ul>
+
+                    <h2 class="h3 fw-bold text-dark mt-5 mb-3">Explore Our Audiobook Tracking Tools</h2>
+                    <p>
+                        Take the guesswork out of your reading journal with our instant, browser-based calculators:
+                    </p>
+                    <div class="row g-3 my-3">
+                        <div class="col-md-6">
+                            <a href="/audiobook-progress-calculator/" class="text-decoration-none">
+                                <div class="p-3 border rounded-3 bg-white h-100 hover-shadow transition">
+                                    <h5 class="text-dark fw-bold mb-1"><i class="bi bi-bookmark-check text-primary me-2"></i>Audiobook Progress Calculator</h5>
+                                    <p class="text-muted small mb-0">Calculate time remaining, completion percentage, and finish dates.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-6">
+                            <a href="/audiobook-percentage-calculator/" class="text-decoration-none">
+                                <div class="p-3 border rounded-3 bg-white h-100 hover-shadow transition">
+                                    <h5 class="text-dark fw-bold mb-1"><i class="bi bi-pie-chart text-success me-2"></i>Percentage Calculator</h5>
+                                    <p class="text-muted small mb-0">Convert audio hours into print pages and challenge updates.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Global Footer -->
+    <div id="footer">
+<!-- pitchdetectors Footer -->
+<footer class="main-footer">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5 class="footer-brand"><i class="bi bi-soundwave me-2"></i>pitchdetectors</h5>
+                <p class="footer-desc">The platform includes tools like audiobook time calculators, speed adjustment calculators, and progress estimators. Each tool uses simple mathematical logic based on inputs such as total duration, playback speed, and listening sessions to generate clear outputs.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+           
+            <div class="col-lg-3 col-md-4 col-6 mb-4">
+                <h6 class="footer-title">Audiobook Tools</h6>
+                <ul class="footer-links">
+                    <li><a href="/audiobook-progress-calculator/"><i class="bi bi-book me-2"></i>Progress Calculator</a></li>
+                    <li><a href="/audiobook-percentage-calculator/"><i class="bi bi-percent me-2"></i>Percentage Calculator</a></li>
+                    <li><a href="/audiobook-length-calculator/"><i class="bi bi-clock me-2"></i>Length Calculator</a></li>
+                    <li><a href="/audiobook-speed-calculator/"><i class="bi bi-speedometer2 me-2"></i>Speed Calculator</a></li>
+                    <li><a href="/audiobook-price-calculator/"><i class="bi bi-currency-dollar me-2"></i>Price Calculator</a></li>
+                    <li><a href="/audiobook-goal-calculator/"><i class="bi bi-trophy me-2"></i>Goal Calculator</a></li>
+                    <li><a href="/audible-credits-calculator/"><i class="bi bi-ticket-perforated me-2"></i>Audible Credits Calculator</a></li>
+                    <li><a href="/audiobook-sleep-timer-calculator/"><i class="bi bi-moon-stars me-2"></i>Sleep Timer Calculator</a></li>
+                    <li><a href="/audiobook-vs-reading-time-calculator/"><i class="bi bi-book-half me-2"></i>Audio vs Reading Time</a></li>
+                    <li><a href="/audiobook-tools/"><i class="bi bi-grid me-2"></i>All Audiobook Tools</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-6 mb-4">
+                <h6 class="footer-title">Guides & Articles</h6>
+                <ul class="footer-links">
+                    <li><a href="/articles/audiobook-speed-comprehension-guide/"><i class="bi bi-journal-text me-2"></i>Audiobook Speed Guide</a></li>
+                    <li><a href="/articles/audiobook-listening-time-vs-reading-time/"><i class="bi bi-journal-text me-2"></i>Listening vs Reading Time</a></li>
+                    <li><a href="/articles/how-to-track-audiobook-progress-percentage/"><i class="bi bi-journal-text me-2"></i>Track Progress & %</a></li>
+                    <li><a href="/articles/audiobook-cost-and-production-budget-guide/"><i class="bi bi-journal-text me-2"></i>Audiobook Cost Guide</a></li>
+                    <li><a href="/articles/how-audiobook-calculators-work-formulas-math/"><i class="bi bi-journal-text me-2"></i>How Calculators Work</a></li>
+                    <li><a href="/articles/"><i class="bi bi-arrow-right-circle me-2"></i>All Guides & Articles</a></li>
+                </ul>
+            </div>
+           
+            <div class="col-lg-2 col-md-4 col-6 mb-4">
+                <h6 class="footer-title">Quick Links</h6>
+                <ul class="footer-links">
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                    <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions.html">Terms of Service</a></li>
+                    <li><a href="/disclaimer.html">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="copyright">&copy; 2026 Pitch Detectors. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="made-with">Made with <i class="bi bi-heart-fill text-danger"></i> for Audiobook lovers worldwide</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- global schema -->
+ <script defer type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://pitchdetectors.com/#organization",
+      "name": "Pitch Detectors",
+      "url": "https://pitchdetectors.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://pitchdetectors.com/logo.png"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://pitchdetectors.com/#website",
+      "url": "https://pitchdetectors.com/",
+      "name": "Pitch Detectors",
+      "publisher": {
+        "@id": "https://pitchdetectors.com/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://pitchdetectors.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://pitchdetectors.com/#author",
+      "name": "Pitch Detectors Team",
+      "affiliation": {
+        "@id": "https://pitchdetectors.com/#organization"
+      }
+    }
+  ]
+}
+</script>
+</div>
+
+    <script defer src="/assets/bootstrap5.js"></script>
+    
+</body>
+</html>
