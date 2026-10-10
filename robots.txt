@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 
+User-agent: Mediapartners-Google
+Allow: /
+
 Sitemap: https://pitchdetectors.com/sitemap.xml
 Sitemap: https://pitchdetectors.com/site_map.xml

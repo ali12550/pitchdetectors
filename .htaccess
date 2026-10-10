@@ -30,7 +30,11 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     Header set Expires 0
   </FilesMatch>
   <FilesMatch "^(ads|robots)\.txt$">
+    <IfModule mod_authz_core.c>
+      Require all granted
+    </IfModule>
     Header set Content-Type "text/plain; charset=UTF-8"
+    Header set Access-Control-Allow-Origin "*"
     Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
 </IfModule>
